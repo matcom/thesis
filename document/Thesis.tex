@@ -1,0 +1,102 @@
+\documentclass[12pt,oneside]{uhthesis}
+\usepackage{subfigure}
+\usepackage[ruled,lined,linesnumbered,titlenumbered,algochapter,spanish,onelanguage]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{caption,booktabs}
+\captionsetup{ justification = centering }
+%\usepackage{mathpazo}
+\usepackage{float}
+\setlength{\marginparwidth}{2cm}
+\usepackage{todonotes}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{graphicx}
+\floatstyle{plaintop}
+\restylefloat{table}
+\addbibresource{Bibliography.bib}
+% \setlength{\parskip}{\baselineskip}%
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\listalgorithmcfname}{Índice de Algoritmos}
+%\dontprintsemicolon
+\SetAlgoNoEnd
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{purple},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4
+}
+
+\lstset{style=mystyle}
+
+\title{Título de la tesis}
+\author{\\\vspace{0.25cm}Nombre del autor}
+\advisor{\\\vspace{0.25cm}Nombre del primer tutor\\\vspace{0.2cm}Nombre del segundo tutor}
+\degree{Licenciado en (Matemática o Ciencia de la Computación)}
+\faculty{Facultad de Matemática y Computación}
+\date{Fecha\\\vspace{0.25cm}\href{https://github.com/username/repo}{github.com/username/repo}}
+\logo{Graphics/uhlogo}
+\makenomenclature
+
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\newcommand{\diff}[1]{\ensuremath{\mathrm{d}#1}}
+\newcommand{\me}[1]{\mathrm{e}^{#1}}
+\newcommand{\pf}{\mathfrak{p}}
+\newcommand{\qf}{\mathfrak{q}}
+%\newcommand{\kf}{\mathfrak{k}}
+\newcommand{\kt}{\mathtt{k}}
+\newcommand{\mf}{\mathfrak{m}}
+\newcommand{\hf}{\mathfrak{h}}
+\newcommand{\fac}{\mathrm{fac}}
+\newcommand{\maxx}[1]{\max\left\{ #1 \right\} }
+\newcommand{\minn}[1]{\min\left\{ #1 \right\} }
+\newcommand{\lldpcf}{1.25}
+\newcommand{\nnorm}[1]{\left\lvert #1 \right\rvert }
+\renewcommand{\lstlistingname}{Ejemplo de código}
+\renewcommand{\lstlistlistingname}{Ejemplos de código}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\include{FrontMatter/Dedication}
+\include{FrontMatter/Thanks}
+\include{FrontMatter/SupervisorOpinion}
+\include{FrontMatter/Abstract}
+\include{FrontMatter/Contents}
+
+\mainmatter
+
+\include{MainMatter/Introduction}
+\include{MainMatter/Background}
+\include{MainMatter/Proposal}
+\include{MainMatter/Implementation}
+
+\backmatter
+
+\include{BackMatter/Conclusions}
+\include{BackMatter/Recomendations}
+\include{BackMatter/Bibliography}
+
+\end{document}
