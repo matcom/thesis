@@ -1,1 +1,61 @@
 \chapter{Estado del Arte}\label{chapter:state-of-the-art}
+
+El Minado de Argumentos es una rama del Procesamiento del Lenguaje Natural encargado 
+de la extracción y anotación de estructuras argumentativas en textos de diferente índole.
+Un argumento es una compleja estructura compuesta por una afirmación y un conjunto de proposiciones
+que apoyan o atacan al propio argumento o a otras proposiciones CITE (arg def). Dada la definición
+anterior se puede observar los problemas fundamentales a resolver:
+
+\begin{itemize}
+    \item Extracción de las proposiciones
+    \item Clasificación de las proposiciones
+    \item Identificar las relaciones entre proposiciones
+    \item Clasificar las relaciones entre proposiciones
+\end{itemize}
+
+Para las proposiciones existen varios tipos de clasificaciones, se han usado Afirmación mayor, Afirmación y 
+Premisa CITE (neural end-to-end, parsing argumentation), otros no dependen de clases fijas y se ajustan 
+a la anotación del corpus con que se trabaja CITE (deep net and knowledge). El modelado de las relaciones
+tiene dos vertientes principales. Por una parte están las que restringen estas relaciones a tener una
+estructura arbórea CITE (neural end-to-end, parsing argumentation), lo cual facilita su modelación y 
+comprensión, mientras que otras permiten una representación más libre y por lo tanto más compleja 
+CITE (deep net and knowledge, AM SVM RNN).
+
+En las aproximaciones presentadas para atacar dicho problema se destacan los algoritmos divididos
+por etapas en la que cada subproblema es independientemente resuelto y su salida es la entrada del
+próximo subproblema CITE (parsing argumentation, goudas2015), esta aproximación es problemática debido a la propagación del error y en que no 
+explotan las interrelaciones entre las variables CITE (neural end-to-end). Otros tipos de algoritmos son
+los llamados end-to-end los cuales se enfrentan a los problemas presentados anteriormente de manera
+conjunta, partiendo de los tokens de los textos haciendo el procesamiento de tal forma que no se pierda
+información y que esta se pueda compartir entre etapas (neural end-to-end).
+
+El estado del arte actualmente en este campo se ha logrado gracias al uso de técnicas de aprendizaje de
+máquina. En este ámbito se han creado modelos basados en Support Vector Machine, Recurrent Neural Networks, 
+Residual Neural Networks, Attention Neural Networks. Se ha modelado el problema de extracción de argumentos
+como problemas de inferencia en un factor graph CITE (AM SVM RNN), parseo de dependencia, etiquetado de
+secuencia, extracción de entidades nombradas y sus relaciones CITE (neural end-to-end).
+
+El modelo más promisorio se basa en redes neuronales con módulo de atención y redes residuales. Lo interesante
+es que el uso de features dependientes del problema es nula, sus features dependen solo de los argumentos en sí
+usando embeddings de BERT. Los resultados de este modelo superan el estado del arte que existía en su actualidad
+y deja un camino abierto al perfeccionamiento de este mediante la inclusión de features dependientes de contextos
+específicos.
+
+Recomendaciones sobre el contenido
+\begin{itemize}
+    \item Tener referencias a trabajos relevantes
+    \item Presentar marco teórico
+    \item Fundamentación teórica
+    \item Herramientas a utilizar
+    \begin{itemize}
+        \item Justificar el uso de la herramienta, poner ejemplos comparativos con otras herramientas
+    \end{itemize}
+\end{itemize}
+
+Local Ref:
+(arg def) Argument Mining Linguistic Foundation pag 2
+(neural end-to-end) Neural End-to-End Learning for Computational Argumentation Mining
+(parsing argumentation) Parsing Argumentation Structures in Persuasive Essays
+(deep net and knowledge) Deep Networks and Knowledge: from Rule Learning to Neural-Symbolic Argument Mining
+(goudas2015)
+(AM SVM RNN)

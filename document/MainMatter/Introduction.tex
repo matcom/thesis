@@ -1,2 +1,139 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
+
+La teoría de la argumentación o argumentación es el estudio interdisciplinario de cómo las conclusiones
+pueden ser apoyadas o socavadas por premisas a través de razonamiento lógico (CITE Wikipedia English Argumentation Theory).
+Esta es usada en varios aspectos de la vida como en las negociaciones, debates públicos, publicaciones
+científicas, enseñanza, leyes. Todo argumento se compone escencialmente en un conjunto de premisas,
+un método de razonamiento y una conclusión.
+
+
+La Extracción de Argumentos es la rama del Procesamiento de Lenguaje Natural encargada de formularizar
+y modelar dicho problema para su posterior procesamiento. Los modelos existentes generalmente se ecargan de
+extraer y clasificar las componentes argumentativas y sus relaciones de una fuente no estructurada de 
+texto, capturando un proceso de razonamiento y argumentación en su estructura final. Los métodos
+de realizar este procedimiento varían en dependencia de las características en que se trabaja y el objetivo
+a que se quiere llegar. Entre los métodos usados se pueden mencionar métodos ad-hoc basados en gramáticas,
+que aprovechan atributos del texto como etiquetas POS y etiquetas de NER, que codifican diferentes 
+patrones argumentativos (CITE Reconstructing Arguments from Noisy Text). Dicho enfoque requiere de trabajo 
+humano para la creación de una gramática que permita resultados satisfactorios. Este tipo de enfoque
+generalmente sacrifica recobrado por precisión y no permite una generalización del problema, contribuyendo
+a no ser muy escalable. Otro método es el basado en técnicas de aprendizaje de máquina. Estos métodos están
+divididos en diferentes vertientes de acuerdo a cómo procesan los datos. Uno de ellos lo realiza por
+etapas, en el cual en cada una se resuelve independientemente los subproblema y la salida de la etapa 
+anterior es entrada a la etapa siguiente. Las etapas en que generalmente se divide el problema
+son, separación de unidades argumentativas y no argumentativas, clasificación de las unidades 
+argumentativas y la identificación de estructuras argumentativas (CITE Identifying Argumentative Discourse Structures in Persuasive Essays, cualquier otro que use este enfoque).
+Este enfoque trae consigo una modularidad elevada al resolver las tareas de manera independiente, pero
+tiene la desventaja que los errores de etapas anteriores son pasados a las siguientes y además los algoritmos
+usados no ven todo el contexto del texto pudiendo perder características que permitirían un mejor resultado.
+Otro enfoque usado son los llamados end-to-end, en estos el modelo entrenado aprende los pasos para convertir
+directamente la entrada del algoritmo en la salida deseada al entrenar sus diferentes partes de manera 
+simultanea. En el contexto de EA la entrada serían los tokens de los textos y la salida sería las
+estructuras argumentativas anotadas en dependencia del algoritmo usado. Este enfoque mitiga las posibles
+deficiencias del enfoque por etapas, al juntar todo el proceso en una sola eliminando la propagación
+del error, además de que al tener todos los datos es posible encontrar mayor cantidad de correlaciones 
+entre ellos, también no requiere de una ingeniería de atributos (features) tan elaborada (CITE Neural End-to-End Learning for Computational Argumentation Mining).
+
+En la práctica la EA tiene un gran número de aplicaciones: (CITE Argument Mining Linguistic Foundation pag 5)
+\begin{itemize}
+    \item Análisis de opinión: Ayuda no solo a saber si la opinión es favorable o no, sino a saber
+    porqué es favorable o no.
+    \item Análisis de debate: Ayuda a detectar estrategias argumentativas
+    \item Detección de incoherencias en un conjunto de argumentos y justificaciones
+\end{itemize}
+
+
+En EA la gran mayoría de las investigaciones y corpus se basan en el idioma inglés o alemán. Hay
+una cantidad pequeña de investigaciones en español (CITE Minería de argumentación en el Referéndum del 1 de Octubre de 2017) 
+y basados específicamente en prensa no se encontró ninguna referencia. En Cuba no se tiene constancia
+tampoco de investigaciones realizadas sobre el tema por lo que se considera la primera investigación
+sobre las estructuras argumentativas en el país. El trabajo forma parte de una colaboración entre la 
+Facultad de Artes y Letras de la Universidad de La Habana y la Facultad de Matemática y Computación 
+de la misma universidad mediante el proyecto CORESPUC (TODO Poner el nombre completo del proyecto?).
+Mediante este trabajo se podrá (TODO Poner acá para qué se quiere hacer el trabajo)
+
+
+Este trabajo necesita encontrar \emph{qué modelos se pueden usar en el español para la extracción de 
+argumentos en textos, especialmente en la prensa} (TODO Posible Pregunta Científica?). Recientemente se ha introducido modelos basados 
+en Transformer y Attention (CITE Transformer-Based Argument Mining for Health Care Application, El doctorado)
+que han llegado a alcanzar resultados iguales o superiores al estado del arte de su momento (TODO Posible Hipótesis?). 
+Por otro lado dado que los corpus están en inglés se desea saber si \emph{es factible usar métodos
+para poder usar el conocimiento aprendido de los algoritmos entrenados en inglés en el español} 
+(TODO Posible Pregunta Científica).
+
+
+El objetivo principal de este trabajo se basa sobre \emph{el diseño e implementación de un algoritmo para 
+el estudio de la argumentación en el periódico digital Granma} (Objetivo). Para esto primero
+es necesaria la construcción de un corpus sobre el periódico. Para esto se realizará una recolección
+de noticias mediante técnicas de scrapping para conformar un corpus inicial no anotado. Este corpus
+será anotado por un modelo previamente entrenado usando técnicas de proyección entre lenguajes (CITE Cross-lingual)
+y otros tipos de anotaciones tales como partes de la oración y entidades presentes.
+
+Actualmente existe un corpus parcialmente
+anotado y con algunos errores documentados en la plataforma CQPweb (TODO Alguna referencia al corpus?,
+Correcto poner CQPweb?) así que en una primera parte se realizará correcciones pertinentes a dicho 
+corpus y luego se anotarán otros atributos relevantes como la clasificación de las secciones del 
+periódico en de opinión o no. Luego se aumentará dicho corpus mediante técnicas de scrapping 
+(TODO en español?) y se verificará la aparición o no de noticias entre la versión PDF y la versión 
+online del periódico. Se necesita además la implementación de una interfaz visual en la cual se 
+pueda consultar (TODO Consultar qué?) el corpus.
+
+
+El trabajo está conformado por \dots (TODO Poner la estructura del trabajo)
+
+
+% Esqueleto
+% \begin{itemize}
+%     \item Hablar sobre el conocimiento y el pensamiento del ser humano como ser racional.
+%     No existe una verdad única, si no diferente tipos de verdades para diferentes grupos de personas.
+%     Cada grupo de personas presentan argumentos por los cuales creen esas verdades y no creen otras.
+%     \item Introducir el tema de la argumentación en el NLP, su usos actuales e importancia.
+%     \item Introducción de la problemática (Formar un corpus de Granma con estructuras argumentativas),
+%     el porqué se quiere hacer esto (Justificación del proyecto CORESPUC, crear un estudio en español del tema)
+%     \item Hablar sobre la importancia teórica y práctica del trabajo. No existen estudios en español,
+%     los corpus en español son escasos. Ayuda a resolver la justificación de CORESPUC
+%     \item Planteo de los objetivos y las preguntas científicas (Crear corpus argumentativo en Español y un framework para la extracción de argumentos en periódicos)
+%     \item Estructura del trabajo
+% \end{itemize}
+
+
+% Aspectos que debe tratar la introducción (Se deben de decir implícitamente en los párrafos):
+
+% \begin{itemize}
+
+%     \item Contexto histórico-social donde se desarrolla
+%     \item Antecedentes del problema, justificación y motivación. Cómo se ha estudiado primero a mano y luego computacionalmente el problema en la prensa. Motivacion, el proyecto esta integrado en un proyecto nacional  reconocido CORESPUC, lo cual tiene una justificación también.
+%     \item Breve presentación de la problemática. (No es el estado del arte aunque se puede hablar un poco de él) Elementos involucrados en el punto de vista cientifico, lleva corpus.
+%     \item Actualidad, novedad e importancia teórica y práctica. Revisar literatura (Actualidad, en español no tiene mucho estudio), Se propone un modelo computacional para estudiar ese asutnto que se han propuesto poco, para Cuba no hay ninguno y poco de investigación. 
+%     \item Diseño teórico.
+
+%     \begin{itemize}
+
+%         \item Problema: 
+%         \item Objeto de Investigación: Procesamiento de Lenguaje Natural
+%         \item Campo de acción: Linguistica computacional
+%         \item Hipótesis o preguntas científicas
+%         \item Objetivos generales y específicos
+
+%         \begin{itemize}
+%             \item General
+%             \begin{itemize}
+%                 \item Diseño e implementación de un algoritmo para el estudio de la argumentación en el periódico digital Granma
+%             \end{itemize}
+%             \item Específicos
+%             \begin{itemize}
+%                 \item Construcción del corpus de los periódicos: Crawler, Anotación (scpaCy).
+%                 \item Arreglar etiquetas en corpus activo con archivos VRT.
+%                 \item Clasificar las secciones en de opinión o no.
+%                 \item Verificar la aparición o no de noticias entre la versión PDF y la versión online del periódico.
+%                 \item Implementacion de la interfaz gráfica para consultar los resultados.
+%                 \item Lograr interoperailidad de la plataforma CQPweb.
+%             \end{itemize}
+%         \end{itemize}
+
+%     \end{itemize}
+
+%     \item Estructura del trabajo
+
+% \end{itemize}
