@@ -4,7 +4,7 @@
 % Introducción a la teoría de la argumentación
 
 La teoría de la argumentación es el estudio interdisciplinario de cómo las conclusiones
-pueden ser apoyadas o socavadas por premisas a través de razonamiento lógico \cite{wiki-arg-theory} .
+pueden ser apoyadas o socavadas por premisas a través de razonamiento lógico [\cite{wiki-arg-theory}] .
 Esta es usada en varios aspectos de la vida como en las negociaciones, debates públicos, publicaciones
 científicas, enseñanza, leyes. Sobre este marco teórico es sobre donde se realiza el diseño y análisis de 
 modelos computacionales que ayudan al procesamiento de los grandes volúmenes de datos existentes.
@@ -15,34 +15,26 @@ que es generada en cada momento. En caso de tener una vía de acceder a esta se 
 con mayor rapidez y calidad. Con la argumentación se podría hacer explícitas las razones de las personas 
 al afirmar algo sobre un tema teniendo así su punto de vista individual, y con suficientes personas, colectivo.
 
-
-% Introducción al contexto histórico-social 
-
-El proyecto Corpus del Español Público en Cuba \emph{CORESPUC} es un proyecto conjunto entre la Universidad 
-de La Habana y la Universidad Friedrich-Alexander. El objetivo principal del proyecto consiste en estudiar el
-español en Cuba, para esto está en proceso la construcción de un corpus basado principalmente 
-en recopilaciones de periódicos como Granma y Juventud Rebelde, para luego poder hacer diferentes estudios sobre él
-\cite{knauer}. Este corpus se desea que esté anotado con diferentes metadatos que ayuden al proceso de consultas. 
-Entre las anotaciones a incorprar encuentran las estructuras de argumentación en el discurso público.
-
 % Presentación de la problemática
 
-La Extracción de Argumentos es la rama del Procesamiento de Lenguaje Natural encargada de formularizar
+La Extracción de Argumentos (EA) es la rama del Procesamiento de Lenguaje Natural encargada de formularizar
 y modelar dicho problema. Los modelos existentes generalmente se encargan de
 extraer y clasificar las componentes argumentativas y sus relaciones de una fuente no estructurada de 
 texto, capturando un proceso de razonamiento y argumentación en su estructura final. Los métodos
 de realizar este procedimiento varían en dependencia de las características en que se trabaja y el objetivo
 a que se quiere llegar. Entre los métodos usados se pueden mencionar métodos ad-hoc basados en gramáticas,
-que aprovechan atributos del texto como etiquetas POS y etiquetas de NER, que codifican diferentes 
-patrones argumentativos \cite{dykes2020reconstructing}. Dicho enfoque requiere de trabajo 
+que aprovechan atributos del texto como partes de la oración y entidades nombradas, que codifican diferentes 
+patrones argumentativos [\cite{dykes2020reconstructing}]. Dicho enfoque requiere de trabajo 
 humano para la creación de una gramática que permita resultados satisfactorios. Este tipo de enfoque
 generalmente sacrifica recobrado por precisión y no permite una generalización del problema, contribuyendo
-a no ser muy escalable. Otro método es el basado en técnicas de aprendizaje de máquina. Estos métodos están
-divididos en diferentes vertientes de acuerdo a cómo procesan los datos. Uno de ellos lo realiza por
+a no ser muy escalable.
+
+Existen método basados en técnicas de aprendizaje de máquina para modelar y resolver dicho problema.
+Estos métodos están divididos en diferentes vertientes de acuerdo a cómo procesan los datos. Uno de ellos lo realiza por
 etapas, en el cual en cada una se resuelve independientemente los subproblema y la salida de la etapa 
 anterior es entrada a la etapa siguiente. Las etapas en que generalmente se divide el problema
 son, separación de unidades argumentativas y no argumentativas, clasificación de las unidades 
-argumentativas y la identificación de estructuras argumentativas (CITE \cite{stab2014identifying}, cualquier otro que use este enfoque).
+argumentativas y la identificación de estructuras argumentativas [\cite{stab2014identifying}].
 Este enfoque trae consigo una modularidad elevada al resolver las tareas de manera independiente, pero
 tiene la desventaja que los errores de etapas anteriores son pasados a las siguientes y además los algoritmos
 usados no ven todo el contexto del texto pudiendo perder características que permitirían un mejor resultado.
@@ -52,9 +44,9 @@ simultanea. En el contexto de EA la entrada serían los tokens de los textos y l
 estructuras argumentativas anotadas en dependencia del algoritmo usado. Este enfoque mitiga las posibles
 deficiencias del enfoque por etapas, al juntar todo el proceso en una sola eliminando la propagación
 del error, además de que al tener todos los datos es posible encontrar mayor cantidad de correlaciones 
-entre ellos, también no requiere de una ingeniería de atributos tan elaborada \cite{eger2017neural}.
+entre ellos, también no requiere de una ingeniería de atributos tan elaborada [\cite{eger2017neural}].
 
-En la práctica la EA tiene un gran número de aplicaciones: (CITE \cite{janier2019argument} pag 5)
+En la práctica la EA tiene un gran número de aplicaciones [\cite{janier2019argument}]: 
 \begin{itemize}
     \item Análisis de opinión: Ayuda no solo a saber si la opinión es favorable o no, sino a saber
     porqué es favorable o no.
@@ -68,16 +60,16 @@ Desde el punto de vista del proyecto CORESPUC, este trabajo añade la capacidad 
 sus textos con las estructuras argumentativas pertinentes ampliando cantidad de
 información anotada en este. Desde el punto de vista de Extracción de Argumentos, supone una
 adición al estudio de este campo en el lenguaje español, del cual se encontraron pocas
-investigaciones realizadas \cite{esteve2020mineria}. Con respecto a Cuba en específico
+investigaciones realizadas [\cite{esteve2020mineria}]. Con respecto a Cuba en específico
 resulta un trabajo completamente nuevo según las investigaciones hechas.
 
-% Diseño teórico
+% Pregunta científica o hipótesis
 
 Para la solución del problema se necesita extraer las componentes argumentativas con sus relaciones
 y clasificaciones. Para esto se necesita encontrar qué modelo es factible usar para la extracción de
 argumentos en textos en español, especialmente en la prensa. En este aspecto existen investigaciones
 en las cuales usan modelos basados en Transformer y Attention que han impuesto nuevos estados de arte
-\cite{mayer2020transformer} \cite{galassi2018argumentative}.
+[\cite{mayer2020transformer}, \cite{galassi2018argumentative}].
 
 % Este trabajo necesita encontrar \emph{qué modelos se pueden usar en el español para la extracción de 
 % argumentos en textos, especialmente en la prensa} (TODO Posible Pregunta Científica?). Recientemente se ha introducido modelos basados 
@@ -89,12 +81,12 @@ en las cuales usan modelos basados en Transformer y Attention que han impuesto n
 
 % Objetivos 
 
-El objetivo principal de este trabajo fue \emph{el diseño e implementación de un algoritmo para 
-el estudio de la argumentación en el periódico digital Granma} (Objetivo). Para esto primero
+El objetivo principal de este trabajo fue el diseño e implementación de un algoritmo para 
+el estudio de la argumentación en el periódico digital Granma. Para esto primero
 fue necesaria la construcción de un corpus sobre el periódico. Se recolectaron los documentos
 del periódico mediante técnicas de scrapping para conformar un corpus inicial no anotado. Este
 fue anotado con las estructuras argumentativas por el modelo previamente entrenado usando técnicas 
-de proyección entre lenguajes \cite{eger2018cross}. Además de las anotaciones anteriores, se agregarán 
+de proyección entre lenguajes [\cite{eger2018cross}]. Además de las anotaciones anteriores, se agregarán 
 otras, como partes de la oración y entidades nombradas para finalmente añadir el corpus a CORESPUC.
 
 % Estructura del trabajo

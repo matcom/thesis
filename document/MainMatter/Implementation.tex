@@ -1,16 +1,135 @@
 \chapter{Detalles de Implementación y Experimentos}\label{chapter:implementation}
 
+% \begin{itemize}
+
+%     \item No interesa el cómo se hizo
+%     \item Mostrar resultados
+%     \begin{itemize}
+
+%         \item Puede ser con estadísticas
+%         \item Por casos de uso
+
+%     \end{itemize}
+%     \item Sección de metacódigo en caso de ser relevante
+
+% \end{itemize}
+
+% Experimentos y Discusión: diseño de los experimentos, dataset, como preprocesó, cómo se hizo la 
+% construcción del corpus. Lo más detallado posible para que alguien pueda replicarlo. 
+% Compración entre variantes de solución propias y las del estado del arte que sean comparables.
+
+\section{Corpus}
+
+\subsection{Procesamiento de Corpus}
+
+Los corpus pueden venir en diferentes formatos, por esto se construyeron parsers con el objetivo
+de llevar a una representación común todos los corpus. Esta representación está constituida por
+un archivo anotado en formato CoNLL cuyas anotaciones son:
 
 \begin{itemize}
-
-    \item No interesa el cómo se hizo
-    \item Mostrar resultados
-    \begin{itemize}
-
-        \item Puede ser con estadísticas
-        \item Por casos de uso
-
-    \end{itemize}
-    \item Sección de metacódigo en caso de ser relevante
-
+    \item [B|I]-[Tipo de UDA](-[Tipo de relación]-[Distancia Argumentativa entre Objetivo y Origen])*
+    \item O
 \end{itemize}
+
+En la conformación de este formato común se realizan una serie de procesamientos, estos son la 
+tokenización del texto y la separación de oraciones. Ambos procesamientos pueden ser hechos 
+mediante SpaCy y NLTK. 
+
+\subsection{Aumento de Datos}
+
+Dado que la cantidad de datos es relativamente pequeña es recomendable hacer uso de técnicas de 
+aumento de datos. Uno de los métodos usados es la traducción automática de las oraciones para 
+un lenguaje intermedio y su traducción de vuelta al lenguaje inicial. Los resultados obtenidos
+muestran que los nuevos datos presentan una alta similitud entre sus palabras.
+
+TODO Hacer métricas de comparación de strings entre la versión original y la versión aumentada.
+Distancia de Jacard, de Levenshtein (versión de palabras)
+
+
+\cite{feng2021data}
+
+\subsection{Argumentative Essays}
+
+Este corpus posee un esquema de anotación en el cual las UDA se clasifican como MajorClaim, Claim y 
+Premise. Las relaciones se encuentran entre Premise-Claim y Premise-Premise las cuales son clasificadas
+como support o attack. Las Claims presentan una posición o stance acerca de las MajorClaim en el 
+texto correspondiente, estas son clasificadas en For y Against. Dado su similitud de las stance con
+las relaciones y la necesidad de incluir las MajorClaim en estas se agregó las relaciones Claim-MajorClaim
+haciendo uso de sus posiciones, la posición For se agregó como support y la posición Against como attack.
+
+\section{Proyección de corpus}
+
+\subsection{Traducción automática}
+
+En la traducción automática se utilizaron los servicios de Google Translate mediante el paquete
+deep-translate [TODO referencia al repo \cite{}]. Dicho paquete provee la capacidad de usar 
+otras herramientas para la traducción, como (TODO Poner otras herramientas para la traducción)
+aunque la mayoría de estas presentan algún tipo de restricción, como la necesidad de una subscripción
+o un token para el uso de sus servicios. El uso de Google Translate no presenta estas restricciones
+y puede ser usado sin ninguna configuración previa.
+
+El procesamiento de esta etapa es guardado en formato de texto conteniendo las 
+secuencias separadas por un separador en cada linea en donde la primera secuencia se
+encuentra en el lenguaje inicial y al segunda se encuentra en el lenguaje final.
+
+\subsection{Alineación de palabras}
+
+Para la alineación de palabras se usan FastAlign y AwesomeAlign. El primero constituye
+una vía rápida y de pocos recursos para la tarea, mientras que el segundo produce mejores
+resultados con un coste de memoria y tiempo mayor. (TODO Poner las métricas de la página de
+github de AwesomeAlign)
+
+La salida de este proceso constituye un archivo en donde cada linea representa la 
+alineación de palabras correspondiente al par de oraciones en el lenguaje fuente y objetivo. 
+
+\subsection{Proyección de etiquetas}
+
+La proyección de etiquetas constituye el último paso en la proyección de corpus. Para esto
+se usan las alineaciones de palabras y oraciones para el paso de las etiquetas. Para esto
+se usa el algoritmo propuesto en [\cite{eger2018cross}] el cual consiste en (TODO buscar en
+que consiste el algoritmo)
+
+Esta etapa crea un nuevo corpus con las etiquetas proyectadas en el lenguaje objetivo. El 
+corpus se presenta en formato CoNLL.
+
+\section{Segmentación de UDAs}
+
+La entrada en el la segmentación es texto del cual se desean extraer las UDAs.
+
+\subsection{Extracción de Features}
+
+La cadena de texto es tokenizada y es representada como una secuencia 
+de los vectores GloVe de cada uno de los tokens, dicha representación inicial 
+luego es modificada en dependencia de los hiperparámetros del modeo. 
+El tamaño de la secuencia es elegido como el tamaño de la secuencia máxima en el 
+conjunto de entrenamiento.
+
+Además de la representación de las palabras mediante GloVe también se calculan otros features
+encargados de extraer información de la morfología de las palabras al analizar sus caracteres.
+Para esto se aprende una representación vectorial de los caracteres mediante el uso de Redes Convolucionales
+y Redes Neuronales Recurrentes. En concreto se utilizó max pooling para la red convolucional
+y una LSTM bidireccional para la recurrente, en ambos casos el resultado fue concatenado
+a la representación inicial GloVe.
+
+Otro feature que se le añade es las etiquetas POS, dado que las etiquetas POS pueden
+cambiar en dependencia del lenguaje y el modelo está pensado para ser utilizado entre
+varios lenguajes se elige un conjunto de etiquetas universal para la representación.
+(TODO Poner las etiquetas o un link hacia donde se encuentran). A la representación
+de cada palabra es concatenado una representación densa de codificación one-hot de las 
+etiquetas POS, dicha representación posee dimensión 5.
+
+\subsection{Experimentos}
+
+
+
+\subsection{Resultados}
+
+Se procesa la salida para que sea una secuencia BIOES válida
+
+\section{Predicción de enlaces}
+
+\subsection{Extracción de Features}
+
+GloVe Embeddings
+
+\subsection{Resultados}

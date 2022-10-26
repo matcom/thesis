@@ -1,97 +1,210 @@
-@misc{wiki-arg-theory, 
-  title={Argumentation theory}, 
-  url={https://en.wikipedia.org/wiki/Argumentation_theory}, 
-  journal={Wikipedia}, 
-  publisher={Wikimedia Foundation}, 
-  year={2022}, 
-  month={Jun}
+@misc{wiki-arg-theory,
+  title     = {Argumentation theory},
+  url       = {https://en.wikipedia.org/wiki/Argumentation_theory},
+  journal   = {Wikipedia},
+  publisher = {Wikimedia Foundation},
+  year      = {2022},
+  month     = {Jun}
+}
+@book{toulmin_2003,
+  place     = {Cambridge},
+  edition   = {2},
+  title     = {The Uses of Argument},
+  doi       = {10.1017/CBO9780511840005},
+  publisher = {Cambridge University Press},
+  author    = {Toulmin, Stephen E.},
+  year      = {2003}
+}
+@book{freeman2011argument,
+  title     = {Argument Structure:: Representation and Theory},
+  author    = {Freeman, James B},
+  volume    = {18},
+  year      = {2011},
+  publisher = {Springer Science \& Business Media}
+}
+@misc{classicalArgument,
+  url       = {https://owl.purdue.edu/owl/general_writing/academic_writing/historical_perspectives_on_argumentation/classical_argument.html},
+  title     = {Historical Perspectives on Argumentation - Classical Argument},
+  publisher = {Purdue University},
+  year      = {2022},
+  month     = {Oct}
+}
+
+@misc{toulminArgument,
+  url       = {https://owl.purdue.edu/owl/general_writing/academic_writing/historical_perspectives_on_argumentation/toulmin_argument.html},
+  title     = {Historical Perspectives on Argumentation - Toulmin Argument},
+  publisher = {Purdue University},
+  year      = {2022},
+  month     = {Oct}
+}
+
+@misc{rogerianArgument,
+  url       = {https://owl.purdue.edu/owl/general_writing/academic_writing/historical_perspectives_on_argumentation/rogerian_argument.html},
+  title     = {Historical Perspectives on Argumentation - Rogerian Argument},
+  publisher = {Purdue University},
+  year      = {2022},
+  month     = {Oct}
+}
+@report{dyer2013fastalign,
+  abstract  = {We present a simple log-linear reparame-terization of IBM Model 2 that overcomes problems arising from Model 1's strong assumptions and Model 2's overparame-terization. Efficient inference, likelihood evaluation, and parameter estimation algorithms are provided. Training the model is consistently ten times faster than Model 4. On three large-scale translation tasks, systems built using our alignment model outperform IBM Model 4. An open-source implementation of the alignment model described in this paper is available from http://github.com/clab/fast align .},
+  author    = {Chris Dyer and Victor Chahuneau and Noah A Smith},
+  pages     = {9-14},
+  publisher = {Association for Computational Linguistics},
+  title     = {A Simple, Fast, and Effective Reparameterization of IBM Model 2},
+  url       = {http://github.com/clab/fast},
+  year      = {2013}
+}
+@article{feng2021data,
+   abstract = {Data augmentation has recently seen increased interest in NLP due to more work in low-resource domains, new tasks, and the popularity of large-scale neural networks that require large amounts of training data. Despite this recent upsurge, this area is still relatively underexplored, perhaps due to the challenges posed by the discrete nature of language data. In this paper, we present a comprehensive and unifying survey of data augmentation for NLP by summarizing the literature in a structured manner. We first introduce and motivate data augmentation for NLP, and then discuss major methodologically representative approaches. Next, we highlight techniques that are used for popular NLP applications and tasks. We conclude by outlining current challenges and directions for future research. Overall, our paper aims to clarify the landscape of existing literature in data augmentation for NLP and motivate additional work in this area. We also present a GitHub repository with a paper list that will be continuously updated at https://github.com/styfeng/DataAug4NLP},
+   author = {Steven Y. Feng and Varun Gangal and Jason Wei and Sarath Chandar and Soroush Vosoughi and Teruko Mitamura and Eduard Hovy},
+   month = {5},
+   title = {A Survey of Data Augmentation Approaches for NLP},
+   url = {http://arxiv.org/abs/2105.03075},
+   year = {2021},
+}
+@report{sardianos2015news,
+   abstract = {Argument extraction is the task of identifying arguments, along with their components in text. Arguments can be usually decomposed into a claim and one or more premises justifying it. The proposed approach tries to identify segments that represent argument elements (claims and premises) on social Web texts (mainly news and blogs) in the Greek language, for a small set of thematic domains, including articles on politics , economics, culture, various social issues, and sports. The proposed approach exploits distributed representations of words, extracted from a large non-annotated corpus. Among the novel aspects of this work is the thematic domain itself which relates to social Web, in contrast to traditional research in the area, which concentrates mainly on law documents and scientific publications. The huge increase of social web communities, along with their user tendency to debate, makes the identification of arguments in these texts a necessity. In addition, a new manually annotated corpus has been constructed that can be used freely for research purposes. Evaluation results are quite promising, suggesting that distributed representations can contribute positively to the task of argument extraction .},
+   author = {Christos Sardianos and Ioannis Manousos Katakis and Georgios Petasis and Vangelis Karkaletsis},
+   pages = {56-66},
+   title = {Argument Extraction from News},
+   year = {2015},
+}
+@report{palau2009argumentation,
+   abstract = {Argumentation is the process by which arguments are constructed and handled. Argumentation constitutes a major component of human intelligence. The ability to engage in argumentation is essential for humans to understand new problems, to perform scientific reasoning, to express, to clarify and to defend their opinions in their daily lives. Argu-mentation mining aims to detect the arguments presented in a text document, the relations between them and the internal structure of each individual argument. In this paper we analyse the main research questions when dealing with argumentation mining and the different methods we have studied and developed in order to successfully confront the challenges of argumentation mining in legal texts.},
+   author = {Raquel Mochales Palau and Marie-Francine Moens},
+   title = {Argumentation Mining: The Detection, Classification and Structuring of Arguments in Text},
+   year = {2009},
+}
+@report{lauscher2018inventor,
+  abstract = {Argumentation is an essential feature of scientific language. We present an annotation study resulting in a corpus of scientific publications annotated with argumentative components and relations. The argumentative annotations have been added to the existing Dr. Inventor Corpus , already annotated for four other rhetorical aspects. We analyze the annotated argumentative structures and investigate the relations between argumentation and other rhetorical aspects of scientific writing, such as discourse roles and citation contexts.},
+  author   = {Anne Lauscher and Goran Glavaš and Simone Paolo Ponzetto},
+  pages    = {40-46},
+  title    = {An Argument-Annotated Corpus of Scientific Publications},
+  url      = {http://data.dws.informatik.},
+  year     = {2018}
+}
+@article{yang2018scidtb,
+   abstract = {Annotation corpus for discourse relations benefits NLP tasks such as machine translation and question answering. In this paper, we present SciDTB, a domain-specific discourse treebank annotated on scientific articles. Different from widely-used RST-DT and PDTB, SciDTB uses dependency trees to represent discourse structure, which is flexible and simplified to some extent but do not sacrifice structural integrity. We discuss the labeling framework, annotation workflow and some statistics about SciDTB. Furthermore, our treebank is made as a benchmark for evaluating discourse dependency parsers, on which we provide several baselines as fundamental work.},
+   author = {An Yang and Sujian Li},
+   month = {6},
+   title = {SciDTB: Discourse Dependency TreeBank for Scientific Abstracts},
+   url = {http://arxiv.org/abs/1806.03653},
+   year = {2018},
 }
 @article{dykes2020reconstructing,
-  title={Reconstructing arguments from Noisy text},
-  author={Dykes, Natalie and Evert, Stefan and G{\"o}ttlinger, Merlin and Heinrich, Philipp and Schr{\"o}der, Lutz},
-  journal={Datenbank-Spektrum},
-  volume={20},
-  number={2},
-  pages={123--129},
-  year={2020},
-  publisher={Springer}
+  title     = {Reconstructing arguments from Noisy text},
+  author    = {Dykes, Natalie and Evert, Stefan and G{\"o}ttlinger, Merlin and Heinrich, Philipp and Schr{\"o}der, Lutz},
+  journal   = {Datenbank-Spektrum},
+  volume    = {20},
+  number    = {2},
+  pages     = {123--129},
+  year      = {2020},
+  publisher = {Springer}
 }
 @inproceedings{stab2014identifying,
-  title={Identifying argumentative discourse structures in persuasive essays},
-  author={Stab, Christian and Gurevych, Iryna},
-  booktitle={Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP)},
-  pages={46--56},
-  year={2014}
+  title     = {Identifying argumentative discourse structures in persuasive essays},
+  author    = {Stab, Christian and Gurevych, Iryna},
+  booktitle = {Proceedings of the 2014 conference on empirical methods in natural language processing (EMNLP)},
+  pages     = {46--56},
+  year      = {2014}
 }
 @article{eger2017neural,
-  title={Neural end-to-end learning for computational argumentation mining},
-  author={Eger, Steffen and Daxenberger, Johannes and Gurevych, Iryna},
-  journal={arXiv preprint arXiv:1704.06104},
-  year={2017}
+  title   = {Neural end-to-end learning for computational argumentation mining},
+  author  = {Eger, Steffen and Daxenberger, Johannes and Gurevych, Iryna},
+  journal = {arXiv preprint arXiv:1704.06104},
+  year    = {2017}
 }
 @book{janier2019argument,
-  title={Argument mining: Linguistic foundations},
-  author={Janier, Mathilde and Saint-Dizier, Patrick},
-  year={2019},
-  publisher={John Wiley \& Sons}
+  title     = {Argument mining: Linguistic foundations},
+  author    = {Janier, Mathilde and Saint-Dizier, Patrick},
+  year      = {2019},
+  publisher = {John Wiley \& Sons}
 }
 @article{esteve2020mineria,
-  title={Miner{\'\i}a de argumentaci{\'o}n en el Refer{\'e}ndum del 1 de Octubre de 2017},
-  author={Esteve, Marcos and Casacuberta, Francisco and Rosso, Paolo},
-  journal={Procesamiento del lenguaje natural},
-  volume={65},
-  pages={59--66},
-  year={2020}
+  title   = {Miner{\'\i}a de argumentaci{\'o}n en el Refer{\'e}ndum del 1 de Octubre de 2017},
+  author  = {Esteve, Marcos and Casacuberta, Francisco and Rosso, Paolo},
+  journal = {Procesamiento del lenguaje natural},
+  volume  = {65},
+  pages   = {59--66},
+  year    = {2020}
+}
+@inproceedings{dou2021word,
+  title     = {Word Alignment by Fine-tuning Embeddings on Parallel Corpora},
+  author    = {Dou, Zi-Yi and Neubig, Graham},
+  booktitle = {Conference of the European Chapter of the Association for Computational Linguistics (EACL)},
+  year      = {2021}
+}
+@article{ostling2016efficient,
+  title   = {Efficient word alignment with markov chain monte carlo},
+  author  = {{\"O}stling, Robert and Tiedemann, J{\"o}rg},
+  journal = {The Prague Bulletin of Mathematical Linguistics},
+  year    = {2016}
+}
+@article{och2003systematic,
+  title     = {A systematic comparison of various statistical alignment models},
+  author    = {Och, Franz Josef and Ney, Hermann},
+  journal   = {Computational linguistics},
+  volume    = {29},
+  number    = {1},
+  pages     = {19--51},
+  year      = {2003},
+  publisher = {MIT Press One Rogers Street, Cambridge, MA 02142-1209, USA journals-info~…}
+}
+@inproceedings{yarowsky2001inducing,
+  title     = {Inducing multilingual POS taggers and NP bracketers via robust projection across aligned corpora},
+  author    = {Yarowsky, David and Ngai, Grace},
+  booktitle = {Second Meeting of the North American Chapter of the Association for Computational Linguistics},
+  year      = {2001}
 }
 @incollection{mayer2020transformer,
-  title={Transformer-based argument mining for healthcare applications},
-  author={Mayer, Tobias and Cabrio, Elena and Villata, Serena},
-  booktitle={ECAI 2020},
-  pages={2108--2115},
-  year={2020},
-  publisher={IOS Press}
+  title     = {Transformer-based argument mining for healthcare applications},
+  author    = {Mayer, Tobias and Cabrio, Elena and Villata, Serena},
+  booktitle = {ECAI 2020},
+  pages     = {2108--2115},
+  year      = {2020},
+  publisher = {IOS Press}
 }
 @inproceedings{galassi2018argumentative,
-  title={Argumentative link prediction using residual networks and multi-objective learning},
-  author={Galassi, Andrea and Lippi, Marco and Torroni, Paolo},
-  booktitle={Proceedings of the 5th Workshop on Argument Mining},
-  pages={1--10},
-  year={2018}
+  title     = {Argumentative link prediction using residual networks and multi-objective learning},
+  author    = {Galassi, Andrea and Lippi, Marco and Torroni, Paolo},
+  booktitle = {Proceedings of the 5th Workshop on Argument Mining},
+  pages     = {1--10},
+  year      = {2018}
 }
 @article{eger2018cross,
-  title={Cross-lingual argumentation mining: Machine translation (and a bit of projection) is all you need!},
-  author={Eger, Steffen and Daxenberger, Johannes and Stab, Christian and Gurevych, Iryna},
-  journal={arXiv preprint arXiv:1807.08998},
-  year={2018}
+  title   = {Cross-lingual argumentation mining: Machine translation (and a bit of projection) is all you need!},
+  author  = {Eger, Steffen and Daxenberger, Johannes and Stab, Christian and Gurevych, Iryna},
+  journal = {arXiv preprint arXiv:1807.08998},
+  year    = {2018}
 }
 @article{stab2017parsing,
-  title={Parsing argumentation structures in persuasive essays},
-  author={Stab, Christian and Gurevych, Iryna},
-  journal={Computational Linguistics},
-  volume={43},
-  number={3},
-  pages={619--659},
-  year={2017},
-  publisher={MIT Press One Rogers Street, Cambridge, MA 02142-1209, USA journals-info~…}
+  title     = {Parsing argumentation structures in persuasive essays},
+  author    = {Stab, Christian and Gurevych, Iryna},
+  journal   = {Computational Linguistics},
+  volume    = {43},
+  number    = {3},
+  pages     = {619--659},
+  year      = {2017},
+  publisher = {MIT Press One Rogers Street, Cambridge, MA 02142-1209, USA journals-info~…}
 }
 @article{niculae2017argument,
-  title={Argument mining with structured SVMs and RNNs},
-  author={Niculae, Vlad and Park, Joonsuk and Cardie, Claire},
-  journal={arXiv preprint arXiv:1704.06869},
-  year={2017}
+  title   = {Argument mining with structured SVMs and RNNs},
+  author  = {Niculae, Vlad and Park, Joonsuk and Cardie, Claire},
+  journal = {arXiv preprint arXiv:1704.06869},
+  year    = {2017}
 }
 @article{goudas2015argument,
-  title={Argument extraction from news, blogs, and the social web},
-  author={Goudas, Theodosis and Louizos, Christos and Petasis, Georgios and Karkaletsis, Vangelis},
-  journal={International Journal on Artificial Intelligence Tools},
-  volume={24},
-  number={05},
-  pages={1540024},
-  year={2015},
-  publisher={World Scientific}
+  title     = {Argument extraction from news, blogs, and the social web},
+  author    = {Goudas, Theodosis and Louizos, Christos and Petasis, Georgios and Karkaletsis, Vangelis},
+  journal   = {International Journal on Artificial Intelligence Tools},
+  volume    = {24},
+  number    = {05},
+  pages     = {1540024},
+  year      = {2015},
+  publisher = {World Scientific}
 }
-@misc{knauer, 
-  title={CORESPUC: Struktur der Datenbank Corpus del Español Público en Cuba}, 
-  url={https://www.researchgate.net/publication/334806795_CORESPUC_Struktur_der_Datenbank_Corpus_del_Espanol_Publico_en_Cuba}, 
-  author={Knauer, Gabriele}
+@misc{knauer,
+  title  = {CORESPUC: Struktur der Datenbank Corpus del Español Público en Cuba},
+  url    = {https://www.researchgate.net/publication/334806795_CORESPUC_Struktur_der_Datenbank_Corpus_del_Espanol_Publico_en_Cuba},
+  author = {Knauer, Gabriele}
 }
