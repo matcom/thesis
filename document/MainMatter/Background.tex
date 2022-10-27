@@ -82,23 +82,22 @@ argumentación.
 
 \section{Extracción de Argumentos}
 
-% HABLAR SOBRE LOS PAPERS POR SEPARADO: Palau, Goudas, Stab, Edger, Galassi
 % PONER LAS METRICAS? PERO LOS CORPUS A VECES SON DIFERENTES
 % LUEGO EXPONER LAS DIFICULTADES: Pipeline, End-to-end, Features manuales, Features de gaceteras (goudas2015)
 
 La Extracción de Argumentos constituye en la tarea de extracción de las estructuras argumentativas
-de texto plano. Existen varias definiciones de estructuras argumentativas. Entre estas se encuentra
+de texto plano. Existen varias maneras de representar estas estructuras. Entre estas se encuentra
 el Argument Interchange Format (AIF) [\cite{rahwan2009aif}], este es un formato en el cual la argumentación
 es representada como un grafo con diferentes tipos de nodos, las relaciones entre estos son modelados con 
 nodos igualmente para evitar la necesidad de clasificar aristas. También se encuentra Inference Anchoring Theory 
 (IAT) [\cite{corneli2019iat}] el cual presenta una versión similar a AIF con una visión orientada al diálogo.
 En general se pueden observar como un grafo dirigido en el cual los nodos representan las unidades de
-discurso argumentativas y las aristas representan las relaciones entre estas, tanto los nodos como
+discurso argumentativas (UDA) y las aristas representan las relaciones entre estas, tanto los nodos como
 las aristas se clasifican en dependencia del modelo argumentativo usado.
 El problema anterior presenta una serie de elementos que son necesarios resolver:
 
 \begin{itemize}
-    \item Extracción de las unidades de discurso argumentativas (UDA) del texto.
+    \item Extracción de las UDAs del texto.
     \item Clasificación de las UDAs.
     \item Extracción de las relaciones entre las UDAs.
     \item Clasificación de las relaciones extraídas.
@@ -178,14 +177,13 @@ tiempo, pudiendo extraer las relaciones entre las diferentes tareas realizadas.
 La arbitrariedad y dificultad de extraer de los atributos creados a mano persiste en varios modelos [\cite{goudas2015argument}, \cite{palau2009argumentation}]
 además de que estos pueden ser difíciles de adaptar para otros documentos [\cite{eger2017neural}].
 La creación de modelos que usen representaciones aprendidas sin o poca intervención de conocimiento humano hace 
-que sean más robustos los modelos a los diferentes esquemas de argumentación pudiendo adaptarse a estos sin 
-realizarle cambios al modelo.
+que sean más robustos a los diferentes esquemas de argumentación pudiendo adaptarse a estos sin 
+realizarle cambios en este.
 
 \section{Proyección de corpus}
 
 La EA no presentan corpus de grandes magnitudes y la gran mayoría de estos se encuentran en inglés o alemán. 
-Se ha visto además que la creación de estos corpus es una tarea costosa y sujeta a incertidumbre debido a las
-distintas percepciones de argumentación que existen [TODO Moens, 2017, en eger2018cross]. Dada la necesidad de trabajar en otros idiomas además de
+Se ha visto además que la creación de estos corpus es una tarea costosa. Dada la necesidad de trabajar en otros idiomas además de
 inglés y alemán se han hecho esfuerzos de utilizar los datos existentes en tareas de idiomas en lenguajes 
 diferentes al original. En este aspecto existen dos vertientes principales, proyección de corpus y transferencia
 directa. En [\cite{eger2018cross}] se muestra que la proyección constituye una mejor alternativa sobre la transferencia
@@ -198,13 +196,10 @@ hacia su traducción en un lenguaje objetivo. El proceso se divide en varias par
 La Traducción Automática consiste en el proceso de usar inteligencia artificial para
 traducir texto de un lenguaje fuente a un lenguaje objetivo sin la intervención humana.
 En la actualidad este campo ha dado un gran paso pasando de modelos estadísticos a modelos
-neuronales llevando a tener traducciones de una alta calidad. En [\cite{eger2018cross}] se
+neuronales llevando a tener traducciones de una alta calidad, condición necesaria para una
+buena proyección. En [\cite{eger2018cross}] se
 evidencia que los resultados obtenidos a partir de traducción automática y a partir de 
 traducción humana no varían significativamente. 
-
-Para el proceso de proyección de etiquetas se establecen una serie de suposiciones que son
-cumplidas en los corpus trabajados. Una de estas es que las UDAs no cruzan límites oracionales, esto
-permite hacer una separación de los textos en oraciones sin perder información de los segmentos. 
 
 Por lo anterior es posible la traducción de corpus hacia otros lenguajes mediante las
 herramientas existentes obteniendo una buena representación final, la cual se puede usar en la creación de
@@ -212,15 +207,15 @@ oraciones alineadas, primer paso para la proyección de etiquetas.
 
 \subsection{Alineación de palabras}
 
-La alineación de palabras consiste en encontrar las relaciones entre las palabras de una secuencia
-en un lenguaje origen con las palabras de la traducción de dicha secuencia en un lenguaje objetivo.
+La alineación de palabras consiste en encontrar las palabras generadas en el lenguaje objetivo por las 
+palabras en el lenguaje fuente.
 Este problema es atacado en los modelos IBM, modelos estadísticos de traducción automática que usan estos 
 índices para obtener más información. Estos modelos son principalmente Bayesianos y han sido la base de
 otras herramientas como FastAlign [\cite{dyer2013fastalign}] que incorpora una reducción sustancial del
 tiempo de cómputo y además de una mejora al modelo, EFMARAL [\cite{ostling2016efficient}] que usa
 Cadenas de Markov Monte Carlo. Modelos más recientes se han enfocado en explotar las representaciones
-de palabras vectoriales (TODO Word Embeddings?) y el uso de modelos de atención para la extracción de las
-alineaciones llegando convertirse en el estado del arte \cite{dou2021word}.
+vectoriales de palabras y el uso de métodos de atención para la extracción de las
+alineaciones llegando convertirse en el estado del arte [\cite{dou2021word}].
 
 \subsection{Proyección de etiquetas}
 
