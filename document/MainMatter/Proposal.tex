@@ -65,24 +65,24 @@ las etiquetas para la conformación del corpus final en el lenguaje objetivo.
 \section{Segmentación}
 
 La segmentación es el proceso de extraer del texto plano las UDAs. Para esto se propone un modelo
-tomando como base los trabajos de [TODO \cite{}]. Se modela el problema como un problema de anotación
+tomando como base los trabajos de [\cite{ma2016end}]. Se modela el problema como un problema de anotación
 secuencia a secuencia en donde las etiquetas BIOES son usadas para delimitar los límites de las 
 UDAs, la B indica inicio de UDA, I indica el interior de una UDA, O indica que el token no pertence
 a una UDA, E indica el final de UDA y S es una anotación que indica una UDA de un solo token. 
 Este esquema de anotación de secuencias es más complejo que BIO, aunque es más indicado
 para versiones bidireccionales de secuencias ya que hace explícitas las delimitaciones de las 
-secuencias [TODO \cite{}].
+secuencias.
 
 Los features usados para los tokens de la secuencia entrada del modelo son los embeddings
-GloVe [TODO Paper de GloVe \cite{}]. Opcionalmente se usan features aprendidos de la morfología
+GloVe [\cite{pennington2014glove}]. Opcionalmente se usan features aprendidos de la morfología
 del propio token mediante Redes Convolucionales o Long-Short Term Memory aplicados a embeddings
 de caracteres. El modelo posee la habilidad de agregar las etiquetas Part-of-Speech, aunque este
 atributo requiere de un método de anotación de estas por lo cual le resta libertad para
 elegir lenguajes fuentes y objetivos.
 
 El modelo consiste en la codificación de la secuencia en los atributos previamente descritos,
-luego es aplicado una Long-Short Term Memory sobre la secuencia resultante. Conexiones residuales
-son agregadas y también normalizaciones son realizadas. En la capa final se presenta un Conditional
+luego es aplicado una Long-Short Term Memory sobre la secuencia resultante. Conexiones residuales, 
+normalizaciones y dropouts son agregadas entre capas. En la capa final se presenta un Conditional
 Random Field encargado de la conversión final de los features de las secuencias en etiquetas BIOES.
 
 Es posible realizar, además de la segmentación, la clasificación de las UDA mediante el agrego de

@@ -62,8 +62,8 @@ haciendo uso de sus posiciones, la posición For se agregó como support y la po
 \subsection{Traducción automática}
 
 En la traducción automática se utilizaron los servicios de Google Translate mediante el paquete
-deep-translate [TODO referencia al repo \cite{}]. Dicho paquete provee la capacidad de usar 
-otras herramientas para la traducción, como (TODO Poner otras herramientas para la traducción)
+deep-translator \footnote{https://github.com/nidhaloff/deep-translator}. Dicho paquete provee la capacidad de usar 
+otras herramientas para la traducción, como DeepL, Yandex Translator y Microsoft Translator,
 aunque la mayoría de estas presentan algún tipo de restricción, como la necesidad de una subscripción
 o un token para el uso de sus servicios. El uso de Google Translate no presenta estas restricciones
 y puede ser usado sin ninguna configuración previa.
@@ -76,8 +76,7 @@ encuentra en el lenguaje inicial y al segunda se encuentra en el lenguaje final.
 
 Para la alineación de palabras se usan FastAlign y AwesomeAlign. El primero constituye
 una vía rápida y de pocos recursos para la tarea, mientras que el segundo produce mejores
-resultados con un coste de memoria y tiempo mayor. (TODO Poner las métricas de la página de
-github de AwesomeAlign)
+resultados con un coste de memoria y tiempo mayor.
 
 La salida de este proceso constituye un archivo en donde cada linea representa la 
 alineación de palabras correspondiente al par de oraciones en el lenguaje fuente y objetivo. 

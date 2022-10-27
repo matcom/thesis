@@ -22,6 +22,221 @@
 % Una explicación del problema (metáfora), cómo han resuelto el problema y qué métricas, qué valores, 
 % moralejas (Enseñanzas que dejaron los papers leídos) (5 páginas)
 
+\section{Argumentación}
+
+La argumentación es una actividad en donde el ponente trata de justificar racionalmente 
+sus puntos de vista sobre ciertos temas, con el objetivo de persuadir al receptor a aceptar
+las afirmaciones emitidas.  
+Con el tiempo se ha podido elaborar una teoría en la cual basarse para el estudio de esta. 
+
+\subsection{Argumentación Clásica}
+
+Las primeras citas de la argumentación provienen de la retórica encontradas en \emph{On Rhetoric} 
+escrito por Aristóteles, lo cual se puede considerar como la argumentación clásica. 
+En este el autor identifica tipos de persuación, a través de la credibilidad, lógica, 
+emoción, disposición del receptor o receptores al contenido.
+Además se introduce los componentes que presentan la argumentación clásica, tales como
+introducción, contexto y antecedentes, posición y argumentos del ponente, pruebas negativas o positivas
+que soporten los argumentos dados y conclusión y llamado a acción. [\cite{classicalArgument}] 
+
+\subsection{Argumentación Rogeriana}
+
+Este es visto en debates, en los cuales existen varios puntos de vista y se desea llegar a una 
+decisión mutualmente beneficiosa para todas las partes. Desarrollado por Carl Rogers, es basado en 
+la comprensión de los puntos de vista del oponenete teniendo en cuenta tres principios 
+[\cite{rogerianArgument}]:
+
+\begin{enumerate}
+    \item Escuchar y hacer entender al oponente que es entendido.
+    \item Encontrar validez en la posición del oponente.
+    \item Inducir al oponente que sus deseos no difieren de lo dicho por el ponente.
+\end{enumerate}
+
+\subsection{Método Toulmin}
+
+El Método Toulmin fue extrapolado del libro \emph{The Uses of Argument}[\cite{toulmin_2003}] escrito por Stephen E. Toulmin.
+Este método divide los argumentos en seis partes: afirmación (claim), fundamento (grounds), 
+justificación (warrant), calificador (qualifier), refutación (rebuttal) y respaldo (backing).
+Mediante las afirmaciones se conoce el argumento principal que el autor quiere probar a la audiencia,
+estas son respaldados con fundamentos siendo estos las evidencias y hechos en que se apoya el autor.
+Las justificaciones pueden estar explícitas o implícitas y son suposiciones que vinculan los
+fundamentos con las afirmaciones, estas a su vez pueden ser respaldadas por conocimiento.
+El esquema introduce la posibilidad de otra sitaución válida a la establecida en las afirmaciones
+mediante la refutación. Los calificadores son usados para dar más información de la calidad o seguridad
+de las afirmaciones dadas. Un ejemplo de este esquema es:
+
+\emph{[Se escucharon ladridos y aullidos en la distancia](fundamento), [probablemente](calificador) 
+[haya perros en las cercanías](afirmación).}
+
+En este ejemplo, además de las partes explícitas, se encuentran implícitas, la justificación 
+(los perros son animales que ladran y aullan), el respaldo (se sabe que existen perros en la zona) y 
+la refutación (Puede ser que hayan lobos o coyotes cerca). [\cite{toulminArgument}]
+
+\subsection{Conclusiones}
+
+El método Toulmin presenta una popular y definida forma de representar las estructuras de la argumentación, 
+además de haber sido estudiado y ampliado [\cite{freeman2011argument}] y usado en diferentes 
+investigaciones [\cite{stab2017parsing}, \cite{niculae2017argument}]. Este constituye una base
+teórica simple y rica para poder ser entendida con facilidad y expresar las diferentes partes de la 
+argumentación. 
+
+\section{Extracción de Argumentos}
+
+% HABLAR SOBRE LOS PAPERS POR SEPARADO: Palau, Goudas, Stab, Edger, Galassi
+% PONER LAS METRICAS? PERO LOS CORPUS A VECES SON DIFERENTES
+% LUEGO EXPONER LAS DIFICULTADES: Pipeline, End-to-end, Features manuales, Features de gaceteras (goudas2015)
+
+La Extracción de Argumentos constituye en la tarea de extracción de las estructuras argumentativas
+de texto plano. Existen varias definiciones de estructuras argumentativas. Entre estas se encuentra
+el Argument Interchange Format (AIF) [\cite{rahwan2009aif}], este es un formato en el cual la argumentación
+es representada como un grafo con diferentes tipos de nodos, las relaciones entre estos son modelados con 
+nodos igualmente para evitar la necesidad de clasificar aristas. También se encuentra Inference Anchoring Theory 
+(IAT) [\cite{corneli2019iat}] el cual presenta una versión similar a AIF con una visión orientada al diálogo.
+En general se pueden observar como un grafo dirigido en el cual los nodos representan las unidades de
+discurso argumentativas y las aristas representan las relaciones entre estas, tanto los nodos como
+las aristas se clasifican en dependencia del modelo argumentativo usado.
+El problema anterior presenta una serie de elementos que son necesarios resolver:
+
+\begin{itemize}
+    \item Extracción de las unidades de discurso argumentativas (UDA) del texto.
+    \item Clasificación de las UDAs.
+    \item Extracción de las relaciones entre las UDAs.
+    \item Clasificación de las relaciones extraídas.
+\end{itemize}
+
+Una UDA constituye en una sección continua de texto que contiene lo que es considerado información
+relevante para el proceso argumentativo. 
+
+La extracción de UDAs consiste en separar los segmentos del texto que pertenecen al esquema argumentativo
+de los que no. Una vez se tienen estos elementos, se clasifican en dependencia del esquema de anotación
+usado. En esta etapa se obtienen los nodos y sus clasificaciones del grafo que conforman las estructuras 
+argumentativas del texto. El siguiente paso constituye en la extracción de las relaciones entre los nodos.
+Estas relaciones luego son clasificadas y dan información acerca de cómo interactuan las UDAs. Finalmente
+el resultado es un grafo dirigido en donde se presenta un esquema argumentativo. La composición de este esquema
+varía, aunque se evidencian ciertas similitudes entre estos, como la presencia de nodos afirmación y de evidencias
+y también relaciones de apoyo y ataque.
+
+\subsection{Propuestas}
+
+En [\cite{palau2009argumentation}] se propone
+el uso de modelos estadísticos como Naive Bayes y Support Vector Machines para la clasificación de 
+oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa, en este
+caso se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
+se usa un enfoque basados en reglas con la creación de una Gramática Libre de Contexto. Las representaciones
+de las oraciones se ven dadas por atributos elegidos a mano dado el conocimiento experto sobre la argumentación
+en el tema tratado, elementos como adverbios, verbos, signos de puntuación, palabras clave, estadísticas del texto
+(Tamaño de oración, distancia media de palabras) son usados para la extracción y clasificación de las UDA, además
+se usan también como base en la creación de las relgas para la extracción de relaciones.
+
+[\cite{goudas2015argument}] al igual que [\cite{palau2009argumentation}] clasifica las oraciones como
+argumentativas o no mediante el uso de diferentes clasificadores como Naive Bayes, Random Forest, Regresión
+Logística y Support Vector Machines. En este trabajo se aumenta la grandularidad de la segmentación al permitir
+la extracción de los segmentos que contienen la carga argumentativa de dentro de las oraciones previamente clasificadas
+como tal, esto se realiza mediante la extracción de etiquetas BIO de las oraciones con el uso de un 
+Conditional Random Field. La predicción de las relaciones como un problema de clasificación
+usando Support Vector Machine para clasificar pares de UDA en relacionados o no. Atributos asignados a mano 
+son usados en la extracción de UDA como posición de la oración en el texto, cantidad de verbos, comas, adverbios,
+palabras, entidades en la oración, también se emplean gaceteras que guardan entidades relacionadas con el dominio 
+especifico y palabras clave indicadoras de frases argumentativas. 
+
+[\cite{stab2017parsing}] propone un mecanismo de segmentación basado en Conditional Random Fields. La clasificación
+y predicción de relaciones es modelado conjuntamente como con dos clasificadores Support Vector Machine y un problema
+de Optimización Lineal Entero que encuentra la mejor estructura y asegurar una disposición arborea. En la segmentación
+de las UDA se extraen por cada token su posición en el texto, si precede o sucede a un signo de puntuación, su parte de
+la oración, la probabilidad de que sea el comienzo de una UDA dado sus tokens anteriores, entre otros. Para la extracción
+y clasificación de relaciones se proponen otros conjuntos de atributos como la cantidad de sustantivos comunes entre
+las componentes fuente y el objetivo, la presencia de indicadores argumentativos, representaciones vectoriales de tokens.
+
+En [\cite{eger2017neural}] se enfocaron en
+modelar el problema como un problema de etiquetado de secuencias, usando Redes Neuronales Recurrentes como 
+Long-Short Term Memory en versiones bidireccionales capturando información desde ambos lados de la secuencia,
+extrayendo información morfológica de las palabras mediante Redes Neuronales Convolucionales teniendo una capa final de
+Conditional Random Field. Realizaron experimentos al modelar el problema como uno de Dependency Parsing cuyo problema
+consiste en construir un árbol de dependencia que codifique las estructuras argumentativas. El problema fue modelado
+como un problema de reconocimiento de entidades nombradas, en donde las entidades son las UDA.
+
+[\cite{galassi2018argumentative}] propone el uso de redes residuales y en combinación con mecanismos de atención
+para la creación de un modelo el cual, conjuntamente, clasifica el tipo de UDA y la relación existentes entre estas.
+Este trabajo define el concepto de distancia argumentativa, añadiéndolo como feature y asume que las UDA ya fueron 
+extraídas. En este caso además de la distancia argumentativa las secuencias son representadas por sus representaciones
+vectoriales de GloVe.
+
+En [\cite{dykes2020reconstructing}] se propone métodos basados en reglas para la extracción de argumentos sobre
+textos en Twitter, estos métodos se centran en la confección de reglas basadas en anotaciones lingüísticas como
+partes de la oración, lemas de palabras. La recuperación está basada en los esquemas argumentativos comunes presentes
+en los textos. Este método apunta a una mayor precisión prescindiendo de recobrado. 
+
+Se contempan disímiles enfoques al problema de EA con desde una perspectiva enmarcada en modelos neuronales, estadísticos, secuenciales y end-to-end. 
+En los modelos propuestos existen algunos problemas relacionados con
+el uso independiente de modelos para el completamiento de la tareas asociadas a EA. Esto conlleva a la propagación
+de errores ya que las entradas de etapas posteriores presentan las errores de las etapas anteriores.
+También la no explotación de las interrelaciones entre variables debe ser tomado en cuenta, ya que se pierde
+información computada en etapas anteriores. Modelos end-to-end y 
+Multi-Task Learning han surgido para mitigar estos errores. En estos modelos el entrenamiento se hace de forma 
+conjunta y no secuencial, previendo la propagación de errores y también se aprenden las distintas tareas al mismo
+tiempo, pudiendo extraer las relaciones entre las diferentes tareas realizadas.
+La arbitrariedad y dificultad de extraer de los atributos creados a mano persiste en varios modelos [\cite{goudas2015argument}, \cite{palau2009argumentation}]
+además de que estos pueden ser difíciles de adaptar para otros documentos [\cite{eger2017neural}].
+La creación de modelos que usen representaciones aprendidas sin o poca intervención de conocimiento humano hace 
+que sean más robustos los modelos a los diferentes esquemas de argumentación pudiendo adaptarse a estos sin 
+realizarle cambios al modelo.
+
+\section{Proyección de corpus}
+
+La EA no presentan corpus de grandes magnitudes y la gran mayoría de estos se encuentran en inglés o alemán. 
+Se ha visto además que la creación de estos corpus es una tarea costosa y sujeta a incertidumbre debido a las
+distintas percepciones de argumentación que existen [TODO Moens, 2017, en eger2018cross]. Dada la necesidad de trabajar en otros idiomas además de
+inglés y alemán se han hecho esfuerzos de utilizar los datos existentes en tareas de idiomas en lenguajes 
+diferentes al original. En este aspecto existen dos vertientes principales, proyección de corpus y transferencia
+directa. En [\cite{eger2018cross}] se muestra que la proyección constituye una mejor alternativa sobre la transferencia
+directa y presentan un algoritmo para realizar la proyección de las etiquetas dadas las alineaciones de palabras.
+Con este algoritmo se transfieren las etiquetas de un corpus anotado a nivel de tokens en un lenguaje origen 
+hacia su traducción en un lenguaje objetivo. El proceso se divide en varias partes.
+
+\subsection{Traducción de oraciones}
+
+La Traducción Automática consiste en el proceso de usar inteligencia artificial para
+traducir texto de un lenguaje fuente a un lenguaje objetivo sin la intervención humana.
+En la actualidad este campo ha dado un gran paso pasando de modelos estadísticos a modelos
+neuronales llevando a tener traducciones de una alta calidad. En [\cite{eger2018cross}] se
+evidencia que los resultados obtenidos a partir de traducción automática y a partir de 
+traducción humana no varían significativamente. 
+
+Para el proceso de proyección de etiquetas se establecen una serie de suposiciones que son
+cumplidas en los corpus trabajados. Una de estas es que las UDAs no cruzan límites oracionales, esto
+permite hacer una separación de los textos en oraciones sin perder información de los segmentos. 
+
+Por lo anterior es posible la traducción de corpus hacia otros lenguajes mediante las
+herramientas existentes obteniendo una buena representación final, la cual se puede usar en la creación de
+oraciones alineadas, primer paso para la proyección de etiquetas.
+
+\subsection{Alineación de palabras}
+
+La alineación de palabras consiste en encontrar las relaciones entre las palabras de una secuencia
+en un lenguaje origen con las palabras de la traducción de dicha secuencia en un lenguaje objetivo.
+Este problema es atacado en los modelos IBM, modelos estadísticos de traducción automática que usan estos 
+índices para obtener más información. Estos modelos son principalmente Bayesianos y han sido la base de
+otras herramientas como FastAlign [\cite{dyer2013fastalign}] que incorpora una reducción sustancial del
+tiempo de cómputo y además de una mejora al modelo, EFMARAL [\cite{ostling2016efficient}] que usa
+Cadenas de Markov Monte Carlo. Modelos más recientes se han enfocado en explotar las representaciones
+de palabras vectoriales (TODO Word Embeddings?) y el uso de modelos de atención para la extracción de las
+alineaciones llegando convertirse en el estado del arte \cite{dou2021word}.
+
+\subsection{Proyección de etiquetas}
+
+La proyección de etiquetas consiste en transportar las etiquetas de las palabras en la secuencia origen
+hacia las palabras de la secuencia destino tomando como datos las alineaciones entre estas. En [\cite{yarowsky2001inducing}]
+se trata el problema de proyección de frases nominales, estas frases tienen como característica que son resistentes
+a ser divididas en caso de ser traducidas, dicha propiedad se cumple para las UDA también, que aunque evidencian 
+cambios en el orden de las palabras, mantienen la misma ventana. La proyección de UDA son más simples en el caso
+que solamente se tiene en cuenta la ventana y las etiquetas en estas son constantes, no pasa con la proyección en
+frases nominales las cuales pueden cambiar dentro de una ventana, por lo que algoritmos más simples existen
+para esta tarea [\cite{eger2018cross}].  
+
+
+% % SECCION DE PROBLEMAS
+
+
 % \textbf{CAMBIO DE SECCION} 
 % % HABLAR SOBRE LOS PROBELEMAS POR SEPARADO: Segmentacion UDA, Clasificacion UDA, Relacion, Clasificacion Relacion
 
@@ -44,90 +259,7 @@
 % medicina [\cite{mayer2020transformer}], publicaciones científicas [\cite{lauscher2018inventor}, \cite{yang2018scidtb}], foros
 % de debate [\cite{niculae2017argument}], noticias [\cite{sardianos2015news}] y ensayos argumentativos [\cite{stab2017parsing}]
 
-% \textbf{CAMBIO DE SECCION} 
 
-% HABLAR SOBRE LOS PAPERS POR SEPARADO: Palau, Goudas, Stab, Edger, Galassi
-% PONER LAS METRICAS? PERO LOS CORPUS A VECES SON DIFERENTES
-% LUEGO EXPONER LAS DIFICULTADES: Pipeline, End-to-end, Features manuales, Features de gaceteras (goudas2015)
-
-La Extracción de Argumentos constituye en la tarea de extracción de las estructuras argumentativas
-de texto plano. Existen varias definiciones de estructuras argumentativas, aunque estas en modo
-general se pueden observar como un grafo dirigido en el cual los nodos representan las unidades de
-discurso argumentativas y las aristas representan las relaciones entre estas, tanto los nodos como
-las aristas se clasifican en dependencia del modelo argumentativo usado. El problema anterior presenta
-una serie de elementos que son necesarios resovler:
-
-\begin{itemize}
-    \item Extracción de las UDAs del texto.
-    \item Clasificación de las UDAs.
-    \item Extracción de las relaciones entre las UDAs.
-    \item Clasificación de las relaciones extraídas.
-\end{itemize}
-
-La EA ha sido desarrollada a lo largo de los años. En [\cite{palau2009argumentation}] se propone
-el uso de modelos estadísticos como Naive Bayes y Support Vector Machines para la clasificación de 
-oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa, en este
-caso se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
-se usa un enfoque basados en reglas con la creación de una Gramática Libre de Contexto.
-
-% TODO Hablar de los features escogidos en los papers para representar las estructuras argumentativas
-% esto sirve para comparar los enfoques, por ejemplo n-gramas con secuencias completas
-% TODO Poner porqué el uso de los modelos usados. Que ventajas trae consigo dichos modelos.
-% Por ejemplo, LSTM puede manejar secuencias de cualquier tamaño, la version bidireccional permite
-% obtener informacion de la lectura hacia delante y desde atrás. CRF permiten modelar secuencias 
-% completas
-
-[\cite{goudas2015argument}] al igual que [\cite{palau2009argumentation}] clasifica las oraciones como
-argumentativas o no mediante el uso de diferentes clasificadores como Naive Bayes, Random Forest, Regresión
-Logística y Support Vector Machines. En este trabajo se aumenta la grandularidad de la segmentación al permitir
-la extracción de los segmentos que contienen la carga argumentativa de dentro de las oraciones previamente clasificadas
-como tal, esto se realiza mediante la extracción de etiquetas BIO de las oraciones con el uso de un 
-Conditional Random Field. La predicción de las relaciones como un problema de clasificación
-usando Support Vector Machine para clasificar pares de UDA en relacionados o no.
-
-[\cite{stab2017parsing}] propone un mecanismo de segmentación basado en Conditional Random Fields. La clasificación
-y predicción de relaciones es modelado conjuntamente como con dos clasificadores Support Vector Machine y un problema
-de Optimización Lineal Entero que encuentra la mejor estructura y asegurar una disposición arborea. 
-
-En [\cite{eger2017neural}] se enfocaron en
-modelar el problema como un problema de etiquetado de secuencias, usando Redes Neuronales Recurrentes como 
-Long-Short Term Memory en versiones bidireccionales capturando información desde ambos lados de la secuencia,
-extrayendo información morfológica de las palabras mediante Redes Neuronales Convolucionales teniendo una capa final de
-Conditional Random Field. Realizaron experimentos al modelar el problema como uno de Dependency Parsing cuyo problema
-consiste en construir un árbol de dependencia que codifique las estructuras argumentativas. El problema fue modelado
-como un problema de reconocimiento de entidades nombradas, en donde las entidades son las UDA.
-
-[\cite{galassi2018argumentative}] propone el uso de redes residuales y en combinación con mecanismos de atención
-para la creación de un modelo el cual, conjuntamente, clasifica el tipo de UDA y la relación existentes entre estas.
-Este trabajo defina el concepto de distancia argumentativa, añadiéndolo como feature y asume que las UDA ya fueron 
-extraídas.
-
-
-Se contempan disímiles enfoques al problema de EA con desde una perspectiva enmarcada en modelos neuronales, estadísticos, secuenciales y end-to-end. 
-En los modelos propuestos existen algunos problemas relacionados con
-el uso independiente de modelos para el completamiento de la tareas asociadas a EA. Esto conlleva a la propagación
-de errores ya que las entradas de etapas posteriores presentan las errores de las etapas anteriores.
-También la no explotación de las interrelaciones entre variables debe ser tomado en cuenta, ya que se pierde
-información computada en etapas anteriores. 
-La arbitrariedad y dificultad de extraer de los atributos creados a mano persiste en varios modelos [\cite{goudas2015argument}, \cite{palau2009argumentation}]
-además de que estos pueden ser difíciles de adaptar para otros documentos [\cite{eger2017neural}]. Modelos end-to-end y 
-Multi-Task Learning han surgido para mitigar estos errores. En estos modelos el entrenamiento se hace de forma 
-conjunta y no secuencial, previendo la propagación de errores y también se aprenden las distintas tareas al mismo
-tiempo, pudiendo extraer las relaciones entre las diferentes tareas realizadas.
-
-
-La EA no presentan corpus de grandes magnitudes y la gran mayoría de estos se encuentran en inglés o alemán. 
-Se ha visto además que la creación de estos corpus es una tarea costosa y sujeta a incertidumbre debido a las
-distintas percepciones de argumentación que existen [TODO Moens, 2017, en eger2018cross]. Dada la necesidad de trabajar en otros idiomas además de
-inglés y alemán se han hecho esfuerzos de utilizar los datos existentes en tareas de idiomas en lenguajes 
-diferentes al original. En este aspecto existen dos vertientes principales, proyección de corpus y transferencia
-directa. En [\cite{eger2018cross}] se muestra que la proyección constituye una mejor alternativa sobre la transferencia
-directa y presentan un algoritmo para realizar la proyección de las etiquetas dadas las alineaciones de palabras.
-
-Gracias al método de proyección de corpus es posible la creación de corpus en los idiomas deseados de
-forma automática, rápida y conservando la calidad de estos. 
-
-% % SECCION DE PROBLEMAS
 
 % \textbf{CAMBIO DE SECCION} 
 
