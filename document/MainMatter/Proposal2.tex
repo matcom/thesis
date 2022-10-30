@@ -16,6 +16,8 @@ Aprendizaje de Máquina es una rama de la Inteligencia Artificial en la que se e
 
 \subsection{Overfitting y como combatirlo}
 
+Dropout, regularizaciones, normalizaciones
+
 \subsection{Dense Layers}
 
 \subsection{LSTM}
@@ -34,6 +36,8 @@ Aprendizaje de Máquina es una rama de la Inteligencia Artificial en la que se e
 
 Modelos sequence to sequence
 
+\subsection{Ensemble Learning}
+
 \section{Modelo Propuesto}
 
 El modelo propuesto se divide en dos secciones. En la primera sección se realiza la segmentación y clasificación de 
@@ -42,92 +46,109 @@ como tareas auxiliares la clasificación de las UDA.
 
 \subsection{Segmentación y clasificacón de UDAs}
 
-Esta primera parte se model'o como un problema secuencia a secuencia cuyo objetivo es convertir la secuencias de 
-tokens en secuencias de etiquetas BIOES con sus respectivas clasificaciones.
+Esta primera parte se modeló como un problema secuencia a secuencia cuyo objetivo es convertir la secuencias de 
+tokens en secuencias de etiquetas BIOES con sus respectivas clasificaciones. Además de las 
+anotaciones BIOES se agrega información extra sobre el tipo de UDA al que pertenece el segmento.
 
 \subsubsection{Modelo}
 
 Sea $D$ un documento, este es separado en una secuencia de $n$ tokens $D_i$ donde $n$ es la mayor longitud encontrada
 en los documentos del conjunto de datos. A cada token se le es asignado
 su representación vectorial \textbf{GloVe} de dimensión $g$ dando como resultado $G_{ij} \in \mathbb{R}^{n \times g}$.
-Esta representación inicial presenta información semántica de las palabras adem'as que conserva las relaciones 
+Esta representación inicial presenta información semántica de las palabras además que conserva las relaciones 
 espaciales entre ellas. 
 
 Para la representación de información morfológica de la palabra se construyen dos
 codificadores que procesan los caracteres de cada token y devuelven una representación vectorial de estos.
-A cada caracter se le es asignado un vector que ser'a entrenado convirtiendo un token en un vector de dimensión
-$q \times c$ donde $q$ es el tamaño m'aximo de palabra en el conjunto de datos y $c$ es la dimensión del vector
+A cada caracter se le es asignado un vector que será entrenado convirtiendo un token en un vector de dimensión
+$q \times c$ donde $q$ es el tamaño máximo de palabra en el conjunto de datos y $c$ es la dimensión del vector
 asignado a cada caracter.
 
-Uno de estos modelos est'a basado en \textbf{CNN}, este modelo entrena una representación de caracteres de dimensión
-$cd$ representando un token como un vector de dimensión $q \times cd$. Se conforma por una capa de convoluci'on unidimensional
-con $f$ filtros y un kernel de tamanno $k$ seguida por un \textbf{Max Pool Layer} que convierte la secuencia en un vector
+Uno de estos modelos está basado en \textbf{CNN}, este modelo entrena una representación de caracteres de dimensión
+$cd$ representando un token como un vector de dimensión $q \times cd$. Se conforma por una capa de convolución unidimensional
+con $f$ filtros y un kernel de tamaño $k$ seguida por un \textbf{Max Pool Layer} que convierte la secuencia en un vector
 de dimensión $1 \times f$ que luego este vector es concatenado a la representación del token a que pertenece.
 
-Otro modelo utilizado para calcular una representación morfológica se encuentra basado en \textbf{RNN}. Se us'o
+Otro modelo utilizado para calcular una representación morfológica se encuentra basado en \textbf{RNN}. Se usó
 un modelo LSTM bidireccional con dimensión $l$ para calcular la representación del token, para las dimensiones de los caracteres se
-utilizan vectores de tamanno $l$, el resultado final constituye la concatenaci'on de la corrida hacia adelante y la corrida
-hacia atr'as formando una representación de dimensión $1 \times 2l$ del token. Este vector es concatenado a la representaci'on
+utilizan vectores de tamaño $l$, el resultado final constituye la concatenación de la corrida hacia adelante y la corrida
+hacia atrás formando una representación de dimensión $1 \times 2l$ del token. Este vector es concatenado a la representación
 del token correspondiente.
 
-Otro atributo usado en la representación de los tokens constituyen las etiquetas de Partes de la Oraci'on de estos.
+Otro atributo usado en la representación de los tokens constituyen las etiquetas de Partes de la Oración de estos.
 El conjunto de etiquetas elegido es un conjunto universal [TODO \cite{Referencia a la def}] aplicable a cualquier idioma.
 De estas etiquetas se les extraen la codificación one-hot y esta es transformada por una cada densa con $p$ neuronas
-y funci'on de activaci'on \textbf{relu}, el resultado es concatenado a la representación del token correspondiente.
+y función de activación \textbf{relu}, el resultado es concatenado a la representación del token correspondiente.
 
-FOTO DEL PROCESAMIENTO DEL INPUT A SU REPRESENTACION VECTORIAL (Desde el texto hasta el final, con dimensiones) 
-
-Del proceso de vectorizaci'on sale un vector con dimensión $n \times t$ donde $t$ es la dimensión final de la representación
+Del proceso de vectorización sale un vector con dimensión $n \times t$ donde $t$ es la dimensión final de la representación
 de los tokens. Este vector es modificado por una capa \textbf{LSTM} bidireccional de dimensión $m$, a esta salida se le 
-annade una conexión residual al ajustarle la dimensión con una capa densa. Luego la secuencia es procesada por una 
+añade una conexión residual al ajustarle la dimensión con una capa densa. Luego la secuencia es procesada por una 
 capa densa de dimensión $k$ produciendo una representación final de dimensión $q \times k$.
 Finalmente se utiliza una capa \textbf{CRF}
 para la clasificación final de la secuencia en las etiquetas finales. El resultado final constituye un vector
 de dimensión $q$ que representa las clasificaciones inferidas por el modelo.
 
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/Modelo Segmenter UDA.drawio.png}
+            % \includesvg[options]{Graphics/Modelo Segmenter UDA.drawio.svg}
+        \end{center}
+	    \caption{Segmentador UDAs}\label{fig:seg_uda}
+	\end{center}
+\end{figure}
+
 Debido a la escasez de los datos se tuvieron que tomar medidas para prevenir el overfitting. Entre cada capa de 
-procesamiento se annadieron capas de normalizaci'on y dropout con un porciento de $d$\%. Adem'as de esto se 
+procesamiento se añadieron capas de normalización y dropout con un porciento de $d$\%. Además de esto se 
 las capas de \textbf{LSTM} se utilizaron regularizaciones L2.
 
 \subsubsection{Posporcesamiento}
 
 La salida del modelo constituye una secuencia de etiquetas en formato BIOES. La secuencia devuelta puede que contenga
-errores en la estructura BIOES, por ejemplo, secuencias no terminando en E, segmentos continuos con m'as de una meta-etiqueta.
-Para la correcci'on de la estructura se propone el siguiente algoritmo, el cual se divide en dos partes. La primera
-parte consiste en arreglar la estructura BIOES, para esto se mantiene una ventana de tamanno
+errores en la estructura BIOES, por ejemplo, secuencias no terminando en E, segmentos continuos con más de una meta-etiqueta.
+Para la corrección de la estructura se propone el siguiente algoritmo, el cual se divide en dos partes. La primera
+parte consiste en arreglar la estructura BIOES, para esto se mantiene una ventana de tamaño
 3 sobre la secuencia y asume que la parte anterior a la posición de la ventana no presenta errores, al encontrar una
-ventana inv'alida se necesita observar la siguiente ventana para poder decidir c'omo se arregla el error ya que se
-podr'ia dar el caso de OOI OIO, en donde solamente viendo la primera ventana no se podr'ia saber si el cambio 
+ventana inválida se necesita observar la siguiente ventana para poder decidir cómo se arregla el error ya que se
+podría dar el caso de OOI OIO, en donde solamente viendo la primera ventana no se podría saber si el cambio 
 correcto corresponde a sustituir I por B o por S. Una vez observado las dos ventanas se procede a realizar el 
 arreglo correspondiente. Una vez se tiene la secuencia tiene la estructura BIOES correctamente anotada el problema
 consiste en arreglar las meta-etiquetas, ya que una misma secuencia BIOES pudo haber sido anotada con diferentes
-tipos de meta-etiquetas, en este caso se toma la etiqueta m'as representativa de la secuencia. Este procedimiento
+tipos de meta-etiquetas, en este caso se toma la etiqueta más representativa de la secuencia. Este procedimiento
 devuelve una secuencia BIOES correctamente anotada.
 
-\subsection{Predicci'on de enlaces}
+\subsection{Predicción de enlaces}
 
-Este modelo consiste en dados dos pares de UDA previamente extra'ias y su distancia argumentativa, 
-extraer y clasificar la relaci'on entre ellas. Como tarea auxiliar se realiza adem'as la clasificaci'on 
+Este modelo consiste en dados dos pares de UDA previamente extraías y su distancia argumentativa, 
+extraer y clasificar la relación entre ellas. Como tarea auxiliar se realiza además la clasificación 
 de las UDAs.
 
 \subsubsection{Modelo}
 
-Sea dos UDAs, $S$ y $T$, una representa la fuente de la relaci'on, mientras que la otra representa
+Sea dos UDAs, $S$ y $T$, una representa la fuente de la relación, mientras que la otra representa
 el objetivo. Estas secuencias son tokenizadas y se les asigna la representación GloVe de cada palabra, obteniendo
-dos vectores de dimensión $u \times g$, donde $u$ es el tamaño m'aximo de UDAs en el conjunto de entrenamiento.
-Estos vectores son modificados por una red densa compuesta por $ca$ capas con activaci'on relu. 
-Al finalizar este procesamiento se annade una conexión residual
-a la salida. El pr'oximo paso consiste en aplicar una capa densa de dimensión $di$ y luego un \emph{average pooling}
+dos vectores de dimensión $u \times g$, donde $u$ es el tamaño máximo de UDAs en el conjunto de entrenamiento.
+Estos vectores son modificados por una red densa compuesta por $ca$ capas con activación relu. 
+Al finalizar este procesamiento se añade una conexión residual
+a la salida. El próximo paso consiste en aplicar una capa densa de dimensión $di$ y luego un \emph{average pooling}
 de tamaño $dp$. El objetivo del procesamiento anterior consiste
 en la reducción de dimensionalidad de la entrada, al final se obtiene vectores de dimensión $\frac{q}{di}, dq$. 
-Estos vectores son modificados por un LSTM bidireccional con $lm$ unidades. Un m'odulo de atención es aplicado, 
-en este act'uan como consultas el promedio de los vectores objetivo y como llaves y valores los vectores fuentes,
-este procedimiento es sim'etrico para el procesamiento de los vectores objetivo.
+Estos vectores son modificados por un LSTM bidireccional con $lm$ unidades. Un módulo de atención es aplicado, 
+en este actúan como consultas el promedio de los vectores objetivo y como llaves y valores los vectores fuentes,
+este procedimiento es simétrico para el procesamiento de los vectores objetivo.
 La salida de los procesamientos son concatenados con la distancia argumentativa obteniendo una representación 
-conjunta de la relaci'on a analizar. Esta representación conjunta es modificada por una red residual obteniendo
-una representación final de dimensión $ff$ y luego sometida a los clasificadores de relaci'on y de tipos de UDAs.
+conjunta de la relación a analizar. Esta representación conjunta es modificada por una red residual obteniendo
+una representación final de dimensión $ff$ y luego sometida a los clasificadores de relación y de tipos de UDAs.
 
-FOTO DEL MODELO
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/Modelo Link Prediction.drawio.png}
+            % \includesvg[options]{Graphics/Modelo Link Prediction.drawio.svg}
+        \end{center}
+	    \caption{Predictor de enlaces}\label{fig:link_predictor}
+	\end{center}
+\end{figure}
 
-Se agregan capas de normalizaci'on y de dropout entre cada proceso.
+Se agregan capas de normalización y de dropout entre cada proceso.
 
