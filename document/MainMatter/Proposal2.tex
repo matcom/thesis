@@ -12,23 +12,39 @@
 
 \section{Aprendizaje de Máquina}
 
+% Hablar de problemas de regresión y de clasificación (binario y multi-class)
+
 Aprendizaje de Máquina es una rama de la Inteligencia Artificial en la que se estudia la habilidad de 
 
 \subsection{Overfitting y como combatirlo}
 
 Dropout, regularizaciones, normalizaciones
 
+\subsection{Descenso por gradiente}
+
+Algoritmo general, Optimizadores (Adams, Stocastic Gradient Descent, Exponential Decay)
+
 \subsection{Dense Layers}
 
-\subsection{LSTM}
+\subsection{RNN}
 
-\subsection{CRF}
+Definicion de RNN, LSTM, Ventajas de RNN en secuencias
 
 \subsection{CNN}
 
+Definicion de CNN, [Average, Max, ...] Pooling, Ventajas de CNN en secuencias
+
+\subsection{CRF}
+
+Definicion de CRF, qué modela, Ventajas de CRF en secuencias
+
 \subsection{Residual Networks}
 
+Definicion, por qué su uso.
+
 \subsection{Attention}
+
+Definicion, qué hace, uso en secuencias
 
 \subsection{Word Embeddings}
 
@@ -38,11 +54,138 @@ Modelos sequence to sequence
 
 \subsection{Ensemble Learning}
 
+\section{Métricas}
+
+% Que son las metricas y para que se utilizan. 
+% Decir metricas existentes para problemas de clasificacion
+% Explicar en que consisten estas metricas
+% Poner ejemplos de metricas usadas como funciones de error
+
+% \cite{grandini2020metrics}
+
+En Aprendizaje de Máquina los modelos necesitan maneras de expresar qué tan buenos son 
+en las tareas encomendadas. Para esto se crean funciones que evalúan los resultados obtenidos
+por dichos modelos, estas funciones se les da el nombre de métricas. Existen diferentes tipos de
+métricas para tratar con diferentes tipos de problemas. En aprendizaje supervisado una métrica se
+define como una función $m_s(Y, \hat{Y})$ donde $Y$ son las predicciones verdaderas y $\hat{Y}$ son las predicciones
+hechas por el modelo. En algoritmos de aprendizaje no supervisado como K-Means, K-NN son usadas funciones $m_{ns}(\hat{Y})$
+donde $\hat{Y}$ son las predicciones finales. En comparación con su versión supervisada estas funciones no tiene acceso
+a las predicciones verdaderas del problema.
+
+\subsection{Regresión}
+
+En problemas de regresión se emplean comúnmente
+métricas como error medio cuadrático (MSE por sus siglas en inglés \emph{Mean Squared Error})\ref{metric:MSE}, 
+raíz de MSE (RMSE por sus siglas en inglés \emph{Root Mean Squared Error})\ref{metric:RMSE},
+error medio absoluto (MAE por sus siglas en inglés \emph{Mean Absolute Error})\ref{MAE} y error absoluto promedio porcentual 
+(MAPE por sus siglas en inglés \emph{Mean Absolute Percentage Error}) [\cite{botchkarev2019new}].
+
+\begin{equation}\label{metric:MSE}
+	mse(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} (Y_i - \hat{Y}_i)^2
+\end{equation}\caption{MSE}
+
+\begin{equation}\label{metric:RMSE}
+	rmse(Y, \hat{Y}) = \sqrt{mse(Y, \hat{Y})}
+\end{equation}\caption{RMSE}
+
+\begin{equation}\label{metric:MAE}
+	mae(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} |Y_i - \hat{Y}_i|
+\end{equation}\caption{MAE}
+
+\begin{equation}\label{metric:MAPE}
+	mape(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} |\frac{Y_i - \hat{Y}_i}{Y_i}|
+\end{equation}\caption{MAPE}
+
+\subsection{Clasificación}
+
+En problemas de clasificación son empleadas otras medidas que toman en cuenta la naturaleza discreta del problema. 
+Medidas como precisión, recobrado, certeza (accuracy en inglés) y F1 son utilizadas principalmente en la 
+evaluación de los resultados, mientras que para evaluar la pérdida se usa entropía cruzada 
+(\emph{cross entropy} en inglés).
+
+\subsubsection{Matriz de confusión}
+
+La matriz de confusión es una via de representar los resultados de dos clasificadores. Esta matriz en $M_{ij}$ 
+indica la cantidad de elementos que clasificó como clase $i$ el primer clasificador y
+como clase $j$ el segundo clasificador. En su uso práctico
+un clasificador son las etiquetas verdaderas mientras que el otro es el clasiificador que se está evaluando. 
+En problemas de la clasificación binaria, donde se busca saber si existe pertenencia o no de un elemento a una clase,
+se pueden observar los siguientes casos.
+
+\begin{itemize}
+	\item Verdaderos Positivos (VP): Elementos clasificados correctamente que pertenecen a la clase.
+	\item Verdaderos Negativos (VN): Elementos clasificados correctamente que no pertenecen a la clase.
+	\item Falsos Positivos (FP): Elementos clasificados incorrectamente que pertenecen a la clase.
+	\item Falsos Negativos (FN): Elementos clasificados incorrectamente que no pertenecen a la clase.
+\end{itemize}
+
+TODO FOTO DE MATRIZ DE CONFUSION BINARIA
+
+\subsubsection{Precisión}
+
+La precisión es la medida que indica la probabilidad de que la clasificación de una clase sea correcta. Esto 
+se puede observar como la proporción de los elementos correctamente clasificados sobre el total de 
+elementos clasificados:
+
+\begin{equation}
+	prec_i = \frac{VP}{VP + FP}
+\end{equation}
+
+En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todas
+las precisiones de las clases existentes:
+
+\begin{equation}
+	prec_{macro} = \sum^K_{i=1} \frac{prec_i}{K}
+\end{equation}
+
+\subsubsection{Recobrado}
+
+El recobrado es la medida que indica la probabilidad de que se clasifique correctamente un elemento de la clase
+del total existente. Esto se puede observar como la proporción de los elementos correctamente clasificados sobre el 
+total de elementos que pertenecen a la clase:
+
+\begin{equation}
+	rec_i = \frac{VP}{VP + FN}
+\end{equation}
+
+En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todos
+los recobrados de las clases existentes:
+
+\begin{equation}
+	rec_{macro} = \sum^K_{i=1} \frac{rec_i}{K}
+\end{equation}
+
+\subsubsection{F1}
+
+La medida F1 es la media armónica de la precisión y el recobrado. En esta la contribución de la precisión y el
+recobrado al resultado final es el mismo, aunque es posible buscar variaciones de acuerdo a al problema a tratar:
+
+\begin{equation}
+	f1_i = 2 (\frac{prec_i * rec_i}{prec_i + rec_i})
+\end{equation}
+
+En problemas de clasificación múltiple surge la versión macro de esta medida calculada la propia medida F1 pero
+utilizando la precisión y recobrado macro del problema:
+
+\begin{equation}
+	f1_{macro} = 2 (\frac{prec_{macro} * rec_{macro}}{prec_{macro} + rec_{macro}})
+\end{equation}
+
+\subsubsection{Entropía cruzada}
+
+Esta medida se encarga de evaluar qué tan diferentes son dos funciones de distribución $p$ y $q$, por lo que
+pequeños valores de esta indican mayor similitud. En su versión discreta se formula:
+
+\begin{equation}
+	H(p, q) = - \sum_{x \in D} p(x) \log q(x)
+\end{equation}
+
 \section{Modelo Propuesto}
 
 El modelo propuesto se divide en dos secciones. En la primera sección se realiza la segmentación y clasificación de 
 las UDAs como tareas conjuntas. En la segunda sección se realizará la predicción de enlaces y su clasificación, tomando
-como tareas auxiliares la clasificación de las UDA.
+como tareas auxiliares la clasificación de las UDA. En dependencia de los resultados obtenidos, la clasificación final de 
+las UDAs se escoge de la mejor sección (TODO IMPLEMENTAR ESTO, O NO). 
 
 \subsection{Segmentación y clasificacón de UDAs}
 
@@ -100,7 +243,7 @@ de dimensión $q$ que representa las clasificaciones inferidas por el modelo.
 
 Debido a la escasez de los datos se tuvieron que tomar medidas para prevenir el overfitting. Entre cada capa de 
 procesamiento se añadieron capas de normalización y dropout con un porciento de $d$\%. Además de esto se 
-las capas de \textbf{LSTM} se utilizaron regularizaciones L2.
+las capas de \textbf{LSTM} se utilizaron regularizaciones L2. Como optimizador se utilizó Adam.
 
 \subsubsection{Posporcesamiento}
 
@@ -150,5 +293,6 @@ una representación final de dimensión $ff$ y luego sometida a los clasificador
 	\end{center}
 \end{figure}
 
-Se agregan capas de normalización y de dropout entre cada proceso.
+Para prevenir el overfitting se agregaron capas de normalización y de dropout entre cada proceso y se usó regularizaciones
+L2 en las capas densas y LSTM. Como optimizador se utilizó Adam con descenso exponencial.
 
