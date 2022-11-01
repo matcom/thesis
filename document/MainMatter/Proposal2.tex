@@ -75,26 +75,38 @@ a las predicciones verdaderas del problema.
 \subsection{Regresión}
 
 En problemas de regresión se emplean comúnmente
-métricas como error medio cuadrático (MSE por sus siglas en inglés \emph{Mean Squared Error})\ref{metric:MSE}, 
-raíz de MSE (RMSE por sus siglas en inglés \emph{Root Mean Squared Error})\ref{metric:RMSE},
-error medio absoluto (MAE por sus siglas en inglés \emph{Mean Absolute Error})\ref{MAE} y error absoluto promedio porcentual 
+métricas como error medio cuadrático (MSE por sus siglas en inglés \emph{Mean Squared Error}), 
+raíz de MSE (RMSE por sus siglas en inglés \emph{Root Mean Squared Error}),
+error medio absoluto (MAE por sus siglas en inglés \emph{Mean Absolute Error}) y error absoluto promedio porcentual 
 (MAPE por sus siglas en inglés \emph{Mean Absolute Percentage Error}) [\cite{botchkarev2019new}].
 
-\begin{equation}\label{metric:MSE}
-	mse(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} (Y_i - \hat{Y}_i)^2
-\end{equation}\caption{MSE}
+\begin{figure}
+	\begin{equation}\label{metric:MSE}
+		mse(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} (Y_i - \hat{Y}_i)^2
+	\end{equation}
+	\caption{MSE}
+\end{figure}
 
-\begin{equation}\label{metric:RMSE}
-	rmse(Y, \hat{Y}) = \sqrt{mse(Y, \hat{Y})}
-\end{equation}\caption{RMSE}
+\begin{figure}
+	\begin{equation}\label{metric:RMSE}
+		rmse(Y, \hat{Y}) = \sqrt{mse(Y, \hat{Y})}
+	\end{equation}
+	\caption{RMSE}
+\end{figure}
 
-\begin{equation}\label{metric:MAE}
-	mae(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} |Y_i - \hat{Y}_i|
-\end{equation}\caption{MAE}
+\begin{figure}
+	\begin{equation}\label{metric:MAE}
+		mae(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} |Y_i - \hat{Y}_i|
+	\end{equation}
+	\caption{MAE}
+\end{figure}
 
-\begin{equation}\label{metric:MAPE}
-	mape(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} |\frac{Y_i - \hat{Y}_i}{Y_i}|
-\end{equation}\caption{MAPE}
+\begin{figure}
+	\begin{equation}\label{metric:MAPE}
+		mape(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} |\frac{Y_i - \hat{Y}_i}{Y_i}|
+	\end{equation}
+	\caption{MAPE}
+\end{figure}
 
 \subsection{Clasificación}
 
@@ -234,8 +246,8 @@ de dimensión $q$ que representa las clasificaciones inferidas por el modelo.
 \begin{figure}[h!]
 	\begin{center}
 		\begin{center}
-			\includegraphics[scale=.3]{Graphics/Modelo Segmenter UDA.drawio.png}
-            % \includesvg[options]{Graphics/Modelo Segmenter UDA.drawio.svg}
+			\includegraphics[scale=.3]{Graphics/Modelo_Segmenter_UDA.png}
+            % \includesvg[options]{Graphics/Modelo Segmenter UDA.svg}
         \end{center}
 	    \caption{Segmentador UDAs}\label{fig:seg_uda}
 	\end{center}
@@ -286,8 +298,8 @@ una representación final de dimensión $ff$ y luego sometida a los clasificador
 \begin{figure}[h!]
 	\begin{center}
 		\begin{center}
-			\includegraphics[scale=.3]{Graphics/Modelo Link Prediction.drawio.png}
-            % \includesvg[options]{Graphics/Modelo Link Prediction.drawio.svg}
+			\includegraphics[scale=.3]{Graphics/Modelo_Link_Prediction.png}
+            % \includesvg[options]{Graphics/Modelo Link Prediction.svg}
         \end{center}
 	    \caption{Predictor de enlaces}\label{fig:link_predictor}
 	\end{center}
