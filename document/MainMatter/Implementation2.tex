@@ -9,24 +9,129 @@
 % Conclusiones: Mejor clasificar y segmentar UDA con segmenter y dejar la clasificacion de UDA como tarea auxiliar en 
 % link prediction, poner los mejores ejemplos y peores ejemplos para los mejores modelos.
 
-Para el entrenamiento de los modelos propuestos se utilizaron corpus diferentes, estos
-presentas esquemas de anotaci'on distintos entre s'i. Se observ'o el el desempenno
-de los modelos con los corpus en las cartas a la direcci'on extra'idas del peri'odico Granma.
-
 \section{Conjuntos de Datos}
+
+Para el entrenamiento de los modelos propuestos se utilizaron corpus diferentes, estos
+presentas esquemas de anotaci'on distintos entre s'i. Como conjunto de validación fueron
+usados cartas extra'idas del peri'odico Granma. Dado que todos los corpus estaban en ingl'es, 
+se les aplic'o previamente el algoritmo de proyecci'on de corpus propuesto y se crearon sus respectivas
+versiones en espannol.
 
 \subsection{Ensayos Argumentativos}\label{corpus:persuasive_essays}
 
-\subsection{CDCP}
+Este corpus presenta unos 402 documentos, dividido por los autores en 286 documentos para entrenamiento (70\%), 
+80 para prueba (20\%) y 36 para validación (10\%). Los contenidos de estos son ensayos de estudiantes sobre temas
+como por ejemplo: cooperar o competir, contribuciones de la tecnologia a la sociedad.
+Las anotaciones de las UDA se conforman por segmentos 
+de textos considerados argumentativos, estos segmentos son clasificados en MajorClaim (751), Claim (1506) y Premise (3832).
+La estructura de las relaciones entre las UDA conforman 'arboles en los que se tienen como ra'iz las 
+MajorClaim del texto. Las relaciones solo estan permitidas entre Premise-Premise y Premise-Claim, clasificadas
+en de ataque (219) o apoyo (3613). Las relaciones entre Claim y MajorClaim son anotadas de manera diferente, por medio de 
+darle a las Claim una clasificaci'on de si est'a a favor (1228) o en contra (278) de las MajorClaim del documento.
+Para el an'alisis de este corpus se consideraron las relaciones Claim-MajorClaim de igual manera que las otras.
+
+\subsection{CDCP}\label{corpus:cdcp}
+
+TODO PONERLE NUMEROS A LOS PORCIENTOS
+
+El corpus est'a conformado por 731 comentarios de usuarios extra'idos de la web bajo el tema de 
+pr'acticas de cobro de deudas a los consumidores (CDCP por sus siglas en ingles Consumer Debt Collection Practices).
+Las UDA se encuentran segmentadas en oraciones y todas se consideran argumentativas, estas son clasificadas en 
+POLICY (17\%), VALUE (45\%), FACT (16\%), TESTIMONY (21\%) y REFERENCE (1\%). Las relaciones se encuentran 
+clasificadas en REASON (97\%) y EVIDENCE (3\%), aunque los datos presenta una baja conexión entre ellos, con 
+aproximadamente el 3\% de los posibles pares anotados.
 
 \subsection{AbsTRCT}
 
 \subsection{DrInventor}
 
-\subsection{Cartas a la dirrecci'on}
+\subsection{Cartas a la direcci'on}
 
+Las cartas a la direcci'on constituyen un segmento del peri'odico Granma en los cuales son publicadas
+cartas enviadas por la poblaci'on o empresas a dicha entidad. En general, las cartas 
+presentan dudas o problemas de la poblaci'on con el objetivo de obtener respuestas del organismo
+asociado. Se extrajeron las cartas CANTIDAD DE CARTAS desde FECHA INICIAL hasta FECHA FINAL. Se encontraron
+CANTIDAD DE CARTAS RESPONDIDAS lo que representa un PORCIENTO DE CARTAS RESPONDIDAS del total. 
 
-\section{Selecci'on de hiperpar'ametros}
+TODO SI HAY TIEMPO ANOTAR LAS CARTAS CON ALGUN ESQUEMA SENCILLO (Claim, Premise) (Attack, Support) y Mapear 
+las clasificaciones de los otros modelos a estas para tener algun tipo de evaluacion.
 
-Se tom'o el corpus de Ensayos Argumentativos \ref{corpus:persuasive_essays} para la selecci'on 
-de hiperpar'ametros y selecci'on del modelo final.  
+\section{Experimentación}
+
+Para realizar la selecci'on del modelo se utiliz'o el corpus de Ensayos Argumentativos. Con este se ajustaron
+las arquitecturas e hiperpar'ametros de los modelos propuestos. El mejor modelo luego fue entrenado con los
+corpus restantes. Todos los modelos finales fueron utilizados para anotar las cartas a la direcci'on. (TODO ver 
+qu'e criterio considero para ver cual anotaci'on fue la mejor en las cartas a la direcci'on)
+
+\subsection{Software}
+
+Para realizar los modelos se construy'o una imagen de Docker con las herramientas necesarias. Se utiliz'o 
+Tensorflow 2.9.2 para la construcci'on y entrenamiento de los modelos. (TODO Seguir agregando cosas) 
+
+\subsection{Segmentador de UDA}
+
+Para el segmentador se probaron variantes de la arquitectura asignando valores de hiperparametros a los propuestos
+por las investigaciones originales. (TODO Poner las asignaciones de hiperparametros que no varian). Las variaciones 
+de la arquitectura se vieron dadas por la presencia o no de lo siguientes elementos:
+
+\begin{itemize}
+    \item Atributos de POS en la entrada del algoritmo
+    \item Atributos extra'idos por la CNN de la palabra.
+    \item Atributos features extra'idos por la LSTM bidireccional de la palabra.
+    \item Conexiones residuales
+    \item Capa densa final
+    \item Capas de normalizaciones
+\end{itemize}
+
+Los resultados obtenidos son:
+
+TODO FOTOS o TABLAS con los resultados relevantes en Persuassive Essays
+
+Se eligi'o el modelo con (TODO poner el modelo escogido) debido a los resultados presentados.
+
+TODO FOTOS o TABLAS con los resultados relevantes en los OTROS CORPUS
+
+TODO Mostrar ejemplos buenos y malos
+TODO Decir opiniones de los errores
+
+\subsection{Predictor de Enlaces}
+
+Se entrenaron diferentes variantes de arquitecturas con diferentes hiperpar'ametros. Los hiperpar'ametros
+iniciales fueron los propuestos por la investigaci'on original y tambi'en fueron probados algunas variantes 
+de estos. La arquitectura var'ia por la presencia del m'odulo de atención en esta.
+
+Se construyeron varios conjuntos de hiperpar'ametros. Los resultados fueron:
+
+TODO PONER TABLA con los conjuntos de los hiperpar'ametros
+
+TODO FOTOS o TABLAS con los resultados relevantes en Persuassive Essays 
+
+El modelo elegido fue (TODO poner el modelo escogido).
+
+TODO FOTOS o TABLAS con los resultados relevantes en los OTROS CORPUS
+
+TODO Mostrar ejemplos buenos y malos
+TODO Decir opiniones de los errores
+
+\subsection{Modelo conjunto}
+
+Dado que la clasificación de UDAs es hecha tanto en el segmentador como en el predictor de enlaces es necesaria 
+la selecci'on de c'omo se va a desambiguar esta clasificaci'on. En base a los resultados obtenidos en el proceso
+de experimentaci'on se prefiri'o el resultado devuelto por el segmentador de UDAs.
+
+\section{Validaci'on}
+
+\subsection{Ensayos Argumentativos}
+
+TODO Resultados obtenidos en el Granma con el modelo.
+TODO Mostrar ejemplos buenos y malos
+
+\subsection{CDCP}
+
+TODO Resultados obtenidos en el Granma con el modelo.
+TODO Mostrar ejemplos buenos y malos
+
+\subsection{Consideraciones}
+
+TODO Poner cual modelo se considera mejor para el Granma 
+TODO Decir opiniones de los errores. (El texto de Granma posee una estructura diferente al entrenante)
