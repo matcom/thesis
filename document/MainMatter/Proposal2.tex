@@ -433,18 +433,18 @@ aumento de datos puede ser realizado al annadirle perturbaciones a entradas exis
 t'ecnicas como el volteado (\emph{flipping}) o recortado (\emph{cropping}) son usadas. Los textos son un tipo 
 de datos discreto y por lo tanto las t'ecnicas anteriores no pueden ser aplicadas directamente. Para \textbf{NLP}
 se han estudiado diversas t'ecnicas para el aumento de datos, una de estas consiste en el cambio del 'arbol de 
-dependencia de la oración mediante operaciones de intercambio y borrado de nodos, también se han utilizado 
-gaceteras para el intercambio de palabras por sin'onimos, la traducción de textos hacia un lenguaje y luego 
-de vuelta al lenguaje origen es otro ejemplo. 
+dependencia de la oración mediante operaciones de intercambio y borrado de nodos [TODO \cite{}], también se han utilizado 
+gaceteras para el intercambio de palabras por sin'onimos [TODO \cite{}], la traducción de textos hacia un lenguaje y luego 
+de vuelta al lenguaje origen es otro ejemplo o \emph{backtranslation} en ingl'es. 
 
 \subsection{Aprendizaje Conjunto}
 
 El aprendizaje conjunto (\emph{ensemble learning} en inglés) constituyen t'ecnicas encaminadas al aprovechamiento
 de soluciones encontradas por diferentes modelos combin'andolas y mejor'andolas para encontrar una mejor soluci'on 
 al problema. Estos m'etodos son efectivos en la reducción de la varianza y el bias de los resultados obteniendo as'i
-mejores modelos [\cite{dietterich2002ensemble}] 
+mejores resultados [\cite{dietterich2002ensemble}] 
 
-Dado que en TODO 
+Las manera TODO
 
 \subsection{M'etodos de optimizaci'on}
 
@@ -466,12 +466,15 @@ en contra del gradiente para disminuir el error.
 En la ecuaci'on anterior $\alpha$ se le conoce como tasa de aprendizaje (\emph{learning rate} en ingl'es).
 
 Variantes de este algoritmo eficientes para el proceso de entrenamiento de modelos de \textbf{ML} han sido 
-creadas. Una de estas variantes es el descenso por gradiente estoc'astico
+creadas. Entre las t'ecnicas utilizadas se encuentran Descenso por Gradiente Estoc'astico (\textbf{SGD} por sus siglas 
+en ingl'es \emph{Stochastic Gradient Descent}) [TODO \cite{}], tasa de aprendizaje din'amica con sus diferentes
+variantes (exponencial, polin'omica) [TODO \cite{}], RMSProp [TODO \cite{}] y Adam [TODO \cite{}]. 
 
-\subsection{Procesamiento de Secuencias}
+\subsection{HABLAR DE GLOVE}
 
-Modelos sequence to sequence
+\subsection{Modelos secuencia a secuencia}
 
+Hablar de BIO vs BIOES, COmo se realiza segmentacion con estas etiquetas
 
 \section{Modelo Propuesto}
 
@@ -485,9 +488,10 @@ esquema de anotaci'on con que se entrene.
 
 \subsection{Segmentación y clasificacón de UDAs}
 
-Esta primera parte se modeló como un problema secuencia a secuencia cuyo objetivo es convertir la secuencias de 
-tokens en secuencias de etiquetas BIOES. Además de las anotaciones BIOES se agrega información sobre el 
-tipo de UDA al que pertenece el segmento.
+Esta primera parte se modeló como un problema secuencia a secuencia cuyo objetivo es asignar a los tokens 
+extra'idos del documento entrada una etiqueta BIOES para segmentar las UDAs. El conjunto de etiquetas 
+est'a formado por el producto cruzado de las etiquetas del conjunto de datos con el conjunto BIES, agreg'andole
+a la tarea de clasificación la posibilidad de clasificar el tipo de UDA extra'ida.
 
 \subsubsection{Modelo}
 
@@ -525,6 +529,9 @@ capa densa de dimensión $k$ produciendo una representación final de dimensión
 Finalmente se utiliza una capa \textbf{CRF}
 para la clasificación final de la secuencia en las etiquetas finales. El resultado final constituye un vector
 de dimensión $q$ que representa las clasificaciones inferidas por el modelo.
+Como parte de reducir el sobre entrenamiento y sobre ajuste a los datos, en
+las capas densas y de \textbf{LSTM} se utilizaron regularizaciones L2. Como optimizador se utilizó Adam con una 
+tasa de aprendizaje $lrs$.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -536,10 +543,6 @@ de dimensión $q$ que representa las clasificaciones inferidas por el modelo.
 	\end{center}
 \end{figure}
 
-Debido a la escasez de los datos se tuvieron que tomar medidas para prevenir el overfitting. Entre cada capa de 
-procesamiento se añadieron capas de normalización y \emph{dropout} con un porciento de $d$\%. Además de esto se 
-las capas densas y de \textbf{LSTM} se utilizaron regularizaciones L2. Como optimizador se utilizó Adam.
-
 \subsubsection{Posporcesamiento}
 
 La salida del modelo constituye una secuencia de etiquetas en formato BIOES. La secuencia devuelta puede que contenga
@@ -550,10 +553,11 @@ parte consiste en arreglar la estructura BIOES, para esto se mantiene una ventan
 ventana inválida se necesita observar la siguiente ventana para poder decidir cómo se arregla el error ya que se
 podría dar el caso de OOI OIO, en donde solamente viendo la primera ventana no se podría saber si el cambio 
 correcto corresponde a sustituir I por B o por S. Una vez observado las dos ventanas se procede a realizar el 
-arreglo correspondiente. Una vez se tiene la secuencia tiene la estructura BIOES correctamente anotada el problema
+arreglo correspondiente. Este procedimiento devuelve una secuencia BIOES correctamente anotada, debido a que en 
+cada paso se va arreglando la ventana y una vez esta llega al final arregl'o todos los elementos de la secuencia.
+Una vez se tiene la secuencia tiene la estructura BIOES correctamente anotada el problema
 consiste en arreglar las meta-etiquetas, ya que una misma secuencia BIOES pudo haber sido anotada con diferentes
-tipos de meta-etiquetas, en este caso se toma la etiqueta más representativa de la secuencia. Este procedimiento
-devuelve una secuencia BIOES correctamente anotada.
+tipos, en este caso se toma la etiqueta más representativa de la secuencia.
 
 \subsection{Predicción de enlaces}
 

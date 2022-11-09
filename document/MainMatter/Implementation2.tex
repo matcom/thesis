@@ -12,19 +12,14 @@
 \section{Conjuntos de Datos}
 
 Para el entrenamiento de los modelos propuestos se utilizaron corpus diferentes, estos
-presentas esquemas de anotaci'on distintos entre s'i. Como conjunto de validación fueron
-usados cartas extra'idas del peri'odico Granma. Dado que todos los corpus estaban en ingl'es, 
+presentas esquemas de anotaci'on distintos entre s'i. Dado que todos los corpus estaban en ingl'es, 
 se les aplic'o previamente el algoritmo de proyecci'on de corpus propuesto y se crearon sus respectivas
-versiones en espannol.
-
-\subsection{Aumento de datos}
-
-Para aumentar los datos se realiza una traducción automática a un lenguaje intermedio y luego de este lenguaje 
-intermedio es vuelto a traducir al lenguaje inicial.
+versiones en espannol. A los conjuntos de entrenamientos se le aplic'o la t'ecnica de \emph{backtranslation}
+para aumentar su tamaño. Como conjunto de validación fueron usados cartas extra'idas del peri'odico Granma.
 
 \subsection{Ensayos Argumentativos}\label{corpus:persuasive_essays}
 
-Este corpus presenta unos 402 documentos, dividido por los autores en 286 documentos para entrenamiento (70\%), 
+Este corpus [TODO \cite{CORPUS PAPER}] presenta unos 402 documentos, dividido por los autores en 286 documentos para entrenamiento (70\%), 
 80 para prueba (20\%) y 36 para validación (10\%). Los contenidos de estos son ensayos de estudiantes sobre temas
 como por ejemplo: cooperar o competir, contribuciones de la tecnolog'ia a la sociedad.
 Las anotaciones de las UDA se conforman por segmentos 
@@ -39,7 +34,7 @@ Para el an'alisis de este corpus se consideraron las relaciones Claim-MajorClaim
 
 TODO PONERLE NUMEROS A LOS PORCIENTOS
 
-El corpus est'a conformado por 731 comentarios de usuarios extra'idos de la web bajo el tema de 
+El corpus [TODO \cite{CORPUS PAPER}] est'a conformado por 731 comentarios de usuarios extra'idos de la web bajo el tema de 
 pr'acticas de cobro de deudas a los consumidores (CDCP por sus siglas en ingles Consumer Debt Collection Practices).
 Las UDA se encuentran segmentadas en oraciones y todas se consideran argumentativas, estas son clasificadas en 
 POLICY (17\%), VALUE (45\%), FACT (16\%), TESTIMONY (21\%) y REFERENCE (1\%). Las relaciones se encuentran 
@@ -48,13 +43,30 @@ aproximadamente el 3\% de los posibles pares anotados.
 
 \subsection{AbsTRCT}
 
+TODO 
+
+\subsection{Aumento de Datos}
+
+\emph{Backtranslation} se aplic'o a los textos originales en ingl'es, como lenguaje intermedio se utiliz'o el espannol.
+Una vez se ten'ia la traducción se utiliz'o el algoritmo de proyección de etiquetas para el anotado de las etiquetas sobre
+las versiones nuevas.
+Al aplicar \emph{backtranslation} sobre los conjuntos de datos su tamanno se duplic'o aunque los textos se mantuvieron
+similares. 
+
+TODO M'etricas de comparaci'on entre los textos traducidos y los originales.
+
 \subsection{Cartas a la direcci'on}
 
 Las cartas a la direcci'on constituyen un segmento del peri'odico Granma en los cuales son publicadas
 cartas enviadas por la poblaci'on o empresas a dicha entidad. En general, las cartas 
 presentan dudas o problemas de la poblaci'on con el objetivo de obtener respuestas del organismo
-asociado. Se extrajeron las cartas CANTIDAD DE CARTAS desde FECHA INICIAL hasta FECHA FINAL. Se encontraron
-CANTIDAD DE CARTAS RESPONDIDAS lo que representa un PORCIENTO DE CARTAS RESPONDIDAS del total. 
+asociado. Se extrajeron 2891 cartas desde el 30 de agosto del 2013 hasta el 28 de octubre del 2022. Se 
+presentan aproximadamente 975000 palabras en los datos, en promedio, la cantidad de palabras por carta es de 330.
+Se encontraron 874 cartas en respuesta a cartas enviadas lo que representa un 30\% del total. Se extrajeron
+los comentarios asociados a las cartas, en este sentido 987 cartas no presentan comentarios y en promedio 
+se realizan 2 comentarios por carta. Los textos presentan un t'itulo y un formato relativamente libre, 
+aunque en las cartas de respuesta se puede observar una firma de la persona que respondi'o y la entidad que 
+representa.
 
 TODO SI HAY TIEMPO ANOTAR LAS CARTAS CON ALGUN ESQUEMA SENCILLO (Claim, Premise) (Attack, Support) y Mapear 
 las clasificaciones de los otros modelos a estas para tener algun tipo de evaluacion.
@@ -62,19 +74,32 @@ las clasificaciones de los otros modelos a estas para tener algun tipo de evalua
 \section{Experimentación}
 
 Para realizar la selecci'on del modelo se utiliz'o el corpus de Ensayos Argumentativos. Con este se ajustaron
-las arquitecturas e hiperpar'ametros de los modelos propuestos. El mejor modelo luego fue entrenado con los
-corpus restantes. Todos los modelos finales fueron utilizados para anotar las cartas a la direcci'on. (TODO ver 
-qu'e criterio considero para ver cual anotaci'on fue la mejor en las cartas a la direcci'on)
+las arquitecturas e hiperpar'ametros de los modelos propuestos. La mejor combinaci'on de estos fue utilizada para el entrenamiento de
+los corpus restantes. Finalmente los modelos fueron utilizados para anotar las cartas a la direcci'on. 
 
-\subsection{Software}
+\subsection{Software y Hardware}
 
-Para realizar los modelos se construy'o una imagen de Docker con las herramientas necesarias. Se utiliz'o 
-Tensorflow 2.9.2 para la construcci'on y entrenamiento de los modelos. (TODO Seguir agregando cosas) 
+El lenguaje empleado para la confecci'on del software fue \textbf{Python}, este presenta una gran variedad de herramientas 
+para el trabajo con texto, visualizaci'on de datos y la creaci'on de modelos de aprendizaje profundo.
+Se utiliz'o \textbf{tensorflow} en su versión 2.9.2 para la construcci'on y entrenamiento de los modelos. 
+Para el procesamiento de los textos se utilizaron \textbf{nltk} y \textbf{spacy}, con estos se realizaron tareas
+como la extracción de tokens y oraciones del texto, la anotaci'on de las etiquetas \textbf{POS}. Se utilizaron 
+ambas bibliotecas para el procesamiento debido que en dependencia de la sitaución cada una presenta diferentes
+ventajas. En el caso de \textbf{nltk} esta presenta algoritmos r'apidos para el procesamiento de texto que no 
+requieren de muchos recursos computacionales, sin embargo, estos algoritmos no est'an disponibles de inmediato
+para otros lenguajes como el espannol. \textbf{Spacy} por su parte presenta algoritmos m'as certeros a costo 
+de mayor tiempo de procesamiento y gasto de recursos computacionales y también presenta una cantidad de lenguajes 
+disponibles mucho mayor. Para la visualizaci'on, manejo de los datos y c'alculo de m'etricas se utilizaron 
+\textbf{matplotlib}, \textbf{pandas} y \textbf{sklearn}.
+
+Gran parte del procesamiento se llevo a cabo en una computadora $i5$ con $8GB$ de RAM ampliada con $4GB$ de memoria 
+swap [TODO \cite{Memoria swap}], aunque se requiri'o el uso de la plataforma \textbf{Colab} [TODO \cite COLAB] para 
+el entrenamiento de algunos modelos por falta de recuros locales.
 
 \subsection{Segmentador de UDA}
 
-Para el segmentador se probaron variantes de la arquitectura asignando valores de hiperparametros a los propuestos
-por las investigaciones originales. (TODO Poner las asignaciones de hiperparametros que no varian). Las variaciones 
+Para el segmentador se probaron variantes de la arquitectura asignando valores de hiperpar'ametros a los propuestos
+por las investigaciones originales. (TODO Poner las asignaciones de hiperparametros que no var'ian). Las variaciones 
 de la arquitectura se vieron dadas por la presencia o no de lo siguientes elementos:
 
 \begin{itemize}
@@ -124,7 +149,14 @@ Dado que la clasificación de UDAs es hecha tanto en el segmentador como en el p
 la selecci'on de c'omo se va a desambiguar esta clasificaci'on. En base a los resultados obtenidos en el proceso
 de experimentaci'on se prefiri'o el resultado devuelto por el segmentador de UDAs.
 
+TODO Poner estadisticas de ambas aproximaciones
+
 \section{Validaci'on}
+
+Se entrenaron varios modelos en los diferentes corpus con los hiperpar'ametros seleccionados. Con estos modelos 
+se procesaron las cartas y se observ'o cual era el que m'as se ajustaba a las estructuras argumentativas presentes 
+en estas. Dado que la definición de UDA es algo que var'ia, es complejo realizar un m'etodo que eval'ue de forma 
+justa los resultados obtenidos por los diferentes modelos de manera conjunta. TODO
 
 \subsection{Ensayos Argumentativos}
 
@@ -137,6 +169,9 @@ TODO Resultados obtenidos en el Granma con el modelo.
 TODO Mostrar ejemplos buenos y malos
 
 \subsection{AbsTRCT}
+
+TODO Resultados obtenidos en el Granma con el modelo.
+TODO Mostrar ejemplos buenos y malos
 
 \subsection{Consideraciones}
 
