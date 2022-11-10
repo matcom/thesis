@@ -135,3 +135,25 @@ Para prevenir el sobre ajuste se agregaron capas de normalización y de \emph{dr
 L2 y \emph{dropout} en las capas densas y \textbf{LSTM}. Para prevenir el sobre entrenamiento se aplicó una 
 terminación temprana de este cuando no se enontraba una mejora de la función de pérdida en el conjunto de validación.
 Como optimizador se utilizó Adam con descenso exponencial.
+
+\subsection{Preprocesamiento}
+
+El uso de este modelo se concreta a nivel de documento, en donde ya se tienen las UDAs extra'idas. Para alimentar
+al modelo con los pares de UDAs y sus distancias argumentativas se seleccionan todos los pares de estos que cumplan
+que no se enlacen con ellos mismos, ejemplo $a \rightarrow a$, y que su distancia argumentativa sea menor que una
+constante $da$. Estas restricciones disminuyen el n'umero de pares extra'idos por documentos a una cantidad lineal 
+con respecto a la cantidad de UDAs presentes ya que por cada UDA solamente se tomar'ian $2 * da$ elementos como m'aximo
+(los que la preceden y los que la suceden). 
+
+Adem'as de las etiquetas $R$ originales del conjunto de entrenamiento entrenante se annaden elementos extras a este
+conjunto. Estos elementos son las representaciones inversas de la releci'on, ejemplo si $a \rightarrow_c b$ entonces 
+se agregar'a el par $b \rightarrow_{c^{-1}} a$ donde $c^{-1}$ es una nueva clasificación de relación que representa
+el inverso de la clasificación $c$. Este proceso se realiza para aumentar la cantidad de relaciones positivas en el
+conjunto entrenante, ya que a'un con las reducciones hechas existe un desbalance de clases positivas y negativas en
+las relaciones.
+
+\subsection{Posporcesamiento}
+
+Para dar el resultado final se eliminan del conjunto de respuesta las relaciones inversas annadidas en el paso de 
+preprocesamiento. Por cada relaci'on inversa que se quite, se annade su respectiva relaci'on directa al conjunto
+de salida.
