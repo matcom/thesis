@@ -12,30 +12,33 @@
 \section{Conjuntos de Datos}
 
 Para el entrenamiento de los modelos propuestos se utilizaron corpus diferentes, estos
-presentas esquemas de anotaci'on distintos entre s'i. Dado que todos los corpus estaban en ingl'es, 
-se les aplic'o previamente el algoritmo de proyecci'on de corpus propuesto y se crearon sus respectivas
-versiones en espannol. A los conjuntos de entrenamientos se le aplic'o la t'ecnica de \emph{backtranslation}
-para aumentar su tamaño. Como conjunto de validación fueron usados cartas extra'idas del peri'odico Granma.
+presentas esquemas de anotación distintos entre sí. Dado que todos los corpus estaban en inglés, 
+se les aplicó previamente el algoritmo de proyección de corpus propuesto y se crearon sus respectivas
+versiones en español. A los conjuntos de entrenamientos se le aplicó la técnica de \emph{backtranslation}
+para aumentar su tamaño. Como conjunto para validar los modelos fueron usadas las cartas a la dirección
+extraídas del periódico Granma.
 
 \subsection{Ensayos Argumentativos}\label{corpus:persuasive_essays}
 
 Este corpus [TODO \cite{CORPUS PAPER}] presenta unos 402 documentos, dividido por los autores en 286 documentos para entrenamiento (70\%), 
 80 para prueba (20\%) y 36 para validación (10\%). Los contenidos de estos son ensayos de estudiantes sobre temas
-como por ejemplo: cooperar o competir, contribuciones de la tecnolog'ia a la sociedad.
+como por ejemplo: cooperar o competir, contribuciones de la tecnología a la sociedad.
 Las anotaciones de las UDA se conforman por segmentos 
 de textos considerados argumentativos, estos segmentos son clasificados en MajorClaim (751), Claim (1506) y Premise (3832).
-La estructura de las relaciones entre las UDA conforman 'arboles en los que se tienen como ra'iz las 
+La estructura de las relaciones entre las UDA conforman árboles en los que se tienen como raíz las 
 MajorClaim del texto. Las relaciones solo estan permitidas entre Premise-Premise y Premise-Claim, clasificadas
 en de ataque (219) o apoyo (3613). Las relaciones entre Claim y MajorClaim son anotadas de manera diferente, por medio de 
-darle a las Claim una clasificaci'on de si est'a a favor (1228) o en contra (278) de las MajorClaim del documento.
-Para el an'alisis de este corpus se consideraron las relaciones Claim-MajorClaim de igual manera que las otras.
+darle a las Claim una clasificación de si está a favor (1228) o en contra (278) de las MajorClaim del documento.
+Para el análisis de este corpus se consideraron las relaciones Claim-MajorClaim de igual manera que las otras.
+
+TODO Tabla con las metricas de este modelo dado los diferentes modelos propuestos
 
 \subsection{CDCP}\label{corpus:cdcp}
 
 TODO PONERLE NUMEROS A LOS PORCIENTOS
 
-El corpus [TODO \cite{CORPUS PAPER}] est'a conformado por 731 comentarios de usuarios extra'idos de la web bajo el tema de 
-pr'acticas de cobro de deudas a los consumidores (CDCP por sus siglas en ingles Consumer Debt Collection Practices).
+El corpus [TODO \cite{CORPUS PAPER}] está conformado por 731 comentarios de usuarios extraídos de la web bajo el tema de 
+prácticas de cobro de deudas a los consumidores (CDCP por sus siglas en ingles Consumer Debt Collection Practices).
 Las UDA se encuentran segmentadas en oraciones y todas se consideran argumentativas, estas son clasificadas en 
 POLICY (17\%), VALUE (45\%), FACT (16\%), TESTIMONY (21\%) y REFERENCE (1\%). Las relaciones se encuentran 
 clasificadas en REASON (97\%) y EVIDENCE (3\%), aunque los datos presenta una baja conexión entre ellos, con 
@@ -47,65 +50,95 @@ TODO
 
 \subsection{Aumento de Datos}
 
-\emph{Backtranslation} se aplic'o a los textos originales en ingl'es, como lenguaje intermedio se utiliz'o el espannol.
-Una vez se ten'ia la traducción se utiliz'o el algoritmo de proyección de etiquetas para el anotado de las etiquetas sobre
+\emph{Backtranslation} se aplicó a los textos originales en inglés, como lenguaje intermedio se utilizó el español.
+Una vez se tenía la traducción se utilizó el algoritmo de proyección de etiquetas para el anotado de las etiquetas sobre
 las versiones nuevas.
-Al aplicar \emph{backtranslation} sobre los conjuntos de datos su tamanno se duplic'o aunque los textos se mantuvieron
+Al aplicar \emph{backtranslation} sobre los conjuntos de datos su tamaño se duplicó aunque los textos se mantuvieron
 similares. 
 
-TODO M'etricas de comparaci'on entre los textos traducidos y los originales.
+TODO Métricas de comparación entre los textos traducidos y los originales.
 
-\subsection{Cartas a la direcci'on}
+\subsection{Cartas a la dirección}
 
-Las cartas a la direcci'on constituyen un segmento del peri'odico Granma en los cuales son publicadas
-cartas enviadas por la poblaci'on o empresas a dicha entidad. En general, las cartas 
-presentan dudas o problemas de la poblaci'on con el objetivo de obtener respuestas del organismo
+Las cartas a la dirección constituyen un segmento del periódico Granma en los cuales son publicadas
+cartas enviadas por la población o empresas a dicha entidad. En general, las cartas 
+presentan dudas o problemas de la población con el objetivo de obtener respuestas del organismo
 asociado. Se extrajeron 2891 cartas desde el 30 de agosto del 2013 hasta el 28 de octubre del 2022. Se 
 presentan aproximadamente 975000 palabras en los datos, en promedio, la cantidad de palabras por carta es de 330.
 Se encontraron 874 cartas en respuesta a cartas enviadas lo que representa un 30\% del total. Se extrajeron
 los comentarios asociados a las cartas, en este sentido 987 cartas no presentan comentarios y en promedio 
-se realizan 2 comentarios por carta. Los textos presentan un t'itulo y un formato relativamente libre, 
-aunque en las cartas de respuesta se puede observar una firma de la persona que respondi'o y la entidad que 
+se realizan 2 comentarios por carta. Los textos presentan un título y un formato relativamente libre, 
+aunque en las cartas de respuesta se puede observar una firma de la persona que respondió y la entidad que 
 representa.
 
 TODO SI HAY TIEMPO ANOTAR LAS CARTAS CON ALGUN ESQUEMA SENCILLO (Claim, Premise) (Attack, Support) y Mapear 
 las clasificaciones de los otros modelos a estas para tener algun tipo de evaluacion.
 
+\section{Implementaci'on}
+
+La implementaci'on de los modelos y algoritmos de procesamiento y visualización de datos se encuentran en 
+un repositorio de GitHub localizado en https://github.com/luisoibarra/argument-mining. Esta implementación
+est'a concebida para que se pueda extender f'acilmente para el uso con otros idiomas adem'as del ingl'es y el 
+espannol. Se basa en una arquitectura de procesamiento secuencial en el cual cada paso del proceso realiza
+una tarea espec'ifica y lo m'as desacoplada posible de las otras. Las tareas realizadas son:
+
+\begin{itemize}
+    \item Creaci'on del corpus en un formato est'andar. Dado que los corpus vienen en diferentes formas, este paso se realiza para trabajar sobre una misma representación de este.
+    \item Proyección del corpus de un lenguaje fuente a un lenguaje objetivo
+    \begin{itemize}
+        \item Traducci'on y alineación de oraciones
+        \item Alineación de palabras
+        \item Proyección de etiquetas
+    \end{itemize}
+    \item Extracción y clasificación de UDAs
+    \item Extracción y clasificación de las relaciones entre las UDAs
+    \item Visualización de los resultados
+\end{itemize}
+
+\subsection{Herramientas}
+
+El lenguaje empleado para la confección del software fue \textbf{Python}, este presenta una gran variedad de herramientas 
+para el trabajo con texto, visualización de datos y la creación de modelos de aprendizaje profundo.
+Se utilizó \textbf{tensorflow} en su versión 2.9.2 para la construcción y entrenamiento de los modelos. 
+Para el procesamiento de los textos se utilizaron \textbf{nltk} y \textbf{spacy}, con estos se realizaron tareas
+como la extracción de tokens y oraciones del texto, la anotación de las etiquetas \textbf{POS}. Se utilizaron 
+ambas bibliotecas para el procesamiento debido que en dependencia de la sitaución cada una presenta diferentes
+ventajas. En el caso de \textbf{nltk} esta presenta algoritmos rápidos para el procesamiento de texto que no 
+requieren de muchos recursos computacionales, sin embargo, estos algoritmos no están disponibles de inmediato
+para otros lenguajes como el español. \textbf{Spacy} por su parte presenta algoritmos más certeros a costo 
+de mayor tiempo de procesamiento y gasto de recursos computacionales y también presenta una cantidad de lenguajes 
+disponibles mucho mayor. Para la visualización, manejo de los datos y cálculo de métricas se utilizaron 
+\textbf{matplotlib}, \textbf{pandas} y \textbf{sklearn}. Para la recolecci'on de las cartas del peri'odico 
+Granma se utiliz'o \textbf{scrapy}.
+
+\subsection{Visualizaci'on de resultados}
+
+Como interfaz visual para el usuario se utiliz'o la herramienta Brat [TODO \cite{}]. Esta herramienta permite
+la visualización y edici'on de las estructuras argumentativas. Dado que Brat es una p'agina web, esta se puede
+desplegar y permitir su uso online.  
+
 \section{Experimentación}
 
-Para realizar la selecci'on del modelo se utiliz'o el corpus de Ensayos Argumentativos. Con este se ajustaron
-las arquitecturas e hiperpar'ametros de los modelos propuestos. La mejor combinaci'on de estos fue utilizada para el entrenamiento de
-los corpus restantes. Finalmente los modelos fueron utilizados para anotar las cartas a la direcci'on. 
+Para realizar la selección del modelo se utilizó el corpus de Ensayos Argumentativos. Con este se ajustaron
+las arquitecturas e hiperparámetros de los modelos propuestos. La mejor combinación de estos fue utilizada para el entrenamiento de
+los corpus restantes. Finalmente los modelos fueron utilizados para anotar las cartas a la dirección. 
 
-\subsection{Software y Hardware}
-
-El lenguaje empleado para la confecci'on del software fue \textbf{Python}, este presenta una gran variedad de herramientas 
-para el trabajo con texto, visualizaci'on de datos y la creaci'on de modelos de aprendizaje profundo.
-Se utiliz'o \textbf{tensorflow} en su versión 2.9.2 para la construcci'on y entrenamiento de los modelos. 
-Para el procesamiento de los textos se utilizaron \textbf{nltk} y \textbf{spacy}, con estos se realizaron tareas
-como la extracción de tokens y oraciones del texto, la anotaci'on de las etiquetas \textbf{POS}. Se utilizaron 
-ambas bibliotecas para el procesamiento debido que en dependencia de la sitaución cada una presenta diferentes
-ventajas. En el caso de \textbf{nltk} esta presenta algoritmos r'apidos para el procesamiento de texto que no 
-requieren de muchos recursos computacionales, sin embargo, estos algoritmos no est'an disponibles de inmediato
-para otros lenguajes como el espannol. \textbf{Spacy} por su parte presenta algoritmos m'as certeros a costo 
-de mayor tiempo de procesamiento y gasto de recursos computacionales y también presenta una cantidad de lenguajes 
-disponibles mucho mayor. Para la visualizaci'on, manejo de los datos y c'alculo de m'etricas se utilizaron 
-\textbf{matplotlib}, \textbf{pandas} y \textbf{sklearn}.
+\subsection{Hardware}
 
 Gran parte del procesamiento se llevo a cabo en una computadora $i5$ con $8GB$ de RAM ampliada con $4GB$ de memoria 
-swap [TODO \cite{Memoria swap}], aunque se requiri'o el uso de la plataforma \textbf{Colab} [TODO \cite COLAB] para 
+swap [TODO \cite{Memoria swap}], aunque se requirió el uso de la plataforma \textbf{Colab} [TODO \cite COLAB] para 
 el entrenamiento de algunos modelos por falta de recuros locales.
 
 \subsection{Segmentador de UDA}
 
-Para el segmentador se probaron variantes de la arquitectura asignando valores de hiperpar'ametros a los propuestos
-por las investigaciones originales. (TODO Poner las asignaciones de hiperparametros que no var'ian). Las variaciones 
+Para el segmentador se probaron variantes de la arquitectura asignando valores de hiperparámetros a los propuestos
+por las investigaciones originales. (TODO Poner las asignaciones de hiperparametros que no varían). Las variaciones 
 de la arquitectura se vieron dadas por la presencia o no de lo siguientes elementos:
 
 \begin{itemize}
     \item Atributos de POS en la entrada del algoritmo
-    \item Atributos extra'idos por la CNN de la palabra.
-    \item Atributos features extra'idos por la LSTM bidireccional de la palabra.
+    \item Atributos extraídos por la CNN de la palabra.
+    \item Atributos features extraídos por la LSTM bidireccional de la palabra.
     \item Conexiones residuales
     \item Capa densa final
     \item Capas de normalizaciones
@@ -115,23 +148,23 @@ Los resultados obtenidos son:
 
 TODO FOTOS o TABLAS con los resultados relevantes en Persuassive Essays
 
-Se eligi'o el modelo con (TODO poner el modelo escogido) debido a los resultados presentados.
+Se eligió el modelo con (TODO poner el modelo escogido) debido a los resultados presentados.
 
 TODO FOTOS o TABLAS con los resultados relevantes en los OTROS CORPUS
 
 TODO Mostrar ejemplos buenos y malos
 TODO Decir opiniones de los errores
-TODO Hacer analisis curvas de aprendizaje -> overfitting, underfitting, representaci'on de los datos en los conjuntos de validacion/entrenamiento
+TODO Hacer analisis curvas de aprendizaje -> overfitting, underfitting, representación de los datos en los conjuntos de validacion/entrenamiento
 
 \subsection{Predictor de Enlaces}
 
-Se entrenaron diferentes variantes de arquitecturas con diferentes hiperpar'ametros. Los hiperpar'ametros
-iniciales fueron los propuestos por la investigaci'on original y tambi'en fueron probados algunas variantes 
-de estos. La arquitectura var'ia por la presencia del m'odulo de atención en esta.
+Se entrenaron diferentes variantes de arquitecturas con diferentes hiperparámetros. Los hiperparámetros
+iniciales fueron los propuestos por la investigación original y también fueron probados algunas variantes 
+de estos. La arquitectura varía por la presencia del módulo de atención en esta.
 
-Se construyeron varios conjuntos de hiperpar'ametros. Los resultados fueron:
+Se construyeron varios conjuntos de hiperparámetros. Los resultados fueron:
 
-TODO PONER TABLA con los conjuntos de los hiperpar'ametros
+TODO PONER TABLA con los conjuntos de los hiperparámetros
 
 TODO FOTOS o TABLAS con los resultados relevantes en Persuassive Essays 
 
@@ -141,22 +174,22 @@ TODO FOTOS o TABLAS con los resultados relevantes en los OTROS CORPUS
 
 TODO Mostrar ejemplos buenos y malos
 TODO Decir opiniones de los errores
-TODO Hacer analisis curvas de aprendizaje -> overfitting, underfitting, representaci'on de los datos en los conjuntos de validacion/entrenamiento
+TODO Hacer analisis curvas de aprendizaje -> overfitting, underfitting, representación de los datos en los conjuntos de validacion/entrenamiento
 
 \subsection{Modelo conjunto}
 
 Dado que la clasificación de UDAs es hecha tanto en el segmentador como en el predictor de enlaces es necesaria 
-la selecci'on de c'omo se va a desambiguar esta clasificaci'on. En base a los resultados obtenidos en el proceso
-de experimentaci'on se prefiri'o el resultado devuelto por el segmentador de UDAs.
+la selección de cómo se va a desambiguar esta clasificación. En base a los resultados obtenidos en el proceso
+de experimentación se prefirió el resultado devuelto por el segmentador de UDAs.
 
 TODO Poner estadisticas de ambas aproximaciones
 
-\section{Validaci'on}
+\section{Validación}
 
-Se entrenaron varios modelos en los diferentes corpus con los hiperpar'ametros seleccionados. Con estos modelos 
-se procesaron las cartas y se observ'o cual era el que m'as se ajustaba a las estructuras argumentativas presentes 
-en estas. Dado que la definición de UDA es algo que var'ia, es complejo realizar un m'etodo que eval'ue de forma 
-justa los resultados obtenidos por los diferentes modelos de manera conjunta. TODO
+Se entrenaron varios modelos en los diferentes corpus con los hiperparámetros seleccionados. Con estos modelos 
+se procesaron las cartas y se observó cual era el que más se ajustaba a las estructuras argumentativas presentes 
+en estas. Dado que la definición de UDA es algo que varía, es complejo realizar un método que evalúe de forma 
+justa los resultados obtenidos por los diferentes modelos de manera conjunta. TODO PREGUNTAR COMO HACER LA VALIDACION?
 
 \subsection{Ensayos Argumentativos}
 
@@ -176,4 +209,4 @@ TODO Mostrar ejemplos buenos y malos
 \subsection{Consideraciones}
 
 TODO Poner cual modelo se considera mejor para el Granma 
-TODO Decir opiniones de los errores. (El texto de Granma posee una estructura diferente al entrenante)
+TODO Decir opiniones de los errores. (El texto de Granma posee una estructura diferente al entrenante y mas libre)
