@@ -74,19 +74,19 @@ representa.
 TODO SI HAY TIEMPO ANOTAR LAS CARTAS CON ALGUN ESQUEMA SENCILLO (Claim, Premise) (Attack, Support) y Mapear 
 las clasificaciones de los otros modelos a estas para tener algun tipo de evaluacion.
 
-\section{Implementaci'on}
+\section{Implementación}
 
-La implementaci'on de los modelos y algoritmos de procesamiento y visualización de datos se encuentran en 
+La implementación de los modelos y algoritmos de procesamiento y visualización de datos se encuentran en 
 un repositorio de GitHub localizado en https://github.com/luisoibarra/argument-mining. Esta implementación
-est'a concebida para que se pueda extender f'acilmente para el uso con otros idiomas adem'as del ingl'es y el 
-espannol. Se basa en una arquitectura de procesamiento secuencial en el cual cada paso del proceso realiza
-una tarea espec'ifica y lo m'as desacoplada posible de las otras. Las tareas realizadas son:
+está concebida para que se pueda extender fácilmente para el uso con otros idiomas además del inglés y el 
+español. Se basa en una arquitectura de procesamiento secuencial en el cual cada paso del proceso realiza
+una tarea específica y lo más desacoplada posible de las otras. Las tareas realizadas son:
 
 \begin{itemize}
-    \item Creaci'on del corpus en un formato est'andar. Dado que los corpus vienen en diferentes formas, este paso se realiza para trabajar sobre una misma representación de este.
+    \item Creación del corpus en un formato estándar. Dado que los corpus vienen en diferentes formas, este paso se realiza para trabajar sobre una misma representación de este.
     \item Proyección del corpus de un lenguaje fuente a un lenguaje objetivo
     \begin{itemize}
-        \item Traducci'on y alineación de oraciones
+        \item Traducción y alineación de oraciones
         \item Alineación de palabras
         \item Proyección de etiquetas
     \end{itemize}
@@ -108,13 +108,13 @@ requieren de muchos recursos computacionales, sin embargo, estos algoritmos no e
 para otros lenguajes como el español. \textbf{Spacy} por su parte presenta algoritmos más certeros a costo 
 de mayor tiempo de procesamiento y gasto de recursos computacionales y también presenta una cantidad de lenguajes 
 disponibles mucho mayor. Para la visualización, manejo de los datos y cálculo de métricas se utilizaron 
-\textbf{matplotlib}, \textbf{pandas} y \textbf{sklearn}. Para la recolecci'on de las cartas del peri'odico 
-Granma se utiliz'o \textbf{scrapy}.
+\textbf{matplotlib}, \textbf{pandas} y \textbf{sklearn}. Para la recolección de las cartas del periódico 
+Granma se utilizó \textbf{scrapy}.
 
-\subsection{Visualizaci'on de resultados}
+\subsection{Visualización de resultados}
 
-Como interfaz visual para el usuario se utiliz'o la herramienta Brat [TODO \cite{}]. Esta herramienta permite
-la visualización y edici'on de las estructuras argumentativas. Dado que Brat es una p'agina web, esta se puede
+Como interfaz visual para el usuario se utilizó la herramienta Brat [TODO \cite{}]. Esta herramienta permite
+la visualización y edición de las estructuras argumentativas. Dado que Brat es una página web, esta se puede
 desplegar y permitir su uso online.  
 
 \section{Experimentación}

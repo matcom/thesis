@@ -12,17 +12,17 @@ Esta primera parte se modeló como un problema secuencia a secuencia cuyo objeti
 extraídos del documento entrada una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
 de UDA al conjunto de etiquetas BIES se le añadieron las clasificaciones que presentan el corpus entrenante.
 
-\begin{center}
-    En$_O$ primer$_O$ lugar$_O$,$_O$ \emph{el$_{B-A}$ correo$_{I-A}$ electronico$_{I-A}$ puede$_{I-A}$ 
+\begin{adjustwidth}{25pt}{25pt}
+    En$_O$ primer$_O$ lugar$_O$ ,$_O$ \emph{el$_{B-A}$ correo$_{I-A}$ electrónico$_{I-A}$ puede$_{I-A}$ 
     contar$_{I-A}$ como$_{I-A}$ uno$_{I-A}$ de$_{I-A}$ los$_{I-A}$ resultados$_{I-A}$
     más$_{I-A}$ beneficiosos$_{I-A}$ de$_{I-A}$ la$_{I-A}$ tecnología$_{I-A}$ moderna$_{E-A}$}.$_{O}$ 
-    \emph{Años$_{B-P}$ atrás$_{I-P}$, las$_{I-P}$ personas$_{I-P}$ pagaban$_{I-P}$ gran$_{I-P}$ cantidad$_{I-P}$ 
+    \emph{Años$_{B-P}$ atrás$_{I-P}$ ,$_{I-P}$ las$_{I-P}$ personas$_{I-P}$ pagaban$_{I-P}$ gran$_{I-P}$ cantidad$_{I-P}$ 
     de$_{I-P}$ dinero$_{I-P}$ para$_{I-P}$ enviar$_{I-P}$ sus$_{I-P}$ cartas$_{I-P}$ y$_{I-P}$ sus$_{I-P}$ 
     pagos$_{I-P}$ estaban$_{I-P}$ sujetos$_{I-P}$ al$_{I-P}$ peso$_{I-P}$ de$_{I-P}$ sus$_{I-P}$ 
     cartas$_{I-P}$ o$_{I-P}$ paquetes$_{I-P}$ y$_{I-P}$ muchos$_{I-P}$ accidentes$_{I-P}$ podrían$_{I-P}$
     causar$_{I-P}$ problemas$_{I-P}$ que$_{I-P}$ causarían$_{I-P}$ que$_{I-P}$ el$_{I-P}$ correo$_{I-P}$ 
-    no$_{I-P}$ fuera$_{I-P}$ enviado$_{E-P}$}.
-\end{center}
+    no$_{I-P}$ fuera$_{I-P}$ enviado$_{E-P}$} .$_{O}$
+\end{adjustwidth}
 
 \subsection{Modelo}
 
@@ -138,22 +138,22 @@ Como optimizador se utilizó Adam con descenso exponencial.
 
 \subsection{Preprocesamiento}
 
-El uso de este modelo se concreta a nivel de documento, en donde ya se tienen las UDAs extra'idas. Para alimentar
+El uso de este modelo se concreta a nivel de documento, en donde ya se tienen las UDAs extraídas. Para alimentar
 al modelo con los pares de UDAs y sus distancias argumentativas se seleccionan todos los pares de estos que cumplan
 que no se enlacen con ellos mismos, ejemplo $a \rightarrow a$, y que su distancia argumentativa sea menor que una
-constante $da$. Estas restricciones disminuyen el n'umero de pares extra'idos por documentos a una cantidad lineal 
-con respecto a la cantidad de UDAs presentes ya que por cada UDA solamente se tomar'ian $2 * da$ elementos como m'aximo
+constante $da$. Estas restricciones disminuyen el número de pares extraídos por documentos a una cantidad lineal 
+con respecto a la cantidad de UDAs presentes ya que por cada UDA solamente se tomarían $2 * da$ elementos como máximo
 (los que la preceden y los que la suceden). 
 
-Adem'as de las etiquetas $R$ originales del conjunto de entrenamiento entrenante se annaden elementos extras a este
-conjunto. Estos elementos son las representaciones inversas de la releci'on, ejemplo si $a \rightarrow_c b$ entonces 
-se agregar'a el par $b \rightarrow_{c^{-1}} a$ donde $c^{-1}$ es una nueva clasificación de relación que representa
+Además de las etiquetas $R$ originales del conjunto de entrenamiento entrenante se añaden elementos extras a este
+conjunto. Estos elementos son las representaciones inversas de la releción, ejemplo si $a \xrightarrow{c} b$ entonces 
+se agregará el par $b \xrightarrow{c^{-1}} a$ donde $c^{-1}$ es una nueva clasificación de relación que representa
 el inverso de la clasificación $c$. Este proceso se realiza para aumentar la cantidad de relaciones positivas en el
-conjunto entrenante, ya que a'un con las reducciones hechas existe un desbalance de clases positivas y negativas en
+conjunto entrenante, ya que aún con las reducciones hechas existe un desbalance de clases positivas y negativas en
 las relaciones.
 
 \subsection{Posporcesamiento}
 
-Para dar el resultado final se eliminan del conjunto de respuesta las relaciones inversas annadidas en el paso de 
-preprocesamiento. Por cada relaci'on inversa que se quite, se annade su respectiva relaci'on directa al conjunto
+Para dar el resultado final se eliminan del conjunto de respuesta las relaciones inversas añadidas en el paso de 
+preprocesamiento. Por cada relación inversa que se quite, se añade su respectiva relación directa al conjunto
 de salida.

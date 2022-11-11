@@ -26,46 +26,53 @@ Matemáticamente un modelo constituye una función $\hat{y} = f_{\theta}(x)$ a l
 le pasan representaciones de las entradas orginales $x$ y devuelve una salida $\hat{y}$. Esta función $f$ se encuentra
 parametrizada por el vector $\theta$ el cual constituyen los parámetros en los que el modelo se basa para realizar sus
 cálculos. La función de pérdida se puede definir como $e(y, \hat{y})$. El objetivo final del algoritmo de ajuste 
-se define como encontrar $\theta$ tal que:
+se define como encontrar $\theta$ tal que (\ref{eq:arg_min_theta}):
 
 \begin{equation}
 	\arg \min_{\theta} e(Y, f_{\theta}(X))
-\end{equation}
+\end{equation}\label{eq:arg_min_theta}
 
 Los parámetros $\theta$ eventualmente se van ajustando con algún algoritmo de optimización para que alcance 
 un valor óptimo, aunque un mínimo global en la práctica es dificil de conseguir.
 
 Una manera de observar la complejidad de estos modelos sería la cantidad de capas de procesamiento que lo integran.
-En los principios se empezaron utilizando modelos de una sola capa (\emph{shallow} en inglés) para realizar 
+En los principios se empezaron utilizando modelos de una sola capa \footnote{A estos modelos se les conoce 
+como \emph{shallow} o poco profundos} para realizar 
 las tareas, más tarde estos modelos fueron ganando en complejidad al superponerle otras dando paso al 
-aprendizaje profundo (\emph{deep learning} \textbf{DL} en inglés). La superposición se refiere
+aprendizaje profundo (\textbf{DL} por sus siglas en inglés \emph{Deep Learning}). La superposición se refiere
 a la composición de funciones $f_i$ y $f_{i+1}$ de tal forma que la imagen de $f_i$ sea compatible con el dominio de 
 $f_{i+1}$ entonces se obtiene $f_{i+2}(x) = f_{i+1}(f_i(x))$, al aplicar este esquema se pueden agregar múltiples
 capas y profundizar $f$ tanto como se desee.
 
 
-% \subsection{Representación de datos}
+\subsection{Representación de datos}
 
-% La representación de los datos de entrada constituye una parte importante en modelar un problema. Esta 
-% es la encargada de presentar datos abstractos, como imágenes, párrafos, sonidos, en formas tratables
-% por los algoritmos. Generalmente se buscan configuraciones que recojan la mayor cantidad de información 
-% de la entrada relevante al problema. 
+La representación de los datos constituye una parte importante en modelar un problema. Esta 
+es la encargada de presentar datos abstractos, como imágenes, párrafos, sonidos, en formas tratables
+por los algoritmos. Generalmente se buscan configuraciones que recojan la mayor cantidad de información 
+de la entrada relevante al problema.
 
-% En NLP la representación suele estar dada por características morfológicas
-% de las palabras, la relaciones de posición entre estas. Atributos como tamaño de palabra, 
-% ..., extraen información estructural de la palabra.
-% Word Embedding consiste en técnicas de representación de palabras como vectores reales que codifiquen atributos
-% relevantes para la tarea en cuestión.
-% La codificación de información semántica es una tarea más desafiante. Para esto se existen varios modelos 
-% como \textbf{word2vec} [TODO ref], \textbf{GloVe} (TODO Poner que signica las siglas y Referencia), \textbf{BERT}
-% (TODO Poner que signica las siglas y Referencia). En \textbf{word2vec} modelan ... (TODO continuar), \textbf{GloVe}
-% sigue el enfoque de ... (TODO continuar). \textbf{BERT} se basa en ... (TODO continuar, poner las variantes RoBERTa, etc).
+En \textbf{NLP} la representación suele estar representada a distintos niveles de granulidad.
+De menor granulidad a mayor se pueden ir mencionando los documentos, párrafos, oraciones, palabras y
+caracteres. De estos elementos es posible representarlo mediante vectores que codifiquen propiedades
+objetivas del problema a tratar como características morfológicas o semánticas de estos.
+
+Las características morfológicas son aquellas que describen cómo está formado el elemento a analizar.
+Estas pueden ser extraídas con relativa facilidad, entre tales características se encuentran tamaño, 
+cantidad, posición de palabras o párrafos, presencia de sufijos, prefijos, acentos u otros marcadores
+en el texto. Las características semánticas presentan una mayor dificultad a la hora de ser extraídas.
+Para esto se utilizan diferentes modelos que codifican esta información en vectores conocidos como 
+\emph{embeddings}. Para esto se existen varios modelos 
+como \textbf{word2vec} [TODO ref], \textbf{GloVe} (TODO Poner que signica las siglas y Referencia), \textbf{BERT}
+(TODO Poner que signica las siglas y Referencia).
+En \textbf{word2vec} modelan ... (TODO continuar), \textbf{GloVe}
+sigue el enfoque de ... (TODO continuar). \textbf{BERT} se basa en ... (TODO continuar, poner las variantes RoBERTa, etc).
 
 % \subsection{Selección de Modelo}
 
 % Este proceso consiste en seleccionar la función $f$ que procese los datos. Entre posibles candidatos
 % se encuentran una gran variedad de funciones las cuales presentan diferentes caracteristicas que las hacen explotar
-% de manera eficiente la representación y relaciones encontrados en los datos.
+% de manera eficiente diferentes representaciones y relaciones de los datos.
 
 
 \subsection{Arquitecturas}
@@ -80,7 +87,7 @@ luego aplicar una transformación no lineal $g$, conocida como función de activ
 para la obtención del resultado.
 
 \begin{equation}
-	f(\textbf{x}) = g(\textbf{\w}\textbf{x} + b)
+	f(\textbf{x}) = g(\textbf{w}\textbf{x} + b)
 \end{equation}\label{eq:perceptron}
 
 El perceptron constituye la unidad básica de las capas densas, ya que estas consisten en la aplicación
@@ -99,29 +106,31 @@ Se puede interpretar como el nivel de activación de la neurona.
 	sigm(x) = \frac{1}{1-e^{-x}}
 \end{equation}\label{eq:sigmoide}
 
-Rectified Linear Unit es definida como la parte positiva del argumento. 
+Rectified Linear Unit es definida como la parte positiva del argumento. Una ventaja que trae esta 
+función de activación es su rápido cálculo de su derivada y que previene en parte de los problemas 
+de desaparición de gradiente de la sigmoide (\ref{eq:relu}).
 
 \begin{equation}
 	relu(x) = \max(0, x)
 \end{equation}\label{eq:relu}
 
 La función de activación softmax es diferente a las anteriores en el sentido que necesita
-el vector salida de la capa densa para ser computada. Esta función convierte las $q$ salidas
-de una capa densa en una distribución de probabilidad.
+el vector salida de la capa para ser computada. Esta función convierte las $q$ salidas
+de la en una distribución de probabilidad, por esto es utilizada en tareas de clasificación (\ref{eq:softmax}).
 
 \begin{equation}
-	softmax_k(\textbf{x}) = \frac{e^(x_k)}{\sum_{i=1}^q x_i}
+	softmax_k(\textbf{x}) = \frac{e^{x_k}}{\sum_{i=1}^q x_i}
 \end{equation}\label{eq:softmax}
 
 \subsubsection{Redes Neuronales Convolucionales}
 
-Las redes neuronales convolucionales (CNN por sus siglas en inglés) son un tipo de redes usadas
+Las redes neuronales convolucionales (\textbf{CNN} por sus siglas en inglés \emph{Convoutional Neural Networks}) 
+son un tipo de redes usadas
 principalmente en tratar datos en los que su estructura espacial es relevante, por ejemplo
 en datos bidimensionales como imágenes y en unidimensionales como sonido y texto.
 Estas redes aplican de una función de kernel sobre los datos, $f * g$ donde $f$ son los
 datos, $g$ es el kernel o filtro y $*$ es el operador de convolución. La función $g$ se puede 
-aprender en el proceso o también puede ser una función de agrupación predefinida.   
-
+aprender en el proceso o también puede ser una función de agrupación predefinida. 
 Un ejemplo bidimensional de una función de kernel constituye el siguiente caso:
 
 TODO PONER UNA FOTO DE CONVOLUCION DE KERNEL
@@ -130,7 +139,7 @@ En este se observa cómo una nueva representación es computada al correr el ker
 corrimiento se puede realizar de diferentes formas, por ejemplo se puede mover de dos en dos en vez de uno en uno, este
 parámetro se le conoce como tamaño de paso (\emph{stride} en inglés). Es posible además preservar las dimensiones
 iniciales de los datos al aplicarle un aumento de los datos en los bordes de tal forma que el resultado sea de la misma
-dimensión, este aumento es generalmente rellenando con 0 los espacios convenientemente.
+dimensión, este aumento es generalmente rellenando convenientemente con 0 los espacios.
 
 TODO PONER UNA FOTO DE CONVOLUCION DE KERNEL CON PADDING Y STRIDE DIFERENTE
 
@@ -202,11 +211,13 @@ modificado por una función $g$ que distribuye los valores obteniendo el vector 
 este vector es utilizado para calcular el resultado final al aplicarle la función $o = z(a, V)$.
 
 \begin{equation}
-	\begin{align}
-		e = f(q, K) \\
-		a = g(e) \\ 
-		o = z(a, V)
-	\end{align}
+	e = f(q, K)
+\end{equation}
+\begin{equation}
+	a = g(e)
+\end{equation}
+\begin{equation}
+	o = z(a, V)
 \end{equation}
 
 En dependencia de cómo se seleccionen las funciones $f$, $g$ y $z$ se pueden obtener distintos tipos de atención.
@@ -217,7 +228,7 @@ $g$ softmax y $z$ la suma ponderada de $v_i$ con los valores de atención.
 
 % Definicion de CRF, qué modela, Ventajas de CRF en secuencias, mirar relacion con Hidden Markov Models
 
-El campo aleatorio condicional (\textbr{CRF} por sus siglas en inglés \emph{Conditional Random Field}) es un 
+El campo aleatorio condicional (\textbf{CRF} por sus siglas en inglés \emph{Conditional Random Field}) es un 
 tipo de modelo gráfico probabilístico con el objetivo de modelar eficientemente el trabajo con secuencias 
 modelando conjuntamente la probabilidad de las etiquetas de las secuencias dada sus observaciones [\cite{lafferty2001conditional}].
 En trabajos de secuencias la forma más simple que toma el grafo consiste en una cadena de las variables representando
@@ -230,7 +241,7 @@ El objetivo de \textbf{CRF} es calcular la secuencia $Y^*$ tal que:
 	\arg \max_Y P(Y | X)
 \end{equation}\label{eq:crf}
 
-En este \ref{eq:crf} se observa que devuelve la secuencia más probable dado las variables observadas o atributos $X$,
+En este (\ref{eq:crf}) se observa que devuelve la secuencia más probable dado las variables observadas o atributos $X$,
 por lo que esta capa es usada al final para problemas de clasificación de secuencias.
 
 \subsection{Evaluación del modelo}
@@ -369,8 +380,8 @@ datos en tres partes:
 Las curvas de aprendizaje constituye la principal herramienta para evaluar el proceso de aprendizaje.
 Estas están formadas por las mediciones de métricas a lo largo del entrenamiento calculadas a partir de 
 los conjuntos de validación y entrenamiento. La linea correspondiente al conjunto de entrenamiento cuantifica 
-el aprendizaje del modelo o también el error de entrenamiento y la correspondiente al de validación la 
-generalización o el error de generalización. Existen tres comportamientos escenciales:
+el aprendizaje del modelo o también el error de entrenamiento y la correspondiente a la de validación cuantifica 
+la generalización o el error de generalización. Existen tres comportamientos escenciales:
 
 \begin{itemize}
 	\item Bajo ajuste (\emph{underfitting} en inglés)
@@ -449,8 +460,8 @@ Las manera TODO
 
 \subsection{Métodos de optimización}
 
-Optimización, encontrar la solucion exacta es un problema dificil, se usan metodos para buscar soluciones aproximadas.
-Descenso por gradiente Algoritmo general, Optimizadores (Adams, Stocastic Gradient Descent, Exponential Decay)
+% Optimización, encontrar la solucion exacta es un problema dificil, se usan metodos para buscar soluciones aproximadas.
+% Descenso por gradiente Algoritmo general, Optimizadores (Adams, Stocastic Gradient Descent, Exponential Decay)
 
 El objetivo de \textbf{ML} es encontrar los extremos de una función de costo, este proceso es una tarea 
 desafiante ya que la gran mayoría de estas funciones no son convexas y por lo tanto no existe un algoritmo
@@ -464,21 +475,101 @@ en contra del gradiente para disminuir el error.
 	x_{i+1} = x_i - \alpha \nabla f(x_i)
 \end{equation}\label{eq:gradien_descent}
 
-En la ecuación anterior $\alpha$ se le conoce como tasa de aprendizaje (\emph{learning rate} en inglés).
+En la ecuación anterior $\alpha$ se le conoce como tasa de aprendizaje (\emph{learning rate} en inglés),
+este valor cuantifica cuánto se toma del vector del gradiente para actualizar los parámetros, esto 
+se puede ver como el aprendizaje del modelo.
 
 Variantes de este algoritmo eficientes para el proceso de entrenamiento de modelos de \textbf{ML} han sido 
 creadas. Entre las técnicas utilizadas se encuentran Descenso por Gradiente Estocástico (\textbf{SGD} por sus siglas 
 en inglés \emph{Stochastic Gradient Descent}) [TODO \cite{}], tasa de aprendizaje dinámica con sus diferentes
 variantes (exponencial, polinómica) [TODO \cite{}], RMSProp [TODO \cite{}] y Adam [TODO \cite{}]. 
 
-\subsection{TODO HABLAR DE GLOVE}
+\section{Extracción de Argumentos}
 
-\subsection{Tipos de Modelos}
-TODO
-	seq2seq
-	Hablar de BIO vs BIOES, COmo se realiza segmentacion con estas etiquetas
-	end-to-end 
-	Multi-Task-Learning
+Varias investigaciones y propuestas han salido para dar respuesta a los problemas asociados a EA, mostrando
+una variedad en enfoques y métodos.
+
+En [\cite{palau2009argumentation}] se propone
+el uso de modelos estadísticos como \emph{Naive Bayes} (\textbf{NB}) y \emph{Support Vector Machines} (\textbf{SVM}) 
+para la clasificación de 
+oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa, en este
+caso se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
+se usa un enfoque basados en reglas con la creación de una Gramática Libre de Contexto. Las representaciones
+de las oraciones se ven dadas por atributos creados a mano, dado el conocimiento experto sobre la argumentación
+en el tema tratado, elementos como adverbios, verbos, signos de puntuación, palabras clave, estadísticas del texto
+(Tamaño de oración, distancia media de palabras) son usados para la extracción y clasificación de las UDA, además
+se usan también como base en la creación de las relgas de la gramática para la extracción de relaciones.
+
+[\cite{goudas2015argument}] al igual que [\cite{palau2009argumentation}] clasifica las oraciones como
+argumentativas o no mediante el uso de diferentes clasificadores como \textbf{NB}, \emph{Random Forest}, Regresión
+Logística y \textbf{SVM}. En este trabajo se aumenta la grandularidad de la segmentación al permitir
+la extracción de los segmentos que contienen la carga argumentativa de dentro de las oraciones previamente clasificadas
+como tal, esto se realiza mediante la extracción de etiquetas BIO de las oraciones con el uso de un 
+\textbf{CRF}. La predicción de las relaciones es modelado como un problema de clasificación
+usando \emph{Support Vector Machine} para clasificar pares de UDA en relacionados o no. Atributos creados a mano 
+son usados en la extracción de UDA entre estos están posición de la oración en el texto, cantidad de verbos, comas, adverbios,
+palabras, entidades en la oración, también se emplean gaceteras que guardan entidades relacionadas con el dominio 
+específico y palabras clave indicadoras de frases argumentativas. 
+
+[\cite{stab2017parsing}] propone un mecanismo de segmentación basado en \textbf{CRF}. La clasificación
+y predicción de relaciones es modelado conjuntamente como con dos clasificadores \textbf{SVM} y un problema
+de Optimización Lineal Entero que encuentra la mejor estructura y asegurar una disposición arborea. En la segmentación
+de las UDA se extraen por cada token su posición en el texto, si precede o sucede a un signo de puntuación, su parte de
+la oración, la probabilidad de que sea el comienzo de una UDA dado sus tokens anteriores, entre otros. Para la extracción
+y clasificación de relaciones se proponen otros conjuntos de atributos como la cantidad de sustantivos comunes entre
+las componentes fuente y el objetivo, la presencia de indicadores argumentativos, representaciones vectoriales de tokens.
+
+En [\cite{eger2017neural}] se enfocaron en presentar el problema de EA como uno \emph{end-to-end}. 
+Para esto presentaron varias propuestas, entre ellas se encontraba
+modelar el problema como un uno de secuencia a secuencia, usando \textbf{RNN} como 
+\textbf{LSTM} en versiones bidireccionales capturando información desde ambos lados de la secuencia,
+para la representación de las palabras se extrajo información morfológica de las palabras mediante Redes Neuronales Convolucionales,
+al final realizan la clasificación de la secuencia con un \textbf{CRF}. 
+Realizaron experimentos al modelar el problema como uno de \emph{Dependency Parsing} en [\cite{kiperwasser2016simple}]. Este problema
+consiste en construir un árbol de dependencia que codifique las estructuras argumentativas, en este problema 
+se tiene que decidir entre varias opciones (\emph{shift}, \emph{reduce}) en dependencia del contenido de la pila y en el buffer.
+El problema fue modelado también como un problema de reconocimiento de entidades nombradas, en donde las entidades son las UDA.
+
+[\cite{galassi2018argumentative}] propone el uso de redes residuales y en combinación con mecanismos de atención
+para la creación de un modelo el cual, conjuntamente, clasifica el tipo de UDA y la relación existentes entre estas.
+Este trabajo define el concepto de distancia argumentativa, añadiéndolo como feature y asume que las UDA ya fueron 
+extraídas. En este caso además de la distancia argumentativa las secuencias son representadas por sus representaciones
+vectoriales de \textbf{GloVe}. Este trabajo asume la previa extracción de las UDAs.
+
+En [\cite{dykes2020reconstructing}] se propone métodos basados en reglas para la extracción de argumentos sobre
+textos en Twitter, estos métodos se centran en la confección de reglas basadas en anotaciones lingüísticas como
+partes de la oración, lemas de palabras. La recuperación está basada en los esquemas argumentativos comunes presentes
+en los textos. Este método apunta a una mayor precisión prescindiendo de recobrado. Dada las reglas creadas y el tipo
+de datos con que se trabaja, cadenas de texto pequeñas, estos algoritmos tienden a tener una alta precisión aunque 
+bajo recobrado, esto en conjuntos de datos grandes no es un gran problema, pero en conjuntos de menor tamaño o estructura 
+más compleja pierden efectividad.
+
+Se contempan disímiles enfoques al problema de EA desde una perspectiva enmarcada en modelos 
+simbólicos, estadísticos y neuronales en versiones tanto secuenciales como \emph{end-to-end}. 
+Cada uno de estos modelos presentan sus ventajas y desventajas a la hora de contruirlos, 
+extenderlos y comprender su funcionamiento. En modelos simbólicos se presenta una alta
+precisión en dominios específicos debido a que estos se construyen teniendo en cuenta reglas específicas a un
+contexto dado. Estos modelos son poco escalables y difíciles de mantener ya que son sus reglas son construídas
+a mano y dicho proceso requiere de conocimiento experto y tiempo. Modelos estadísticos son
+característicos de usar conjuntos de atributos creados a mano, dichos atributos son difíciles
+de encontrar, calcular y pueden no poseer relevancia en otros contextos diferentes a los que fueron creados. 
+Además la necesidad de conocimiento experto es necesaria para su confección. Los modelos neuronales poseen
+un mayor poder de adaptabilidad, en estos la entrada es codificada en una representación que es aprendida por
+el mismo algoritmo, permitiendo seguir viable para distintos esquemas argumentativos. Los modelos simbólicos y 
+estadísticos poseen la ventaja de poder explicar el porqué de los resultados devueltos cosa que se vuelve casi
+imposible en modelos neuronales.
+
+Dado que la EA es un proceso en el cual se necesita pasar por varias tareas, estas deben de ser completadas
+de alguna forma. Una manera de completarlas es hacerla una a la vez, independiente una de otra y pasándole
+la salida de etapas anteriores a las etapas siguientes. Esta manera secuencial de realizar las 
+tareas es bastante simple y ayuda a la creación de modelos simples y con tareas bien definidas, aunque trae consigo 
+la propagación de los errores a través del proceso y el no aprevechamiento de las interrelaciones entre variables 
+computadas de procesos anteriores. Modelos \emph{end-to-end} en cambio poseen la habilidad de modelar el problema 
+desde su inicio hasta su final de manera conjunta, mediante \emph{Multi-Task Learning} (\textbf{MTL}) se modelan
+las tareas de manera conjunta creando modelos complejos aunque con una propagación de error menor.
+
+% TODO?? Analisis de los resultados. Dado que los corpus son diferentes se ponen los mejores resultados encontrados
+% por corpus y tambien de paso algunas métricas
 
 \section{Proyección de corpus}
 
