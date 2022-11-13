@@ -1,4 +1,4 @@
-\chapter{Detalles de Implementación y Experimentos}\label{chapter:implementation}
+\chapter{Experimentación}\label{chapter:implementation}
 
 % Explicación de las métricas: F1, %F1, Precision, Recobrado
 % Con que software se hizo el modelo: Keras, Tensorflow
@@ -8,6 +8,12 @@
 % Experimentación con link prediction
 % Conclusiones: Mejor clasificar y segmentar UDA con segmenter y dejar la clasificacion de UDA como tarea auxiliar en 
 % link prediction, poner los mejores ejemplos y peores ejemplos para los mejores modelos.
+
+En el cap'itulo se describe los conjuntos de datos utilizados para el entrenamiento y validación del modelo 
+propuesto. Se mencionan las herramientas utilizadas para la confección del software. Adem'as se describe el 
+proceso de experimentación y evaluación de los modelos constru'idos con los conjuntos de datos. Finalmente
+se presentan los resultados obtenidos con los modelos al aplicarles las cartas a la dirección extra'idas 
+del periódico Granma. 
 
 \section{Conjuntos de Datos}
 
@@ -69,7 +75,9 @@ Se encontraron 874 cartas en respuesta a cartas enviadas lo que representa un 30
 los comentarios asociados a las cartas, en este sentido 987 cartas no presentan comentarios y en promedio 
 se realizan 2 comentarios por carta. Los textos presentan un título y un formato relativamente libre, 
 aunque en las cartas de respuesta se puede observar una firma de la persona que respondió y la entidad que 
-representa.
+representa. Del total de cartas se selecciaron las que fueran en respuesta a otra y también las 
+cartas que fueron respondidas para tener una mayor concentraci'on de cartas que fueran argumentativas, 
+esta selección est'a conformada por 1702 cartas lo que representa un 59\% del total de cartas.
 
 TODO SI HAY TIEMPO ANOTAR LAS CARTAS CON ALGUN ESQUEMA SENCILLO (Claim, Premise) (Attack, Support) y Mapear 
 las clasificaciones de los otros modelos a estas para tener algun tipo de evaluacion.
@@ -77,39 +85,40 @@ las clasificaciones de los otros modelos a estas para tener algun tipo de evalua
 \section{Implementación}
 
 La implementación de los modelos y algoritmos de procesamiento y visualización de datos se encuentran en 
-un repositorio de GitHub localizado en https://github.com/luisoibarra/argument-mining. Esta implementación
+un repositorio de GitHub\footnote{\url{https://github.com/luisoibarra/argument-mining}}. Esta implementación
 está concebida para que se pueda extender fácilmente para el uso con otros idiomas además del inglés y el 
 español. Se basa en una arquitectura de procesamiento secuencial en el cual cada paso del proceso realiza
 una tarea específica y lo más desacoplada posible de las otras. Las tareas realizadas son:
 
 \begin{itemize}
     \item Creación del corpus en un formato estándar. Dado que los corpus vienen en diferentes formas, este paso se realiza para trabajar sobre una misma representación de este.
-    \item Proyección del corpus de un lenguaje fuente a un lenguaje objetivo
+    \item Proyección del corpus de un lenguaje fuente a un lenguaje objetivo.
     \begin{itemize}
-        \item Traducción y alineación de oraciones
-        \item Alineación de palabras
-        \item Proyección de etiquetas
+        \item Traducción y alineación de oraciones.
+        \item Alineación de palabras.
+        \item Proyección de etiquetas.
     \end{itemize}
-    \item Extracción y clasificación de UDAs
-    \item Extracción y clasificación de las relaciones entre las UDAs
-    \item Visualización de los resultados
+    \item Extracción y clasificación de UDAs.
+    \item Extracción y clasificación de las relaciones entre las UDAs.
+    \item Visualización de los resultados.
 \end{itemize}
 
 \subsection{Herramientas}
 
-El lenguaje empleado para la confección del software fue \textbf{Python}, este presenta una gran variedad de herramientas 
+El lenguaje empleado para la confección del software fue \textbf{Python} [\cite{TODO }], este presenta 
+una gran variedad de herramientas 
 para el trabajo con texto, visualización de datos y la creación de modelos de aprendizaje profundo.
-Se utilizó \textbf{tensorflow} en su versión 2.9.2 para la construcción y entrenamiento de los modelos. 
-Para el procesamiento de los textos se utilizaron \textbf{nltk} y \textbf{spacy}, con estos se realizaron tareas
-como la extracción de tokens y oraciones del texto, la anotación de las etiquetas \textbf{POS}. Se utilizaron 
+Se utilizó \textbf{tensorflow} [\cite{TODO}] en su versión 2.9.2 para la construcción y entrenamiento de los modelos. 
+Para el procesamiento de los textos se utilizaron \textbf{nltk} [\cite{TODO}] y \textbf{spacy} [\cite{TODO}], con estos se realizaron tareas
+como la extracción de tokens y oraciones del texto, la anotación de las etiquetas POS. Se utilizaron 
 ambas bibliotecas para el procesamiento debido que en dependencia de la sitaución cada una presenta diferentes
 ventajas. En el caso de \textbf{nltk} esta presenta algoritmos rápidos para el procesamiento de texto que no 
 requieren de muchos recursos computacionales, sin embargo, estos algoritmos no están disponibles de inmediato
 para otros lenguajes como el español. \textbf{Spacy} por su parte presenta algoritmos más certeros a costo 
 de mayor tiempo de procesamiento y gasto de recursos computacionales y también presenta una cantidad de lenguajes 
 disponibles mucho mayor. Para la visualización, manejo de los datos y cálculo de métricas se utilizaron 
-\textbf{matplotlib}, \textbf{pandas} y \textbf{sklearn}. Para la recolección de las cartas del periódico 
-Granma se utilizó \textbf{scrapy}.
+\textbf{matplotlib} [\cite{TODO}], \textbf{pandas} [\cite{TODO}] y \textbf{sklearn} [\cite{TODO}]. 
+Para la recolección de las cartas del periódico Granma se utilizó \textbf{scrapy} [\cite{TODO}].
 
 \subsection{Visualización de resultados}
 
@@ -136,12 +145,12 @@ por las investigaciones originales. (TODO Poner las asignaciones de hiperparamet
 de la arquitectura se vieron dadas por la presencia o no de lo siguientes elementos:
 
 \begin{itemize}
-    \item Atributos de POS en la entrada del algoritmo
+    \item Atributos de POS en la entrada del algoritmo.
     \item Atributos extraídos por la CNN de la palabra.
     \item Atributos features extraídos por la LSTM bidireccional de la palabra.
-    \item Conexiones residuales
-    \item Capa densa final
-    \item Capas de normalizaciones
+    \item Conexiones residuales.
+    \item Capa densa final.
+    \item Capas de normalizaciones.
 \end{itemize}
 
 Los resultados obtenidos son:

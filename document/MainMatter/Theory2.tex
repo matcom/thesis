@@ -1,4 +1,4 @@
-\chapter{Preliminares}\label{chapter:background}
+\chapter{Marco te'orico y preliminares}\label{chapter:background}
 
 % Introducción a Deep Learning, Neural Networks: Tipos de aprendizaje, esquema de minimización.
 % Explicaciones de los modelos usados: Funciones de activacion, Relu, softmax
@@ -6,14 +6,21 @@
 % Explicaciones de los modelos usados: LSTM y Bidireccional, CRF, CNN, ResNet, DenseLayer, GloVe, Attention
 % Explicaciones de los modelos usados: Optimizadores Adam, Stocastic Gradient Descent, Diferenciacion automática
 
+En este cap'itulo se introducen conceptos de aprendizaje automático. Temas
+como la representación de datos, arquitecturas, evaluación de modelos son tratados en sus secciones.
+Se menciona las diferentes investigaciones realizadas en la EA a lo largo de los annos, viendo
+los enfoques tomados y la evoluci'on de estos a partir del desarrollo e introducci'on de nuevos m'etodos en el
+campo. Por 'ultimo se introduce la proyección de corpus, t'ecnica necesaria para la creación de conjuntos 
+de datos necesarios para el entrenamiento de modelos de aprendizaje automático.
+
 \section{Aprendizaje Automático}
 
 Existen varios problemas para los cuales es difícil escribir un programa de forma tradicional que pueda
 resolverlo, como decir si en una imagen existe un gato o un perro, o transcribir una grabación. En el caso
 de que se escribiera este programa probablemente sería frágil y poco escalable. El aprendizaje automático
-(\textbf{ML} por sus siglas en inglés \emph{Machine Learning}) constituye el estudio de técnicas que puedan 
+(AA) constituye el estudio de técnicas que puedan 
 aprender de la experiencia [\cite{d2l}]. Con esto se puede automatizar el proceso de encontrar soluciones a 
-dichos problemas, haciendo que sus resultados sean robustos y escalables. En \textbf{ML} existen tres tipos de 
+dichos problemas, haciendo que sus resultados sean robustos y escalables. En AA existen tres tipos de 
 aprendizaje, el aprendizaje no supervisado TODO ESCRIBIR. Otro tipo de aprendizaje es el reforzado el cual 
 TODO ESCRIBIR. Finalmente se encuentra el aprendizaje supervisado TODO ESCRIBIR. A este útlimo principalmente 
 se refiere la sección.
@@ -36,7 +43,7 @@ Los parámetros $\theta$ eventualmente se van ajustando con algún algoritmo de 
 un valor óptimo, aunque un mínimo global en la práctica es dificil de conseguir.
 
 Una manera de observar la complejidad de estos modelos sería la cantidad de capas de procesamiento que lo integran.
-En los principios se empezaron utilizando modelos de una sola capa \footnote{A estos modelos se les conoce 
+En los principios se empezaron utilizando modelos de una sola capa\footnote{A estos modelos se les conoce 
 como \emph{shallow} o poco profundos} para realizar 
 las tareas, más tarde estos modelos fueron ganando en complejidad al superponerle otras dando paso al 
 aprendizaje profundo (\textbf{DL} por sus siglas en inglés \emph{Deep Learning}). La superposición se refiere
@@ -52,7 +59,7 @@ es la encargada de presentar datos abstractos, como imágenes, párrafos, sonido
 por los algoritmos. Generalmente se buscan configuraciones que recojan la mayor cantidad de información 
 de la entrada relevante al problema.
 
-En \textbf{NLP} la representación suele estar representada a distintos niveles de granulidad.
+En PLN la representación suele estar representada a distintos niveles de granulidad.
 De menor granulidad a mayor se pueden ir mencionando los documentos, párrafos, oraciones, palabras y
 caracteres. De estos elementos es posible representarlo mediante vectores que codifiquen propiedades
 objetivas del problema a tratar como características morfológicas o semánticas de estos.
@@ -68,11 +75,12 @@ como \textbf{word2vec} [TODO ref], \textbf{GloVe} (TODO Poner que signica las si
 En \textbf{word2vec} modelan ... (TODO continuar), \textbf{GloVe}
 sigue el enfoque de ... (TODO continuar). \textbf{BERT} se basa en ... (TODO continuar, poner las variantes RoBERTa, etc).
 
-% \subsection{Selección de Modelo}
+\subsection{Modelaci'on de problemas}
 
-% Este proceso consiste en seleccionar la función $f$ que procese los datos. Entre posibles candidatos
-% se encuentran una gran variedad de funciones las cuales presentan diferentes caracteristicas que las hacen explotar
-% de manera eficiente diferentes representaciones y relaciones de los datos.
+TODO Empezar con intro
+TODO Hablar de problemas de clasificación
+TODO Hablar de los modelos seq2seq, Hablar del etiquetado BIO y BIOES, hablar de agregar meta etiquetas a este 
+tipo de problemas.
 
 
 \subsection{Arquitecturas}
@@ -84,43 +92,43 @@ final.
 
 El perceptron consiste es una transformación lineal del vector de datos $\textbf{x}$ con un bias $b$ y 
 luego aplicar una transformación no lineal $g$, conocida como función de activación, 
-para la obtención del resultado.
+para la obtención del resultado final:
 
 \begin{equation}
 	f(\textbf{x}) = g(\textbf{w}\textbf{x} + b)
-\end{equation}\label{eq:perceptron}
+\end{equation}\label{eq:perceptron}.
 
 El perceptron constituye la unidad básica de las capas densas, ya que estas consisten en la aplicación
 de este modelo varias veces sobre la misma entrada $\textbf{x}$ produciendo vectores de la dimensión $k$ 
-deseada como salida final. Los parámetros se codifican en la matriz $W$ y sus bias en el vactor $b$.
+deseada como salida final. Los parámetros se codifican en la matriz $W$ y sus bias en el vactor $b$:
 
 \begin{equation}
 	f(\textbf{x}) = g(\textbf{Wx} + \textbf{b})
-\end{equation}\label{eq:dense}
+\end{equation}\label{eq:dense}.
 
 Para las funciones de activación existen varias elecciones. Una de estas es la función sigmoide. 
 Esta devuelve un valor entre 0 y 1, es usada en tareas de regresión logística. 
-Se puede interpretar como el nivel de activación de la neurona.
+Se puede interpretar como el nivel de activación de la neurona:
 
 \begin{equation}
 	sigm(x) = \frac{1}{1-e^{-x}}
-\end{equation}\label{eq:sigmoide}
+\end{equation}\label{eq:sigmoide}.
 
-Rectified Linear Unit es definida como la parte positiva del argumento. Una ventaja que trae esta 
+\emph{Rectified Linear Unit} (ReLU) es definida como la parte positiva del argumento. Una ventaja que trae esta 
 función de activación es su rápido cálculo de su derivada y que previene en parte de los problemas 
-de desaparición de gradiente de la sigmoide (\ref{eq:relu}).
+de desaparición de gradiente de la sigmoide:
 
 \begin{equation}
 	relu(x) = \max(0, x)
-\end{equation}\label{eq:relu}
+\end{equation}\label{eq:relu}.
 
 La función de activación softmax es diferente a las anteriores en el sentido que necesita
 el vector salida de la capa para ser computada. Esta función convierte las $q$ salidas
-de la en una distribución de probabilidad, por esto es utilizada en tareas de clasificación (\ref{eq:softmax}).
+de la en una distribución de probabilidad, por esto es utilizada en tareas de clasificación:
 
 \begin{equation}
 	softmax_k(\textbf{x}) = \frac{e^{x_k}}{\sum_{i=1}^q x_i}
-\end{equation}\label{eq:softmax}
+\end{equation}\label{eq:softmax}.
 
 \subsubsection{Redes Neuronales Convolucionales}
 
@@ -168,7 +176,6 @@ TODO FOTO DE RESNET. d2l pag 289
 
 \subsubsection{Redes Neuronales Recurrentes}
 
-% Definicion de RNN, LSTM, Bidireccional, Ventajas de RNN en secuencias
 Las redes neuronales recurrentes (\textbf{RNN} por sus siglas en inglés \emph{Recurrent Neural Networks}) son
 un tipo especial de arquitectura especializada en el trabajo con datos secuenciales. Este tipo de arquitecturas
 presentan variables en las que se almacenan información pasada que es usada para el computo de la salida. El 
@@ -238,15 +245,15 @@ a las variables $Y$ [\cite{wallach2004conditional}].
 El objetivo de \textbf{CRF} es calcular la secuencia $Y^*$ tal que:
 
 \begin{equation}
-	\arg \max_Y P(Y | X)
-\end{equation}\label{eq:crf}
+	Y^* = \arg \max_Y P(Y | X)
+\end{equation}\label{eq:crf}.
 
-En este (\ref{eq:crf}) se observa que devuelve la secuencia más probable dado las variables observadas o atributos $X$,
+En este se observa que devuelve la secuencia más probable dado las variables observadas o atributos $X$,
 por lo que esta capa es usada al final para problemas de clasificación de secuencias.
 
 \subsection{Evaluación del modelo}
 
-En \textbf{ML} los modelos necesitan maneras de expresar qué tan buenos son 
+En AA los modelos necesitan maneras de expresar qué tan buenos son 
 en las tareas encomendadas. Para esto se crean funciones que evalúan los resultados obtenidos
 por dichos modelos, estas funciones se les da el nombre de métricas. Existen diferentes tipos de
 métricas para tratar con diferentes tipos de problemas. En aprendizaje supervisado una métrica se
@@ -255,53 +262,17 @@ hechas por el modelo. En algoritmos de aprendizaje no supervisado como K-Means, 
 donde $\hat{Y}$ son las predicciones finales. En comparación con su versión supervisada estas funciones no tiene acceso
 a las predicciones verdaderas del problema.
 
-\subsubsection{Regresión}
-
-En problemas de regresión se emplean comúnmente
-métricas como error medio cuadrático (MSE por sus siglas en inglés \emph{Mean Squared Error}), 
-raíz de MSE (RMSE por sus siglas en inglés \emph{Root Mean Squared Error}),
-error medio absoluto (MAE por sus siglas en inglés \emph{Mean Absolute Error}) y error absoluto promedio porcentual 
-(MAPE por sus siglas en inglés \emph{Mean Absolute Percentage Error}) [\cite{botchkarev2019new}].
-
-\begin{figure}
-	\begin{equation}\label{metric:MSE}
-		mse(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} (Y_i - \hat{Y}_i)^2
-	\end{equation}
-	\caption{MSE}
-\end{figure}
-
-\begin{figure}
-	\begin{equation}\label{metric:RMSE}
-		rmse(Y, \hat{Y}) = \sqrt{mse(Y, \hat{Y})}
-	\end{equation}
-	\caption{RMSE}
-\end{figure}
-
-\begin{figure}
-	\begin{equation}\label{metric:MAE}
-		mae(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} |Y_i - \hat{Y}_i|
-	\end{equation}
-	\caption{MAE}
-\end{figure}
-
-\begin{figure}
-	\begin{equation}\label{metric:MAPE}
-		mape(Y, \hat{Y}) = \frac{1}{N} \sum^{N}_{i=1} |\frac{Y_i - \hat{Y}_i}{Y_i}|
-	\end{equation}
-	\caption{MAPE}
-\end{figure}
-
 \subsubsection{Clasificación}
 
-En problemas de clasificación son empleadas otras medidas que toman en cuenta la naturaleza discreta del problema. 
-Medidas como precisión, recobrado, certeza (accuracy en inglés) y F1 son utilizadas principalmente en la 
+En problemas de clasificación son empleadas medidas que toman en cuenta la naturaleza discreta de su conjunto im'agen.
+Medidas como precisión, recobrado, certeza (\emph{accuracy} en inglés) y F1 son utilizadas principalmente en la 
 evaluación de los resultados, mientras que como función de error se usa entropía cruzada comúnmente 
 (\emph{cross entropy} en inglés) [\cite{grandini2020metrics}].
 
 La matriz de confusión es una via de representar los resultados de dos clasificadores. Esta matriz en $M_{ij}$ 
 indica la cantidad de elementos que clasificó como clase $i$ el primer clasificador y
 como clase $j$ el segundo clasificador. En su uso práctico
-un clasificador son las etiquetas verdaderas mientras que el otro es el clasiificador que se está evaluando. 
+un clasificador son las etiquetas verdaderas mientras que el otro es el clasificador que se está evaluando. 
 En problemas de la clasificación binaria, donde se busca saber si existe pertenencia o no de un elemento a una clase,
 se pueden observar los siguientes casos.
 
@@ -320,14 +291,14 @@ elementos clasificados:
 
 \begin{equation}
 	prec_i = \frac{VP}{VP + FP}
-\end{equation}
+\end{equation}.
 
 En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todas
 las precisiones de las clases existentes:
 
 \begin{equation}
 	prec_{macro} = \sum^K_{i=1} \frac{prec_i}{K}
-\end{equation}
+\end{equation}.
 
 El recobrado es la medida que indica la probabilidad de que se clasifique correctamente un elemento de la clase
 del total existente. Esto se puede observar como la proporción de los elementos correctamente clasificados sobre el 
@@ -335,31 +306,35 @@ total de elementos que pertenecen a la clase:
 
 \begin{equation}
 	rec_i = \frac{VP}{VP + FN}
-\end{equation}
+\end{equation}.
 
 En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todos
 los recobrados de las clases existentes:
 
 \begin{equation}
 	rec_{macro} = \sum^K_{i=1} \frac{rec_i}{K}
-\end{equation}
+\end{equation}.
 
 La medida F1 es la media armónica de la precisión y el recobrado. En esta la contribución de la precisión y el
 recobrado al resultado final es el mismo, aunque es posible buscar variaciones de acuerdo a al problema a tratar:
 
 \begin{equation}
-	f1_i = 2 (\frac{prec_i * rec_i}{prec_i + rec_i})
-\end{equation}
+	f1_i = 2 (\frac{prec_i · rec_i}{prec_i + rec_i})
+\end{equation}.
 
 En problemas de clasificación múltiple surge la versión macro de esta medida calculada la propia medida F1 pero
 utilizando la precisión y recobrado macro del problema:
 
 \begin{equation}
-	f1_{macro} = 2 (\frac{prec_{macro} * rec_{macro}}{prec_{macro} + rec_{macro}})
-\end{equation}
+	f1_{macro} = 2 (\frac{prec_{macro} · rec_{macro}}{prec_{macro} + rec_{macro}})
+\end{equation}.
 
-La entropía cruzada se encarga de evaluar qué tan diferentes son dos funciones de distribución $p$ y $q$, por lo que
-pequeños valores de esta indican mayor similitud. En su versión discreta se formula:
+Las m'etricas anteriores est'an acotadas por los valores 0 y 1 donde 1 representa la mejor evaluación y 0 la 
+peor.
+
+La entropía cruzada se encarga de evaluar qué tan diferentes son dos funciones de distribución $p$ y $q$, su 
+resultado es un n'umero no negativo que a medida que sean m'as pequeños los valores indican mayor similitud. 
+En su versión discreta se formula:
 
 \begin{equation}
 	H(p, q) = - \sum_{x \in D} p(x) \log q(x)
@@ -384,9 +359,9 @@ el aprendizaje del modelo o también el error de entrenamiento y la correspondie
 la generalización o el error de generalización. Existen tres comportamientos escenciales:
 
 \begin{itemize}
-	\item Bajo ajuste (\emph{underfitting} en inglés)
-	\item Sobreajuste (\emph{overfitting} en inglés)
-	\item Buen ajuste
+	\item Bajo ajuste (\emph{underfitting} en inglés).
+	\item Sobreajuste (\emph{overfitting} en inglés).
+	\item Buen ajuste.
 \end{itemize}
 
 El bajo ajuste ocurre cuando el modelo no es capaz de aprender del conjunto de datos o cuando este aún puede aprender 
@@ -443,7 +418,7 @@ El aumento de datos consiste en acciones para aumentar la diversidad de un conju
 nuevos datos explícitamente [\cite{feng2021data}]. En datos continuos, como imágenes o valores numéricos el 
 aumento de datos puede ser realizado al añadirle perturbaciones a entradas existentes, en caso de las imágenes 
 técnicas como el volteado (\emph{flipping}) o recortado (\emph{cropping}) son usadas. Los textos son un tipo 
-de datos discreto y por lo tanto las técnicas anteriores no pueden ser aplicadas directamente. Para \textbf{NLP}
+de datos discreto y por lo tanto las técnicas anteriores no pueden ser aplicadas directamente. Para PLN
 se han estudiado diversas técnicas para el aumento de datos, una de estas consiste en el cambio del árbol de 
 dependencia de la oración mediante operaciones de intercambio y borrado de nodos [TODO \cite{}], también se han utilizado 
 gaceteras para el intercambio de palabras por sinónimos [TODO \cite{}], la traducción de textos hacia un lenguaje y luego 
@@ -463,7 +438,7 @@ Las manera TODO
 % Optimización, encontrar la solucion exacta es un problema dificil, se usan metodos para buscar soluciones aproximadas.
 % Descenso por gradiente Algoritmo general, Optimizadores (Adams, Stocastic Gradient Descent, Exponential Decay)
 
-El objetivo de \textbf{ML} es encontrar los extremos de una función de costo, este proceso es una tarea 
+El objetivo de AA es encontrar los extremos de una función de costo, este proceso es una tarea 
 desafiante ya que la gran mayoría de estas funciones no son convexas y por lo tanto no existe un algoritmo
 que asegure la convergencia hacia un extremo global. Para resolver este problema exiten múltiples heurísticas,
 la más usasda es el descenso por gradiente, este algoritmo contiene múltiples variaciones. La idea básica consiste 
@@ -479,7 +454,7 @@ En la ecuación anterior $\alpha$ se le conoce como tasa de aprendizaje (\emph{l
 este valor cuantifica cuánto se toma del vector del gradiente para actualizar los parámetros, esto 
 se puede ver como el aprendizaje del modelo.
 
-Variantes de este algoritmo eficientes para el proceso de entrenamiento de modelos de \textbf{ML} han sido 
+Variantes de este algoritmo eficientes para el proceso de entrenamiento de modelos de AA han sido 
 creadas. Entre las técnicas utilizadas se encuentran Descenso por Gradiente Estocástico (\textbf{SGD} por sus siglas 
 en inglés \emph{Stochastic Gradient Descent}) [TODO \cite{}], tasa de aprendizaje dinámica con sus diferentes
 variantes (exponencial, polinómica) [TODO \cite{}], RMSProp [TODO \cite{}] y Adam [TODO \cite{}]. 
@@ -490,7 +465,7 @@ Varias investigaciones y propuestas han salido para dar respuesta a los problema
 una variedad en enfoques y métodos.
 
 En [\cite{palau2009argumentation}] se propone
-el uso de modelos estadísticos como \emph{Naive Bayes} (\textbf{NB}) y \emph{Support Vector Machines} (\textbf{SVM}) 
+el uso de modelos estadísticos como \emph{Naive Bayes} (\textbf{NB}) y \emph{Support Vector Machine} (\textbf{SVM}) 
 para la clasificación de 
 oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa, en este
 caso se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
@@ -506,7 +481,7 @@ Logística y \textbf{SVM}. En este trabajo se aumenta la grandularidad de la seg
 la extracción de los segmentos que contienen la carga argumentativa de dentro de las oraciones previamente clasificadas
 como tal, esto se realiza mediante la extracción de etiquetas BIO de las oraciones con el uso de un 
 \textbf{CRF}. La predicción de las relaciones es modelado como un problema de clasificación
-usando \emph{Support Vector Machine} para clasificar pares de UDA en relacionados o no. Atributos creados a mano 
+usando \textbf{SVM} para clasificar pares de UDA en relacionados o no. Atributos creados a mano 
 son usados en la extracción de UDA entre estos están posición de la oración en el texto, cantidad de verbos, comas, adverbios,
 palabras, entidades en la oración, también se emplean gaceteras que guardan entidades relacionadas con el dominio 
 específico y palabras clave indicadoras de frases argumentativas. 
@@ -544,7 +519,7 @@ de datos con que se trabaja, cadenas de texto pequeñas, estos algoritmos tiende
 bajo recobrado, esto en conjuntos de datos grandes no es un gran problema, pero en conjuntos de menor tamaño o estructura 
 más compleja pierden efectividad.
 
-Se contempan disímiles enfoques al problema de EA desde una perspectiva enmarcada en modelos 
+En resumen se contempan disímiles enfoques al problema de EA desde una perspectiva enmarcada en modelos 
 simbólicos, estadísticos y neuronales en versiones tanto secuenciales como \emph{end-to-end}. 
 Cada uno de estos modelos presentan sus ventajas y desventajas a la hora de contruirlos, 
 extenderlos y comprender su funcionamiento. En modelos simbólicos se presenta una alta
@@ -568,12 +543,9 @@ computadas de procesos anteriores. Modelos \emph{end-to-end} en cambio poseen la
 desde su inicio hasta su final de manera conjunta, mediante \emph{Multi-Task Learning} (\textbf{MTL}) se modelan
 las tareas de manera conjunta creando modelos complejos aunque con una propagación de error menor.
 
-% TODO?? Analisis de los resultados. Dado que los corpus son diferentes se ponen los mejores resultados encontrados
-% por corpus y tambien de paso algunas métricas
-
 \section{Proyección de corpus}
 
-La EA no es un campo de NLP que presenta una gran cantidad de datos anotados con los cuales se pueda realizar 
+La EA no es un campo de PLN que presenta una gran cantidad de datos anotados con los cuales se pueda realizar 
 un entrenamiento, además de esto la gran mayoría de corpus existentes se encuentran en lenguajes como inglés o alemán,
 haciendo difícil el desarrollo de esta rama en otros lenguajes.
 La escasez de estos datos es en gran parte debida al elevado costo monetario, de tiempo y de recursos humanos que se utiliza
@@ -586,7 +558,13 @@ transfieren las etiquetas de un corpus anotado a nivel de tokens en un lenguaje 
 lenguaje objetivo. Transferencia directa se refiere a (TODO completar)
 En [\cite{eger2018cross}] se muestra que la proyección constituye una mejor alternativa sobre la transferencia
 directa y presentan un algoritmo para realizar la proyección de las etiquetas dadas las alineaciones de palabras.
-El proceso se divide en varias partes.
+El proceso se divide en varias partes:
+
+\begin{enumerate}
+	\item Traducción de oraciones.
+	\item Alineación de palabras.
+	\item Proyección de etiquetas.
+\end{enumerate}
 
 \subsection{Traducción de oraciones}
 
