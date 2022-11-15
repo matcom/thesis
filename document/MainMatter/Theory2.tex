@@ -1,11 +1,5 @@
 \chapter{Marco te'orico y preliminares}\label{chapter:background}
 
-% Introducción a Deep Learning, Neural Networks: Tipos de aprendizaje, esquema de minimización.
-% Explicaciones de los modelos usados: Funciones de activacion, Relu, softmax
-% Explicaciones de los modelos usados: Funciones de error, categorical crossentropy
-% Explicaciones de los modelos usados: LSTM y Bidireccional, CRF, CNN, ResNet, DenseLayer, GloVe, Attention
-% Explicaciones de los modelos usados: Optimizadores Adam, Stocastic Gradient Descent, Diferenciacion automática
-
 En este cap'itulo se introducen conceptos de aprendizaje automático. Temas
 como la representación de datos, arquitecturas, evaluación de modelos son tratados en sus secciones.
 Se menciona las diferentes investigaciones realizadas en la EA a lo largo de los annos, viendo
@@ -21,9 +15,16 @@ de que se escribiera este programa probablemente sería frágil y poco escalable
 (AA) constituye el estudio de técnicas que puedan 
 aprender de la experiencia [\cite{d2l}]. Con esto se puede automatizar el proceso de encontrar soluciones a 
 dichos problemas, haciendo que sus resultados sean robustos y escalables. En AA existen tres tipos de 
-aprendizaje, el aprendizaje no supervisado TODO ESCRIBIR. Otro tipo de aprendizaje es el reforzado el cual 
-TODO ESCRIBIR. Finalmente se encuentra el aprendizaje supervisado TODO ESCRIBIR. A este útlimo principalmente 
-se refiere la sección.
+aprendizaje:
+\begin{itemize}
+	\item Aprendizaje no supervisado: Trabaja sobre datos no anotados y los algoritmos tratan de 
+	extraer información de estos.
+	\item Aprendizaje reforzado: Trabaja en la creación de agentes que interact'uen con 
+	un ambiente obteniendo información de qu'e tan buenas son las acciones realizadas.
+	\item Aprendizaje supervisado: Trabaja sobre datos anotados y los algoritmos tratan de minimizar
+	el error cometido en las predicciones.
+\end{itemize}
+A este útlimo principalmente se refiere la sección.
 
 Los componentes básicos de un problema de aprendizaje supervisado se pueden resumir en los datos de los que 
 aprender, el modelo para transformar los datos, una función de pérdida que cuantifica qué tan malo o bueno es el 
@@ -68,20 +69,39 @@ Las características morfológicas son aquellas que describen cómo está formad
 Estas pueden ser extraídas con relativa facilidad, entre tales características se encuentran tamaño, 
 cantidad, posición de palabras o párrafos, presencia de sufijos, prefijos, acentos u otros marcadores
 en el texto. Las características semánticas presentan una mayor dificultad a la hora de ser extraídas.
-Para esto se utilizan diferentes modelos que codifican esta información en vectores conocidos como 
-\emph{embeddings}. Para esto se existen varios modelos 
-como \textbf{word2vec} [TODO ref], \textbf{GloVe} (TODO Poner que signica las siglas y Referencia), \textbf{BERT}
-(TODO Poner que signica las siglas y Referencia).
-En \textbf{word2vec} modelan ... (TODO continuar), \textbf{GloVe}
-sigue el enfoque de ... (TODO continuar). \textbf{BERT} se basa en ... (TODO continuar, poner las variantes RoBERTa, etc).
+Para esto se utilizan diferentes modelos que codifican esta información en vectores continuos conocidos como 
+\emph{embeddings}, entre los modelos existentes se encuentran
+\textbf{word2vec} [\cite{mikolov2013efficient}], 
+\emph{Global Vectors} (\textbf{GloVe}) [\cite{pennington2014glove}], 
+\emph{Bidirectional Encoder Representations from Transformers} (\textbf{BERT}) [\cite{devlin2018bert}],
+entre otros.
 
 \subsection{Modelaci'on de problemas}
 
-TODO Empezar con intro
-TODO Hablar de problemas de clasificación
-TODO Hablar de los modelos seq2seq, Hablar del etiquetado BIO y BIOES, hablar de agregar meta etiquetas a este 
-tipo de problemas.
+Los problemas en la vida real se presentan en un principio como una descripci'on a un nivel de abstracci'on 
+m'as alto que el requerido por los algoritmos existentes, se hablan de entidades abstractas como im'agenes,
+sonidos, textos o usuarios, además de la información que se desea extraer o las operaciones que se
+desean aplicar sobre estas entidades. A lo largo del desarrollo de la AA han aparecido diferentes tipos de problemas 
+que aparecen frecuentemente en la pr'actica y sus respectivas maneras de solucionarlos. Uno de estos tipos de problemas
+es el de secuencia a secuencia (\emph{seq2seq}), cuyo objetivo es la conversión de una secuencia en un dominio de entrada a otra 
+secuencia en un dominio de salida. Con este tipo de problemas se modelan tareas como traducción automática, en 
+donde el dominio de entrada es texto en un lenguaje objetivo y el dominio de salida es texto en un lenguaje objetivo,
+otro problema que se resuelve con este tipo de problemas es la segmentación de texto, cuya entrada es una lista de tokens
+y la salida son etiquetas que indican cuando empieza y termina un segmento de texto. Las etiquetas utilizadas para 
+la segmentación generalmente son:
 
+\begin{itemize}
+	\item B (\emph{begin}): Representa el inicio del segmento.
+	\item I (\emph{inside}): Representa la continuaci'on del segmento previamente iniciado.
+	\item O (\emph{outside}): Representa la no pertenencia a un segmento.
+\end{itemize}
+
+Este esquema presenta una versi'on m'as elaborada en la que se agregan dos clases que representan el final 
+de un segmento E (\emph{end}) y un segmento de un solo elemento S (\emph{single}). La tarea anterior es 
+utilizada como base para otra un poco m'as compleja, en la que adem'as de segmentar el texto se desea clasificar 
+el tipo de este. Para este problema se annaden meta etiquetas correspondientes a los tipos a identificar $C$ 
+obteniendo un conjunto final $R = \{ B, I, E, S \} \times C \cup \{ O \}$. En tareas como la extracción de entidades
+nombradas este m'etodo es empleado al ser el conjunto $C$ las posibles categor'ias de entidades a identificar.
 
 \subsection{Arquitecturas}
 
@@ -141,7 +161,14 @@ datos, $g$ es el kernel o filtro y $*$ es el operador de convolución. La funci�
 aprender en el proceso o también puede ser una función de agrupación predefinida. 
 Un ejemplo bidimensional de una función de kernel constituye el siguiente caso:
 
-TODO PONER UNA FOTO DE CONVOLUCION DE KERNEL
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/kernel_convolution.png}
+        \end{center}
+	    \caption{Convolución con kernel (Tomado de \cite{d2l} p'ag. 241).}\label{fig:conv_kernel}
+	\end{center}
+\end{figure}
 
 En este se observa cómo una nueva representación es computada al correr el kernel por la matriz de datos. Este
 corrimiento se puede realizar de diferentes formas, por ejemplo se puede mover de dos en dos en vez de uno en uno, este
@@ -149,7 +176,14 @@ parámetro se le conoce como tamaño de paso (\emph{stride} en inglés). Es posi
 iniciales de los datos al aplicarle un aumento de los datos en los bordes de tal forma que el resultado sea de la misma
 dimensión, este aumento es generalmente rellenando convenientemente con 0 los espacios.
 
-TODO PONER UNA FOTO DE CONVOLUCION DE KERNEL CON PADDING Y STRIDE DIFERENTE
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/kernel_convolution_padding.png}
+        \end{center}
+	    \caption{Convolución con kernel con \emph{padding}(Tomado de \cite{d2l} p'ag. 241).}\label{fig:conv_kernel_padding}
+	\end{center}
+\end{figure}
 
 Existen varias funciones de agrupación usadas. Entre estas se encuentran las de agrupación máxima, de 
 agrupación media. Como sus nombres indican, la de agrupación máxima devuelve el valor máximo de los encontrados
@@ -172,7 +206,14 @@ dicho bloque no pierde poder expresivo dado que en caso de que su aporte sea con
 se tendría que aprender solamente la función $f(x) - x$ donde $x$ es la entrada del bloque para mitigar el 
 efecto de la conexión residual y $f$ es la función aprendida por el bloque sin la conexión residual.
 
-TODO FOTO DE RESNET. d2l pag 289
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/resnet.png}
+        \end{center}
+	    \caption{Bloque residual (Tomado de \cite{d2l} p'ag. 289).}\label{fig:res_block}
+	\end{center}
+\end{figure}
 
 \subsubsection{Redes Neuronales Recurrentes}
 
@@ -188,14 +229,21 @@ modelos autorregresivos latentes.
 
 Estos modelos presentan problemas de gradientes ya que estas pueden volverse extremadamente grandes o desaparecer.
 Para esto se han creado arquitecturas que disminuyen estos problemas. Una de estas arquitecturas es las memorias
-de corto largo plazo (\textbf{LSTM} for sus siglas en inglés \emph{Long Short Term Memory}) [\cite{TODO lstm}].
+de corto largo plazo (\textbf{LSTM} for sus siglas en inglés \emph{Long Short Term Memory}) [\cite{hochreiter1997long}].
 Este modelo guarda un contexto del procesamiento y está constituído por varias compuertas que regulan las 
 actualizaciones de los estados internos. \textbf{LSTM} posee dos variables de estado, la memoria $C$ y el estado 
 oculto $H$. Entre sus compuertas se encuentran la compuerta de olvido, esta regula cuanto de la memoria permanece
 en el proximo paso, la compuerta de entrada ajusta la cantidad de información nueva que estrará, la compuerta 
 de salida maneja el calculo del próximo estado oculto.
 
-TODO FOTO DE LSTM d2l pag 357
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/rnn_lstm.png}
+        \end{center}
+	    \caption{LSTM (Tomado de \cite{d2l} p'ag. 357).}\label{fig:rnn_lstm}
+	\end{center}
+\end{figure}
 
 El método de aprendizaje de las \textbf{RNN} solamente observa los elementos anteriores de la secuencia, aunque existen
 tareas en las que observando los elementos posteriores brinda más contexto e información a la tarea sin que interfiera
@@ -204,7 +252,15 @@ consiste en además de hacer la corrida de inicio a final de la secuencia, se re
 inicio de esta, estas corridas van generando dos estados ocultos $\overrightarrow{H}_{i}$ y $\overleftarrow{H}_{i}$
 que luego son mezclados para obtener el contexto final $H_i$.
 
-TODO FOTO DE BIDIRECTIONAL LSTM d2l pag 367
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/rnn_bidirectional.png}
+        \end{center}
+	    \caption{Red neuronal bidireccional (Tomado de \cite{d2l} p'ag. 367).}\label{fig:rnn_bidirectional}
+	\end{center}
+\end{figure}
+
 
 \subsubsection{Atención}
 
@@ -283,7 +339,16 @@ se pueden observar los siguientes casos.
 	\item Falsos Negativos (FN): Elementos clasificados incorrectamente que no pertenecen a la clase.
 \end{itemize}
 
-TODO FOTO DE MATRIZ DE CONFUSION BINARIA
+\begin{figure}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|c|} \hline
+		Clases		& Positivo	& Negativo  \\ \hline
+		Positivo	& VP  		& FN		\\ \hline
+		Negativo	& FP		& VN		\\ \hline
+		\end{tabular}
+	\caption{Matriz de confusión binaria}\label{fig:confusion_matrix}
+	\end{center}
+\end{figure}
 
 La precisión es la medida que indica la probabilidad de que la clasificación de una clase sea correcta. Esto 
 se puede observar como la proporción de los elementos correctamente clasificados sobre el total de 
@@ -367,7 +432,16 @@ la generalización o el error de generalización. Existen tres comportamientos e
 El bajo ajuste ocurre cuando el modelo no es capaz de aprender del conjunto de datos o cuando este aún puede aprender 
 más. Las curvas de aprendizaje en estos casos se caracterizan por ser una linea plana o valores ruidosos con alta pérdida.
 
-TODO FOTO de LO DICHO ANTERIOR. Guiarse por el libro [brownlee2018better]
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/underfit_missing_training.png}
+			\includegraphics[scale=.3]{Graphics/underfit_not_learning.png}
+        \end{center}
+	    \caption{Curvas de entrenamiento con bajo ajuste por falta de entrenamiento (izquierda) 
+		y por modelo que no aprende de los datos (derecha) (Tomado de \cite{brownlee2018better} p'ag. XXVII).}\label{fig:underfit}
+	\end{center}
+\end{figure}
 
 Entre las formas más sencillas de combatir el bajo ajuste de los modelos consiste en complejizar el modelo, al añadir
 capas o aumentar las dimensiones se este aumenta la expresividad de este y por lo tanto su ajuste. Si este método 
@@ -379,7 +453,14 @@ el ruido en estos datos, esto trae consigo que falla en generalizar el problema 
 características de este fenómeno presentan una divergencia en los errores de entrenamiento y validación a medida
 que se entrena el modelo, mientras que la de entrenamiento mejora la de validación tiende a empeorar. 
 
-TODO FOTO de OVERFITTING. Guiarse por el libro [brownlee2018better]
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/overfit_raising_val_error.png}
+        \end{center}
+	    \caption{Curvas de entrenamiento con sobreajuste (Tomado de \cite{brownlee2018better} p'ag. XXIX).}\label{fig:overfit}
+	\end{center}
+\end{figure}
 
 Existen varios métodos para combatir el sobreajuste, uno sencillo es simplificar el modelo quitándole capas 
 o disminuyendo sus dimensiones. Además de esto existen regularizaciones que se pueden aplicar para evitar que 
@@ -395,7 +476,14 @@ se sobreentrene el modelo.
 Finalmente un buen ajuste es el resultado que se alcanza cuando tanto la curva de validación como de entrenamiento
 presentan valores pequeños y similares, consecuentes con una correcto aprendizaje y generalización.
 
-TODO FOTO de Good Fit. Guiarse por el libro [brownlee2018better]
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/good_fit.png}
+        \end{center}
+	    \caption{Curvas de entrenamiento con buen ajuste (Tomado de \cite{brownlee2018better} p'ag. XXX).}\label{fig:god_fit}
+	\end{center}
+\end{figure}
 
 Otro problema observable a partir del análisis de las curvas de aprendizaje constituye la detección de conjuntos
 de datos no representativos. Un conjunto de datos no representativo es uno que puede no 
@@ -407,7 +495,16 @@ validación se presenta como una curva ruidosa, también se puede dar el caso de
 sea más fácil de predecir que el de entrenamiento, en este caso se observa como la curva de validación permanece
 siempre por debajo de la de entrenamiento.
 
-TODO FOTO de Unrepresentative Train Data, Unrepresentative Dev Data (Noise, Easier than train). Guiarse por el libro [brownlee2018better]
+\begin{figure}[h!]
+	\begin{center}
+		\begin{center}
+			\includegraphics[scale=.3]{Graphics/unrepresentative_dev_set.png}
+			\includegraphics[scale=.3]{Graphics/unrepresentative_train_set.png}
+        \end{center}
+	    \caption{Curvas de entrenamiento con datos poco representativos en el conjunto de validación (izquierda) 
+		y en el conjunto de entrenamiento (derecha) (Tomado de \cite{brownlee2018better} p'ag. XXXII).}\label{fig:unrepresentative_data}
+	\end{center}
+\end{figure}
 
 Para combatir estos problemas se puede aumentar la cantidad de elementos en los conjuntos de entrenamiento o 
 validación en dependencia de donde ocurra.
@@ -420,23 +517,20 @@ aumento de datos puede ser realizado al añadirle perturbaciones a entradas exis
 técnicas como el volteado (\emph{flipping}) o recortado (\emph{cropping}) son usadas. Los textos son un tipo 
 de datos discreto y por lo tanto las técnicas anteriores no pueden ser aplicadas directamente. Para PLN
 se han estudiado diversas técnicas para el aumento de datos, una de estas consiste en el cambio del árbol de 
-dependencia de la oración mediante operaciones de intercambio y borrado de nodos [TODO \cite{}], también se han utilizado 
-gaceteras para el intercambio de palabras por sinónimos [TODO \cite{}], la traducción de textos hacia un lenguaje y luego 
-de vuelta al lenguaje origen es otro ejemplo o \emph{backtranslation} en inglés. 
+dependencia de la oración mediante operaciones de intercambio y borrado de nodos [\cite{csahin2019data}], también se han utilizado 
+el intercambio de palabras por sinónimos [\cite{dai2020analysis}], la traducción de textos hacia un lenguaje y luego 
+de vuelta al lenguaje origen es otro ejemplo (\emph{backtranslation}) [\cite{sennrich2015improving}]. 
 
 \subsection{Aprendizaje Conjunto}
 
 El aprendizaje conjunto (\emph{ensemble learning} en inglés) constituyen técnicas encaminadas al aprovechamiento
 de soluciones encontradas por diferentes modelos combinándolas y mejorándolas para encontrar una mejor solución 
 al problema. Estos métodos son efectivos en la reducción de la varianza y el bias de los resultados obteniendo así
-mejores resultados [\cite{dietterich2002ensemble}] 
-
-Las manera TODO
+mejores resultados [\cite{dietterich2002ensemble}]. Una forma de este tipo de aprendizaje en problemas de 
+clasificación constituye el voto conjunto, en donde los diferentes clasificadores votan sobre la clase a la que 
+pertenece el elemento y al final se asigna la etiqueta que m'as votos obtuvo.
 
 \subsection{Métodos de optimización}
-
-% Optimización, encontrar la solucion exacta es un problema dificil, se usan metodos para buscar soluciones aproximadas.
-% Descenso por gradiente Algoritmo general, Optimizadores (Adams, Stocastic Gradient Descent, Exponential Decay)
 
 El objetivo de AA es encontrar los extremos de una función de costo, este proceso es una tarea 
 desafiante ya que la gran mayoría de estas funciones no son convexas y por lo tanto no existe un algoritmo
@@ -455,9 +549,11 @@ este valor cuantifica cuánto se toma del vector del gradiente para actualizar l
 se puede ver como el aprendizaje del modelo.
 
 Variantes de este algoritmo eficientes para el proceso de entrenamiento de modelos de AA han sido 
-creadas. Entre las técnicas utilizadas se encuentran Descenso por Gradiente Estocástico (\textbf{SGD} por sus siglas 
-en inglés \emph{Stochastic Gradient Descent}) [TODO \cite{}], tasa de aprendizaje dinámica con sus diferentes
-variantes (exponencial, polinómica) [TODO \cite{}], RMSProp [TODO \cite{}] y Adam [TODO \cite{}]. 
+creadas, las variaciones se encuentran principalmente en la selección de $\alpha$ en cada paso y la 
+selección de los conjuntos de datos con que se estimar'a el gradiente. Entre las técnicas utilizadas se 
+encuentran Descenso por Gradiente Estocástico, variaciones de tasa de aprendizaje dinámica con 
+sus diferentes variantes (exponencial, polinómica), RMSProp [\cite{tieleman2012rmsp}] 
+y Adam [\cite{kingma2014adam}].
 
 \section{Extracción de Argumentos}
 
@@ -555,10 +651,8 @@ existentes.
 
 La proyección de etiquetas consiste en un algoritmo en donde se 
 transfieren las etiquetas de un corpus anotado a nivel de tokens en un lenguaje origen hacia su traducción en un 
-lenguaje objetivo. Transferencia directa se refiere a (TODO completar)
-En [\cite{eger2018cross}] se muestra que la proyección constituye una mejor alternativa sobre la transferencia
-directa y presentan un algoritmo para realizar la proyección de las etiquetas dadas las alineaciones de palabras.
-El proceso se divide en varias partes:
+lenguaje objetivo. En [\cite{eger2018cross}] se propone un algoritmo de proyección dadas las alineaciones de 
+palabras. El proceso se divide en varias partes:
 
 \begin{enumerate}
 	\item Traducción de oraciones.
@@ -576,7 +670,12 @@ condición necesaria para una buena proyección [\cite{eger2018cross}].
 
 Por lo anterior es posible la traducción de corpus hacia otros lenguajes mediante las
 herramientas existentes obteniendo una buena representación final, la cual se puede usar en la creación de
-oraciones alineadas, primer paso para la proyección de etiquetas.
+oraciones alineadas, primer paso para la proyección de etiquetas. Por ejemplo\footnote{Extra'ido del corpus de [\cite{stab2017parsing}]}:
+
+\begin{adjustwidth}{25pt}{25pt}
+	Firstly , people normally have lots of things to do . \\
+	En primer lugar , la gente normalmente tiene muchas cosa que hacer .
+\end{adjustwidth}
 
 \subsection{Alineación de palabras}
 
@@ -588,9 +687,14 @@ otras herramientas como FastAlign [\cite{dyer2013fastalign}] que incorpora una r
 tiempo de cómputo y además de una mejora al modelo, EFMARAL [\cite{ostling2016efficient}] que usa
 Cadenas de Markov Monte Carlo. Modelos más recientes se han enfocado en explotar las representaciones
 vectoriales de palabras y el uso de métodos de atención para la extracción de las
-alineaciones [\cite{dou2021word}].
+alineaciones [\cite{dou2021word}]. Algunas consideraciones sobre el proceso es que las relaciones 
+formadas entre palabras pueden ser de tipo muchos a muchos y adem'as de no tener el mismo orden de la 
+oración inicial. En el ejemplo se observan las alienaciones creadas por la herramienta de alineación:
 
-FOTO de EJEMPLO de ALINEACION
+\begin{adjustwidth}{25pt}{25pt}
+	Firstly$_0$ ,$_1$ people$_2$ normally$_3$ have$_4$ lots$_5$ of$_6$ things$_7$ to$_8$ do$_9$ .$_{10}$ \\
+	En primer$_0$ lugar$_0$ ,$_1$ la gente$_2$ normalmente$_3$ tiene$_4$ muchas$_5$ cosas$_7$ que$_8$ hacer$_9$ .$_{10}$
+\end{adjustwidth}
 
 \subsection{Proyección de etiquetas}
 
@@ -601,4 +705,9 @@ a ser divididas en caso de ser traducidas, dicha propiedad se cumple para las UD
 cambios en el orden de las palabras, mantienen la misma ventana. La proyección de UDA son más simples en el caso
 que solamente se tiene en cuenta la ventana y las etiquetas en estas son constantes, no pasa con la proyección en
 frases nominales las cuales pueden cambiar dentro de una ventana, por lo que algoritmos más simples existen
-para esta tarea [\cite{eger2018cross}].
+para esta tarea [\cite{eger2018cross}]. La proyección final de la oración en el lenguaje objetivo consiste en:
+
+\begin{adjustwidth}{25pt}{25pt}
+	Firstly$_O$ ,$_O$ people$_B$ normally$_I$ have$_I$ lots$_I$ of$_I$ things$_I$ to$_I$ do$_I$ .$_O$ \\
+	En$_O$ primer$_O$ lugar$_O$ ,$_O$ la$_O$ gente$_B$ normalmente$_I$ tiene$_I$ muchas$_I$ cosas$_I$ que$_I$ hacer$_E$ .$_{10}$
+\end{adjustwidth}
