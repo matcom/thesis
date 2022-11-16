@@ -8,6 +8,8 @@ del periódico Granma.
 
 \section{Conjuntos de Datos}
 
+TODO PONER COMO SE REALIZO LA CONFECCION DEL CONJUNTO DE DATOS EN LOS MODELOS
+
 Para el entrenamiento de los modelos propuestos se utilizaron corpus diferentes, estos
 presentas esquemas de anotación distintos entre sí. Dado que todos los corpus estaban en inglés, 
 se les aplicó previamente el algoritmo de proyección de corpus propuesto y se crearon sus respectivas
@@ -19,7 +21,7 @@ extraídas del periódico Granma.
 
 Los conjuntos de datos a analizar se les realizó un aumento de datos mediante le técnica de \emph{backtranslation}.
 Esto contribuyó a duplicar la cantidad de elementos disponibles. Los resultados obtenidos al compara los 
-elementos originales con los aumentados se reflejan en la tabla (\ref{fig:data_augmentation}).
+elementos originales con los aumentados se reflejan en la tabla (Tabla \ref{table:data_augmentation}).
 
 \begin{table}[h!]
 	\begin{center}
@@ -29,7 +31,7 @@ elementos originales con los aumentados se reflejan en la tabla (\ref{fig:data_a
 		CDCP                    &  0.72	                    & 30		                    & 1.02	  \\ \hline
         AbsTRCT                 &  0.74		                & 86		                    & 1.04	  \\ \hline
 		\end{tabular}
-	\caption{Datos promedios comparando los textos originales con los aumentados.}\label{fig:data_augmentation}
+	\caption{Datos promedios comparando los textos originales con los aumentados.}\label{table:data_augmentation}
 	\end{center}
 \end{table}
 
@@ -84,7 +86,7 @@ Las relaciones esán representadas por tres categorías: \emph{support} (1763 85
 		CDCP		            & 127		& 99\% 		& 97\% 	  & 0.30		\\ \hline
 		AbsTRCT	                & 371		& 50\% 		& 47\% 	  & 0.63		\\ \hline
 		\end{tabular}
-	\caption{Información de promedios de los conjuntos de datos.}\label{fig:corpus_info}
+	\caption{Información de promedios de los conjuntos de datos.}\label{table:corpus_info}
 	\end{center}
 \end{table}
 
@@ -187,7 +189,7 @@ De las posibles combinaciones se presentaron 4 candidatos:
 		Modelo3		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
 		Modelo4		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
 		\end{tabular}
-	\caption{Variantes de arquitectura de los modelos de segmentación de UDA.}\label{fig:segmenter_architecture_table}
+	\caption{Variantes de arquitectura de los modelos de segmentación de UDA.}\label{table:segmenter_architecture_table}
 	\end{center}
 \end{table}
 
@@ -222,24 +224,24 @@ El modelo seleccionado fue usado en el entrenamiento de los demás conjuntos de 
 
 \begin{table}[h!]
 	\begin{center}
-		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \hline
+		\begin{tabular}{|c|c|c|c|c|c|} \hline
         Corpus		            & F1 Ponderado  & Macro F1	& \emph{Accuracy} & 100\%F1 & 50\%F1  \\ \hline
-        Ensayos Argumentativos  & .76           & .56 		& .77		      & .72	 & .83	       \\ \hline
-        CDCP		            & .65           & .45 		& .66		      & .61	 & .68	       \\ \hline
-        AbsTRCT	                & .86           & .50 		& .87		      & .61	 & .75	       \\ \hline
+        Ensayos Argumentativos  & .76           & .56 		& .77		      & .72	    & .83	       \\ \hline
+        CDCP		            & .65           & .45 		& .66		      & .61	    & .68	       \\ \hline
+        AbsTRCT	                & .86           & .50 		& .87		      & .61	    & .75	       \\ \hline
         \end{tabular}
-	\caption{Métricas de las pruebas del segmentador de UDA.}\label{fig:test_metrics_segmenter}
+	\caption{Métricas de las pruebas del segmentador de UDA.}\label{table:test_metrics_segmenter}
 	\end{center}
 \end{table}
 \begin{table}[h!]
 	\begin{center}
-		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \hline
+		\begin{tabular}{|c|c|c|c|c|c|} \hline
         Corpus		            & F1 Ponderado  & Macro F1 & \emph{accuracy} & 100\%F1 &  50\%F1   \\ \hline
         Ensayos Argumentativos  & .89           & .82	   & .89             & .81	   & .94 	   \\ \hline
         CDCP		            & .95           & .56	   & .96	         & .82	   & .93 	   \\ \hline
         AbsTRCT	                & .90           & .79	   & .91	         & .66	   & .82 	   \\ \hline
         \end{tabular}
-	\caption{Métricas BIOES de las pruebas del segmentador de UDA.}\label{fig:test_bioes_metrics_segmenter}
+	\caption{Métricas BIOES de las pruebas del segmentador de UDA.}\label{table:test_bioes_metrics_segmenter}
 	\end{center}
 \end{table}
 
@@ -264,11 +266,13 @@ De las variaciones surgieron las siguientes propuestas:
 		Modelo3	 & $\times$	     &  1       & .5               & .0015               & 5	      & $\times$            \\ \hline
 		Modelo4	 & $\checkmark$	 &  1       & .5               & .0015               & 10	      & $\checkmark$        \\ \hline
 		\end{tabular}
-	\caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{fig:link_predictor_architecture_table}
+	\caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{table:link_predictor_architecture_table}
 	\end{center}
 \end{table}
 
-Las curvas de aprendizaje (\ref{fig:link_prediction_model_loss}) de los modelos muestran ...
+Las curvas de aprendizaje (Fig. \ref{fig:link_prediction_model_loss}) de los modelos muestran un nivel de sobreajuste 
+elevado cuando el \emph{dropout} es pequeño. Adem'as se observan valores de p'erdida elevados lo que significa 
+que el modelo le cuesta ajustarse de manera satisfactoria a los datos.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -277,15 +281,55 @@ Las curvas de aprendizaje (\ref{fig:link_prediction_model_loss}) de los modelos 
 	\end{center}
 \end{figure}
 
-Se construyeron varios conjuntos de hiperparámetros. Los resultados fueron:
+Las m'etricas obtenidas por las diferentes versiones de los modelos muestran que TODO
 
-TODO PONER TABLA con los conjuntos de los hiperparámetros
+\begin{figure}[h!]
+	\begin{center}
+		TODO M'etricas de los modelos de link prediction de persuasive essays. F1
+		\includegraphics[scale=.9]{Graphics/persuassive_essays_all_linked_link_prediction_loss_model_1.png}
+	    \caption{Curvas de aprendizaje de los modelos de predicción de enlaces.}\label{fig:link_prediction_model_loss}
+	\end{center}
+\end{figure}
 
-TODO FOTOS o TABLAS con los resultados relevantes en Persuassive Essays 
-
-El modelo elegido fue (TODO poner el modelo escogido).
+TODO El modelo seleccionado fue X por Y
 
 TODO FOTOS o TABLAS con los resultados relevantes en los OTROS CORPUS
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|} \hline
+        Corpus		            & F1 Ponderado  & Macro F1 & \emph{Accuracy} \\ \hline
+        Ensayos Argumentativos  & .89           & .82	   & .89             \\ \hline
+        CDCP		            & .95           & .56	   & .96	         \\ \hline
+        AbsTRCT	                & .90           & .79	   & .91	         \\ \hline
+        \end{tabular}
+	\caption{Métricas de predicci'on de relaciones de las pruebas del predictor de enlace.}\label{table:test_relation_metrics_link_predictor}
+	\end{center}
+\end{table}
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|} \hline
+        Corpus		            & F1 Ponderado  & Macro F1 & \emph{Accuracy} \\ \hline
+        Ensayos Argumentativos  & .89           & .82	   & .89             \\ \hline
+        CDCP		            & .95           & .56	   & .96	         \\ \hline
+        AbsTRCT	                & .90           & .79	   & .91	         \\ \hline
+        \end{tabular}
+	\caption{Métricas de predicci'on de fuente de las pruebas del predictor de enlace.}\label{table:test_source_metrics_link_predictor}
+	\end{center}
+\end{table}
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|} \hline
+        Corpus		            & F1 Ponderado  & Macro F1 & \emph{Accuracy} \\ \hline
+        Ensayos Argumentativos  & .89           & .82	   & .89             \\ \hline
+        CDCP		            & .95           & .56	   & .96	         \\ \hline
+        AbsTRCT	                & .90           & .79	   & .91	         \\ \hline
+        \end{tabular}
+	\caption{Métricas de predicci'on de objetivo de las pruebas del predictor de enlace.}\label{table:test_source_metrics_link_predictor}
+	\end{center}
+\end{table}
 
 TODO Mostrar ejemplos buenos y malos
 TODO Decir opiniones de los errores
