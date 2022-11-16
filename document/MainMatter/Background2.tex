@@ -3,18 +3,18 @@
 % Argumentacion background
 
 % TODO Aumentar esto
-En el capt'itulo se aborda la argumentación, definiciones y marcos te'oricos existentes para el estudio de esta.
+En el captítulo se aborda la argumentación, definiciones y marcos teóricos existentes para el estudio de esta.
 Se definen y explican los componentes y las tareas asociadas al problema de extracción de argumentos.  
 
 \section{Argumentación}
 
 % TODO Ampliar esto, basarse en el articulo de MIT \cite{lawrence2020argument}
 
-La argumentación es un tema tratado desde la antig"uedad, Arist'oteles lo defend'ia como la 
-habilidad de, dada una pregunta, considerar los elementos 'utiles para persuadir a alguien, algo
-similar a la ret'orica. A finales de los annos 50, esta se consideraba como el desarrollo de t'ecnicas 
+La argumentación es un tema tratado desde la antigüedad, Aristóteles lo defendía como la 
+habilidad de, dada una pregunta, considerar los elementos útiles para persuadir a alguien, algo
+similar a la retórica. A finales de los años 50, esta se consideraba como el desarrollo de técnicas 
 discursivas que apuntaban a aumentar el apoyo de una audiencia hacia una tesis [\cite{janier2019argument}]. 
-Desde un punto de vista m'as t'ecnico la argumentación es el proceso que consiste en producir elementos que 
+Desde un punto de vista más técnico la argumentación es el proceso que consiste en producir elementos que 
 justifiquen una afirmación. Una afirmación constituye una expresión de algo ocurrido, un juicio, una evaluación. 
 Las premisas son los elementos que justifican o atacan las afirmaciones. Un argumento básico está dado por 
 la relación entre una afirmación y una premisa, con dicha premisa estar atacando o apoyando la afirmación 
@@ -94,7 +94,7 @@ ejemplo\footnote{Traducido del corpus [\cite{stab2017parsing}]} se representa
 la extracción de UDAs marcadas en \emph{cursiva}.
 
 \begin{adjustwidth}{25pt}{25pt}
-    En primer lugar, [\emph{el correo electr'onico puede contar como uno de los resultados
+    En primer lugar, [\emph{el correo electrónico puede contar como uno de los resultados
     más beneficiosos de la tecnología moderna}]. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
     enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
     causar problemas que causarían que el correo no fuera enviado}].
@@ -102,12 +102,12 @@ la extracción de UDAs marcadas en \emph{cursiva}.
 
 \subsubsection{Clasificación de UDAs}
 
-La clasificación de UDAs consiste en asignarle la categor'ia que toma la UDA en la argumentación. En general 
+La clasificación de UDAs consiste en asignarle la categoría que toma la UDA en la argumentación. En general 
 las clasificaciones parten de dos clases bases, las afirmaciones, las cuales son posiciones que toma el 
 autor del texto y las premisas, que son datos, eventos, elementos que se consideran verdades por sí solas.  
 
 \begin{adjustwidth}{25pt}{25pt}
-    En primer lugar, [\emph{el correo electr'onico puede contar como uno de los resultados
+    En primer lugar, [\emph{el correo electrónico puede contar como uno de los resultados
     más beneficiosos de la tecnología moderna}]$_{Afirmación}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
     enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
     causar problemas que causarían que el correo no fuera enviado}]$_{Premisa}$.
@@ -119,10 +119,10 @@ La extracción de relaciones constituye en determinar si estan relacionadas las 
 relaciones forma el proceso de razonamiento en que se basa el autor para validar su posición. En el ejemplo 
 se representa la existencia de relación mediante su distancia argumentativa con la UDA con la que se relaciona.
 La distancia argumentativa son la cantidad de UDAs del texto que separan la UDA fuente del objetivo [\cite{galassi2018argumentative}], 
-en caso de ser negativa (positiva) el objetivo se encuentra antes (despu'es) que la fuente.
+en caso de ser negativa (positiva) el objetivo se encuentra antes (después) que la fuente.
 
 \begin{adjustwidth}{25pt}{25pt}
-    En primer lugar, [\emph{el correo electr'onico puede contar como uno de los resultados
+    En primer lugar, [\emph{el correo electrónico puede contar como uno de los resultados
     más beneficiosos de la tecnología moderna}]$_{Afirmación}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
     enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
     causar problemas que causarían que el correo no fuera enviado}]$_{Premisa, -1}$.
@@ -130,13 +130,13 @@ en caso de ser negativa (positiva) el objetivo se encuentra antes (despu'es) que
 
 \subsubsection{Clasificación de relaciones entre las UDAs}
 
-La clasificaci'on de las relaciones consiste en clasificar las relaciones extra'idas en las categor'ias pertinentes.
+La clasificación de las relaciones consiste en clasificar las relaciones extraídas en las categorías pertinentes.
 Los tipos de relaciones, nacen de dos clases bases por lo general, las relaciones de apoyo y las de ataque.
 Las de apoyo se centran en aquellas en las que la UDA fuente afirme la UDA objetivo, las de ataque se basan en 
 las que la UDA fuente apoye la negación de la UDA objetivo.
 
 \begin{adjustwidth}{25pt}{25pt}
-    En primer lugar, [\emph{el correo electr'onico puede contar como uno de los resultados
+    En primer lugar, [\emph{el correo electrónico puede contar como uno de los resultados
     más beneficiosos de la tecnología moderna}]$_{Afirmación}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
     enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
     causar problemas que causarían que el correo no fuera enviado}]$_{Premisa, -1, apoyo}$.

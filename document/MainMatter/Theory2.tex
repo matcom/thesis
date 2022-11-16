@@ -1,10 +1,10 @@
-\chapter{Marco te'orico y preliminares}\label{chapter:background}
+\chapter{Marco teórico y preliminares}\label{chapter:background}
 
-En este cap'itulo se introducen conceptos de aprendizaje automático. Temas
+En este capítulo se introducen conceptos de aprendizaje automático. Temas
 como la representación de datos, arquitecturas, evaluación de modelos son tratados en sus secciones.
-Se menciona las diferentes investigaciones realizadas en la EA a lo largo de los annos, viendo
-los enfoques tomados y la evoluci'on de estos a partir del desarrollo e introducci'on de nuevos m'etodos en el
-campo. Por 'ultimo se introduce la proyección de corpus, t'ecnica necesaria para la creación de conjuntos 
+Se menciona las diferentes investigaciones realizadas en la EA a lo largo de los años, viendo
+los enfoques tomados y la evolución de estos a partir del desarrollo e introducción de nuevos métodos en el
+campo. Por último se introduce la proyección de corpus, técnica necesaria para la creación de conjuntos 
 de datos necesarios para el entrenamiento de modelos de aprendizaje automático.
 
 \section{Aprendizaje Automático}
@@ -19,8 +19,8 @@ aprendizaje:
 \begin{itemize}
 	\item Aprendizaje no supervisado: Trabaja sobre datos no anotados y los algoritmos tratan de 
 	extraer información de estos.
-	\item Aprendizaje reforzado: Trabaja en la creación de agentes que interact'uen con 
-	un ambiente obteniendo información de qu'e tan buenas son las acciones realizadas.
+	\item Aprendizaje reforzado: Trabaja en la creación de agentes que interactúen con 
+	un ambiente obteniendo información de qué tan buenas son las acciones realizadas.
 	\item Aprendizaje supervisado: Trabaja sobre datos anotados y los algoritmos tratan de minimizar
 	el error cometido en las predicciones.
 \end{itemize}
@@ -76,13 +76,13 @@ Para esto se utilizan diferentes modelos que codifican esta información en vect
 \emph{Bidirectional Encoder Representations from Transformers} (\textbf{BERT}) [\cite{devlin2018bert}],
 entre otros.
 
-\subsection{Modelaci'on de problemas}
+\subsection{Modelación de problemas}
 
-Los problemas en la vida real se presentan en un principio como una descripci'on a un nivel de abstracci'on 
-m'as alto que el requerido por los algoritmos existentes, se hablan de entidades abstractas como im'agenes,
+Los problemas en la vida real se presentan en un principio como una descripción a un nivel de abstracción 
+más alto que el requerido por los algoritmos existentes, se hablan de entidades abstractas como imágenes,
 sonidos, textos o usuarios, además de la información que se desea extraer o las operaciones que se
 desean aplicar sobre estas entidades. A lo largo del desarrollo de la AA han aparecido diferentes tipos de problemas 
-que aparecen frecuentemente en la pr'actica y sus respectivas maneras de solucionarlos. Uno de estos tipos de problemas
+que aparecen frecuentemente en la práctica y sus respectivas maneras de solucionarlos. Uno de estos tipos de problemas
 es el de secuencia a secuencia (\emph{seq2seq}), cuyo objetivo es la conversión de una secuencia en un dominio de entrada a otra 
 secuencia en un dominio de salida. Con este tipo de problemas se modelan tareas como traducción automática, en 
 donde el dominio de entrada es texto en un lenguaje objetivo y el dominio de salida es texto en un lenguaje objetivo,
@@ -92,16 +92,16 @@ la segmentación generalmente son:
 
 \begin{itemize}
 	\item B (\emph{begin}): Representa el inicio del segmento.
-	\item I (\emph{inside}): Representa la continuaci'on del segmento previamente iniciado.
+	\item I (\emph{inside}): Representa la continuación del segmento previamente iniciado.
 	\item O (\emph{outside}): Representa la no pertenencia a un segmento.
 \end{itemize}
 
-Este esquema presenta una versi'on m'as elaborada en la que se agregan dos clases que representan el final 
+Este esquema presenta una versión más elaborada en la que se agregan dos clases que representan el final 
 de un segmento E (\emph{end}) y un segmento de un solo elemento S (\emph{single}). La tarea anterior es 
-utilizada como base para otra un poco m'as compleja, en la que adem'as de segmentar el texto se desea clasificar 
-el tipo de este. Para este problema se annaden meta etiquetas correspondientes a los tipos a identificar $C$ 
+utilizada como base para otra un poco más compleja, en la que además de segmentar el texto se desea clasificar 
+el tipo de este. Para este problema se añaden meta etiquetas correspondientes a los tipos a identificar $C$ 
 obteniendo un conjunto final $R = \{ B, I, E, S \} \times C \cup \{ O \}$. En tareas como la extracción de entidades
-nombradas este m'etodo es empleado al ser el conjunto $C$ las posibles categor'ias de entidades a identificar.
+nombradas este método es empleado al ser el conjunto $C$ las posibles categorías de entidades a identificar.
 
 \subsection{Arquitecturas}
 
@@ -166,7 +166,7 @@ Un ejemplo bidimensional de una función de kernel constituye el siguiente caso:
 		\begin{center}
 			\includegraphics[scale=.3]{Graphics/kernel_convolution.png}
         \end{center}
-	    \caption{Convolución con kernel (Tomado de \cite{d2l} p'ag. 241).}\label{fig:conv_kernel}
+	    \caption{Convolución con kernel (Tomado de \cite{d2l} pág. 241).}\label{fig:conv_kernel}
 	\end{center}
 \end{figure}
 
@@ -181,7 +181,7 @@ dimensión, este aumento es generalmente rellenando convenientemente con 0 los e
 		\begin{center}
 			\includegraphics[scale=.3]{Graphics/kernel_convolution_padding.png}
         \end{center}
-	    \caption{Convolución con kernel con \emph{padding}(Tomado de \cite{d2l} p'ag. 241).}\label{fig:conv_kernel_padding}
+	    \caption{Convolución con kernel con \emph{padding}(Tomado de \cite{d2l} pág. 241).}\label{fig:conv_kernel_padding}
 	\end{center}
 \end{figure}
 
@@ -211,7 +211,7 @@ efecto de la conexión residual y $f$ es la función aprendida por el bloque sin
 		\begin{center}
 			\includegraphics[scale=.3]{Graphics/resnet.png}
         \end{center}
-	    \caption{Bloque residual (Tomado de \cite{d2l} p'ag. 289).}\label{fig:res_block}
+	    \caption{Bloque residual (Tomado de \cite{d2l} pág. 289).}\label{fig:res_block}
 	\end{center}
 \end{figure}
 
@@ -241,7 +241,7 @@ de salida maneja el calculo del próximo estado oculto.
 		\begin{center}
 			\includegraphics[scale=.3]{Graphics/rnn_lstm.png}
         \end{center}
-	    \caption{LSTM (Tomado de \cite{d2l} p'ag. 357).}\label{fig:rnn_lstm}
+	    \caption{LSTM (Tomado de \cite{d2l} pág. 357).}\label{fig:rnn_lstm}
 	\end{center}
 \end{figure}
 
@@ -257,7 +257,7 @@ que luego son mezclados para obtener el contexto final $H_i$.
 		\begin{center}
 			\includegraphics[scale=.3]{Graphics/rnn_bidirectional.png}
         \end{center}
-	    \caption{Red neuronal bidireccional (Tomado de \cite{d2l} p'ag. 367).}\label{fig:rnn_bidirectional}
+	    \caption{Red neuronal bidireccional (Tomado de \cite{d2l} pág. 367).}\label{fig:rnn_bidirectional}
 	\end{center}
 \end{figure}
 
@@ -307,7 +307,7 @@ El objetivo de \textbf{CRF} es calcular la secuencia $Y^*$ tal que:
 En este se observa que devuelve la secuencia más probable dado las variables observadas o atributos $X$,
 por lo que esta capa es usada al final para problemas de clasificación de secuencias.
 
-\subsection{Evaluación del modelo}
+\subsection{Evaluación del modelo y métricas}
 
 En AA los modelos necesitan maneras de expresar qué tan buenos son 
 en las tareas encomendadas. Para esto se crean funciones que evalúan los resultados obtenidos
@@ -320,7 +320,7 @@ a las predicciones verdaderas del problema.
 
 \subsubsection{Clasificación}
 
-En problemas de clasificación son empleadas medidas que toman en cuenta la naturaleza discreta de su conjunto im'agen.
+En problemas de clasificación son empleadas medidas que toman en cuenta la naturaleza discreta de su conjunto imágen.
 Medidas como precisión, recobrado, certeza (\emph{accuracy} en inglés) y F1 son utilizadas principalmente en la 
 evaluación de los resultados, mientras que como función de error se usa entropía cruzada comúnmente 
 (\emph{cross entropy} en inglés) [\cite{grandini2020metrics}].
@@ -339,7 +339,7 @@ se pueden observar los siguientes casos.
 	\item Falsos Negativos (FN): Elementos clasificados incorrectamente que no pertenecen a la clase.
 \end{itemize}
 
-\begin{figure}[h!]
+\begin{table}[h!]
 	\begin{center}
 		\begin{tabular}{|c|c|c|} \hline
 		Clases		& Positivo	& Negativo  \\ \hline
@@ -348,7 +348,7 @@ se pueden observar los siguientes casos.
 		\end{tabular}
 	\caption{Matriz de confusión binaria}\label{fig:confusion_matrix}
 	\end{center}
-\end{figure}
+\end{table}
 
 La precisión es la medida que indica la probabilidad de que la clasificación de una clase sea correcta. Esto 
 se puede observar como la proporción de los elementos correctamente clasificados sobre el total de 
@@ -384,26 +384,59 @@ La medida F1 es la media armónica de la precisión y el recobrado. En esta la c
 recobrado al resultado final es el mismo, aunque es posible buscar variaciones de acuerdo a al problema a tratar:
 
 \begin{equation}
-	f1_i = 2 (\frac{prec_i · rec_i}{prec_i + rec_i})
+	F1_i = 2 \frac{prec_i \cdot rec_i}{prec_i + rec_i}
 \end{equation}.
 
 En problemas de clasificación múltiple surge la versión macro de esta medida calculada la propia medida F1 pero
 utilizando la precisión y recobrado macro del problema:
 
 \begin{equation}
-	f1_{macro} = 2 (\frac{prec_{macro} · rec_{macro}}{prec_{macro} + rec_{macro}})
+	F1_{macro} = 2 \frac{prec_{macro} \cdot rec_{macro}}{prec_{macro} + rec_{macro}}
 \end{equation}.
 
-Las m'etricas anteriores est'an acotadas por los valores 0 y 1 donde 1 representa la mejor evaluación y 0 la 
+Las métricas anteriores están acotadas por los valores 0 y 1 donde 1 representa la mejor evaluación y 0 la 
 peor.
 
+En [\cite{persing2016end}] se presenta una variante de F1 para secuencias. Esta versi'on permite
+establecer el rango de flexibilidad $\alpha$ en la que la secuencia inferida debe coincidir con la secuencia
+anotada, si $\alpha=100$ significa que deben conincidir completamente, mientras si es $50$ significa que 
+si coinciden en una proporci'on mayor o igual a la mitad se considera como un verdadero positivo. La 
+definición de los conjuntos de verdaderos positivos, negativos y falsos negativos es:
+
+\begin{equation}
+	VP = |\{ j | \exists i | gl(j) = pl(i) \land i = j \}|
+\end{equation}
+\begin{equation}
+	FP = |\{ i | pl(i) \neq n \land \not\exists j | gl(j) = pl(i) \land i = j \}|
+\end{equation}
+\begin{equation}
+	FN = |\{ j | \not\exists i | gl(j) = pl(i) \land i = j \}|
+\end{equation}
+donde $gl(j)$ es la etiqueta correcta para $j$, $pl(i)$ es la etiqueta inferida para $i$,
+$n$ es la clase no argumentativa, $i = j$ significa que $i$ es una coincidencia para $j$.
+
 La entropía cruzada se encarga de evaluar qué tan diferentes son dos funciones de distribución $p$ y $q$, su 
-resultado es un n'umero no negativo que a medida que sean m'as pequeños los valores indican mayor similitud. 
+resultado es un número no negativo que a medida que sean más pequeños los valores indican mayor similitud. 
 En su versión discreta se formula:
 
 \begin{equation}
 	H(p, q) = - \sum_{x \in D} p(x) \log q(x)
 \end{equation}
+
+\subsubsection{Cadenas}
+
+Para textos o cadenas existen diferentes métricas que constituyen formas de saber la similitud 
+entre dos elementos. Una de esas métricas es la similitud de Jaccard, esa se puede ver como una 
+la proporción de elementos comunes que presentan dos conjuntos, los elementos sería palabras:
+
+\begin{equation}
+	jac(X, Y) = \frac{|X \cap Y|}{|X \cup Y|}
+\end{equation}.
+Otra medida de similitud es la Distancia de Levenshtein, la cual se define como la mínima cantidad 
+de cambios de eliminar, cambiar y agregar que se tienen que hacer a dos secuencias para que sean 
+iguales, esta medida se puede usar tanto en palabras en donde se mediría la cantidad de cambios 
+a los caracteres o también en listas de palabras, donde se mediría la cantidad de palabras que 
+se tienen qe cambiar. 
 
 \subsubsection{Curvas de aprendizaje}
 
@@ -430,16 +463,15 @@ la generalización o el error de generalización. Existen tres comportamientos e
 \end{itemize}
 
 El bajo ajuste ocurre cuando el modelo no es capaz de aprender del conjunto de datos o cuando este aún puede aprender 
-más. Las curvas de aprendizaje en estos casos se caracterizan por ser una linea plana o valores ruidosos con alta pérdida.
+más. Las curvas de aprendizaje en estos casos se caracterizan por ser una linea plana o valores ruidosos con alta pérdida
+(\ref{fig:underfit}).
 
 \begin{figure}[h!]
 	\begin{center}
-		\begin{center}
-			\includegraphics[scale=.3]{Graphics/underfit_missing_training.png}
-			\includegraphics[scale=.3]{Graphics/underfit_not_learning.png}
-        \end{center}
-	    \caption{Curvas de entrenamiento con bajo ajuste por falta de entrenamiento (izquierda) 
-		y por modelo que no aprende de los datos (derecha) (Tomado de \cite{brownlee2018better} p'ag. XXVII).}\label{fig:underfit}
+		\includegraphics[scale=.2]{Graphics/underfit_missing_training.png}
+		\includegraphics[scale=.2]{Graphics/underfit_not_learning.png}
+		\caption{Curvas de entrenamiento con bajo ajuste por falta de entrenamiento (izquierda) 
+		y por modelo que no aprende de los datos (derecha) (Tomado de \cite{brownlee2018better} pág. XXVII).}\label{fig:underfit}
 	\end{center}
 \end{figure}
 
@@ -451,14 +483,14 @@ estructura de los datos.
 El sobreajuste es el fenómeno en el que el modelo se aprende los datos de entrenamiento extremadamente bien, incluso
 el ruido en estos datos, esto trae consigo que falla en generalizar el problema para nuevas entradas. Las curvas 
 características de este fenómeno presentan una divergencia en los errores de entrenamiento y validación a medida
-que se entrena el modelo, mientras que la de entrenamiento mejora la de validación tiende a empeorar. 
+que se entrena el modelo, mientras que la de entrenamiento mejora la de validación tiende a empeorar (\ref{fig:overfit}). 
 
 \begin{figure}[h!]
 	\begin{center}
 		\begin{center}
 			\includegraphics[scale=.3]{Graphics/overfit_raising_val_error.png}
         \end{center}
-	    \caption{Curvas de entrenamiento con sobreajuste (Tomado de \cite{brownlee2018better} p'ag. XXIX).}\label{fig:overfit}
+	    \caption{Curvas de entrenamiento con sobreajuste (Tomado de \cite{brownlee2018better} pág. XXIX).}\label{fig:overfit}
 	\end{center}
 \end{figure}
 
@@ -474,14 +506,14 @@ se utiliza para parar este en el momento en que el error de generalización comi
 se sobreentrene el modelo.
 
 Finalmente un buen ajuste es el resultado que se alcanza cuando tanto la curva de validación como de entrenamiento
-presentan valores pequeños y similares, consecuentes con una correcto aprendizaje y generalización.
+presentan valores pequeños y similares, consecuentes con una correcto aprendizaje y generalización (\ref{fig:good_fit}).
 
 \begin{figure}[h!]
 	\begin{center}
 		\begin{center}
 			\includegraphics[scale=.3]{Graphics/good_fit.png}
         \end{center}
-	    \caption{Curvas de entrenamiento con buen ajuste (Tomado de \cite{brownlee2018better} p'ag. XXX).}\label{fig:god_fit}
+	    \caption{Curvas de entrenamiento con buen ajuste (Tomado de \cite{brownlee2018better} pág. XXX).}\label{fig:good_fit}
 	\end{center}
 \end{figure}
 
@@ -493,16 +525,14 @@ se puede identificar si la pérdida en el conjunto de entrnamiento conlleva a un
 validación y viceversa quedando al final con una separación entre ambos valores. En el caso del conjunto de 
 validación se presenta como una curva ruidosa, también se puede dar el caso de que el conjunto  de validación
 sea más fácil de predecir que el de entrenamiento, en este caso se observa como la curva de validación permanece
-siempre por debajo de la de entrenamiento.
+siempre por debajo de la de entrenamiento (\ref{fig:unrepresentative_data}).
 
 \begin{figure}[h!]
 	\begin{center}
-		\begin{center}
-			\includegraphics[scale=.3]{Graphics/unrepresentative_dev_set.png}
-			\includegraphics[scale=.3]{Graphics/unrepresentative_train_set.png}
-        \end{center}
+		\includegraphics[scale=.2]{Graphics/unrepresentative_dev_set.png}
+		\includegraphics[scale=.2]{Graphics/unrepresentative_train_set.png}
 	    \caption{Curvas de entrenamiento con datos poco representativos en el conjunto de validación (izquierda) 
-		y en el conjunto de entrenamiento (derecha) (Tomado de \cite{brownlee2018better} p'ag. XXXII).}\label{fig:unrepresentative_data}
+		y en el conjunto de entrenamiento (derecha) (Tomado de \cite{brownlee2018better} pág. XXXII).}\label{fig:unrepresentative_data}
 	\end{center}
 \end{figure}
 
@@ -528,7 +558,7 @@ de soluciones encontradas por diferentes modelos combinándolas y mejorándolas 
 al problema. Estos métodos son efectivos en la reducción de la varianza y el bias de los resultados obteniendo así
 mejores resultados [\cite{dietterich2002ensemble}]. Una forma de este tipo de aprendizaje en problemas de 
 clasificación constituye el voto conjunto, en donde los diferentes clasificadores votan sobre la clase a la que 
-pertenece el elemento y al final se asigna la etiqueta que m'as votos obtuvo.
+pertenece el elemento y al final se asigna la etiqueta que más votos obtuvo.
 
 \subsection{Métodos de optimización}
 
@@ -550,7 +580,7 @@ se puede ver como el aprendizaje del modelo.
 
 Variantes de este algoritmo eficientes para el proceso de entrenamiento de modelos de AA han sido 
 creadas, las variaciones se encuentran principalmente en la selección de $\alpha$ en cada paso y la 
-selección de los conjuntos de datos con que se estimar'a el gradiente. Entre las técnicas utilizadas se 
+selección de los conjuntos de datos con que se estimará el gradiente. Entre las técnicas utilizadas se 
 encuentran Descenso por Gradiente Estocástico, variaciones de tasa de aprendizaje dinámica con 
 sus diferentes variantes (exponencial, polinómica), RMSProp [\cite{tieleman2012rmsp}] 
 y Adam [\cite{kingma2014adam}].
@@ -655,12 +685,12 @@ lenguaje objetivo. En [\cite{eger2018cross}] se propone un algoritmo de proyecci
 palabras. El proceso se divide en varias partes:
 
 \begin{enumerate}
-	\item Traducción de oraciones.
+	\item Traducción y alineación de oraciones.
 	\item Alineación de palabras.
 	\item Proyección de etiquetas.
 \end{enumerate}
 
-\subsection{Traducción de oraciones}
+\subsection{Traducción y alineación de oraciones}
 
 La Traducción Automática consiste en el proceso de usar inteligencia artificial para
 traducir texto de un lenguaje fuente a un lenguaje objetivo sin la intervención humana.
@@ -670,7 +700,9 @@ condición necesaria para una buena proyección [\cite{eger2018cross}].
 
 Por lo anterior es posible la traducción de corpus hacia otros lenguajes mediante las
 herramientas existentes obteniendo una buena representación final, la cual se puede usar en la creación de
-oraciones alineadas, primer paso para la proyección de etiquetas. Por ejemplo\footnote{Extra'ido del corpus de [\cite{stab2017parsing}]}:
+oraciones alineadas que consisten en tener a cada oración del lenguaje fuente su oración en el 
+lenguaje objetivo, primer paso para la proyección de etiquetas. 
+A continuación se muestran un par de oraciones alineadas\footnote{Extraído del corpus de [\cite{stab2017parsing}]}:
 
 \begin{adjustwidth}{25pt}{25pt}
 	Firstly , people normally have lots of things to do . \\
@@ -684,12 +716,15 @@ palabras en el lenguaje fuente.
 Este problema es atacado en los modelos IBM, modelos estadísticos de traducción automática que usan estos 
 índices para obtener más información. Estos modelos son principalmente Bayesianos y han sido la base de
 otras herramientas como FastAlign [\cite{dyer2013fastalign}] que incorpora una reducción sustancial del
-tiempo de cómputo y además de una mejora al modelo, EFMARAL [\cite{ostling2016efficient}] que usa
+tiempo de cómputo y además de una mejora al modelo en versiones pasadas de los modelos IBM, 
+EFMARAL [\cite{ostling2016efficient}] que usa
 Cadenas de Markov Monte Carlo. Modelos más recientes se han enfocado en explotar las representaciones
 vectoriales de palabras y el uso de métodos de atención para la extracción de las
 alineaciones [\cite{dou2021word}]. Algunas consideraciones sobre el proceso es que las relaciones 
-formadas entre palabras pueden ser de tipo muchos a muchos y adem'as de no tener el mismo orden de la 
-oración inicial. En el ejemplo se observan las alienaciones creadas por la herramienta de alineación:
+formadas entre palabras pueden ser de tipo muchos a muchos, además de no tener el mismo orden de la 
+oración inicial o incluso no estar relacionadas directamente con una palabra en la oración objetivo.
+Estas consideraciones dan una medida de la dificultad de la tarea en cuestión.
+En el ejemplo siguiente se observan las alienaciones creadas por la herramienta de alineación:
 
 \begin{adjustwidth}{25pt}{25pt}
 	Firstly$_0$ ,$_1$ people$_2$ normally$_3$ have$_4$ lots$_5$ of$_6$ things$_7$ to$_8$ do$_9$ .$_{10}$ \\

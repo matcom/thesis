@@ -10,3 +10,9 @@
 - Dónde poner (o si es que se ponen) las explicaciones de los tipos de modelo, métricas, técnicas:
   - LSTM, CRF, BIO vs BIOES, F1-Macro, %F1, regularizaciones (L1, L2, early stopping, normalization)
   - También las mencionadas anteriormente como: SVM, Naive Bayes, secuencial vs joint, handcrafted features vs learned features
+
+# Compilar
+
+biber Thesis
+latex Thesis
+compilar dos veces

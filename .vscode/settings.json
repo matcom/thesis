@@ -9,6 +9,7 @@
         "**/*.lot": true,
         "**/*.out": true,
         "**/*.pdf": true,
+        "**/*.dvi": true,
         "**/!Graphics/uhlogo.pdf": true,
         "**/*.backup": true,
         "**/*.toc": true,

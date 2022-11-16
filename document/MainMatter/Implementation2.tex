@@ -1,9 +1,9 @@
 \chapter{Experimentación}\label{chapter:implementation}
 
-En el cap'itulo se describe los conjuntos de datos utilizados para el entrenamiento y validación del modelo 
-propuesto. Se mencionan las herramientas utilizadas para la confección del software. Adem'as se describe el 
-proceso de experimentación y evaluación de los modelos constru'idos con los conjuntos de datos. Finalmente
-se presentan los resultados obtenidos con los modelos al aplicarles las cartas a la dirección extra'idas 
+En el capítulo se describe los conjuntos de datos utilizados para el entrenamiento y validación del modelo 
+propuesto. Se mencionan las herramientas utilizadas para la confección del software. Además se describe el 
+proceso de experimentación y evaluación de los modelos construídos con los conjuntos de datos. Finalmente
+se presentan los resultados obtenidos con los modelos al aplicarles las cartas a la dirección extraídas 
 del periódico Granma. 
 
 \section{Conjuntos de Datos}
@@ -17,32 +17,32 @@ extraídas del periódico Granma.
 
 \subsection{Procesamiento de los datos}
 
-Los conjuntos de datos a analizar se les realiz'o un aumento de datos mediante le t'ecnica de \{backtranslation}.
-Esto contribuy'o a duplicar la cantidad de elementos disponibles. Los resultados obtenidos al compara los 
-elementos originales con los aumentados se reflejan en la siguiente tabla:
+Los conjuntos de datos a analizar se les realizó un aumento de datos mediante le técnica de \emph{backtranslation}.
+Esto contribuyó a duplicar la cantidad de elementos disponibles. Los resultados obtenidos al compara los 
+elementos originales con los aumentados se reflejan en la tabla (\ref{fig:data_augmentation}).
 
-\begin{figure}[h!]
+\begin{table}[h!]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|} \hline
-		Corpus		            &  Similitud Jaccard media	& Distancia Levenshtein media 	& Relaci'on media entre cantidad de palabras originales y aumentadas   \\ \hline
+		Corpus		            &  Jaccard	& Levenshtein	& Palabras originales / aumentadas   \\ \hline
         Ensayos Argumentativos	&  0.69		                & 96		                    & 1.00	  \\ \hline
 		CDCP                    &  0.72	                    & 30		                    & 1.02	  \\ \hline
         AbsTRCT                 &  0.74		                & 86		                    & 1.04	  \\ \hline
 		\end{tabular}
-	\caption{Datos sobre el aumento de datos.}\label{fig:data_augmentation}
+	\caption{Datos promedios comparando los textos originales con los aumentados.}\label{fig:data_augmentation}
 	\end{center}
-\end{figure}
+\end{table}
 
-Los datos extra'idos muestran que se logr'o una variaci'on pequeña en los datos, consiguiendo variaciones en palabras aunque conservando la 
+Los datos extraídos muestran que se logró una variación pequeña en los datos, consiguiendo variaciones en palabras aunque conservando la 
 longitud original del texto.
 
-Todos los conjuntos de datos est'an originalmente en ingl'es, por lo tanto se les aplic'o el algoritmo de proyección
-de corpus para obtener un corpus en espannol para ser usado en el entrenamiento de los modelos. 
-Para la traducción automática se utiliz'o los servicios de Google Translator [\cite{translateGoogle}]. Para calcular las 
+Todos los conjuntos de datos están originalmente en inglés, por lo tanto se les aplicó el algoritmo de proyección
+de corpus para obtener un corpus en español para ser usado en el entrenamiento de los modelos. 
+Para la traducción automática se utilizó los servicios de Google Translator [\cite{translateGoogle}]. Para calcular las 
 alineaciones de palabras se probaron dos algoritmos, FastAlign [\cite{dyer2013fastalign}] y AwesomeAlign 
-[\cite{dou2021word}]. Se observ'o que el primero, aunque es m'as r'apido posee una calidad menor en los resultados,
+[\cite{dou2021word}]. Se observó que el primero, aunque es más rápido posee una calidad menor en los resultados,
 el segundo posee una mayor calidad aunque requiere de mayor tiempo y recursos para ejecutarse. Para los experimentos
-se us'o finalmente AwesomeAlign. La proyección de las etiquetas fue llevada a cabo por el algoritmo propuesto 
+se usó finalmente AwesomeAlign. La proyección de las etiquetas fue llevada a cabo por el algoritmo propuesto 
 en [\cite{eger2018cross}].
 
 \subsection{Ensayos Argumentativos}\label{corpus:persuasive_essays}
@@ -57,13 +57,13 @@ La estructura de las relaciones entre las UDA conforman árboles en los que se t
 en \emph{attack} (219 6\%) y \emph{support} (3613 94\%). Las relaciones entre \emph{Claim} y \emph{MajorClaim} son anotadas de manera diferente, por medio de 
 darle a las \emph{Claim} una clasificación de si está a favor (1228) o en contra (278) de las \emph{MajorClaim} del documento.
 Para el análisis de este corpus se consideraron las relaciones \emph{Claim-MajorClaim} de igual manera que las otras,
-al convertir estas posiciones en relacines. El n'umero final con la inclusi'on de estas aumenta a 715 (10\%) de ataque y 
+al convertir estas posiciones en relacines. El número final con la inclusión de estas aumenta a 715 (10\%) de ataque y 
 5958 (90\%) de apoyo.
 
 \subsection{CDCP}\label{corpus:cdcp}
 
 El corpus [\cite{niculae2017argument}] está conformado por 731 comentarios de usuarios extraídos de la web bajo el tema de 
-prácticas de cobro de deudas a los consumidores (CDCP por sus siglas en ingl'es \emph{Consumer Debt Collection Practices}).
+prácticas de cobro de deudas a los consumidores (CDCP por sus siglas en inglés \emph{Consumer Debt Collection Practices}).
 Las UDA se encuentran segmentadas en oraciones y todas se consideran argumentativas, estas son clasificadas en 
 \emph{policy} (815 17\%), \emph{value} (2180 45\%), \emph{fact} (785 16\%), \emph{testimony} (1116 21\%) y \emph{reference} (32 1\%). 
 Las relaciones se encuentran clasificadas en \emph{reason} (1352 97\%) y \emph{evidence} (73 3\%).
@@ -71,22 +71,22 @@ Las relaciones se encuentran clasificadas en \emph{reason} (1352 97\%) y \emph{e
 \subsection{AbsTRCT}
 
 AbsTRCT [\cite{mayer2020transformer}] se compone de 500 documentos sobre el estudio de 4 enfermedades diferentes,
-glaucoma, hipertensi'on, hepatitis b y diabetes. Las UDAs constituyen oraciones, aunque no todas son consideradas
+glaucoma, hipertensión, hepatitis b y diabetes. Las UDAs constituyen oraciones, aunque no todas son consideradas
 argumentativas. Estas se clasifican en \emph{MajorClaim} (93 3\%), \emph{Claim} (993 30\%) y \emph{Premise} (2198 67\%).
-Las relaciones es'an representadas por tres categor'ias: \emph{support} (1763 85\%), \emph{partial-attack} (238 12\%) y
+Las relaciones esán representadas por tres categorías: \emph{support} (1763 85\%), \emph{partial-attack} (238 12\%) y
 \emph{attack} (60 3\%).
 
-\begin{figure}[h!]
+\begin{table}[h!]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|} \hline
-		Corpus		            & Cantidad promedio de tokens 	& \% de tokens argumentativos 	& \% UDAs   & Promedio de relaciones por UDA    \\ \hline
-		Ensayos Argumentativos  & 381		& 68		& 35	  & 1.08		\\ \hline
-		CDCP		            & 127		& 99		& 97	  & 0.30		\\ \hline
-		AbsTRCT	                & 371		& 50		& 47	  & 0.63		\\ \hline
+		Corpus		            & Tokens 	& Tokens argumentativos	& UDAs   & Relaciones por UDA    \\ \hline
+		Ensayos Argumentativos  & 381		& 68\% 		& 35\% 	  & 1.08		\\ \hline
+		CDCP		            & 127		& 99\% 		& 97\% 	  & 0.30		\\ \hline
+		AbsTRCT	                & 371		& 50\% 		& 47\% 	  & 0.63		\\ \hline
 		\end{tabular}
-	\caption{Información de los conjuntos de datos.}\label{fig:corpus_info}
+	\caption{Información de promedios de los conjuntos de datos.}\label{fig:corpus_info}
 	\end{center}
-\end{figure}
+\end{table}
 
 \subsection{Cartas a la dirección}
 
@@ -100,8 +100,8 @@ los comentarios asociados a las cartas, en este sentido 987 cartas no presentan 
 se realizan 2 comentarios por carta. Los textos presentan un título y un formato relativamente libre, 
 aunque en las cartas de respuesta se puede observar una firma de la persona que respondió y la entidad que 
 representa. Del total de cartas se seleccionaron las que fueran en respuesta a otra y también las 
-cartas que fueron respondidas para tener una mayor concentraci'on de cartas que fueran argumentativas, 
-esta selección est'a conformada por 1702 cartas lo que representa un 59\% del total de cartas.
+cartas que fueron respondidas para tener una mayor concentración de cartas que fueran argumentativas, 
+esta selección está conformada por 1702 cartas lo que representa un 59\% del total de cartas.
 
 TODO SI HAY TIEMPO ANOTAR LAS CARTAS CON ALGUN ESQUEMA SENCILLO (Claim, Premise) (Attack, Support) y Mapear 
 las clasificaciones de los otros modelos a estas para tener algun tipo de evaluacion.
@@ -129,7 +129,7 @@ una tarea específica y lo más desacoplada posible de las otras. Las tareas rea
 
 \subsection{Herramientas}
 
-El lenguaje empleado para la confección del software fue \textbf{Python} [\cite{TODO }], este presenta 
+El lenguaje empleado para la confección del software fue \textbf{Python} [\cite{python}], este presenta 
 una gran variedad de herramientas 
 para el trabajo con texto, visualización de datos y la creación de modelos de aprendizaje profundo.
 Se utilizó \textbf{tensorflow} [\cite{tensorflow}] en su versión 2.9.2 para la construcción y entrenamiento de los modelos. 
@@ -178,48 +178,72 @@ presencia o no de las siguiente componentes:
 
 De las posibles combinaciones se presentaron 4 candidatos:
 
-\begin{figure}[h!]
+\begin{table}[h!]
 	\begin{center}
-		\begin{tabular}{|c|c|c|c|c|} \hline
+		\begin{tabular}{|c|c|c|c|c|c|c|} \hline
 		Modelos 	& POS       & Char-CNN  & Char-LSTM & Res       & Norm      & Densa  \\ \hline
-		Modelo1		& \xmark	& \xmark    & \xmark    & \xmark	& \xmark    & \xmark \\ \hline
-		Modelo2		& \xmark	& \cmark    & \cmark    & \cmark	& \cmark    & \xmark \\ \hline
-		Modelo3		& \cmark	& \cmark    & \cmark    & \cmark	& \cmark    & \xmark \\ \hline
-		Modelo4		& \cmark	& \cmark    & \cmark    & \cmark	& \cmark    & \cmark \\ \hline
+		Modelo1		& $\times$	& $\times$    & $\times$    & $\times$	& $\times$    & $\times$ \\ \hline
+		Modelo2		& $\times$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
+		Modelo3		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
+		Modelo4		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
 		\end{tabular}
 	\caption{Variantes de arquitectura de los modelos de segmentación de UDA.}\label{fig:segmenter_architecture_table}
 	\end{center}
-\end{figure}
+\end{table}
 
-En la figura \ref{TODO crf_loss.png} se observan las diferentes curvas de aprendizaje de los modelos 
-probados. Se muestra la r'apida convergencia de los modelos con conexiones residuales y normalizaciones.
-Se muestra tambi'en la tendencia al sobreajuste en el entrenamiento entre los pasos 17-20, en donde se detiene el 
+En la figura (\ref{fig:segmenter_model_loss}) se observan las diferentes curvas de aprendizaje de los modelos 
+probados. Se muestra la rápida convergencia de los modelos con conexiones residuales y normalizaciones.
+Se muestra también la tendencia al sobreajuste en el entrenamiento entre los pasos 17-20, en donde se detiene el 
 entrenamiento para evitar el crecimiento del error de generalización.
-
-TODO FOTO de crf_loss.png
-
-Las m'etricas \%F1 muestran que los modelos 1 y 2 presentan un desempenno menor que los 3 y 4. 
-Se muestra un ligero aumento de 1\% en las 50\%F1 en el modelo 4 con respecto 
-al modelo 3, aunque las m'etricas de F1 en el 3 superan a las de 4. Se considera que la 
-segmentación como tarea principal, por lo que se selecciona como mejor modelo al 4.
-
-TODO FOTO de components.png al lado de macro_micro_metrics.png
-
-El modelo seleccionado fue usado en el entrenamiento de los dem'as conjuntos de datos obteniendo los resultados
 
 \begin{figure}[h!]
 	\begin{center}
-		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \hline
-        Corpus		            & F1 Ponderado  & BIOES F1 Ponderado  & Macro F1	& \emph{Accuracy} & BIOES Macro F1 & BIOES \emph{accuracy} & 100\%F1 & 50\%F1 & BIOES 100\%F1 & BIOES 50\%F1   \\ \hline
-        Ensayos Argumentativos  & .76           & .89                 & .56 		& .77		      & .82	           & .89                   & .72	 & .83	  & .81	          & .94 	       \\ \hline
-        CDCP		            & .65           & .95                 & .45 		& .66		      & .56	           & .96	               & .61	 & .68	  & .82	          & .93 	       \\ \hline
-        AbsTRCT	                & .86           & .90                 & .50 		& .87		      & .79	           & .91	               & .61	 & .75	  & .66	          & .82 	       \\ \hline
-        \end{tabular}
-	\caption{M'etricas del entrenamiento del segmentador de UDA.}\label{fig:train_metrics_segmenter}
+		\begin{center}
+			\includegraphics[scale=.9]{Graphics/persuasive_essays_all_linked_crf_loss.png}
+        \end{center}
+	    \caption{Pérdida de los modelos segmentadores.}\label{fig:segmenter_model_loss}
 	\end{center}
 \end{figure}
 
-El modelo fue aplicado a las cartas extra'idas, TODO la validacion de los modelos con las cartas. ANOTAR CARTAS.
+Las métricas \%F1 muestran que los modelos 1 y 2 presentan un desempeño menor que los 3 y 4. 
+Se muestra un ligero aumento de 1\% en las 50\%F1 en el modelo 4 con respecto 
+al modelo 3, aunque las métricas de F1 en el 3 superan a las de 4. Se considera que la 
+segmentación como tarea principal, por lo que se selecciona como mejor modelo al 4 (\ref{fig:test_segmenter_model_metrics}).
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=.4]{Graphics/persuasive_essays_all_linked_components.png}
+		\includegraphics[scale=.4]{Graphics/persuasive_essays_all_linked_macro_micro_metrics.png}
+	    \caption{Métricas del conjunto de pruebas de los modelos segmentadores.}\label{fig:test_segmenter_model_metrics}
+	\end{center}
+\end{figure}
+
+El modelo seleccionado fue usado en el entrenamiento de los demás conjuntos de datos obteniendo los resultados
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \hline
+        Corpus		            & F1 Ponderado  & Macro F1	& \emph{Accuracy} & 100\%F1 & 50\%F1  \\ \hline
+        Ensayos Argumentativos  & .76           & .56 		& .77		      & .72	 & .83	       \\ \hline
+        CDCP		            & .65           & .45 		& .66		      & .61	 & .68	       \\ \hline
+        AbsTRCT	                & .86           & .50 		& .87		      & .61	 & .75	       \\ \hline
+        \end{tabular}
+	\caption{Métricas de las pruebas del segmentador de UDA.}\label{fig:test_metrics_segmenter}
+	\end{center}
+\end{table}
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|} \hline
+        Corpus		            & F1 Ponderado  & Macro F1 & \emph{accuracy} & 100\%F1 &  50\%F1   \\ \hline
+        Ensayos Argumentativos  & .89           & .82	   & .89             & .81	   & .94 	   \\ \hline
+        CDCP		            & .95           & .56	   & .96	         & .82	   & .93 	   \\ \hline
+        AbsTRCT	                & .90           & .79	   & .91	         & .66	   & .82 	   \\ \hline
+        \end{tabular}
+	\caption{Métricas BIOES de las pruebas del segmentador de UDA.}\label{fig:test_bioes_metrics_segmenter}
+	\end{center}
+\end{table}
+
+El modelo fue aplicado a las cartas extraídas, TODO la validacion de los modelos con las cartas. ANOTAR CARTAS.
 
 TODO Mostrar ejemplos buenos y malos
 TODO Decir opiniones de los errores
@@ -228,25 +252,30 @@ TODO Hacer analisis curvas de aprendizaje -> overfitting, underfitting, represen
 \subsection{Predictor de Enlaces}
 
 Se entrenaron diferentes variantes de arquitecturas y hiperparámetros. Al igual que en el segmentador de
-UDAs se realiz'o la selección del modelo que mejor se desempeñ'o en el conjunto de datos de Ensayos Argumentativos.
+UDAs se realizó la selección del modelo que mejor se desempeñó en el conjunto de datos de Ensayos Argumentativos.
 De las variaciones surgieron las siguientes propuestas:
 
-\begin{figure}[h!]
+\begin{table}[h!]
 	\begin{center}
-		\begin{tabular}{|c|c|c|c|c|} \hline
-		Modelos  & Atención  & \emph{Dropout}   & Tasa de aprendizaje & Paciencia & Devolver mejores  \\ \hline
-		Modelo1	 & \xmark	 & .1               & .003                & 5	      & \xmark            \\ \hline
-		Modelo2	 & \cmark	 & .1               & .003                & 5	      & \xmark            \\ \hline
-		Modelo3	 & \xmark	 & .5               & .0015               & 5	      & \xmark            \\ \hline
-		Modelo4	 & \cmark	 & .5               & .0015               & 10	      & \cmark            \\ \hline
+		\begin{tabular}{|c|c|c|c|c|c|c|} \hline
+		Modelos  & Atención      & Pooling  & \emph{Dropout}   & Tasa de aprendizaje & Paciencia & Devolver mejores     \\ \hline
+		Modelo1	 & $\times$	     & 10       & .1               & .003                & 5	      & $\times$            \\ \hline
+		Modelo2	 & $\checkmark$	 &  1       & .1               & .003                & 5	      & $\times$            \\ \hline
+		Modelo3	 & $\times$	     &  1       & .5               & .0015               & 5	      & $\times$            \\ \hline
+		Modelo4	 & $\checkmark$	 &  1       & .5               & .0015               & 10	      & $\checkmark$        \\ \hline
 		\end{tabular}
 	\caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{fig:link_predictor_architecture_table}
 	\end{center}
-\end{figure}
+\end{table}
 
-Los hiperparámetros
-iniciales fueron los propuestos por la investigación original y también fueron probados algunas variantes 
-de estos. La arquitectura varía por la presencia del módulo de atención en esta.
+Las curvas de aprendizaje (\ref{fig:link_prediction_model_loss}) de los modelos muestran ...
+
+\begin{figure}[h!]
+	\begin{center}
+		\includegraphics[scale=.9]{Graphics/persuassive_essays_all_linked_link_prediction_loss_model_1.png}
+	    \caption{Curvas de aprendizaje de los modelos de predicción de enlaces.}\label{fig:link_prediction_model_loss}
+	\end{center}
+\end{figure}
 
 Se construyeron varios conjuntos de hiperparámetros. Los resultados fueron:
 
