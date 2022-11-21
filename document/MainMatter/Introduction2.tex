@@ -1,17 +1,153 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
 
-La teoría de la argumentación es el estudio interdisciplinario de cómo las conclusiones
-pueden ser apoyadas o socavadas por premisas a través de razonamiento lógico [\cite{wiki-arg-theory}].
-Esta es usada en varios aspectos de la vida como en las negociaciones, debates públicos, 
-publicaciones científicas, enseñanza, leyes. Esta data sus inicios en la \dots
+% Contexto histórico-social donde se desarrolla
+% Cuales son las condiciones historicas que hicieron necesarias la creacion de la tesis, o que dieron origen a la problematica de esta
 
-La Extracción de Argumentos (EA) es la rama de Procesamiento del Lenguaje Natural encargada
+La argumentación es una actividad verbal, social y racional destinada a convencer 
+a un crítico razonable de la aceptabilidad de un punto de vista mediante la presentación 
+de una constelación de proposiciones que justifican o refutan la proposición expresada 
+en el punto de vista [\cite{van2004systematic}]. Esta definición concentra en ella 
+partes escenciales de lo que es la argumentación, dicha actividad se encuentra presente
+en varias facetas de la cotidaniedad humana, en la escritura o lectura de documentos,
+en las interacciones sociales de las personas, se encuentra presente cada vez que se
+plantea un argumento y se trata de que este triunfe por medio de un debate en la que 
+se muestran los elementos que lo apoyen.   
+
+En la actualidad es necesario tener acceso a la información necesaria
+de forma rápida y simple. Esto no siempre es posible dado la gran cantidad de información existente y
+que es generada en cada momento. En caso de tener una vía de acceder a esta se podrían realizar acciones
+con mayor rapidez y calidad. Con la argumentación se podría hacer explícitas las razones de las personas 
+al afirmar algo sobre un tema teniendo así su punto de vista individual, y con suficientes personas, colectivo.
+
+% "La argumentación es una actividad verbal, social y racional destinada a convencer 
+% a un crítico razonable de la aceptabilidad de un punto de vista mediante la presentación 
+% de una constelación de proposiciones que justifican o refutan la proposición expresada 
+% en el punto de vista." [\cite{van2004systematic}]. Esta definición concentra en ella 
+% partes escenciales de lo que es la argumentación, dicha actividad se encuentra presente
+% en varias facetas de la cotidaniedad humana, en la escritura o lectura de documentos,
+% en las interacciones sociales de las personas, se encuentra presente cada vez que se
+% plantea un argumento y se trata de que este triunfe por medio de un debate en la que 
+% se muestran los elementos que lo apoyen.  
+
+
+% Antecedentes del problema, justificación y motivación. 
+% Antecedentes: 
+%   Tareas similares que se quedan cortas: Opinion Mining, Citation Mining, Controversy Detection
+%   Cómo se ha estudiado primero a mano. Trabajo dificil.
+% Justificacion:
+%   Limitaciones del trabajo manual
+%   Se quiere hacer el trabajo automatico.
+%   El proyecto esta integrado en un proyecto nacional  reconocido CORESPUC
+
+Varias tareas en el PLN se han desarrollado en torno a diferentes problemas relacionados con 
+la argumentación. Entre tales tareas se encuentran el minado de opiniones, el cual es el 
+estudio computacional de las opiniones, sentimientos y emociones expresadas en un texto 
+[\cite{liu2010sentiment}], la detección de controverisas, enfocado en la identificación de 
+temas y textos en donde puntos de vista conflictivos están presentes y también la zonifiación
+argumentativa la cual clasifica las oraciones por su rol argumentativo dentro de un artículo
+científico. Estas tareas solamente muestran cuáles opiniones, puntos de conflictos y roles 
+de argumentos 
+presenta el texto, pero lo realizan de manera separada y además no muestran el porqué de estas. 
+Para lograr extraer esta información faltante es necesario realizar un 
+análisis de los argumentos dados, para pasar de texto no estructurado a datos argumentativos 
+que den entendimiento de los puntos de vista y cómo se apoyan o atacan entre estos. Este análisis
+es posible realizarlo mediante métodos convecionales como papel y lápiz o utilizando programas
+especializados para la anotación, aunque la práctica ha demostrado que este proceso requiere 
+de una gran cantidad de tiempo y de personal calificado. Con la inmensa cantidad de datos 
+que se genera a diario este análisis es imposible de realizar de forma manual, por esto se 
+estudian y crean métodos encargados de automatizar esta tarea.
+
+% Breve presentación de la problemática. 
+%   Por todo lo anterior nace la EA, rama de PLN ..., definir tareas de la EA, tocar los enfoques realizados
+% (No es el estado del arte aunque se puede hablar un poco de él) Elementos involucrados en el punto de vista cientifico, lleva corpus.
+
+La Extracción de Argumentos nace como la rama del Procesamiento de Lenguaje Natural encargada
 del estudio de métodos para la extracción automática de las estructuras argumentativas de 
-los textos y su posterior procesamiento. Con el aumento creaciente de fuentes de información
-se hace cada día más necesaria la existencia de métodos que sean capaces de identificar estas
-estructuras sin la intervención directa de humanos. Esta rama en la práctica encuentra su uso
-en el reconocimiento de contenido engañoso (TODO https://doi.org/10.1162/coli_a_00338), apoyo de 
-decisiones médicas [\cite{mayer2020transformer}] y legales, y reforzamiento de debates de
-diferentes temas [\cite{niculae2017argument}]. El proceso de extracción está compuesto por 
-la extracción y clasificación de los componentes argumentativos y de las relaciones entre estos. 
+los textos y su posterior procesamiento [\cite{lawrence2020argument}]. Esta tarea se divide en 
+cuatro subtareas fundamentales: la extracción y clasificación de las componentes argumentativas del texto, y la extracción y 
+clasificación de las relaciones entre estas. Estas tareas han sido abordadas de diferentes maneras,
+desde modelos secuenciales [\cite{palau2009argumentation}, \cite{goudas2015argument}] hasta 
+\emph{end-to-end} [\cite{eger2017neural}], desde el uso de clasificadores clásicos 
+como Naive Bayes o SVM [\cite{niculae2017argument}, \cite{stab2017parsing}] hasta el uso de 
+aprendizaje profundo [\cite{galassi2021deep}, \cite{mayer2020transformer}] y sigue 
+siendo un área creciente de estudio.
+
+% La Extracción de Argumentos (EA) es la rama de Procesamiento del Lenguaje Natural encargada
+% del estudio de métodos para la extracción automática de las estructuras argumentativas de 
+% los textos y su posterior procesamiento. Con el aumento creaciente de fuentes de información
+% se hace cada día más necesaria la existencia de métodos que sean capaces de identificar estas
+% estructuras sin la intervención directa de humanos. Esta rama en la práctica encuentra su uso
+% en el reconocimiento de contenido engañoso (TODO https://doi.org/10.1162/coli_a_00338), apoyo de 
+% decisiones médicas [\cite{mayer2020transformer}] y legales, y reforzamiento de debates de
+% diferentes temas [\cite{niculae2017argument}]. El proceso de extracción está compuesto por 
+% la extracción y clasificación de los componentes argumentativos y de las relaciones entre estos. 
+
+% Actualidad, novedad e importancia teórica y práctica. 
+%   En español no tiene mucho estudio. Citar casos del español, para Cuba ninguno
+%   Creación de un corpus anotado el cual se podrá mejorar con el tiempo
+
+La EA se caracteriza por la falta de conjuntos de datos y 
+por la heterogeniedad que presentan estos a la hora de decidir cómo realizar las 
+anotaciones, además que la gran mayoría de los estudios realizados en el campo se encuentran en 
+un reducido conjunto de idiomas como el inglés, alemán o chino [\cite{eger2018cross}]. 
+En el español pocas intervenciones se han dado en el análisis de los argumentos [\cite{esteve2020mineria}] y en 
+lo correspondiente a Cuba en específico no se encontró ninguna referencia. 
+
+% Diseño teórico.
+%    Problema: 
+%    Objeto de Investigación: Procesamiento de Lenguaje Natural
+%    Campo de acción: Linguistica computacional
+%    Hipótesis o preguntas científicas
+%    Objetivos generales y específicos
+%       General: Diseño e implementación de un algoritmo para el estudio de la argumentación en el periódico digital Granma
+%       Especifico Construcción del corpus de los periódicos: Crawler, Anotación (scpaCy).
+%       Especifico Implementacion de la interfaz gráfica para consultar los resultados.
+
+Este trabajo tiene como objetivo la extracción y análisis de estructuras argumentativas en textos 
+de la prensa cubana, constituyendo el primero de su tipo en lo que respecta a la búsqueda del autor. 
+Para lograr dicho objetivo se necesitan realizar varias operaciones.
+En primer lugar es necesario obtener los textos a analizar del sitio 
+web del periódico Granma. Luego se necesita confeccionar algoritmos capaces de realizar las tareas 
+de EA sobre estos textos, para estos algoritmos es necesaria la confección de conjuntos 
+de datos en español en los cuales se puedan entrenar. Finalmente se requiere de una interfaz visual 
+en la que sea posible la interacción de los usuarios, en tareas como visualización y edición, 
+con los resultados obtenidos. 
+
+Se propone la construcción de un programa capaz de realizar la extracción de los textos del Granma, 
+en específico se enfoca en la sección de Cartas Argumentativas de dicho periódico. Para la extracción
+de argumentos se presentan dos modelos, el primero se encarga de la segmentación y clasificación
+de las componentes argumentativas. Este es un modelo secuencia a secuencia en la cual las palabras 
+son vectorizadas por sus características morfológicas mediante el uso de CNN y LSTM, por su información
+semántica mediante \emph{embeddings} GloVe y por su información estructural mediante su parte de la oración, estas 
+secuencias son procesadas por una red LSTM bidireccional y sus atributos son usados por una capa CRF 
+para su clasificación final en etiquetas BIOES con información adicional para la clasificación de las 
+unidades de discurso argumentativas (UDA). El segundo modelo está encargado de la extracción y clasificación 
+de las relaciones entre las UDAs. En él se utilizan las representaciones GloVe de las palabras en las secuencias 
+y su distancia argumentativa para la clasificación de una tupla en la que su primer elemento 
+constituye el texto candidato de donde parte la relación o fuente y el segundo, el texto candidato a recibir la 
+relación u objetivo, en el tipo de relación existente entre estos elementos. La entrada es procesada mediante 
+una LSTM bidireccional y módulos de atención cruzada entre los elementos de la fuente y los elementos del objetivo.
+Para la visualización se crea un ambiente de desarrollo con la herramienta Brat, la cual permite realizar las 
+tareas requeridas a los datos anotados por los modelos.
+
+En resumen se presenta un estudio de la argumentación en español al realizar la extracción de 
+argumentos en la prensa, además crea un conjunto de datos anotado que puede servir
+para un estudio más profundo sobre los esquemas argumentativos presentes en estos textos. 
+
+%    Estructura del trabajo
+
+El presente documento está dividido en 4 capítulos.
+En el Capítulo \ref{chapter:argumentation} se presentan las definiciones necesarias para una introducción
+al tema de la argumentación y la EA.
+El Capítulo \ref{chapter:background} presenta un recorrido por los 
+conceptos, métodos y arquitecturas relacionadas con el Aprendizaje Automático enfocados en el problema 
+en cuestión, además de realizar un compendio y análisis de los enfoques utilizados para dar solución
+a los problemas asociados a la EA y de el procedimiento de proyección de corpus, utilizado para la 
+traducción de conjuntos de datos del inglés al español. 
+Luego en Capítulo \ref{chapter:proposal}
+se describe a detalle la propuesta de los modelos encargados de realizar la extracción de argumentos.
+En el Capítulo \ref{chapter:implementation} se mencionan los diferentes conjuntos de datos utilizados 
+en los experimentos además de los resultados obtenidos en las tareas realizadas.
+Finlamente se concluye el documento y se muestran recomendaciones sobre el seguimiento del trabajo 
+realizado.

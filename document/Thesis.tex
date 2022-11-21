@@ -15,6 +15,7 @@
 \usepackage{changepage}
 \usepackage{multicol}
 \usepackage{graphicx}
+\usepackage{svg}
 \floatstyle{plaintop}
 \restylefloat{table}
 \addbibresource{Bibliography.bib}
@@ -23,7 +24,7 @@
 \renewcommand{\listalgorithmcfname}{Índice de Algoritmos}
 %\dontprintsemicolon
 \SetAlgoNoEnd
-
+\DeclareUnicodeCharacter{0301}{í}
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -55,7 +56,7 @@
 \advisor{\\\vspace{0.25cm}MsC. Damian Valdés Santiago}
 \degree{Licenciado en Ciencia de la Computación}
 \faculty{Facultad de Matemática y Computación}
-\date{Fecha\\\vspace{0.25cm}\href{https://github.com/luisoibarra/thesis}{github.com/luisoibarra/thesis}} % TODO PREGUNTA EL repo de la tesis o el de la implementación?
+\date{28 de noviembre del 2022\\\vspace{0.25cm}\href{https://github.com/luisoibarra/thesis}{github.com/luisoibarra/thesis}} % TODO PREGUNTA EL repo de la tesis o el de la implementación?
 \logo{Graphics/uhlogo}
 \makenomenclature
 
@@ -89,7 +90,7 @@
 
 \mainmatter
 
-\include{MainMatter/Introduction}
+\include{MainMatter/Introduction2}
 \include{MainMatter/Background2}
 \include{MainMatter/Theory2}
 \include{MainMatter/Proposal2}

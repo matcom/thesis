@@ -1,7 +1,51 @@
 \begin{resumen}
+% Resumen: IMRD, 250 palabras
 
-% La Minería de Argumentos permite la extracción y clasificación de componentes argumentativas 
-% y sus relaciones en textos. Dicha rama del Procesamiento de Lenguaje Natural tiene pocos 
+% Introducción al problema
+%  - Cuál es?
+%  - Por qué es importante resolverlo?
+% Cómo puede ser o es resuelto?
+%  - Qué problemas tiene este proceso?
+% Propuesta para mejorar el proceso de resolución del problema
+%  - Modelo
+%  - Resultados  
+
+% TODO Mejorar el inicio
+
+El estudio de la argumentación en la prensa cubana es un campo el cual no se 
+han realizado investigaciones. Con estos datos es posible obtener 
+información de los esquemas argumentativos utilizados en los textos y
+realizar acciones en base a estos.
+Este problema tradicionalmente es resuelto mediante 
+una anotación manual por expertos en lingüística, trabajo que se 
+caracteriza por tomar una gran cantidad de tiempo y recursos. La Extracción
+de Argumentos (EA) es la rama del Procesamiento del Lenguaje Natural (PLN) 
+encargada de estudiar algoritmos y métodos para solucionar los problemas
+asociados a la anotación de las estructuras argumentativas. Mediante el uso 
+de estos algoritmos es posible automatizar el procedimiento de anotación
+de la argumentación. El primer modelo propuesto 
+consiste en uno secuencia a secuencia usado para la extracción y clasificación
+de las unidades de discurso argumentativas (UDA) mediante el uso de LSTM y 
+CRF. Para la extracción y clasificación de 
+enlaces entre las UDAs se propone un modelo de clasificación basado en redes residuales,
+atención y LSTM. Ambos modelos utilizan \emph{embeddings} GloVe para la representación 
+de las palabras. Los resultados obtenidos alcanzaron valores similares en comparación
+con el estado del arte en las tareas de extracción de las UDAs, los resultados obtenidos 
+en las demás tareas no son directamente comparables con los estados del arte, aunque en 
+la tarea de extracción de enlace se alcanzaron buenos resultados.
+Con dichos modelos se anotaron las Cartas a la Dirección, sección del 
+periódico Granma, creándose un conjunto de datos con las estructuras argumentativas anotadas
+y listas para el estudio de estas.
+
+% Este campo 
+% se ha ido desarrollando en los últimos años aunque en español no se encuentran 
+% conjuntos de datos con los cual entrena
+
+% La Extracción de Argumentos (EA) permite la extracción y clasificación de componentes argumentativas 
+% y sus relaciones en textos. El desarrollo de esta ha ido en aumento en los últimos años, aunque la 
+% presencia de su estudio en el lenguaje español ha sido baja.  
+
+% Dicha rama del Procesamiento de Lenguaje Natural tiene pocos 
 % corpus disponibles en español, por lo que se plantea el uso de técnicas de traducción automática 
 % y de proyección de anotaciones del inglés al español para la construcción de corpus en este 
 % lenguaje \cite{eger2018cross} . En el trabajo se propone un modelo enfocado en el uso de 
@@ -15,5 +59,23 @@
 \end{resumen}
 
 \begin{abstract}
-	Resumen en inglés
+	% Resumen en inglés
+
+The study of argumentation in the Cuban press is a field in which no research has been 
+carried out. With this data it is possible to obtain information on the argumentative 
+schemes used in the texts and to carry out actions based on them. This problem is traditionally 
+solved through manual annotation by linguistic experts, a task that takes a great deal of time 
+and resources. Argument Extraction (AE) is the branch of Natural Language Processing (NLP) 
+in charge of studying algorithms and methods to solve the problems associated with the 
+annotation of argument structures. By using these algorithms it is possible to automate the 
+argumentation annotation procedure. The first proposed model consists of a sequence to sequence 
+model used for the extraction and classification of argumentative discourse units (ADUs) using 
+LSTM and CRF. For the extraction and classification of links between ADUs, a classification model 
+based on residual networks, attention and LSTM is proposed. Both models use embeddings GloVe for 
+word representation. The results obtained reached similar values compared to the state of the art 
+in the UDAs extraction tasks, the results obtained in the other tasks are not directly comparable
+with the state of the art, although in the link extraction task good results were achieved. With 
+these models, the Letters to the Director, section of the Granma newspaper, were annotated, creating 
+a data set with the argumentative structures annotated and ready for their study.
+
 \end{abstract}

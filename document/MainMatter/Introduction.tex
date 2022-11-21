@@ -17,13 +17,14 @@ al afirmar algo sobre un tema teniendo así su punto de vista individual, y con 
 
 % Presentación de la problemática
 
-La Extracción de Argumentos (EA) es la rama del Procesamiento de Lenguaje Natural encargada de formularizar
+La Extracción de Argumentos (EA) es la rama del Procesamiento de Lenguaje Natural (PLN) encargada de formularizar
 y modelar dicho problema. Los modelos existentes generalmente se encargan de
 extraer y clasificar las componentes argumentativas y sus relaciones de una fuente no estructurada de 
 texto, capturando un proceso de razonamiento y argumentación en su estructura final. Los métodos
 de realizar este procedimiento varían en dependencia de las características en que se trabaja y el objetivo
 a que se quiere llegar. Entre los métodos usados se pueden mencionar métodos ad-hoc basados en gramáticas,
-que aprovechan atributos del texto como partes de la oración y entidades nombradas, que codifican diferentes 
+que aprovechan atributos del texto como partes de la oración (POS por sus siglas en inglés \emph{parts of speech}) 
+y entidades nombradas, que codifican diferentes 
 patrones argumentativos [\cite{dykes2020reconstructing}]. Dicho enfoque requiere de trabajo 
 humano para la creación de una gramática que permita resultados satisfactorios. Este tipo de enfoque
 generalmente sacrifica recobrado por precisión y no permite una generalización del problema, contribuyendo
@@ -69,11 +70,11 @@ Para la solución del problema se necesita extraer las componentes argumentativa
 y clasificaciones. Para esto se necesita encontrar qué modelo es factible usar para la extracción de
 argumentos en textos en español, especialmente en la prensa. En este aspecto existen investigaciones
 en las cuales usan modelos basados en Transformer y Attention que han impuesto nuevos estados de arte
-[\cite{mayer2020transformer}, \cite{galassi2018argumentative}].
+[\cite{mayer2020transformer}, \cite{galassi2021deep}].
 
 % Este trabajo necesita encontrar \emph{qué modelos se pueden usar en el español para la extracción de 
 % argumentos en textos, especialmente en la prensa} (TODO Posible Pregunta Científica?). Recientemente se ha introducido modelos basados 
-% en Transformer y Attention (CITE \cite{mayer2020transformer}, \cite{galassi2018argumentative})
+% en Transformer y Attention (CITE \cite{mayer2020transformer}, \cite{galassi2021deep})
 % que han llegado a alcanzar resultados iguales o superiores al estado del arte de su momento (TODO Posible Hipótesis?). 
 % Por otro lado dado que los corpus están en inglés se desea saber si \emph{es factible usar métodos
 % para poder usar el conocimiento aprendido de los algoritmos entrenados en inglés en el español} 
