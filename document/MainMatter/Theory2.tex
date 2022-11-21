@@ -222,7 +222,7 @@ un modelo equivalente a uno sin el bloque, garantizando la condición de subconj
 dicho bloque no pierde poder expresivo dado que en caso de que su aporte sea considerable al resultado final, 
 se tendría que aprender solamente la función $f(x) - x$ donde $x$ es la entrada del bloque y $f$ es la función 
 aprendida por el bloque sin la conexión residual para mitigar el efecto de la conexión residual como es mostrado
-en Fig. \ref{fig:res_block}.
+en Figura \ref{fig:res_block}.
 
 \begin{figure}[h!]
 	\begin{center}
@@ -250,7 +250,7 @@ desaparecer.
 Para esto se han creado arquitecturas que disminuyen estos problemas. Una de estas arquitecturas es las memorias
 de corto largo plazo (LSTM for sus siglas en inglés \emph{Long Short Term Memory}) [\cite{hochreiter1997long}].
 Este modelo guarda un contexto del procesamiento y está constituído por varias compuertas que regulan las 
-actualizaciones de los estados internos. LSTM (Fig. \ref{fig:rnn_lstm}) posee dos variables de estado, la memoria 
+actualizaciones de los estados internos. LSTM (Figura \ref{fig:rnn_lstm}) posee dos variables de estado, la memoria 
 $C$ y el estado oculto $H$. Entre sus compuertas se encuentran la compuerta de olvido, esta regula cuanto de la 
 memoria permanece en el proximo paso, la compuerta de entrada ajusta la cantidad de información nueva que estrará, 
 la compuerta de salida maneja el calculo del próximo estado oculto.
@@ -487,7 +487,7 @@ la generalización o el error de generalización. Existen tres comportamientos e
 
 El bajo ajuste ocurre cuando el modelo no es capaz de aprender del conjunto de datos o cuando este aún puede aprender 
 más. Las curvas de aprendizaje en estos casos se caracterizan por ser una linea plana o valores ruidosos con alta pérdida
-(Fig. \ref{fig:underfit}).
+(Figura \ref{fig:underfit}).
 
 \begin{figure}[h!]
 	\begin{center}
@@ -506,7 +506,7 @@ estructura de los datos.
 El sobreajuste es el fenómeno en el que el modelo se aprende los datos de entrenamiento extremadamente bien, incluso
 el ruido en estos, esto trae consigo que falla en generalizar el problema para nuevas entradas. Las curvas 
 características de este fenómeno presentan una divergencia en los errores de entrenamiento y validación a medida
-que se entrena el modelo, mientras que la de entrenamiento mejora la de validación tiende a empeorar (Fig. \ref{fig:overfit}). 
+que se entrena el modelo, mientras que la de entrenamiento mejora la de validación tiende a empeorar (Figura \ref{fig:overfit}). 
 
 \begin{figure}[h!]
 	\begin{center}
@@ -529,7 +529,7 @@ se utiliza para parar este en el momento en que el error de generalización comi
 se sobreentrene el modelo.
 
 Finalmente un buen ajuste es el resultado que se alcanza cuando tanto la curva de validación como de entrenamiento
-presentan valores pequeños y similares, consecuentes con una correcto aprendizaje y generalización (Fig. \ref{fig:good_fit}).
+presentan valores pequeños y similares, consecuentes con una correcto aprendizaje y generalización (Figura \ref{fig:good_fit}).
 
 \begin{figure}[h!]
 	\begin{center}
@@ -548,7 +548,7 @@ se puede identificar si la pérdida en el conjunto de entrnamiento conlleva a un
 validación y viceversa quedando al final con una separación entre ambos valores. En el caso del conjunto de 
 validación se presenta como una curva ruidosa, también se puede dar el caso de que el conjunto  de validación
 sea más fácil de predecir que el de entrenamiento, en este caso se observa como la curva de validación permanece
-siempre por debajo de la de entrenamiento (Fig. \ref{fig:unrepresentative_data}).
+siempre por debajo de la de entrenamiento (Figura \ref{fig:unrepresentative_data}).
 
 \begin{figure}[h!]
 	\begin{center}

@@ -22,8 +22,9 @@
 \RequirePackage{footmisc}
 \RequirePackage{csquotes}
 \RequirePackage[
-	style=apa,
-	citestyle=authoryear,
+	style=numeric,
+	% citestyle=authoryear,
+	citestyle=numeric,
   hyperref=true,
 	backref=true
 	]{biblatex}
