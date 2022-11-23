@@ -9,11 +9,26 @@ asociadas al problema de realizar la extracción de argumentos.
 
 La argumentación es un tema tratado desde la antigüedad, Aristóteles lo defendía como la 
 habilidad de, dada una pregunta, considerar los elementos útiles para persuadir a alguien, algo
-similar a la retórica. De una perspectiva más contemporánea surgen las ideas de [\cite{perelman1969rhetoric}] 
+similar a la retórica. De una perspectiva más contemporánea surgen las ideas de 
+% TODO PREGUNTAR Exactamente que se debe hacer. Hacer lo del natlib y probar
+% el cite debe quedar Perelman y col. (1969)
+[\cite{perelman1969rhetoric}] 
+% [\autocite{perelman1969rhetoric}] 
+% [\parencite{perelman1969rhetoric}] 
+% [\citet{perelman1969rhetoric}] 
+% [\citep{perelman1969rhetoric}] 
 enfocadas en un análisis de la retórica en donde se estipula que la teoría de la argumentación
 responde a provocar o aumentar la adhesión de las personas a las tesis presentadas, por medio de 
-técnicas discursivas. En [\cite{toulmin_2003}] se considera como argumento todo aquello que ofrece, 
-o todo lo que es utilizado, para justificar o refutar una proposición. En este último se toma 
+técnicas discursivas. En 
+% TODO PREGUNTAR Exactamente que se debe hacer. Hacer lo del natlib y probar
+% el cite debe quedar Toulmin (1969)
+[\cite{toulmin_2003}] 
+% [\autocite{toulmin_2003}] 
+% [\parencite{toulmin_2003}] 
+% [\citet{toulmin_2003}] 
+% [\citep{toulmin_2003}] 
+se considera como argumento todo aquello que ofrece, 
+o todo lo que es utilizado, para justificar o refutar una proposición. En este último, se toma 
 una perspecitva más racional y deductiva de la argumentación, dando como resultado lo que se 
 conoce como el Método de Toulmin. 
 
@@ -28,71 +43,91 @@ Las justificaciones pueden estar explícitas o implícitas y son suposiciones qu
 fundamentos con las afirmaciones, estas a su vez pueden ser respaldadas por conocimiento.
 El esquema introduce la posibilidad de otra sitaución válida a la establecida en las afirmaciones
 mediante la refutación. Los calificadores son usados para dar más información de la calidad o seguridad
-de las afirmaciones dadas. Un ejemplo\footnote{Extraído de \cite{toulminArgument}} de este esquema es:
+de las afirmaciones dadas. Un ejemplo\footnote{Extraído de 
+% TODO PREGUNTAR Cite problem, cita de texto, es 
+% [\autocite{toulminArgument}] 
+% [\parencite{toulminArgument}] 
+% [\citet{toulminArgument}] 
+% [\citep{toulminArgument}] 
+\cite{toulminArgument}.
+} de este esquema es:
 
 \begin{adjustwidth}{25pt}{25pt}
-    [\emph{Se escucharon ladridos y aullidos en la distancia}]$_{fundamento}$, 
-    [\emph{probablemente}]$_{calificador}$ 
-    [\emph{haya perros en las cercanías}]$_{afirmación}$.
+    [\emph{Se escucharon ladridos y aullidos en la distancia}]$_{\mathrm{fundamento}}$, 
+    [\emph{probablemente}]$_{\mathrm{calificador}}$ 
+    [\emph{haya perros en las cercanías}]$_{\mathrm{afirmación}}$.
 \end{adjustwidth}
 
 En este ejemplo, además de las partes explícitas, se encuentran implícitas como la justificación 
-(los perros son animales que ladran y aullan), el respaldo (se sabe que existen perros en la zona) y 
-la refutación (Puede ser que hayan lobos o coyotes cerca).
+(\emph{los perros son animales que ladran y aullan}), el respaldo (\emph{se sabe que existen perros en la zona}) y 
+la refutación (\emph{puede ser que hayan lobos o coyotes cerca}).
 
-Este método crea una definición compacta que ayuda a los investigadores a enfocar su búsqueda basados
-en las diferentes categorías definidas. Además engloba de manera comprensible un tema tan complejo 
+Este método crea una definición compacta que ayuda a los investigadores a enfocar su búsqueda 
+en las diferentes categorías definidas. Además, engloba de manera comprensible un tema tan complejo 
 como la argumentación al tomar en cuenta gran parte de los elementos presentes en el razonamiento
 realizado para llegar a conclusiones, incorporando incluso elementos probabilísticos en el proceso. 
 
 \subsection{Rasgos lingüísticos}
 
 Los rasgos lingüísticos son aquellas características que se encuentran presentes en los textos 
-que hacen que estos obtengan la clasificación de argumentativos [\cite{venegas2005hacia}]. Con 
+que hacen que estos se clasifiquen argumentativos [\cite{venegas2005hacia}]. Con 
 la identificación de estos se hace la tarea de extracción más sencilla y con un marco teórico 
 que respalde las decisiones tomadas. Ejemplos de rasgos presentes en textos argumentativos:
 
 \begin{enumerate}
-    \item Marcas de orden que introducen párrafos: Primero, segundo, por un lado, por otra parte,
-    finalmente.
-    \item Comillas y citas: Citar palabras que refuercen la intervención recurriendo a autoridades
+    \item Marcas de orden que introducen párrafos: \emph{primero}, \emph{segundo}, \emph{por un lado}, 
+    \emph{por otra parte}, \emph{finalmente}.
+    \item Comillas y citas: citar palabras que refuercen la intervención recurriendo a autoridades
     o personajes.
-    \item Nexos que expresan causa o consecuencias: ya que, porque, pues, con motivo de, gracias a,
-    considerando que, por lo tanto, de manera que.
+    \item Nexos que expresan causa o consecuencias: \emph{ya que}, \emph{porque}, \emph{pues}, 
+    \emph{con motivo de}, \emph{gracias a}, \emph{considerando que}, \emph{por lo tanto}, \emph{de manera que}.
 \end{enumerate}
 
 Estos rasgos además de dar indicación de la existencia de argumentos dan pie para conocer las relaciones
 entre estos y los tipos de argumentos. Por ejemplo, \emph{por lo tanto}, implica que lo que viene 
-a continuación es una conclusión la cual es apoyada por lo dicho anterior en el texto, algo parecido
+a continuación es una conclusión apoyada en lo dicho anteriormente en el texto. Algo parecido
 sucede con \emph{ya que}, en este caso implica que lo siguiente es un argumento que se encuentra 
 relacionado con lo mencionado antes.
 
-En [\cite{venegas2005hacia}] se determinan 16 categorías y 51 rasgos lingüísticos, dando una idea 
+En [
+% TODO PREGUNTAR Cite problem, cita de texto, imagino que sea Vanegas (2005)
+% [\autocite{venegas2005hacia}] 
+% [\parencite{venegas2005hacia}] 
+% [\citet{venegas2005hacia}] 
+% [\citep{venegas2005hacia}] 
+\cite{venegas2005hacia}
+] se determinan 16 categorías y 51 rasgos lingüísticos, dando una idea 
 de la gran variedad de marcadores presentes en la argumentación.
 
 \section{Extracción de Argumentos}
 
-El PLN es un subcampo de la Inteligencia Artificial (IA) que tiene como objetivo la comprensión 
+El PLN es un subcampo de la Inteligencia Artificial que tiene como objetivo la comprensión 
 del lenguaje humano por las computadoras. 
 Mediante el uso de sus algoritmos es posible el procesamiento masivo de texto para la extracción de información 
-relevante de este. Entre las tareas pertenecientes a dicho campo se encuentran Traducción Automática, 
-Generación de Lenguaje Natural y Extracción de Argumentos (EA). La EA constituye la identificación y extracción 
+relevante de este. Entre las tareas pertenecientes a dicho campo se encuentran la Traducción Automática, 
+la Generación de Lenguaje Natural y la Extracción de Argumentos (EA). La EA constituye la identificación y extracción 
 automática de las estructuras de inferencia y 
 razonamiento expresadas como argumentos presentes en el lenguaje natural [\cite{lawrence2020argument}].
-En la actualidad en tareas de PLN como análisis de sentimientos permiten 
-extraer cuales son las opiniones o sentimientos presentes, este análisis, sin embargo, presenta una falta 
-de información, ya que no presenta el porqué de estas. La EA permite dar respuesta a este problema presentando
-los argumentos y cómo sus relaciones justifican sus posiciones. Dicho problema está constituído por diferentes 
+En la actualidad, tareas del PLN como el análisis de sentimientos permiten 
+extraer cuáles son las opiniones o sentimientos presentes, sin embargo, este análisis presenta una falta 
+de información, ya que no justifica el porqué de las opiniones. La EA permite dar respuesta a este problema presentando
+los argumentos y cómo sus relaciones justifican las posiciones del hablante. Dicho problema está constituído por diferentes 
 estructuras y se compone de distintas tareas necesarias para su solución.
 
 \subsection{Estructuras Argumentativas}
 
-Las estructuras argumentativas son las partes y sus relaciones de las cuales están compuestas la argumentación en los textos.
-Estas se componen de dos elementos principales, las Unidades de Discurso Argumentativas (UDA) y los enlaces
-existentes entre estas. Las UDAs corresponden a la unidad mínima de argumentación, definida en [\cite{stede2018argumentation}]
-como un segmento de texto que juega un solo rol para el argumento siendo analizado, y es 
-delimitado por segmentos vecinos que juegan roles diferentes o ningún rol.
-Las UDAs se relacionan entre sí formando el proceso de inferencia y razonamiento del argumento.
+Las estructuras argumentativas son las partes de la argumentación de los textos y sus relaciones.
+Estas se componen de dos elementos principales: las Unidades de Discurso Argumentativas (UDA) y los enlaces
+existentes entre estas. Las UDAs corresponden a la unidad mínima de argumentación, definida por 
+% TODO PREGUNTAR Cite problem, cita de texto, imagino que sea Steded y Schneider (2018)
+% [\autocite{stede2018argumentation}] 
+% [\parencite{stede2018argumentation}] 
+% [\citet{stede2018argumentation}] 
+% [\citep{stede2018argumentation}] 
+[\cite{stede2018argumentation}]
+como un segmento de texto que juega un solo rol para el argumento analizado, y es 
+delimitado por segmentos vecinos que tienen roles diferentes o ningún rol.
+Las UDAs se relacionan entre sí conformando el proceso de inferencia y razonamiento del argumento.
 Tanto los enlaces como las UDAs son clasificadas en dependencia de su rol en la argumentación, estas clasificaciones 
 en las UDAs parten de los conceptos de afirmación, declaración controversial y parte central del argumento, y premisa,
 razones que la justifican o refutan, y en las relaciones de ataque y apoyo. 
@@ -110,9 +145,16 @@ Dada las estructuras argumentativas en la EA se conciben las siguientes tareas p
 
 \subsubsection{Extracción de UDAs}
 
-Esta tarea constituye en la separación de los segmentos de texto que formarán parte de la estructura.
-En este proceso el texto es segmentado y obteniendo un conjunto de UDAs. En el siguiente 
-ejemplo\footnote{Traducido del corpus [\cite{stab2017parsing}]} se representa 
+Consiste en la separación de los segmentos de texto que formarán parte de la estructura.
+En este proceso el texto es segmentado y se obteniene un conjunto de UDAs. En el siguiente 
+ejemplo\footnote{Traducido del corpus de 
+% TODO PREGUNTAR Cita de texto
+% [\autocite{stab2017parsing}] 
+% [\parencite{stab2017parsing}] 
+% [\citet{stab2017parsing}] 
+% [\citep{stab2017parsing}] 
+[\cite{stab2017parsing}]
+.} se representa 
 la extracción de UDAs marcadas en \emph{cursiva} de un texto dado:
 
 \begin{adjustwidth}{25pt}{25pt}
@@ -124,51 +166,51 @@ la extracción de UDAs marcadas en \emph{cursiva} de un texto dado:
 
 \subsubsection{Clasificación de UDAs}
 
-La clasificación de UDAs consiste en asignarle la categoría que toma la UDA en la argumentación. En general 
+La clasificación de UDAs consiste en asignarle la categoría que toma la UDA en la argumentación. En general, 
 las clasificaciones parten de dos clases bases, las afirmaciones y premisas, aunque estas pueden ser tantas
-como sea necesario por el problema en específico a tratar. Siguiendo con el ejemplo, se observa como los 
+como sea necesario por el problema específico a tratar. Siguiendo con el ejemplo, se observa como los 
 segmentos extraídos en el paso anterior son clasificados en afirmación y premisa respectivamente: 
 
 \begin{adjustwidth}{25pt}{25pt}
     En primer lugar, [\emph{el correo electrónico puede contar como uno de los resultados
-    más beneficiosos de la tecnología moderna}]$_{Afirmación}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
+    más beneficiosos de la tecnología moderna}]$_{\mathrm{Afirmación}}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
     enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
-    causar problemas que causarían que el correo no fuera enviado}]$_{Premisa}$.
+    causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa}}$.
 \end{adjustwidth}
 
 \subsubsection{Extracción de relaciones entre las UDAs}
 
-La extracción de relaciones constituye el paso en donde se determina si están relacionadas las UDAs o no. 
+La extracción de relaciones constituye el paso donde se determina si están relacionadas las UDAs o no. 
 La disposición de estas relaciones forma el proceso de razonamiento en que se basa el autor para validar 
 su posición. En el ejemplo se representa la existencia de relación mediante su distancia argumentativa con 
-la UDA con la que se relaciona. La distancia argumentativa son la cantidad de UDAs del texto que separan la 
+la UDA con la que se relaciona. La distancia argumentativa es la cantidad de UDAs del texto que separan la 
 UDA fuente del objetivo [\cite{galassi2021deep}], en caso de ser negativa (positiva) el objetivo se encuentra 
 antes (después) que la fuente.
 
 \begin{adjustwidth}{25pt}{25pt}
     En primer lugar, [\emph{el correo electrónico puede contar como uno de los resultados
-    más beneficiosos de la tecnología moderna}]$_{Afirmación}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
+    más beneficiosos de la tecnología moderna}]$_{\mathrm{Afirmación}}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
     enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
-    causar problemas que causarían que el correo no fuera enviado}]$_{Premisa, -1}$.
+    causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa, -1}}$.
 \end{adjustwidth}
 
 \subsubsection{Clasificación de relaciones entre las UDAs}
 
 La clasificación de las relaciones consiste en clasificar las relaciones extraídas en las categorías pertinentes.
-Los tipos de relaciones, nacen de dos clases bases por lo general, las relaciones de apoyo y las de ataque.
-Las de apoyo se centran en aquellas en las que la UDA fuente afirme la UDA objetivo, las de ataque se basan en 
-las que la UDA fuente apoye la negación de la UDA objetivo.
+Los tipos de relaciones, nacen de dos clases bases por lo general, las relaciones de apoyo y de ataque.
+Las de apoyo son aquellas en las que la UDA fuente afirme la UDA objetivo, las de ataque son 
+las que la UDA fuente apoya la negación de la UDA objetivo.
 
 \begin{adjustwidth}{25pt}{25pt}
     En primer lugar, [\emph{el correo electrónico puede contar como uno de los resultados
-    más beneficiosos de la tecnología moderna}]$_{Afirmación}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
+    más beneficiosos de la tecnología moderna}]$_{\mathrm{Afirmación}}$. [\emph{Años atrás, las personas pagaban gran cantidad de dinero para 
     enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
-    causar problemas que causarían que el correo no fuera enviado}]$_{Premisa, -1, apoyo}$.
+    causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa, -1, apoyo}}$.
 \end{adjustwidth}
 
 Partiendo de esto, se puede observar que las estructuras argumentativas de un texto constituyen un grafo dirigido 
-en donde sus nodos representan las UDAs y están anotados con su tipo y sus vértices representan las 
-relaciones entre las UDAs y dichos vértices se anotan con el tipo de relación existente entra ambas 
+en donde sus nodos representan las UDAs y están anotados con su tipo, y sus vértices representan las 
+relaciones entre las UDAs. Dichos vértices se anotan con el tipo de relación existente entra ambas 
 (Figura \ref{fig:arg_struct}).
 
 \begin{figure}[h!]
@@ -176,8 +218,7 @@ relaciones entre las UDAs y dichos vértices se anotan con el tipo de relación 
 		\begin{center}
             \includesvg[scale=.7]{Graphics/Estructuras_argumentativas.svg}
         \end{center}
+        % TODO Anotación {y sus relaciones} reduntante, la definici'on de estructuras argumentativa ya las engloba 
 	    \caption{Estructuras Argumentativas.}
 	\end{center}
 \end{figure}\label{fig:arg_struct}
-
-% Argumentation Mining \cite{stede2018argumentation}, capitulo de usos de la argument mining. 

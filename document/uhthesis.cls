@@ -23,8 +23,8 @@
 \RequirePackage{csquotes}
 \RequirePackage[
 	style=numeric,
-	% citestyle=authoryear,
-	citestyle=numeric,
+	citestyle=authoryear,
+	% citestyle=numeric,
   hyperref=true,
 	backref=true
 	]{biblatex}
@@ -76,6 +76,12 @@
 
 % Whole biblatex hyperref to bibliography
 \DeclareCiteCommand{\cite}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printtext[bibhyperref]{\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+\DeclareCiteCommand{\mycite}
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \printtext[bibhyperref]{\usebibmacro{cite}}}
@@ -221,7 +227,7 @@
     \vskip 2cm
     {\Large Autor: \textbf{\@author}} \\
     \vskip 0.5cm
-    {\Large Tutores: \textbf{\@advisor}} \\
+    {\Large Tutor: \textbf{\@advisor}} \\
     \vfill
     {\large Trabajo de Diploma \\presentado en opción al título de \\ \@degree} \\
     \vskip 1cm

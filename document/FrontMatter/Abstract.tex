@@ -12,30 +12,36 @@
 
 % TODO Mejorar el inicio
 
-El estudio de la argumentación en la prensa cubana es un campo el cual no se 
-han realizado investigaciones. Con estos datos es posible obtener 
+El estudio de la argumentación en la prensa cubana es un campo se han reportado
+relativamente pocas investigaciones. En estos estudios es posible obtener 
 información de los esquemas argumentativos utilizados en los textos y
 realizar acciones en base a estos.
 Este problema tradicionalmente es resuelto mediante 
 una anotación manual por expertos en lingüística, trabajo que se 
-caracteriza por tomar una gran cantidad de tiempo y recursos. La Extracción
-de Argumentos (EA) es la rama del Procesamiento del Lenguaje Natural (PLN) 
+caracteriza por tomar mucho tiempo y recursos. La Extracción
+de Argumentos es la rama del Procesamiento del Lenguaje Natural
 encargada de estudiar algoritmos y métodos para solucionar los problemas
 asociados a la anotación de las estructuras argumentativas. Mediante el uso 
 de estos algoritmos es posible automatizar el procedimiento de anotación
-de la argumentación. El primer modelo propuesto 
+de la argumentación. 
+En este trabajo se propone la anotación de textos argumentativos
+mediante el uso de dos modelos de aprendizaje profundo, entrenados con 
+conjuntos de datos traducidos y proyectados del inglés, encargados de resolver
+las tareas relacionadas al problema. 
+El primer modelo propuesto 
 consiste en uno secuencia a secuencia usado para la extracción y clasificación
-de las unidades de discurso argumentativas (UDA) mediante el uso de LSTM y 
-CRF. Para la extracción y clasificación de 
+de las unidades de discurso argumentativas (UDA) mediante el uso de \emph{Long Short Term Memory} 
+(LSTM) y \emph{Conditional Random Field} (CRF). Para la extracción y clasificación de 
 enlaces entre las UDAs se propone un modelo de clasificación basado en redes residuales,
 atención y LSTM. Ambos modelos utilizan \emph{embeddings} GloVe para la representación 
-de las palabras. Los resultados obtenidos alcanzaron valores similares en comparación
-con el estado del arte en las tareas de extracción de las UDAs, los resultados obtenidos 
-en las demás tareas no son directamente comparables con los estados del arte, aunque en 
-la tarea de extracción de enlace se alcanzaron buenos resultados.
-Con dichos modelos se anotaron las Cartas a la Dirección, sección del 
+de las palabras. Los resultados obtenidos en la extracción de UDAs alcanzaron valores de
+0,82 en la métrica F1 comparados con 0,85 obtenidos en el estado del arte. 
+En las demás tareas, los resultados no son directamente comparables con los del estado del arte, 
+los mejores valores F1 obtenidos fueron 0,56 en la clasificación de UDAs, 0,74 en la predicción
+de enlaces y 0,39 en la clasificación de enlaces.
+Con dichos modelos se anotaron las ``Cartas a la Dirección'', del 
 periódico Granma, creándose un conjunto de datos con las estructuras argumentativas anotadas
-y listas para el estudio de estas.
+y listas para el estudio de estas por lingüistas.
 
 % Este campo 
 % se ha ido desarrollando en los últimos años aunque en español no se encuentran 
@@ -61,21 +67,25 @@ y listas para el estudio de estas.
 \begin{abstract}
 	% Resumen en inglés
 
-The study of argumentation in the Cuban press is a field in which no research has been 
-carried out. With this data it is possible to obtain information on the argumentative 
-schemes used in the texts and to carry out actions based on them. This problem is traditionally 
-solved through manual annotation by linguistic experts, a task that takes a great deal of time 
-and resources. Argument Extraction (AE) is the branch of Natural Language Processing (NLP) 
-in charge of studying algorithms and methods to solve the problems associated with the 
-annotation of argument structures. By using these algorithms it is possible to automate the 
-argumentation annotation procedure. The first proposed model consists of a sequence to sequence 
-model used for the extraction and classification of argumentative discourse units (ADUs) using 
-LSTM and CRF. For the extraction and classification of links between ADUs, a classification model 
-based on residual networks, attention and LSTM is proposed. Both models use embeddings GloVe for 
-word representation. The results obtained reached similar values compared to the state of the art 
-in the UDAs extraction tasks, the results obtained in the other tasks are not directly comparable
-with the state of the art, although in the link extraction task good results were achieved. With 
-these models, the Letters to the Director, section of the Granma newspaper, were annotated, creating 
-a data set with the argumentative structures annotated and ready for their study.
+The study of argumentation in the Cuban press is a field in which relatively little
+research has been reported. In these studies it is possible to obtain information on 
+the argumentative schemes used in the texts and take actions based on them. This problem
+is traditionally solved through manual annotation by linguistic experts, a work that takes 
+a lot of time and resources. Argument Extraction is the branch of Natural Language Processing 
+in charge of studying algorithms and methods to solve the problems associated with the annotation 
+of argument structures. By using these algorithms it is possible to automate the argumentation 
+annotation procedure.  In this paper we propose the annotation of argumentative texts by using 
+two deep learning models, trained with translated and projected English datasets, in charge of 
+solving the tasks related to the problem.  The first proposed model consists of a sequence to 
+sequence one used for the extraction and classification of argumentative discourse units (ADUs) 
+by using Long Short Term Memory (LSTM) and Conditional Random Field (CRF). A classification model 
+based on residual networks, attention and LSTM is proposed for the extraction and classification of 
+links between ADUs. Both models use GloVe for word representation. The results obtained in the 
+extraction of ADUs reached values of 0.82 in the F1 metric compared to 0.85 obtained in the state 
+of the art.  In the other tasks, the results are not directly comparable with those of the state of 
+the art, the best F1 values obtained were 0.56 in UDAs classification, 0.74 in link prediction and 
+0.39 in link classification. With these models, the ``Letters to the Management'' of the Granma 
+newspaper were annotated, creating a data set with the argumentative structures annotated and 
+ready to be studied by linguists. 
 
 \end{abstract}

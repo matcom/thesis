@@ -1,6 +1,12 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
 
+% \cite{brownlee2018better}\\
+% \textcite{brownlee2018better}\\
+% \parencite{brownlee2018better}\\
+% \citet{brownlee2018better}
+% \citep{brownlee2018better}
+
 % Contexto histórico-social donde se desarrolla
 % Cuales son las condiciones historicas que hicieron necesarias la creacion de la tesis, o que dieron origen a la problematica de esta
 
@@ -9,10 +15,10 @@ a un crítico razonable de la aceptabilidad de un punto de vista mediante la pre
 de una constelación de proposiciones que justifican o refutan la proposición expresada 
 en el punto de vista [\cite{van2004systematic}]. Esta definición concentra en ella 
 partes escenciales de lo que es la argumentación, dicha actividad se encuentra presente
-en varias facetas de la cotidaniedad humana, en la escritura o lectura de documentos,
-en las interacciones sociales de las personas, se encuentra presente cada vez que se
-plantea un argumento y se trata de que este triunfe por medio de un debate en la que 
-se muestran los elementos que lo apoyen.   
+en varias facetas de la cotidianedad humana, en la escritura o lectura de documentos,
+en las interacciones sociales de las personas, está presente cada vez que se
+plantea un argumento y se trata de que este triunfe en un debate donde 
+se exponen elementos que lo apoyen.   
 
 En la actualidad es necesario tener acceso a la información necesaria
 de forma rápida y simple. Esto no siempre es posible dado la gran cantidad de información existente y
@@ -40,37 +46,39 @@ al afirmar algo sobre un tema teniendo así su punto de vista individual, y con 
 %   Se quiere hacer el trabajo automatico.
 %   El proyecto esta integrado en un proyecto nacional  reconocido CORESPUC
 
-Varias tareas en el PLN se han desarrollado en torno a diferentes problemas relacionados con 
-la argumentación. Entre tales tareas se encuentran el minado de opiniones, el cual es el 
+Varias tareas en el Procesamiento de Lenguaje Natural (PLN) se han desarrollado en 
+torno a diferentes problemas relacionados con 
+la argumentación. Entre tales tareas se encuentra el minado de opiniones, el cual es el 
 estudio computacional de las opiniones, sentimientos y emociones expresadas en un texto 
-[\cite{liu2010sentiment}], la detección de controverisas, enfocado en la identificación de 
-temas y textos en donde puntos de vista conflictivos están presentes y también la zonifiación
-argumentativa la cual clasifica las oraciones por su rol argumentativo dentro de un artículo
+[\cite{liu2010sentiment}], la detección de controverisas enfocada en la identificación de 
+temas y textos en donde puntos de vista conflictivos están presentes; y también la zonifiación
+argumentativa quel clasifica las oraciones por su rol argumentativo dentro de un artículo
 científico. Estas tareas solamente muestran cuáles opiniones, puntos de conflictos y roles 
 de argumentos 
-presenta el texto, pero lo realizan de manera separada y además no muestran el porqué de estas. 
+presenta el texto, pero lo realizan de manera separada y no muestran el porqué de estas. 
 Para lograr extraer esta información faltante es necesario realizar un 
 análisis de los argumentos dados, para pasar de texto no estructurado a datos argumentativos 
-que den entendimiento de los puntos de vista y cómo se apoyan o atacan entre estos. Este análisis
-es posible realizarlo mediante métodos convecionales como papel y lápiz o utilizando programas
+que den entendimiento de los puntos de vista y de cómo se apoyan o atacan entre sí. Este análisis
+es posible realizarlo mediante métodos convencionales manuales o utilizando programas
 especializados para la anotación, aunque la práctica ha demostrado que este proceso requiere 
 de una gran cantidad de tiempo y de personal calificado. Con la inmensa cantidad de datos 
-que se genera a diario este análisis es imposible de realizar de forma manual, por esto se 
+que se genera a diario este análisis es impracticable de realizar de forma manual, por esto se 
 estudian y crean métodos encargados de automatizar esta tarea.
 
 % Breve presentación de la problemática. 
 %   Por todo lo anterior nace la EA, rama de PLN ..., definir tareas de la EA, tocar los enfoques realizados
 % (No es el estado del arte aunque se puede hablar un poco de él) Elementos involucrados en el punto de vista cientifico, lleva corpus.
 
-La Extracción de Argumentos nace como la rama del Procesamiento de Lenguaje Natural encargada
+La Extracción de Argumentos (EA) nace como la rama del PLN encargada
 del estudio de métodos para la extracción automática de las estructuras argumentativas de 
 los textos y su posterior procesamiento [\cite{lawrence2020argument}]. Esta tarea se divide en 
-cuatro subtareas fundamentales: la extracción y clasificación de las componentes argumentativas del texto, y la extracción y 
-clasificación de las relaciones entre estas. Estas tareas han sido abordadas de diferentes maneras,
+cuatro subtareas fundamentales: i) la extracción y ii) clasificación de las componentes 
+argumentativas del texto, y iii) la extracción y 
+iv) clasificación de las relaciones entre estas. Estas tareas han sido abordadas de diferentes maneras,
 desde modelos secuenciales [\cite{palau2009argumentation}, \cite{goudas2015argument}] hasta 
 \emph{end-to-end} [\cite{eger2017neural}], desde el uso de clasificadores clásicos 
 como Naive Bayes o SVM [\cite{niculae2017argument}, \cite{stab2017parsing}] hasta el uso de 
-aprendizaje profundo [\cite{galassi2021deep}, \cite{mayer2020transformer}] y sigue 
+aprendizaje profundo [\cite{galassi2021deep}, \cite{mayer2020transformer}], y sigue 
 siendo un área creciente de estudio.
 
 % La Extracción de Argumentos (EA) es la rama de Procesamiento del Lenguaje Natural encargada
@@ -91,8 +99,8 @@ La EA se caracteriza por la falta de conjuntos de datos y
 por la heterogeniedad que presentan estos a la hora de decidir cómo realizar las 
 anotaciones, además que la gran mayoría de los estudios realizados en el campo se encuentran en 
 un reducido conjunto de idiomas como el inglés, alemán o chino [\cite{eger2018cross}]. 
-En el español pocas intervenciones se han dado en el análisis de los argumentos [\cite{esteve2020mineria}] y en 
-lo correspondiente a Cuba en específico no se encontró ninguna referencia. 
+En el español, pocas intervenciones se han dado en el análisis de los argumentos [\cite{esteve2020mineria}] y en 
+lo correspondiente a Cuba no se encontró ninguna referencia. 
 
 % Diseño teórico.
 %    Problema: 
@@ -104,50 +112,55 @@ lo correspondiente a Cuba en específico no se encontró ninguna referencia.
 %       Especifico Construcción del corpus de los periódicos: Crawler, Anotación (scpaCy).
 %       Especifico Implementacion de la interfaz gráfica para consultar los resultados.
 
-Este trabajo tiene como objetivo la extracción y análisis de estructuras argumentativas en textos 
+Por ello esta tesis tiene como objetivo proponer un algoritmo para 
+la extracción y análisis de estructuras argumentativas en textos 
 de la prensa cubana, constituyendo el primero de su tipo en lo que respecta a la búsqueda del autor. 
 Para lograr dicho objetivo se necesitan realizar varias operaciones.
-En primer lugar es necesario obtener los textos a analizar del sitio 
-web del periódico Granma. Luego se necesita confeccionar algoritmos capaces de realizar las tareas 
+En primer lugar, es necesario obtener los textos a analizar del sitio 
+web del periódico Granma. Luego, se necesita confeccionar algoritmos capaces de realizar las tareas 
 de EA sobre estos textos, para estos algoritmos es necesaria la confección de conjuntos 
-de datos en español en los cuales se puedan entrenar. Finalmente se requiere de una interfaz visual 
+de datos en español en los cuales se puedan entrenar. Finalmente, se requiere de una interfaz visual 
 en la que sea posible la interacción de los usuarios, en tareas como visualización y edición, 
 con los resultados obtenidos. 
 
-Se propone la construcción de un programa capaz de realizar la extracción de los textos del Granma, 
-en específico se enfoca en la sección de Cartas Argumentativas de dicho periódico. Para la extracción
+Se propone la construcción de un programa capaz de realizar la extracción de los textos del periódico Granma, 
+en específico, se enfoca en su sección de Cartas a la Dirección. Para la extracción
 de argumentos se presentan dos modelos, el primero se encarga de la segmentación y clasificación
 de las componentes argumentativas. Este es un modelo secuencia a secuencia en la cual las palabras 
-son vectorizadas por sus características morfológicas mediante el uso de CNN y LSTM, por su información
-semántica mediante \emph{embeddings} GloVe y por su información estructural mediante su parte de la oración, estas 
-secuencias son procesadas por una red LSTM bidireccional y sus atributos son usados por una capa CRF 
-para su clasificación final en etiquetas BIOES con información adicional para la clasificación de las 
+son vectorizadas por sus características morfológicas mediante el uso de redes neuronales convolucionales
+(CNN por sus siglas en inglés \emph{Convolutional Neural Network}) y \emph{Long Short Term Memory} (LSTM), por su información
+semántica mediante \emph{embeddings} \emph{Global Vectors} (GloVe) y por su información 
+estructural mediante su parte de la oración, estas 
+secuencias son procesadas por una red LSTM bidireccional y sus atributos son usados por una capa 
+de \emph{Conditional Random Field} (CRF) 
+para su clasificación final en etiquetas B (inicio de segmento), I (dentro del segmento), O (afuera de segmento), 
+E (fin de segmento) y S (segmento de un elemento) (BIOES) con información adicional para la clasificación de las 
 unidades de discurso argumentativas (UDA). El segundo modelo está encargado de la extracción y clasificación 
 de las relaciones entre las UDAs. En él se utilizan las representaciones GloVe de las palabras en las secuencias 
 y su distancia argumentativa para la clasificación de una tupla en la que su primer elemento 
 constituye el texto candidato de donde parte la relación o fuente y el segundo, el texto candidato a recibir la 
 relación u objetivo, en el tipo de relación existente entre estos elementos. La entrada es procesada mediante 
 una LSTM bidireccional y módulos de atención cruzada entre los elementos de la fuente y los elementos del objetivo.
-Para la visualización se crea un ambiente de desarrollo con la herramienta Brat, la cual permite realizar las 
+Para la visualización se crea un ambiente de desarrollo con la herramienta Brat [\cite{brat}], la cual permite realizar las 
 tareas requeridas a los datos anotados por los modelos.
 
-En resumen se presenta un estudio de la argumentación en español al realizar la extracción de 
-argumentos en la prensa, además crea un conjunto de datos anotado que puede servir
+En resumen, se presenta un estudio de la argumentación\ español al realizar la extracción de 
+argumentos en prensa, además se crea un conjunto de datos anotado que puede servir
 para un estudio más profundo sobre los esquemas argumentativos presentes en estos textos. 
 
 %    Estructura del trabajo
 
-El presente documento está dividido en 4 capítulos.
+El presente documento está dividido en cuatro capítulos.
 En el Capítulo \ref{chapter:argumentation} se presentan las definiciones necesarias para una introducción
 al tema de la argumentación y la EA.
 El Capítulo \ref{chapter:background} presenta un recorrido por los 
-conceptos, métodos y arquitecturas relacionadas con el Aprendizaje Automático enfocados en el problema 
+conceptos, métodos y arquitecturas relacionadas con el Aprendizaje Automático para el problema 
 en cuestión, además de realizar un compendio y análisis de los enfoques utilizados para dar solución
-a los problemas asociados a la EA y de el procedimiento de proyección de corpus, utilizado para la 
+a los problemas asociados a la EA y el procedimiento de proyección de corpus, utilizado para la 
 traducción de conjuntos de datos del inglés al español. 
-Luego en Capítulo \ref{chapter:proposal}
-se describe a detalle la propuesta de los modelos encargados de realizar la extracción de argumentos.
+Luego, en Capítulo \ref{chapter:proposal}
+se describe la propuesta de los modelos para realizar la EA.
 En el Capítulo \ref{chapter:implementation} se mencionan los diferentes conjuntos de datos utilizados 
-en los experimentos además de los resultados obtenidos en las tareas realizadas.
-Finlamente se concluye el documento y se muestran recomendaciones sobre el seguimiento del trabajo 
+en los experimentos y los resultados obtenidos en las tareas realizadas.
+Finlamente, se exponen conclusiones y recomendaciones sobre el trabajo 
 realizado.
