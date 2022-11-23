@@ -42,7 +42,6 @@ aumento de datos. Uno de los métodos usados es la traducción automática de la
 un lenguaje intermedio y su traducción de vuelta al lenguaje inicial. Los resultados obtenidos
 muestran que los nuevos datos presentan una alta similitud entre sus palabras.
 
-TODO Hacer métricas de comparación de strings entre la versión original y la versión aumentada.
 Distancia de Jacard, de Levenshtein (versión de palabras)
 
 
@@ -85,7 +84,7 @@ alineación de palabras correspondiente al par de oraciones en el lenguaje fuent
 
 La proyección de etiquetas constituye el último paso en la proyección de corpus. Para esto
 se usan las alineaciones de palabras y oraciones para el paso de las etiquetas. Para esto
-se usa el algoritmo propuesto en [\cite{eger2018cross}] el cual consiste en (TODO buscar en
+se usa el algoritmo propuesto en [\cite{eger2018cross}] el cual consiste en ( buscar en
 que consiste el algoritmo)
 
 Esta etapa crea un nuevo corpus con las etiquetas proyectadas en el lenguaje objetivo. El 
@@ -113,7 +112,7 @@ a la representación inicial GloVe.
 Otro feature que se le añade es las etiquetas POS, dado que las etiquetas POS pueden
 cambiar en dependencia del lenguaje y el modelo está pensado para ser utilizado entre
 varios lenguajes se elige un conjunto de etiquetas universal para la representación.
-(TODO Poner las etiquetas o un link hacia donde se encuentran). A la representación
+( Poner las etiquetas o un link hacia donde se encuentran). A la representación
 de cada palabra es concatenado una representación densa de codificación one-hot de las 
 etiquetas POS, dicha representación posee dimensión 5.
 
