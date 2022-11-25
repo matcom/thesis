@@ -12,8 +12,7 @@ jobs:
       - name: LaTeX compilation
         uses: dante-ev/latex-action@2021-A
         with:
-          root_file: Thesis.tex
-          working_directory: document
+          entrypoint: ./compile.sh bib    
       - name: Prepare for Deploy
         run: |
           mkdir build
