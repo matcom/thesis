@@ -1,0 +1,183 @@
+\chapter{Propuesta}\label{chapter:proposal}
+
+El modelo propuesto se divide en dos secciones. En la primera sección se realiza la segmentación y clasificación de 
+las UDAs como tareas conjuntas. En la segunda sección se predicen los enlaces y sus clasificaciones, tomando
+como tareas auxiliares la clasificación de las UDAs. Dada la heterogeniedad de las conjuntos de datos disponibles 
+en EA, los modelos poseen un mínimo de atributos, esto permite que el modelo por sí solo aprenda 
+la mejor representación para el esquema de anotación con que se entrene.
+
+\section{Segmentación y clasificación de UDAs}
+
+Esta primera parte se modela como un problema secuencia a secuencia cuyo objetivo es asignar a los tokens 
+extraídos del documento entrada una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
+de UDA, al conjunto de etiquetas BIES se le añadieron las clasificaciones que presenta el corpus entrenante.
+En el siguiente ejemplo se muestra una salida del modelo presentando las clasificaciones de
+$A$ como argumento y $P$ como premisa:
+
+\begin{adjustwidth}{25pt}{25pt}
+    En$_O$ primer$_O$ lugar$_O$ ,$_O$ [\emph{el$_{B-A}$ correo$_{I-A}$ electrónico$_{I-A}$ puede$_{I-A}$ 
+    contar$_{I-A}$ como$_{I-A}$ uno$_{I-A}$ de$_{I-A}$ los$_{I-A}$ resultados$_{I-A}$
+    más$_{I-A}$ beneficiosos$_{I-A}$ de$_{I-A}$ la$_{I-A}$ tecnología$_{I-A}$ moderna$_{E-A}$}] .$_{O}$ 
+    [\emph{Años$_{B-P}$ atrás$_{I-P}$ ,$_{I-P}$ las$_{I-P}$ personas$_{I-P}$ pagaban$_{I-P}$ gran$_{I-P}$ cantidad$_{I-P}$ 
+    de$_{I-P}$ dinero$_{I-P}$ para$_{I-P}$ enviar$_{I-P}$ sus$_{I-P}$ cartas$_{I-P}$ y$_{I-P}$ sus$_{I-P}$ 
+    pagos$_{I-P}$ estaban$_{I-P}$ sujetos$_{I-P}$ al$_{I-P}$ peso$_{I-P}$ de$_{I-P}$ sus$_{I-P}$ 
+    cartas$_{I-P}$ o$_{I-P}$ paquetes$_{I-P}$ y$_{I-P}$ muchos$_{I-P}$ accidentes$_{I-P}$ podrían$_{I-P}$
+    causar$_{I-P}$ problemas$_{I-P}$ que$_{I-P}$ causarían$_{I-P}$ que$_{I-P}$ el$_{I-P}$ correo$_{I-P}$ 
+    no$_{I-P}$ fuera$_{I-P}$ enviado$_{E-P}$}] .$_{O}$
+\end{adjustwidth}
+
+\subsection{Modelo de segmentación y clasificación de UDAs}
+
+Sea $D$ un documento entrada, este es separado en una secuencia de $n$ tokens $D_i$ donde $n$ es la mayor longitud encontrada
+en los documentos del conjunto de datos (si la cantidad de tokens es menor que $n$ entonces $D_i$ es completado con un token especial de enmascarado). 
+A cada token se le asigna
+su representación vectorial GloVe de dimensión $g=300$, dando como resultado $G_{ij} \in \mathbb{R}^{n \times g}$.
+Esta representación inicial presenta información semántica de las palabras y conserva las relaciones 
+espaciales entre ellas. 
+
+Para la representación de información morfológica de la palabra se construyen dos
+codificadores que procesan los caracteres de cada token y devuelven una representación vectorial de estos.
+A cada caracter se le asigna un vector que será entrenado convirtiendo un token en un vector de dimensión
+$q \times c$, donde $q$ es el tamaño máximo de palabra en el conjunto de datos y $c$ es la dimensión del vector
+asignado a cada caracter.
+Uno de estos modelos está basado en CNN, este modelo entrena una representación de caracteres de dimensión
+$cd=50$ representando un token como un vector de dimensión $q \times cd$. Se conforma por una capa de convolución unidimensional
+con $f=30$ filtros y un kernel de tamaño $k=3$, seguida por una capa \emph{max pooling} que convierte la secuencia en un vector
+de dimensión $1 \times f$, que luego es concatenado a la representación del token a que pertenece.
+Otro modelo utilizado para calcular una representación morfológica se encuentra basado en RNN. Se usó
+un modelo LSTM bidireccional con dimensión $l=25$ para calcular la representación del token, para las dimensiones de los caracteres se
+utilizan vectores de tamaño $l$, el resultado final constituye la concatenación de la corrida hacia adelante y
+hacia atrás formando una representación de dimensión $1 \times 2 \cdot l$ del token. Este vector es concatenado a la representación
+del token correspondiente. Otro atributo usado en la representación de los tokens constituyen las etiquetas de 
+Partes de la Oración de estos.
+El conjunto de etiquetas elegido es un conjunto universal [\cite{petrov2011universal}] aplicable a cualquier idioma.
+De estas etiquetas se les extrae la codificación \emph{one-hot} y esta es transformada por una capa densa con $p=5$ neuronas
+y función de activación \emph{ReLU}, el resultado es concatenado a la representación del token correspondiente. Mediante 
+la extracción de estos atributos el token es representado en tres maneras, semántica, morfológica y estructural, con el 
+objetivo de que sean aprendidas los rasgos lingüísticos correspondientes a la tarea.
+
+Del proceso de vectorización sale un vector con dimensión $n \times t$ donde $t$ es la dimensión final de la representación
+de los tokens. Este vector es modificado por una capa LSTM bidireccional de dimensión $m=200$, a esta salida se le 
+añade una conexión residual al ajustarle la dimensión con una capa densa. Luego, la secuencia es procesada por una 
+capa densa de dimensión $k=100$ con activación \emph{ReLU} produciendo una representación final de dimensión 
+$n \times k$. Finalmente, se utiliza una capa CRF
+para la clasificación final de la secuencia en las etiquetas finales. El resultado final constituye un vector
+de dimensión $n$ que representa las clasificaciones inferidas por el modelo (Figura \ref{fig:segmenter_model}).
+
+Para prevenir el sobreajuste se agregaron capas de normalización y de \emph{dropout} entre cada proceso y se usaron regularizaciones
+L2 y \emph{dropout} en las capas densas y LSTM, el valor asignado al dropout es de $0.5$. 
+Para prevenir el sobreentrenamiento se aplicó una 
+terminación temprana de este cuando no se encontraba una mejora de la función de pérdida en el conjunto de validación
+por más de 10 épocas consecutivas. Como optimizador se utilizó Adam con una tasa de aprendizaje de $0.001$.
+
+\subsection{Posprocesamiento de segmentación y clasificación de UDAs}
+
+La salida del modelo constituye una secuencia de etiquetas en formato BIOES. Esta está propensa
+a contener errores en su formato, por ejemplo, secuencias no terminandas en E, segmentos continuos con más de una 
+meta-etiqueta, entre otros.
+Para la corrección de la estructura se propone el siguiente algoritmo con dos partes. La primera
+consiste en arreglar la estructura BIOES, para esto se mantiene una ventana de tamaño
+3, [\_ , \_ , \_], sobre la secuencia y se asume que la parte anterior a la posición de la ventana no presenta errores. Al encontrar una
+ventana inválida se necesita observar la siguiente ventana para poder decidir cómo se arregla el error, ya que se
+podría dar el caso que se observe [O, O, I] y la próxima sea [O, I, O], en donde solamente viendo la primera ventana no se podría saber si el cambio 
+correcto corresponde a sustituir I por B o por S. Una vez observadas las dos ventanas, se procede a realizar el 
+arreglo correspondiente. En casos donde sea ambigua la manera de arreglar la ventana, [I, I, O] por ejemplo
+(La I o la O pueden ser 
+sustituidas por una E), se utiliza una función que recibe un segmento y devuelve la gravedad del error.
+El error con mayor gravedad será arreglado, en caso de ser iguales se arreglará la etiqueta más a la izquierda.
+Este procedimiento devuelve una secuencia BIOES correctamente anotada, debido a que a partir de una secuencia sin 
+errores en cada paso se va arreglando la ventana y una vez esta llega al final arregló todos los elementos de la secuencia.
+Una vez la secuencia tiene la estructura BIOES correctamente anotada el problema
+consiste en arreglar las meta-etiquetas, ya que una misma secuencia BIOES pudo haber sido anotada con diferentes
+tipos, en este caso se toma la etiqueta más representativa del segmento continuo.
+
+\begin{figure}[p]
+	\begin{center}
+		\begin{center}
+            \includesvg[scale=.65]{Graphics/Modelo_Segmenter_UDA.svg}
+        \end{center}
+	    \caption{Segmentador UDAs.}\label{fig:segmenter_model}
+	\end{center}
+\end{figure}
+
+\newpage
+
+\section{Predicción y clasificación de enlaces}
+
+En esta segunda parte el modelo se encarga de las tareas de extracción y clasificación de enlaces.
+El problema consiste en clasificar pares de UDAs, representando origen y objetivo del enlace, 
+en el tipo de relación que existen entre estas.
+Como tarea auxiliar se clasifican los tipos de UDAs que intervienen en la relación. La salida 
+del modelo constiuye en una tupla de tres elementos: la clasificación de la relación, 
+la clasificación de la UDA origen, la clasificación de la UDA objetivo. Si el enlace existe o no 
+es calculado partir de la clasificación de la relación.   
+
+\subsection{Modelo de predicción y clasificación de enlaces}
+
+Sean dos UDAs, $S$ y $T$, donde $S$ representa la fuente de la relación, mientras que $T$ representa
+al objetivo. Estas secuencias son tokenizadas y se les asigna la representación GloVe de cada palabra, obteniendo
+dos vectores de dimensión $u \times g$, donde $u$ es el tamaño máximo de UDAs en el conjunto de entrenamiento
+y $g=300$ es la dimensión del \emph{embedding}.
+Estos vectores son modificados por una red densa compuesta por $ca = 4$ capas con activación \emph{ReLu}
+de dimensiones $50$, $50$, $50$, $300$, añadiendo una conexión residual a la salida de esta. 
+El próximo paso consiste en aplicar una capa densa de dimensión $di=50$ y luego un \emph{average pooling}
+de tamaño $dp=10$, obteniendo vectores de dimensión $\frac{q}{dp} \times di$. 
+Estos vectores son modificados por un LSTM bidireccional con $lm=50$ unidades. Un módulo de atención es aplicado 
+sobre los vectores fuentes, 
+en este actúan como consultas el promedio de los vectores objetivo y como llaves y valores los vectores fuentes,
+el procedimiento simétrico es realizado para los vectores objetivos.
+La salida de los procesamientos son concatenados con la distancia argumentativa obteniendo una representación 
+conjunta de la relación a analizar. Esta representación conjunta es modificada por una red residual obteniendo
+una representación final de dimensión $l=20$ y luego sometida a los clasificadores de relación y de tipos de UDAs
+(Figuras \ref{fig:link_predictor_model1} y \ref{fig:link_predictor_model2}).
+
+Para prevenir el sobreajuste se agregaron capas de normalización y de \emph{dropout} entre cada 
+proceso y se usaron regularizaciones L2 y \emph{dropout} en las capas densas y LSTM, 
+todos los \emph{dropout} tienen valor $dr=0,1$. Para prevenir el sobreentrenamiento se aplicó una 
+terminación temprana de este cuando no se encontraba una mejora de la función de pérdida en el 
+conjunto de validación durante $v=5$ épocas consecutivas. Como optimizador se utilizó Adam con descenso 
+exponencial con tasa de aprendizaje $lr=0.003$.
+
+Dado que se realiza un aprendizaje de varias tareas, se tienen varias funciones de pérdida individuales que conforman 
+la función de pérdida final $e$. Sea $e_r$ la función de pérdida de la clasificación de la relación, $e_s$ la del tipo de UDA origen  
+y $e_t$ del tipo de UDA objetivo, entonces $e = 10 \cdot e_r + e_s + e_t$.
+
+\subsection{Preprocesamiento de predicción y clasificación de enlaces}
+
+El uso de este modelo se concreta a nivel de documento, en donde ya se tienen las UDAs extraídas. Para alimentar
+al modelo con los pares de UDAs y sus distancias argumentativas se seleccionan todos los pares de estos que cumplan
+que no se enlacen con ellos mismos, por ejemplo, $a \rightarrow a$; y que su distancia argumentativa absoluta sea menor 
+que $da=10$. Estas restricciones disminuyen el número de pares extraídos por documentos a una cantidad lineal 
+con respecto a la cantidad de UDAs, presentes ya que por cada UDA solamente se tomarían $2 \cdot da$ elementos como máximo
+(los que la preceden y los que la suceden). 
+
+Además de las etiquetas $R$ originales del conjunto de entrenamiento, se añaden elementos extras a este
+conjunto. Estos elementos son las representaciones inversas de las relaciones, por ejemplo, si $a \xrightarrow{c} b$ entonces 
+se agregará el par $b \xrightarrow{c^{-1}} a$, donde $c^{-1}$ es una nueva clasificación de relación que representa
+el inverso de la clasificación $c$. Este proceso se realiza para aumentar la cantidad de relaciones positivas en el
+conjunto entrenante, ya que aun con las reducciones hechas existe un desbalance de clases positivas y negativas en
+las relaciones.
+
+\subsection{Posprocesamiento de predicción y clasificación de enlaces}
+
+Se calcula una salida extra a partir de las distribuciones de probabilidad de las relaciones 
+devueltas por el modelo, esta salida representa si el par está enlazado o no directamente, para este cálculo se 
+suman las categorías vinculadas a las clases originales del conjunto de datos, esta se toma como la probabilidad de estar 
+enlazados, que en caso de ser mayor del 50\% se devuelve verdadero. Para dar el resultado final se eliminan del 
+conjunto de respuesta las relaciones anotadas con las etiquetas inversas añadidas en el paso de preprocesamiento 
+y son devueltas aquellas que se clasifiquen como enlazadas según el criterio anterior.
+
+\newpage
+
+\begin{figure}[p]
+    \begin{center}
+        \includesvg[scale=.6]{Graphics/Modelo_Link_Prediction1.svg}
+        \caption{Predictor de enlaces.}\label{fig:link_predictor_model1}
+    \end{center}
+\end{figure}
+\begin{figure}[p]
+    \begin{center}
+        \includesvg[scale=.6]{Graphics/Modelo_Link_Prediction2.svg}
+    \end{center}
+    \caption{Predictor de enlaces (continuación).}\label{fig:link_predictor_model2}
+\end{figure}

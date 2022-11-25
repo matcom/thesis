@@ -1,3 +1,22 @@
 \begin{recomendations}
-    Recomendaciones
+
+    La principal dificultad en el trabajo fue la carencia de un conjunto de anotados
+    sobre el tema en específico relacionado con la extracción de argumentos en la prensa.
+    Por lo que se propone la creación de este conjunto para poder realizar una mejor 
+    validación y entrenamiento del modelo propuesto. También se considera la creación de un servicio 
+    online basado en Brat para la socialización y mejora de los resultados obtenidos.
+    El uso de representaciones BERT ha llevado a muchas tareas de PLN a nuevos estados 
+    del arte, por lo tanto se propone investigar el uso de estos \emph{embeddings} en 
+    el modelo. El problema principal obtenido en el modelo fue relacionado con la 
+    predicción de enlaces, un problema que tiene el modelo es la falta de contexto global
+    del texto para hacer la predicción, por lo que se insta a la búsqueda y experimentación
+    de métodos que tomen esto en cuenta, una variante podría ser las \emph{Graph Neural Networks}.
+
+    % \begin{enumerate}
+    %     \item Usar metodos de Graph Neural Networks para modelar las relaciones entre las UDA. (Actualmente las relaciones extraídas son independientes)
+    %     \item Ajustar (Tune) awesome-align con inglés-español.
+    %     \item Usar otros embeddings para la representación de palabras (BERT, SciBERT, RoBERTa).
+    %     \item Desplegar un servidor Brat para socializar los resultados y permitir que los investigadores perfeccionen las anotaciones.
+    %     \item Validación externa con lingüistas que permitan generalizar el uso del modelo.
+    % \end{enumerate}
 \end{recomendations}

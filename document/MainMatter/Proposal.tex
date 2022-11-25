@@ -1,1 +1,115 @@
 \chapter{Propuesta}\label{chapter:proposal}
+
+% \begin{itemize}
+
+%     \item Modelo del fenómeno
+%     \item Diseño conceptual
+%     \begin{itemize}
+%         \item Entrada $\rightarrow$ Procesamiento $\rightarrow$ Salida
+%         \item Cómo se hace cada etapa
+%     \end{itemize}
+
+% \end{itemize}
+
+% Descripción de cada uno de los métodos, modelos, features, medidas de calidad, etc.
+
+La propuesta consiste en un framework para el procesamiento de textos argumentativos entre distintos idiomas.
+La entrada de dicho framework es un conjunto de documentos en un lenguaje fuente y su salida es una representación
+de las estructuras argumentativas presentes en estos en un lenguaje objetivo. Las estructuras argumentativas 
+difieren en dependencia del esquema de anotación de los conjuntos de datos usados para concretar el modelo
+final. Independiendemente del conjunto de datos el procedimiento se divide en varias partes fundamentales.
+
+\begin{enumerate}
+    \item Traducción.
+    \begin{itemize}
+        \item Proyección de corpus (Entrenamiento).
+        \item Traducción de documentos (Inferencia).
+    \end{itemize}
+    \item Segmentación de UDAs.
+    \item Extracción de relaciones entre las UDAs.
+\end{enumerate}
+
+\section{Traducción}
+
+El proceso de traducción consiste en llevar los textos del lenguaje origen al lenguaje final.
+
+\subsection{Traducción de documentos}
+
+La traducción de documentos se realiza automáticamente mediante servicios brindados por Google Traductor.
+Este servicio, basado en Traducción Automática Neuronal, posee una gran variedad de lenguajes por lo que
+se puede usar en la muchos casos.
+
+\subsection{Proyección}
+
+Para proyectar los conjuntos de datos se establece una serie de tareas:
+
+\begin{enumerate}
+    \item Creación de oraciones alineadas en lenguaje fuente y lenguaje objetivo.
+    \begin{enumerate}
+        \item Segmentar oraciones del texto.
+        \item Traducir oraciones del lenguaje fuente al lenguaje objetivo.
+    \end{enumerate}
+    \item Creación de alineaciones de palabra entre las oraciones alineadas.
+    \item Proyección de las etiquetas del lenguaje fuente al lenguaje objetivo. 
+\end{enumerate}
+
+Los textos son separados en oraciones debido a que estas poseen suficiente carga semántica
+para poder ser traducida de manera independiente sin perder mucho sentido al ser concatenadas
+luego. El orden de las oraciones tiene que ser preservado para no alterar las relaciones entre 
+las UDA en los datos. 
+
+Las alineaciones de las palabras son calculadas por cada par de oraciones mediante el uso de 
+herramientas como FastAlign o AwesomeAlign. Luego estos datos son usados en la proyección de 
+las etiquetas para la conformación del corpus final en el lenguaje objetivo.
+
+\section{Segmentación}
+
+La segmentación es el proceso de extraer del texto plano las UDAs. Para esto se propone un modelo
+tomando como base los trabajos de [\cite{ma2016end}]. Se modela el problema como un problema de anotación
+secuencia a secuencia en donde las etiquetas BIOES son usadas para delimitar los límites de las 
+UDAs, la B indica inicio de UDA, I indica el interior de una UDA, O indica que el token no pertence
+a una UDA, E indica el final de UDA y S es una anotación que indica una UDA de un solo token. 
+Este esquema de anotación de secuencias es más complejo que BIO, aunque es más indicado
+para versiones bidireccionales de secuencias ya que hace explícitas las delimitaciones de las 
+secuencias.
+
+Los features usados para los tokens de la secuencia entrada del modelo son los embeddings
+GloVe [\cite{pennington2014glove}]. Opcionalmente se usan features aprendidos de la morfología
+del propio token mediante Redes Convolucionales o Long-Short Term Memory aplicados a embeddings
+de caracteres. El modelo posee la habilidad de agregar las etiquetas Part-of-Speech, aunque este
+atributo requiere de un método de anotación de estas por lo cual le resta libertad para
+elegir lenguajes fuentes y objetivos.
+
+El modelo consiste en la codificación de la secuencia en los atributos previamente descritos,
+luego es aplicado una Long-Short Term Memory sobre la secuencia resultante. Conexiones residuales, 
+normalizaciones y dropouts son agregadas entre capas. En la capa final se presenta un Conditional
+Random Field encargado de la conversión final de los features de las secuencias en etiquetas BIOES.
+
+Es posible realizar, además de la segmentación, la clasificación de las UDA mediante el agrego de
+información a las etiquetas BIOES del tipo de UDA que es.
+
+Entre las medidas usadas para observar el desempeño de la segmentación se encuentra F1-Macro.
+Esta es comúnmente usada en problemas de clasificación múltiples para y es usada como referencia
+en la mayoría de las investigaciones estudiadas. Otra medida es \%F1, la definición de esta medida
+es similar a la de F1 pero sus elementos son tratados como coincidencias pariales de segmentos en vez
+de etiquetas asignadas a tokens, se considera que las secuencias coinciden si al menos se intersectan 
+en un porciento mayor o igual al establecido en la medida, por ejemplo, en caso de 100\%F1 se mide
+las coincidencias exactas de las secuencias. Esta medida es calculada también al 50\%, la razón es
+permitir cierta libertad en el comienzo y final de las UDAs. 
+
+\section{Extracción de relaciones}
+
+La extracción de relaciones constituye en el proceso de extraer las conexiones existentes
+entre las UDAs y clasificar estas. El problema es modelado como dado un par de UDAs, una origen
+y otra objetivo, predecir
+la relación entre estas, para esto se agrega una nueva categoría de relaciones del esquema de
+anotación que indica la no relación de UDAs. El modelo realiza conjuntamente la clasificación
+de los tipos de UDA como tarea auxiliar.
+
+Los features usados son las representaciones GloVe de las palabras de las UDAs entradas. 
+Estos son codificados mediante una Long-Short Term Memory. Los features de ambas partes
+fuente y destino son pasados por un mecanismo de atención y una red residual para finalmente
+ser la entrada a tres clasificadores los cuales dictan el tipo de relación entre estos y el tipo
+de UDA que son cada una de las dos partes.
+
+Para la evaluación del modelo se utilizó la medida F1-Macro por cada clasificador.

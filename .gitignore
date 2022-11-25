@@ -7,6 +7,7 @@
 *.lot
 *.out
 *.pdf
+*.dvi
 !document/Graphics/uhlogo.pdf
 *.backup
 *.toc
