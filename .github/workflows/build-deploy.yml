@@ -19,7 +19,7 @@ jobs:
       - name: bibtex Thesis
         uses: dante-ev/latex-action@latest
         with:
-          root_file: Thesis.aux
+          root_file: Thesis
           working_directory: document
           compiler: biber
           args: 
