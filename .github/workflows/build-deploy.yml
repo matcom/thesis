@@ -21,7 +21,7 @@ jobs:
         with:
           root_file: Thesis.aux
           working_directory: document
-          compiler: bibtex
+          compiler: biber
           args: 
       - name: pdflatex Thesis
         uses: dante-ev/latex-action@latest
