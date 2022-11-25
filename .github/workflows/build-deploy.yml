@@ -13,20 +13,20 @@ jobs:
         uses: dante-ev/latex-action@latest
         with:
           root_file: Thesis.tex
-          workdir: document
+          working_directory: document
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
       - name: bibtex Thesis
         uses: dante-ev/latex-action@latest
         with:
           root_file: Thesis.aux
-          workdir: document
+          working_directory: document
           compiler: bibtex
       - name: pdflatex Thesis
         uses: dante-ev/latex-action@latest
         with:
           root_file: Thesis.tex
-          workdir: document
+          working_directory: document
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
       - name: Prepare for Deploy
