@@ -4,7 +4,7 @@ En el capítulo se describen los conjuntos de datos utilizados para el entrenami
 propuesto y cómo se construyen los conjuntos de datos en español. Se mencionan las herramientas utilizadas 
 para la confección del software. Además, se describe el 
 proceso de experimentación y evaluación de los modelos construídos con los conjuntos de datos. Finalmente,
-se presentan los resultados obtenidos con los modelos al aplicarles las Cartas a la Dirección extraídas 
+se presentan los resultados obtenidos al aplicarles los modelos a las Cartas a la Dirección extraídas 
 del periódico Granma. 
 
 \section{Conjuntos de Datos}
@@ -35,7 +35,7 @@ al convertir estas posiciones en relaciones. El número final con la inclusión 
 
 El corpus [\cite{niculae2017argument}] está conformado por 731 comentarios de usuarios extraídos de la web bajo el tema de 
 prácticas de cobro de deudas a los consumidores (CDCP en inglés).
-Las UDA se encuentran segmentadas en oraciones y todas se consideran argumentativas, estas son clasificadas en 
+Las UDAs se encuentran segmentadas en oraciones y todas se consideran argumentativas, estas son clasificadas en 
 \emph{policy} (815, 17\%), \emph{value} (2180, 45\%), \emph{fact} (785, 16\%), \emph{testimony} (1116, 21\%) y \emph{reference} (32 1\%). 
 Las relaciones se encuentran clasificadas en \emph{reason} (1352, 97\%) y \emph{evidence} (73, 3\%).
 
@@ -44,7 +44,7 @@ Las relaciones se encuentran clasificadas en \emph{reason} (1352, 97\%) y \emph{
 AbsTRCT [\cite{mayer2020transformer}] se compone de 500 documentos sobre el estudio de cuatro enfermedades diferentes,
 glaucoma, hipertensión, hepatitis b y diabetes. Las UDAs constituyen oraciones, aunque no todas son consideradas
 argumentativas. Estas se clasifican en \emph{MajorClaim} (93, 3\%), \emph{Claim} (993, 30\%) y \emph{Premise} (2198, 67\%).
-Las relaciones esán representadas por tres categorías: \emph{support} (1763, 85\%), \emph{partial-attack} (238, 12\%) y
+Las relaciones están representadas por tres categorías: \emph{support} (1763, 85\%), \emph{partial-attack} (238, 12\%) y
 \emph{attack} (60, 3\%).
 
 En resumen, estos datos no son grandes y contiene una gran cantidad de desbalance en sus clases.
@@ -153,9 +153,9 @@ una gran variedad de herramientas
 para el trabajo con texto, visualización de datos y creación de modelos de aprendizaje profundo.
 Se utilizó tensorflow [\cite{tensorflow}] en su versión 2.9.2 para la construcción y entrenamiento de los modelos. 
 Para el procesamiento de los textos se utilizaron nltk [\cite{nltk}] y spacy [\cite{spacy}], con estos se realizaron tareas
-como la extracción de tokens y oraciones del texto, la anotación de las etiquetas POS. Se utilizaron 
-ambos paquetes para el procesamiento debido a que, en dependencia de la situación, cada una presenta diferentes
-ventajas. En el caso de nltk esta presenta algoritmos rápidos para el procesamiento de texto que no 
+como la extracción de tokens y oraciones del texto, la anotación de las etiquetas de partes de la oracion. Se utilizaron 
+ambos paquetes para el procesamiento debido a que, en dependencia de la situación, cada uno presenta diferentes
+ventajas. En el caso de nltk, presenta algoritmos rápidos para el procesamiento de texto que no 
 requieren de muchos recursos computacionales, sin embargo, estos algoritmos no están disponibles de inmediato
 para otros lenguajes como el español. Spacy por su parte presenta algoritmos más certeros a costo 
 de mayor tiempo de procesamiento y gasto de recursos computacionales, y también presenta una cantidad mayor de lenguajes 
@@ -221,11 +221,11 @@ presencia o no de las siguientes componentes, presentando cuatro candidatos (Tab
 \begin{table}[h!]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|c|c|c|} \hline
-		Modelos 	& POS       & Char-CNN  & Char-LSTM & Res       & Norm      & Densa  \\ \hline
-		Modelo1		& $\times$	& $\times$    & $\times$    & $\times$	& $\times$    & $\times$ \\ \hline
-		Modelo2		& $\times$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
-		Modelo3		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
-		Modelo4		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
+		Modelos 		& POS       & Char-CNN  & Char-LSTM & Res       & Norm      & Densa  \\ \hline
+		Modelo 1		& $\times$	& $\times$    & $\times$    & $\times$	& $\times$    & $\times$ \\ \hline
+		Modelo 2		& $\times$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
+		Modelo 3		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
+		Modelo 4		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
 		\end{tabular}
 	\caption{Variantes de arquitectura de los modelos de segmentación de UDA.}\label{table:segmenter_architecture_table}
 	\end{center}
@@ -247,8 +247,11 @@ entrenamiento para evitar el crecimiento del error de generalización.
 
 Las métricas 100\%F1 y 50\%F1 muestran que los modelos 1 y 2 presentan un desempeño menor que los 3 y 4. 
 Se muestra un ligero aumento de 1\% en las 50\%F1 en el modelo 4 con respecto 
-al modelo 3, aunque las métricas de F1 en el 3 superan a las de 4. Se considera que la 
+al modelo 3, aunque las métricas de F1 en el 3 superan a las de 4. Se considera a la 
 segmentación como tarea principal, por lo que se selecciona como mejor modelo al 4 (Figura \ref{fig:test_segmenter_model_metrics}).
+Las distinciones BIOES en los nombres de tablas o métricas constituyen la métricas correspondientes 
+a la segmentación estrictamente, mientras las que no poseen dicha distinción sontituye al proceso 
+conjunto de segmentación y clasificación de UDAs. 
 
 \begin{figure}[h!]
 	\begin{center}
@@ -278,7 +281,7 @@ en Tabla \ref{table:test_metrics_segmenter} y Tabla \ref{table:test_bioes_metric
 	\begin{center}
 		\scalebox{0.9}{
 		\begin{tabular}{|c|c|c|c|c|c|} \hline
-        Corpus		            & F1 Ponderado  & Macro F1 & \emph{accuracy} & 100\%F1 &  50\%F1   \\ \hline
+        Corpus		            & F1 Ponderado  & Macro F1 & \emph{Accuracy} & 100\%F1 &  50\%F1   \\ \hline
         Ensayos Argumentativos  & 0,89          & 0,82	   & 0,89            & 0,81	   & 0,94 	   \\ \hline
         CDCP		            & 0,95          & 0,56	   & 0,96	         & 0,82	   & 0,93 	   \\ \hline
         AbsTRCT	                & 0,90          & 0,79	   & 0,91	         & 0,66	   & 0,82 	   \\ \hline
@@ -295,17 +298,18 @@ está basado en la aleatoriedad, se entrenan los modelos con los mismos datos ob
 necesariamente iguales.
 Para la selección del modelo se entrenaron diferentes variantes de arquitecturas e hiperparámetros, y 
 al igual que en el segmentador de UDAs se realizó la selección del modelo que mejor se desempeñó en 
-el conjunto de datos de Ensayos Argumentativos. De las variaciones surgieron las siguientes propuestas:
+el conjunto de datos de Ensayos Argumentativos. De las variaciones surgieron las siguientes propuestas
+(Tabla \ref{table:link_predictor_architecture_table}):
 
 \begin{table}[h!]
 	\begin{center}
-		\scalebox{0.8}{
+		\scalebox{0.85}{
 		\begin{tabular}{|c|c|c|c|c|c|c|} \hline
-		Modelos  & Atención      & Pooling  & \emph{Dropout}   & Tasa de aprendizaje & Paciencia & Devolver mejores     \\ \hline
-		Modelo1	 & $\times$	     &  5       & 0,5               & 0,0015               & 10	      & $\checkmark$        \\ \hline
-		Modelo2	 & $\times$	 	 & 10       & 0,1               & 0,003                & 5	      & $\times$            \\ \hline
-		Modelo3	 & $\checkmark$	 &  1       & 0,1               & 0,003                & 5	      & $\times$            \\ \hline
-		Modelo4	 & $\checkmark$	 &  1       & 0,5               & 0,0015               & 10	      & $\checkmark$        \\ \hline
+		Modelos   	 & Atención      & Pooling  & \emph{Dropout}   & Tasa de aprendizaje & Paciencia & Devolver mejores     \\ \hline
+		Modelo 1	 & $\times$	     &  5       & 0,5               & 0,0015               & 10	      & $\checkmark$        \\ \hline
+		Modelo 2	 & $\times$	 	 & 10       & 0,1               & 0,003                & 5	      & $\times$            \\ \hline
+		Modelo 3	 & $\checkmark$	 &  1       & 0,1               & 0,003                & 5	      & $\times$            \\ \hline
+		Modelo 4	 & $\checkmark$	 &  1       & 0,5               & 0,0015               & 10	      & $\checkmark$        \\ \hline
 		\end{tabular}
 		}
 	\caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{table:link_predictor_architecture_table}
@@ -429,7 +433,7 @@ elementos para calcular la métrica, y $\times$ que la métrica no se encontraba
 
 \begin{table}[h!]
 	\begin{center}
-		\scalebox{0.9}{
+		\scalebox{0.85}{
 		\begin{tabular}{|c|c|c|c|c|c|} \hline
 		Corpus		            & Propuesto  & \cite{stab2017parsing} & \cite{niculae2017argument} & \cite{galassi2021deep} \\ \hline
 		BIOES F1 				& 0,82   	 & 0,85 $\checkmark$	  & $\times$        	       & $\times$				\\ \hline
@@ -519,7 +523,7 @@ Ejemplos malos:
 	: Muy corto y no informativo. % 2019-01-25|informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo|abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
 	\item \text{} [en cada uno de los establecimientos de nuestra Cadena de Tiendas]$_{MC}$ 
 	: Incompleto, mejora incorporando elementos de la izquierda (No a todos los productos con próxima fecha de vencimiento se le aplica rebaja de precios). % 2018-12-07|responde-trd-caribe-al-consumidor|a-proposito-de-la-proteccion-al-consumidor.txt.conll.link.conll.ann
-	\item \text{} [Director División Grandes Centros]$_{MC}$ [trd Caribe]$_{C}$ 
+	\item \text{} [Director División Grandes Centros]$_{MC}$ [TRD Caribe]$_{C}$ 
 	: Mala clasificación y segmentación. %  2018-12-07|responde-trd-caribe-al-consumidor|a-proposito-de-la-proteccion-al-consumidor.txt.conll.link.conll.ann
 	\item \text{} [Esperamos lo antes posible una solución]$_{P}$ 
 	: En contexto, no contiene información que lo haga premisa % 2018-10-05|abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
@@ -559,8 +563,8 @@ CDCP realiza la segmentación de UDAs en la mayoría de las situaciones al separ
 estas son clasificadas en \emph{testimony} (T), \emph{fact} (F), \emph{policy} (P), \emph{reference} (R)
 y \emph{value} (V). Las relaciones presentan dos tipos de relaciones \emph{evidences} y \emph{reasons}.
 
-Los errores más comunes cometidos en la segmentación dado el esquema utilizado provienen del uso 
-de signos de puntuación no representando un cambio de oración, en estos casos se separa las UDA. También
+Los errores más comunes cometidos en la segmentación, dado el esquema utilizado, provienen del uso 
+de signos de puntuación que no representan un cambio de oración, en estos casos se separa las UDA. También
 existen errores de clasificación incorrecta, de, por ejemplo, \emph{testimony} que podrían ser \emph{fact}.
 
 Ejemplos malos:
@@ -615,7 +619,7 @@ Ejemplos malos:
 	\item \text{} [\dots Calle 14, apto.]$_P$ [4 entre Zapata y 23, \dots]$_T$ 
 	: Uso del \textbf{.} para abreviar apartamento se toma como separador de UDA. % 2017-07-07|parque-en-pleno-deterioro-en-plaza.txt.conll.link.conll.ann
 	\item \text{} [, Director División Grandes Centros TRD Caribe.]$_C$ 
-	: Mala clasificacion con mala segmentación y detección de \emph{claim} en firma de carta. 
+	: Mala clasificación con mala segmentación y detección de \emph{claim} en firma de carta. 
 \end{itemize}
 
 Ejemplos buenos:
@@ -643,7 +647,7 @@ en las cartas. También las cartas presentan un alto contenido argumentativo, po
 todas las oraciones como argumentativas no constituye una fuente grande de errores, aunque esta 
 parte puede ser mejorada. Una desventaja de este esquema sobre otros es la carencia de una 
 clasificación de las relaciones que implique un ataque, aunque esto se cubre con el hecho de 
-que en los conjuntos en donde existen estas los resultados son bastante pobres. La cantidad 
+que en los conjuntos en donde existen estas los resultados son bastante pobres en ese aspecto. La cantidad 
 y calidad de relaciones, aunque tiene bastante espacio para mejorar, es aceptable dada la dificultad 
 del problema en EA.
 

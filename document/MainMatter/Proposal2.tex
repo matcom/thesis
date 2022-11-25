@@ -10,8 +10,8 @@ la mejor representación para el esquema de anotación con que se entrene.
 
 Esta primera parte se modela como un problema secuencia a secuencia cuyo objetivo es asignar a los tokens 
 extraídos del documento entrada una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
-de UDA, al conjunto de etiquetas BIES se le añadieron las clasificaciones que presentan el corpus entrenante.
-En el siguiente ejemplo se presentan las meta-etiquetas
+de UDA, al conjunto de etiquetas BIES se le añadieron las clasificaciones que presenta el corpus entrenante.
+En el siguiente ejemplo se muestra una salida del modelo presentando las clasificaciones de
 $A$ como argumento y $P$ como premisa:
 
 \begin{adjustwidth}{25pt}{25pt}
@@ -67,9 +67,8 @@ de dimensión $n$ que representa las clasificaciones inferidas por el modelo (Fi
 Para prevenir el sobreajuste se agregaron capas de normalización y de \emph{dropout} entre cada proceso y se usaron regularizaciones
 L2 y \emph{dropout} en las capas densas y LSTM, el valor asignado al dropout es de $0.5$. 
 Para prevenir el sobreentrenamiento se aplicó una 
-terminación temprana de este cuando no se encontraba una mejora de la función de pérdida en el conjunto de validación,
-el criterio de parada fue la no mejora de la función de pérdida en el conjunto de validación por más de 10 épocas.
-Como optimizador se utilizó Adam con una tasa de aprendizaje de $0.001$.
+terminación temprana de este cuando no se encontraba una mejora de la función de pérdida en el conjunto de validación
+por más de 10 épocas consecutivas. Como optimizador se utilizó Adam con una tasa de aprendizaje de $0.001$.
 
 \subsection{Posprocesamiento de segmentación y clasificación de UDAs}
 
@@ -82,8 +81,9 @@ consiste en arreglar la estructura BIOES, para esto se mantiene una ventana de t
 ventana inválida se necesita observar la siguiente ventana para poder decidir cómo se arregla el error, ya que se
 podría dar el caso que se observe [O, O, I] y la próxima sea [O, I, O], en donde solamente viendo la primera ventana no se podría saber si el cambio 
 correcto corresponde a sustituir I por B o por S. Una vez observadas las dos ventanas, se procede a realizar el 
-arreglo correspondiente. En casos donde sea ambigua la manera de arreglar la ventana, [I, I, O] (La I o la O pueden ser 
-sustituidas por una E), por ejemplo, se utiliza una función que recibe un segmento y devuelve la gravedad del error.
+arreglo correspondiente. En casos donde sea ambigua la manera de arreglar la ventana, [I, I, O] por ejemplo
+(La I o la O pueden ser 
+sustituidas por una E), se utiliza una función que recibe un segmento y devuelve la gravedad del error.
 El error con mayor gravedad será arreglado, en caso de ser iguales se arreglará la etiqueta más a la izquierda.
 Este procedimiento devuelve una secuencia BIOES correctamente anotada, debido a que a partir de una secuencia sin 
 errores en cada paso se va arreglando la ventana y una vez esta llega al final arregló todos los elementos de la secuencia.
@@ -105,11 +105,12 @@ tipos, en este caso se toma la etiqueta más representativa del segmento continu
 \section{Predicción y clasificación de enlaces}
 
 En esta segunda parte el modelo se encarga de las tareas de extracción y clasificación de enlaces.
-El problema consiste en clasificar pares de UDAs, representanto origen y objetivo del enlace, 
+El problema consiste en clasificar pares de UDAs, representando origen y objetivo del enlace, 
 en el tipo de relación que existen entre estas.
 Como tarea auxiliar se clasifican los tipos de UDAs que intervienen en la relación. La salida 
-del modelo constiuye en una tupla de cuatro elementos: la clasificación de la relación, 
-la clasificación de la UDA origen, la clasificación de la UDA objetivo y si el enlace existe o no.   
+del modelo constiuye en una tupla de tres elementos: la clasificación de la relación, 
+la clasificación de la UDA origen, la clasificación de la UDA objetivo. Si el enlace existe o no 
+es calculado partir de la clasificación de la relación.   
 
 \subsection{Modelo de predicción y clasificación de enlaces}
 
@@ -132,10 +133,10 @@ una representación final de dimensión $l=20$ y luego sometida a los clasificad
 
 Para prevenir el sobreajuste se agregaron capas de normalización y de \emph{dropout} entre cada 
 proceso y se usaron regularizaciones L2 y \emph{dropout} en las capas densas y LSTM, 
-todos los \emph{dropout} tienen valor $dr$. Para prevenir el sobreentrenamiento se aplicó una 
+todos los \emph{dropout} tienen valor $dr=0,1$. Para prevenir el sobreentrenamiento se aplicó una 
 terminación temprana de este cuando no se encontraba una mejora de la función de pérdida en el 
-conjunto de validación. Como optimizador se utilizó Adam con descenso exponencial con tasa de 
-aprendizaje $lr=0.003$.
+conjunto de validación durante $v=5$ épocas consecutivas. Como optimizador se utilizó Adam con descenso 
+exponencial con tasa de aprendizaje $lr=0.003$.
 
 Dado que se realiza un aprendizaje de varias tareas, se tienen varias funciones de pérdida individuales que conforman 
 la función de pérdida final $e$. Sea $e_r$ la función de pérdida de la clasificación de la relación, $e_s$ la del tipo de UDA origen  
@@ -151,7 +152,7 @@ con respecto a la cantidad de UDAs, presentes ya que por cada UDA solamente se t
 (los que la preceden y los que la suceden). 
 
 Además de las etiquetas $R$ originales del conjunto de entrenamiento, se añaden elementos extras a este
-conjunto. Estos elementos son las representaciones inversas de la relación, por ejemplo, si $a \xrightarrow{c} b$ entonces 
+conjunto. Estos elementos son las representaciones inversas de las relaciones, por ejemplo, si $a \xrightarrow{c} b$ entonces 
 se agregará el par $b \xrightarrow{c^{-1}} a$, donde $c^{-1}$ es una nueva clasificación de relación que representa
 el inverso de la clasificación $c$. Este proceso se realiza para aumentar la cantidad de relaciones positivas en el
 conjunto entrenante, ya que aun con las reducciones hechas existe un desbalance de clases positivas y negativas en
@@ -159,12 +160,12 @@ las relaciones.
 
 \subsection{Posprocesamiento de predicción y clasificación de enlaces}
 
-Para dar el resultado final se eliminan del conjunto de respuesta las relaciones inversas añadidas en el paso de 
-preprocesamiento. Por cada relación inversa que se quite, se añade su respectiva relación directa al conjunto
-de salida. Además, se calcula una salida extra a partir de las distribuciones de probabilidad de las relaciones 
+Se calcula una salida extra a partir de las distribuciones de probabilidad de las relaciones 
 devueltas por el modelo, esta salida representa si el par está enlazado o no directamente, para este cálculo se 
-suman las categorías vinculadas a las clases originales del dataset, esta se toma como la probabilidad de estar 
-enlazados, que en caso de ser mayor del 50\% se devuelve verdadero.
+suman las categorías vinculadas a las clases originales del conjunto de datos, esta se toma como la probabilidad de estar 
+enlazados, que en caso de ser mayor del 50\% se devuelve verdadero. Para dar el resultado final se eliminan del 
+conjunto de respuesta las relaciones anotadas con las etiquetas inversas añadidas en el paso de preprocesamiento 
+y son devueltas aquellas que se clasifiquen como enlazadas según el criterio anterior.
 
 \newpage
 

@@ -15,27 +15,16 @@ a un crítico razonable de la aceptabilidad de un punto de vista mediante la pre
 de una constelación de proposiciones que justifican o refutan la proposición expresada 
 en el punto de vista [\cite{van2004systematic}]. Esta definición concentra en ella 
 partes escenciales de lo que es la argumentación, dicha actividad se encuentra presente
-en varias facetas de la cotidianedad humana, en la escritura o lectura de documentos,
-en las interacciones sociales de las personas, está presente cada vez que se
-plantea un argumento y se trata de que este triunfe en un debate donde 
+en varias facetas de la cotidianedad humana, como en la escritura o lectura de documentos y
+en las interacciones sociales de las personas. En resumen, la argumentación está presente 
+cada vez que se plantea un argumento y se trata de que este triunfe en un debate donde 
 se exponen elementos que lo apoyen.   
 
-En la actualidad es necesario tener acceso a la información necesaria
+En la actualidad es necesario tener acceso a la información
 de forma rápida y simple. Esto no siempre es posible dado la gran cantidad de información existente y
-que es generada en cada momento. En caso de tener una vía de acceder a esta se podrían realizar acciones
-con mayor rapidez y calidad. Con la argumentación se podría hacer explícitas las razones de las personas 
+que es generada en cada momento. En caso de tener una vía de acceder a esta, se podrían realizar acciones
+con mayor rapidez y calidad. Con la argumentación, se podría hacer explícitas las razones de las personas 
 al afirmar algo sobre un tema teniendo así su punto de vista individual, y con suficientes personas, colectivo.
-
-% "La argumentación es una actividad verbal, social y racional destinada a convencer 
-% a un crítico razonable de la aceptabilidad de un punto de vista mediante la presentación 
-% de una constelación de proposiciones que justifican o refutan la proposición expresada 
-% en el punto de vista." [\cite{van2004systematic}]. Esta definición concentra en ella 
-% partes escenciales de lo que es la argumentación, dicha actividad se encuentra presente
-% en varias facetas de la cotidaniedad humana, en la escritura o lectura de documentos,
-% en las interacciones sociales de las personas, se encuentra presente cada vez que se
-% plantea un argumento y se trata de que este triunfe por medio de un debate en la que 
-% se muestran los elementos que lo apoyen.  
-
 
 % Antecedentes del problema, justificación y motivación. 
 % Antecedentes: 
@@ -48,11 +37,11 @@ al afirmar algo sobre un tema teniendo así su punto de vista individual, y con 
 
 Varias tareas en el Procesamiento de Lenguaje Natural (PLN) se han desarrollado en 
 torno a diferentes problemas relacionados con 
-la argumentación. Entre tales tareas se encuentra el minado de opiniones, el cual es el 
+la argumentación. Entre tales tareas se encuentran: el minado de opiniones, el cual es el 
 estudio computacional de las opiniones, sentimientos y emociones expresadas en un texto 
-[\cite{liu2010sentiment}], la detección de controverisas enfocada en la identificación de 
+[\cite{liu2010sentiment}], la detección de controverisas, enfocada en la identificación de 
 temas y textos en donde puntos de vista conflictivos están presentes; y también la zonifiación
-argumentativa quel clasifica las oraciones por su rol argumentativo dentro de un artículo
+argumentativa que clasifica las oraciones por su rol argumentativo dentro de un artículo
 científico. Estas tareas solamente muestran cuáles opiniones, puntos de conflictos y roles 
 de argumentos 
 presenta el texto, pero lo realizan de manera separada y no muestran el porqué de estas. 
@@ -116,9 +105,9 @@ con los resultados obtenidos.
 Se propone la construcción de un programa capaz de realizar la extracción de los textos del periódico Granma, 
 en específico, se enfoca en su sección de Cartas a la Dirección. Para la extracción
 de argumentos se presentan dos modelos, el primero se encarga de la segmentación y clasificación
-de las componentes argumentativas. Este es un modelo secuencia a secuencia en la cual las palabras 
+de las componentes argumentativas. Este es un modelo secuencia a secuencia en el cual las palabras 
 son vectorizadas por sus características morfológicas mediante el uso de redes neuronales convolucionales
-(CNN por sus siglas en inglés \emph{Convolutional Neural Network}) y \emph{Long Short Term Memory} (LSTM), por su información
+(CNN) y \emph{Long Short Term Memory} (LSTM), por su información
 semántica mediante \emph{embeddings} \emph{Global Vectors} (GloVe) y por su información 
 estructural mediante su parte de la oración, estas 
 secuencias son procesadas por una red LSTM bidireccional y sus atributos son usados por una capa 
@@ -148,7 +137,7 @@ conceptos, métodos y arquitecturas relacionadas con el Aprendizaje Automático 
 en cuestión, además de realizar un compendio y análisis de los enfoques utilizados para dar solución
 a los problemas asociados a la EA y el procedimiento de proyección de corpus, utilizado para la 
 traducción de conjuntos de datos del inglés al español. 
-Luego, en Capítulo \ref{chapter:proposal}
+Luego, en el Capítulo \ref{chapter:proposal}
 se describe la propuesta de los modelos para realizar la EA.
 En el Capítulo \ref{chapter:implementation} se mencionan los diferentes conjuntos de datos utilizados 
 en los experimentos y los resultados obtenidos en las tareas realizadas.

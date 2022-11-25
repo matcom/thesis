@@ -38,7 +38,7 @@ Este método divide los argumentos en seis partes: afirmación
 (\emph{claim}), fundamento (\emph{grounds}), justificación (\emph{warrant}), calificador 
 (\emph{qualifier}), refutación (\emph{rebuttal}) y respaldo (\emph{backing}).
 Mediante las afirmaciones se conoce el argumento principal que el autor quiere probar a la audiencia,
-estas son respaldadas con fundamentos siendo estos las evidencias y hechos en que se apoya el autor.
+estas son respaldadas con fundamentos, siendo estos las evidencias y hechos en que se apoya el autor.
 Las justificaciones pueden estar explícitas o implícitas y son suposiciones que vinculan los
 fundamentos con las afirmaciones, estas a su vez pueden ser respaldadas por conocimiento.
 El esquema introduce la posibilidad de otra sitaución válida a la establecida en las afirmaciones
@@ -58,7 +58,7 @@ de las afirmaciones dadas. Un ejemplo\footnote{Extraído de
     [\emph{haya perros en las cercanías}]$_{\mathrm{afirmación}}$.
 \end{adjustwidth}
 
-En este ejemplo, además de las partes explícitas, se encuentran implícitas como la justificación 
+En este ejemplo, además de las partes explícitas, se encuentran partes implícitas como la justificación 
 (\emph{los perros son animales que ladran y aullan}), el respaldo (\emph{se sabe que existen perros en la zona}) y 
 la refutación (\emph{puede ser que hayan lobos o coyotes cerca}).
 
@@ -122,13 +122,14 @@ existentes entre estas. Las UDAs corresponden a la unidad mínima de argumentaci
 como un segmento de texto que juega un solo rol para el argumento analizado, y es 
 delimitado por segmentos vecinos que tienen roles diferentes o ningún rol [\cite{stede2018argumentation}].
 Las UDAs se relacionan entre sí conformando el proceso de inferencia y razonamiento del argumento.
-Tanto los enlaces como las UDAs son clasificadas en dependencia de su rol en la argumentación, estas clasificaciones 
+Tanto los enlaces como las UDAs son clasificados en dependencia de su rol en la argumentación, estas clasificaciones 
 en las UDAs parten de los conceptos de afirmación, declaración controversial y parte central del argumento, y premisa,
 razones que la justifican o refutan, y en las relaciones de ataque y apoyo. 
 
 \subsection{Tareas de extracción de argumentos}
 
-Dada las estructuras argumentativas en la EA se conciben las siguientes tareas principales:
+Dada la definición de estructuras argumentativas y que el objetivo de la EA es extraerlas,
+se conciben las siguientes tareas principales:
 
 \subsubsection{Extracción de UDAs}
 
@@ -155,8 +156,8 @@ la extracción de UDAs marcadas en \emph{cursiva} de un texto dado:
 
 La clasificación de UDAs consiste en asignarle la categoría que toma la UDA en la argumentación. En general, 
 las clasificaciones parten de dos clases bases, las afirmaciones y premisas, aunque estas pueden ser tantas
-como sea necesario por el problema específico a tratar. Siguiendo con el ejemplo, se observa como los 
-segmentos extraídos en el paso anterior son clasificados en afirmación y premisa respectivamente: 
+como sea necesario por el problema específico a tratar. Siguiendo con el ejemplo, se observa la clasificación
+en afirmación y premisa asignada a los segmentos extraídos en el paso anterior:
 
 \begin{adjustwidth}{25pt}{25pt}
     En primer lugar, [\emph{el correo electrónico puede contar como uno de los resultados
@@ -207,5 +208,6 @@ relaciones entre las UDAs. Dichos vértices se anotan con el tipo de relación e
         \end{center}
         % TODO Anotación {y sus relaciones} reduntante, la definici'on de estructuras argumentativa ya las engloba 
 	    \caption{Estructuras Argumentativas.}
+        \label{fig:arg_struct}
 	\end{center}
-\end{figure}\label{fig:arg_struct}
+\end{figure}
