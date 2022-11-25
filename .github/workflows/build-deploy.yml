@@ -9,10 +9,26 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@v2
-      - name: LaTeX compilation
-        uses: dante-ev/latex-action@2021-A
+      - name: pdflatex Thesis
+        uses: dante-ev/latex-action@latest
         with:
-          entrypoint: ./compile.sh bib    
+          root_file: Thesis.tex
+          workdir: document
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: bibtex Thesis
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: Thesis.aux
+          workdir: document
+          compiler: bibtex
+      - name: pdflatex Thesis
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: Thesis.tex
+          workdir: document
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
       - name: Prepare for Deploy
         run: |
           mkdir build
