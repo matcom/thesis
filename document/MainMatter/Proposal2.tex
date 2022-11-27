@@ -2,7 +2,7 @@
 
 El modelo propuesto se divide en dos secciones. En la primera sección se realiza la segmentación y clasificación de 
 las UDAs como tareas conjuntas. En la segunda sección se predicen los enlaces y sus clasificaciones, tomando
-como tareas auxiliares la clasificación de las UDAs. Dada la heterogeniedad de las conjuntos de datos disponibles 
+como tareas auxiliares la clasificación de las UDAs. Dada la heterogeneidad de las conjuntos de datos disponibles 
 en EA, los modelos poseen un mínimo de atributos, esto permite que el modelo por sí solo aprenda 
 la mejor representación para el esquema de anotación con que se entrene.
 
@@ -73,7 +73,7 @@ por más de 10 épocas consecutivas. Como optimizador se utilizó Adam con una t
 \subsection{Posprocesamiento de segmentación y clasificación de UDAs}
 
 La salida del modelo constituye una secuencia de etiquetas en formato BIOES. Esta está propensa
-a contener errores en su formato, por ejemplo, secuencias no terminandas en E, segmentos continuos con más de una 
+a contener errores en su formato, por ejemplo, secuencias no terminadas en E, segmentos continuos con más de una 
 meta-etiqueta, entre otros.
 Para la corrección de la estructura se propone el siguiente algoritmo con dos partes. La primera
 consiste en arreglar la estructura BIOES, para esto se mantiene una ventana de tamaño
@@ -108,7 +108,7 @@ En esta segunda parte el modelo se encarga de las tareas de extracción y clasif
 El problema consiste en clasificar pares de UDAs, representando origen y objetivo del enlace, 
 en el tipo de relación que existen entre estas.
 Como tarea auxiliar se clasifican los tipos de UDAs que intervienen en la relación. La salida 
-del modelo constiuye en una tupla de tres elementos: la clasificación de la relación, 
+del modelo constituye en una tupla de tres elementos: la clasificación de la relación, 
 la clasificación de la UDA origen, la clasificación de la UDA objetivo. Si el enlace existe o no 
 es calculado partir de la clasificación de la relación.   
 

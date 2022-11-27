@@ -3,14 +3,14 @@
 En el capítulo se describen los conjuntos de datos utilizados para el entrenamiento y validación del modelo 
 propuesto y cómo se construyen los conjuntos de datos en español. Se mencionan las herramientas utilizadas 
 para la confección del software. Además, se describe el 
-proceso de experimentación y evaluación de los modelos construídos con los conjuntos de datos. Finalmente,
+proceso de experimentación y evaluación de los modelos construidos con los conjuntos de datos. Finalmente,
 se presentan los resultados obtenidos al aplicarles los modelos a las Cartas a la Dirección extraídas 
 del periódico Granma. 
 
 \section{Conjuntos de Datos}
 
 Para el entrenamiento de los modelos propuestos se utilizaron corpus diferentes, estos
-presentan esquemas de anotación distintos entre sí, difieriendo principalmente en la definición de UDA y 
+presentan esquemas de anotación distintos entre sí, difiriendo principalmente en la definición de UDA y 
 las clasificaciones dadas a estas y a las relaciones. A todos los conjuntos se les proyectó al lenguaje 
 español y se les realizó un aumento de datos. Como conjunto para la validación fueron usadas 
 una parte de las Cartas a la Dirección del periódico Granma.
@@ -49,7 +49,7 @@ Las relaciones están representadas por tres categorías: \emph{support} (1763, 
 
 En resumen, estos datos no son grandes y contiene una gran cantidad de desbalance en sus clases.
 En la Tabla \ref{table:corpus_info} se muestran los datos promedio de la composición de los diferentes corpus. 
-Se observa una composición heterogenea entre estos, principalmente CDCP difiere en gran número de los demás.
+Se observa una composición heterogénea entre estos, principalmente CDCP difiere en gran número de los demás.
 
 \begin{table}[h!]
 	\begin{center}
@@ -70,7 +70,7 @@ Se observa una composición heterogenea entre estos, principalmente CDCP difiere
 \subsubsection{Aumento de datos}
 
 % TODO PREGUNTAR Dice poner {back-translation} aunque en la referencia original lo dice junto
-A los conjuntos de datos a analizar se les realizó un aumento de datos mediante le técnica de \emph{backtranslation},
+A los conjuntos de datos a analizar se les realizó un aumento de datos mediante la técnica de \emph{backtranslation},
 aplicándole la proyección de etiquetas de los elementos originales a los aumentados.
 Esto contribuyó a duplicar la cantidad de elementos disponibles. Los resultados obtenidos al comparar los 
 elementos originales con los aumentados se reflejan en la Tabla \ref{table:data_augmentation}.
@@ -153,7 +153,7 @@ una gran variedad de herramientas
 para el trabajo con texto, visualización de datos y creación de modelos de aprendizaje profundo.
 Se utilizó tensorflow [\cite{tensorflow}] en su versión 2.9.2 para la construcción y entrenamiento de los modelos. 
 Para el procesamiento de los textos se utilizaron nltk [\cite{nltk}] y spacy [\cite{spacy}], con estos se realizaron tareas
-como la extracción de tokens y oraciones del texto, la anotación de las etiquetas de partes de la oracion. Se utilizaron 
+como la extracción de tokens y oraciones del texto, la anotación de las etiquetas de partes de la oración. Se utilizaron 
 ambos paquetes para el procesamiento debido a que, en dependencia de la situación, cada uno presenta diferentes
 ventajas. En el caso de nltk, presenta algoritmos rápidos para el procesamiento de texto que no 
 requieren de muchos recursos computacionales, sin embargo, estos algoritmos no están disponibles de inmediato
@@ -178,7 +178,7 @@ desplegar y permite su uso online.
 \subsection{Formato Estándar}
 
 El formato estándar creado es basado en el esquema de anotación CoNLL, donde se anotan a nivel de token todos los aspectos 
-relavantes para las tareas a realizar. La segmentación de las UDAs son representadas por las anotaciones 
+relevantes para las tareas a realizar. La segmentación de las UDAs son representadas por las anotaciones 
 BIO o BIOES en cada palabra, en adición, las clasificaciones de estas son anotadas al adicionar el nombre 
 de esta separada por un guión. Las relaciones son anotadas auxiliándose de la distancia argumentativa, estas 
 son agregadas al anotar el tipo de relación con su respectiva distancia ambas separadas por un guión. A 
@@ -249,8 +249,8 @@ Las métricas 100\%F1 y 50\%F1 muestran que los modelos 1 y 2 presentan un desem
 Se muestra un ligero aumento de 1\% en las 50\%F1 en el modelo 4 con respecto 
 al modelo 3, aunque las métricas de F1 en el 3 superan a las de 4. Se considera a la 
 segmentación como tarea principal, por lo que se selecciona como mejor modelo al 4 (Figura \ref{fig:test_segmenter_model_metrics}).
-Las distinciones BIOES en los nombres de tablas o métricas constituyen la métricas correspondientes 
-a la segmentación estrictamente, mientras las que no poseen dicha distinción sontituye al proceso 
+Las distinciones BIOES en los nombres de tablas o métricas constituyen las métricas correspondientes 
+a la segmentación estrictamente, mientras las que no poseen dicha distinción constituyen al proceso 
 conjunto de segmentación y clasificación de UDAs. 
 
 \begin{figure}[h!]
@@ -659,5 +659,5 @@ oraciones a segmentos de palabras, aunque estos puedan estar sujetos a errores.
 
 La versión de AbsTRCT constituye el modelo con menor rendimiento. La clasificación
 de UDAs presenta una gran desproporción hacia \emph{Premise} dejando muchas \emph{Claim}
-sin ser conrrectamente clasificadas. Sobre las relaciones muestra un nivel muy bajo de 
+sin ser correctamente clasificadas. Sobre las relaciones muestra un nivel muy bajo de 
 relaciones por documento, en relación a las que se podrían formar.

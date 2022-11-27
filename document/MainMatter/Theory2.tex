@@ -25,21 +25,21 @@ En AA existen tres tipos de aprendizaje:
 	\item Aprendizaje supervisado: trabaja con datos anotados y los algoritmos tratan de minimizar
 	el error cometido en las predicciones.
 \end{itemize}
-A este útlimo principalmente se refiere esta sección.
+A este último principalmente se refiere esta sección.
 
 Los componentes básicos de un problema de aprendizaje supervisado se pueden resumir en los datos de los que 
 aprender, el modelo para transformar los datos, una función de pérdida que cuantifica qué tan malo o bueno es el 
 modelo y un algoritmo que ajuste los parámetros del modelo para minimizar la pérdida.
 
 Matemáticamente, un modelo constituye una función $\hat{y} = f_{\theta}(x)$ cuyo argumento son las 
-representaciones de las entradas orginales $x$ y devuelve una salida $\hat{y}$. Esta función $f$ se encuentra
+representaciones de las entradas originales $x$ y devuelve una salida $\hat{y}$. Esta función $f$ se encuentra
 parametrizada por el vector $\theta$ el cual constituye los parámetros en los que el modelo se basa para realizar sus
 cálculos. La función de pérdida se puede definir como $e(y, \hat{y})$, donde $y$ es el resultado esperado para $x$. 
 El objetivo final del algoritmo de ajuste es encontrar $\theta$ tal que:
 
 \begin{equation}
-	\arg \min_{\theta} e(y, f_{\theta}(x))
-\end{equation}\label{eq:arg_min_theta}.
+	\arg \min_{\theta} e(y, f_{\theta}(x)).
+\end{equation}\label{eq:arg_min_theta}
 
 Los parámetros $\theta$ eventualmente se van ajustando con algún algoritmo de optimización para que 
 la función de error alcance un valor óptimo, aunque un óptimo global en la práctica es difícil de conseguir
@@ -79,7 +79,7 @@ en esta, a cada palabra se le asigna un índice y el vector resultante posee la 
 vocabulario y es rellenado con ceros en todos sus elementos excepto en el índice de la palabra, donde se le asigna 1.
 Esta representación asume que las palabras son independientes entre sí y 
 computacionalmente ocupan un espacio considerable. Existen otras representaciones 
-que brindan información al algoritmo sobre la morfológia y la semántica de la palabra que representa.
+que brindan información al algoritmo sobre la morfología y la semántica de la palabra que representa.
 
 Las características morfológicas son aquellas que describen cómo está formado el elemento a analizar.
 Estas pueden ser extraídas con relativa facilidad, entre tales características se encuentran: tamaño, 
@@ -128,7 +128,7 @@ emulan diferentes operaciones sobre datos que pueden ser más beneficiosas en si
 
 \subsubsection{Capas densas}
 
-El perceptrón consiste es una transformación lineal del vector de datos $\textbf{x}$ con un bias $b$ y 
+El perceptrón consiste es una transformación lineal del vector de datos $\textbf{x}$ con un sesgo $b$ y 
 luego aplicar una transformación no lineal $g$, conocida como función de activación, 
 para la obtención del resultado final:
 
@@ -138,7 +138,7 @@ para la obtención del resultado final:
 
 El perceptrón constituye la unidad básica de las capas densas, ya que estas consisten en la aplicación
 de este modelo varias veces sobre la misma entrada $\textbf{x}$ produciendo vectores de la dimensión $k$ 
-deseada como salida final. Los parámetros se codifican en la matriz $\textbf{W}$ y sus bias en el 
+deseada como salida final. Los parámetros se codifican en la matriz $\textbf{W}$ y sus sesgo en el 
 vector $\textbf{b}$:
 
 \begin{equation}
@@ -223,7 +223,7 @@ información resumida sobre los datos.
 \subsubsection{Redes Residuales}
 
 Al crear modelos de aprendizaje profundo se tienen un conjunto de parámetros $\theta$. Las posibles combinaciones 
-de estos forman un espacio de funciones $F$ al cual pertenencen todas las posibles instancias del modelo.
+de estos forman un espacio de funciones $F$ al cual pertenecen todas las posibles instancias del modelo.
 Agregar nuevas capas aumenta la complejidad de este, pero no hay garantía de que el viejo espacio 
 de funciones $F$ sea subconjunto del nuevo espacio $F'$, lo que implica que el nuevo modelo no es necesariamente
 estrictamente superior al antiguo. Este problema es la razón para la aparición de las Redes Residuales. 
@@ -258,7 +258,7 @@ un tipo especial de arquitectura especializada en el trabajo con datos secuencia
 presenta variables en las que se almacenan información pasada, que es usada para el computo de la salida. El 
 problema se puede modelar probabilísticamente mediante la estimación de $P(x_t | x_{t-1}, \dots, x_{1})$,
 donde existen dos variantes principales. En una variante se fija un tamaño de ventana $\alpha$ en el tiempo, 
-dando como resultado $P(x_t | x_{t-1}, \dots, x_{t-\alpha})$, a este tipo de modelos se les conoce como autoregresivos. 
+dando como resultado $P(x_t | x_{t-1}, \dots, x_{t-\alpha})$, a este tipo de modelos se les conoce como autorregresivos. 
 Otra estrategia consiste en guardar un contexto de observaciones pasadas $h_t$ y con este realizar la estimación 
 $P(x_t | h_t)$, el contexto se actualiza en cada paso mediante una función $h_t = g(h_{t-1}, x_{t-1})$, a estos 
 se les nombra modelos autorregresivos latentes, debido a la existencia de variables ocultas $h_t$. 
@@ -267,7 +267,7 @@ En la práctica estos modelos presentan problemas de gradientes, ya que estas pu
 desaparecer.
 Para esto se han creado arquitecturas que disminuyen estos problemas. Una de estas arquitecturas es las de memorias
 de corto largo plazo (LSTM, en inglés) [\cite{hochreiter1997long}].
-Este modelo guarda un contexto del procesamiento y está constituído por varias compuertas que regulan las 
+Este modelo guarda un contexto del procesamiento y está constituido por varias compuertas que regulan las 
 actualizaciones de los estados internos. LSTM (Figura \ref{fig:rnn_lstm}) posee dos variables de estado, la memoria 
 $C$ y el estado oculto $H$. Entre sus compuertas se encuentran la compuerta de olvido, esta regula cuánto de la 
 memoria permanece en el próximo paso, la compuerta de entrada ajusta la cantidad de información nueva que entrará, 
@@ -510,7 +510,7 @@ los conjuntos de validación y entrenamiento. En estas, el eje horizontal repres
 iteración sobre el conjunto de entrenamiento, y el eje vertical representa el valor de la métrica a analizar. 
 La línea correspondiente al conjunto de entrenamiento cuantifica 
 el aprendizaje del modelo o también el error de entrenamiento, y la correspondiente a la de validación cuantifica 
-la generalización o el error de generalización. Existen tres comportamientos escenciales a analizar:
+la generalización o el error de generalización. Existen tres comportamientos esenciales a analizar:
 
 \begin{itemize}
 	\item Bajo ajuste (\emph{underfitting}).
@@ -646,9 +646,9 @@ pertenece el elemento y, al final, se asigna la etiqueta que más votos obtuvo.
 
 \subsection{Métodos de optimización}
 
-El objetivo de el AA es encontrar los extremos de una función de costo, este proceso es una tarea 
+El objetivo del AA es encontrar los extremos de una función de costo, este proceso es una tarea 
 desafiante ya que la gran mayoría de estas funciones no son convexas y, por lo tanto, no existe un algoritmo
-que asegure la convergencia hacia un extremo global. Para resolver este problema exiten múltiples heurísticas,
+que asegure la convergencia hacia un extremo global. Para resolver este problema existen múltiples heurísticas,
 la más usada es el descenso por gradiente. La idea básica consiste 
 en el cálculo del vector gradiente de la función de error $f$ con respecto a los parámetros del modelo $x$ y, una vez se 
 tiene dicho vector, se evalúa en la asignación actual de los parámetros $x_i$ y se realiza un corrimiento de este punto 
@@ -683,7 +683,7 @@ una variedad en enfoques y métodos.
 En \textcite{palau2009argumentation} se propone
 el uso de modelos estadísticos como \emph{Naive Bayes} (NB) y \emph{Support Vector Machine} (SVM) 
 para la clasificación de 
-oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativ. En este
+oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa. En este
 se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
 se usa un enfoque basado en reglas con la creación de una Gramática Libre de Contexto. Las representaciones
 de las oraciones consisten en atributos creados a mano, dado el conocimiento experto sobre la argumentación
@@ -764,7 +764,7 @@ Este trabajo define el concepto de distancia argumentativa, añadiéndolo como c
 extraídas. En este caso, además de la distancia argumentativa, las secuencias son representadas 
 vectorialmente con GloVe.
 
-En resumen, se contempan disímiles enfoques al problema de EA desde una perspectiva enmarcada en modelos 
+En resumen, se contemplan disímiles enfoques al problema de EA desde una perspectiva enmarcada en modelos 
 simbólicos, estadísticos y neuronales en versiones tanto secuenciales como \emph{end-to-end}. 
 Cada uno de estos modelos presentan sus ventajas y desventajas a la hora de construirlos, 
 extenderlos y comprender su funcionamiento. En modelos simbólicos se presenta una alta
@@ -783,7 +783,7 @@ Dado que la EA es un proceso en el cual se necesita pasar por varias tareas, est
 de alguna forma. Una manera de completarlas es hacerla una a la vez, independiente una de otra y pasándole
 la salida de etapas anteriores a las etapas siguientes. Esta manera secuencial de realizar las 
 tareas es bastante simple y ayuda a la creación de modelos simples y con tareas bien definidas, aunque trae consigo 
-la propagación de los errores a través del proceso y el no aprevechamiento de las interrelaciones entre variables 
+la propagación de los errores a través del proceso y el no aprovechamiento de las interrelaciones entre variables 
 computadas de procesos anteriores. También requiere de la construcción, entrenamiento y evaluación de varios modelos.
 En cambio un enfoque \emph{end-to-end} poseen la habilidad de modelar el problema 
 desde su inicio hasta su final de manera conjunta, mediante \emph{Multi-Task Learning} (MTL) se modelan
