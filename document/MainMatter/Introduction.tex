@@ -1,143 +1,151 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
 
-% Introducción a la teoría de la argumentación
+% \cite{brownlee2018better}\\
+% \textcite{brownlee2018better}\\
+% \parencite{brownlee2018better}\\
+% \citet{brownlee2018better}
+% \citep{brownlee2018better}
 
-La teoría de la argumentación es el estudio interdisciplinario de cómo las conclusiones
-pueden ser apoyadas o socavadas por premisas a través de razonamiento lógico [\cite{wiki-arg-theory}] .
-Esta es usada en varios aspectos de la vida como en las negociaciones, debates públicos, publicaciones
-científicas, enseñanza, leyes. Sobre este marco teórico es sobre donde se realiza el diseño y análisis de 
-modelos computacionales que ayudan al procesamiento de los grandes volúmenes de datos existentes.
+% Contexto histórico-social donde se desarrolla
+% Cuales son las condiciones historicas que hicieron necesarias la creacion de la tesis, o que dieron origen a la problematica de esta
 
-En la actualidad es necesario tener acceso a la información necesaria
+La argumentación es una actividad verbal, social y racional destinada a convencer 
+a un crítico razonable de la aceptabilidad de un punto de vista mediante la presentación 
+de una constelación de proposiciones que justifican o refutan la proposición expresada 
+en el punto de vista [\cite{van2004systematic}]. Esta definición concentra en ella 
+partes esenciales de lo que es la argumentación, dicha actividad se encuentra presente
+en varias facetas de la cotidianedad humana, como en la escritura o lectura de documentos y
+en las interacciones sociales de las personas. En resumen, la argumentación está presente 
+cada vez que se plantea un argumento y se trata de que este triunfe en un debate donde 
+se exponen elementos que lo apoyen.   
+
+En la actualidad es necesario tener acceso a la información
 de forma rápida y simple. Esto no siempre es posible dado la gran cantidad de información existente y
-que es generada en cada momento. En caso de tener una vía de acceder a esta se podrían realizar acciones
-con mayor rapidez y calidad. Con la argumentación se podría hacer explícitas las razones de las personas 
+que es generada en cada momento. En caso de tener una vía de acceder a esta, se podrían realizar acciones
+con mayor rapidez y calidad. Con la argumentación, se podría hacer explícitas las razones de las personas 
 al afirmar algo sobre un tema teniendo así su punto de vista individual, y con suficientes personas, colectivo.
 
-% Presentación de la problemática
+% Antecedentes del problema, justificación y motivación. 
+% Antecedentes: 
+%   Tareas similares que se quedan cortas: Opinion Mining, Citation Mining, Controversy Detection
+%   Cómo se ha estudiado primero a mano. Trabajo dificil.
+% Justificacion:
+%   Limitaciones del trabajo manual
+%   Se quiere hacer el trabajo automatico.
+%   El proyecto esta integrado en un proyecto nacional  reconocido CORESPUC
 
-La Extracción de Argumentos (EA) es la rama del Procesamiento de Lenguaje Natural (PLN) encargada de formularizar
-y modelar dicho problema. Los modelos existentes generalmente se encargan de
-extraer y clasificar las componentes argumentativas y sus relaciones de una fuente no estructurada de 
-texto, capturando un proceso de razonamiento y argumentación en su estructura final. Los métodos
-de realizar este procedimiento varían en dependencia de las características en que se trabaja y el objetivo
-a que se quiere llegar. Entre los métodos usados se pueden mencionar métodos ad-hoc basados en gramáticas,
-que aprovechan atributos del texto como partes de la oración (POS por sus siglas en inglés \emph{parts of speech}) 
-y entidades nombradas, que codifican diferentes 
-patrones argumentativos [\cite{dykes2020reconstructing}]. Dicho enfoque requiere de trabajo 
-humano para la creación de una gramática que permita resultados satisfactorios. Este tipo de enfoque
-generalmente sacrifica recobrado por precisión y no permite una generalización del problema, contribuyendo
-a no ser muy escalable.
+Varias tareas en el Procesamiento de Lenguaje Natural (PLN) se han desarrollado en 
+torno a diferentes problemas relacionados con 
+la argumentación. Entre tales tareas se encuentran: el minado de opiniones, el cual es el 
+estudio computacional de las opiniones, sentimientos y emociones expresadas en un texto 
+[\cite{liu2010sentiment}], la detección de controversias, enfocada en la identificación de 
+temas y textos en donde puntos de vista conflictivos están presentes; y también la zonificación
+argumentativa que clasifica las oraciones por su rol argumentativo dentro de un artículo
+científico. Estas tareas solamente muestran cuáles opiniones, puntos de conflictos y roles 
+de argumentos 
+presenta el texto, pero lo realizan de manera separada y no muestran el porqué de estas. 
+Para lograr extraer esta información faltante es necesario realizar un 
+análisis de los argumentos dados, para pasar de texto no estructurado a datos argumentativos 
+que den entendimiento de los puntos de vista y de cómo se apoyan o atacan entre sí. Este análisis
+es posible realizarlo mediante métodos convencionales manuales o utilizando programas
+especializados para la anotación, aunque la práctica ha demostrado que este proceso requiere 
+de una gran cantidad de tiempo y de personal calificado. Con la inmensa cantidad de datos 
+que se genera a diario este análisis es impracticable de realizar de forma manual, por esto se 
+estudian y crean métodos encargados de automatizar esta tarea.
 
-Existen método basados en técnicas de aprendizaje de máquina para modelar y resolver dicho problema.
-Estos métodos están divididos en diferentes vertientes de acuerdo a cómo procesan los datos. Uno de ellos lo realiza por
-etapas, en el cual en cada una se resuelve independientemente los subproblema y la salida de la etapa 
-anterior es entrada a la etapa siguiente. Las etapas en que generalmente se divide el problema
-son, separación de unidades argumentativas y no argumentativas, clasificación de las unidades 
-argumentativas y la identificación de estructuras argumentativas [\cite{stab2014identifying}].
-Este enfoque trae consigo una modularidad elevada al resolver las tareas de manera independiente, pero
-tiene la desventaja que los errores de etapas anteriores son pasados a las siguientes y además los algoritmos
-usados no ven todo el contexto del texto pudiendo perder características que permitirían un mejor resultado.
-Otro enfoque usado son los llamados end-to-end, en estos el modelo entrenado aprende los pasos para convertir
-directamente la entrada del algoritmo en la salida deseada al entrenar sus diferentes partes de manera 
-simultanea. En el contexto de EA la entrada serían los tokens de los textos y la salida sería las
-estructuras argumentativas anotadas en dependencia del algoritmo usado. Este enfoque mitiga las posibles
-deficiencias del enfoque por etapas, al juntar todo el proceso en una sola eliminando la propagación
-del error, además de que al tener todos los datos es posible encontrar mayor cantidad de correlaciones 
-entre ellos, también no requiere de una ingeniería de atributos tan elaborada [\cite{eger2017neural}].
+% Breve presentación de la problemática. 
+%   Por todo lo anterior nace la EA, rama de PLN ..., definir tareas de la EA, tocar los enfoques realizados
+% (No es el estado del arte aunque se puede hablar un poco de él) Elementos involucrados en el punto de vista cientifico, lleva corpus.
 
-En la práctica la EA tiene un gran número de aplicaciones [\cite{janier2019argument}]: 
-\begin{itemize}
-    \item Análisis de opinión: Ayuda no solo a saber si la opinión es favorable o no, sino a saber
-    porqué es favorable o no.
-    \item Análisis de debate: Ayuda a detectar estrategias argumentativas
-    \item Detección de incoherencias en un conjunto de argumentos y justificaciones
-\end{itemize}
+La Extracción de Argumentos (EA) nace como la rama del PLN encargada
+del estudio de métodos para la extracción automática de las estructuras argumentativas de 
+los textos y su posterior procesamiento [\cite{lawrence2020argument}]. Esta tarea se divide en 
+cuatro subtareas fundamentales: i) la extracción y ii) clasificación de las componentes 
+argumentativas del texto, y iii) la extracción y 
+iv) clasificación de las relaciones entre estas. Estas tareas han sido abordadas de diferentes maneras,
+desde modelos secuenciales [\cite{palau2009argumentation}, \cite{goudas2015argument}] hasta 
+\emph{end-to-end} [\cite{eger2017neural}], desde el uso de clasificadores clásicos 
+como Naive Bayes o SVM [\cite{niculae2017argument}, \cite{stab2017parsing}] hasta el uso de 
+aprendizaje profundo [\cite{galassi2021deep}, \cite{mayer2020transformer}], y sigue 
+siendo un área creciente de estudio.
 
-% Actualidad, novedad e importancia
+La EA se caracteriza por la falta de conjuntos de datos y 
+por la heterogeneidad que presentan estos a la hora de decidir cómo realizar las 
+anotaciones, además que la gran mayoría de los estudios realizados en el campo se encuentran en 
+un reducido conjunto de idiomas como el inglés, alemán o chino [\cite{eger2018cross}]. 
+En el español, pocas intervenciones se han dado en el análisis de los argumentos [\cite{esteve2020mineria}] y en 
+lo correspondiente a Cuba no se encontró ninguna referencia. 
 
-Desde el punto de vista del proyecto CORESPUC, este trabajo añade la capacidad de anotar
-sus textos con las estructuras argumentativas pertinentes ampliando cantidad de
-información anotada en este. Desde el punto de vista de Extracción de Argumentos, supone una
-adición al estudio de este campo en el lenguaje español, del cual se encontraron pocas
-investigaciones realizadas [\cite{esteve2020mineria}]. Con respecto a Cuba en específico
-resulta un trabajo completamente nuevo según las investigaciones hechas.
+% Actualidad, novedad e importancia teórica y práctica. 
+%   En español no tiene mucho estudio. Citar casos del español, para Cuba ninguno
+%   Creación de un corpus anotado el cual se podrá mejorar con el tiempo
 
-% Pregunta científica o hipótesis
+Este trabajo tributa a "Dinámicas sociales, políticas y económicas en el discurso público 
+en Cuba de principio del siglo XXI: estudios de CORESPUC". Proyecto 
+asociado al Programa Nacional de Ciencia y Técnica "Las Ciencias Sociales y las humanidades. 
+Desafíos ante la estrategia de desarrollo de la sociedad cubana", Código PN223LH011-011, Ministerio
+de Ciencia, Tecnología y Medio Ambiente (CITMA), Cuba, 2021-2023.
 
-Para la solución del problema se necesita extraer las componentes argumentativas con sus relaciones
-y clasificaciones. Para esto se necesita encontrar qué modelo es factible usar para la extracción de
-argumentos en textos en español, especialmente en la prensa. En este aspecto existen investigaciones
-en las cuales usan modelos basados en Transformer y Attention que han impuesto nuevos estados de arte
-[\cite{mayer2020transformer}, \cite{galassi2021deep}].
+% Diseño teórico.
+%    Problema: 
+%    Objeto de Investigación: Procesamiento de Lenguaje Natural
+%    Campo de acción: Linguistica computacional
+%    Hipótesis o preguntas científicas
+%    Objetivos generales y específicos
+%       General: Diseño e implementación de un algoritmo para el estudio de la argumentación en el periódico digital Granma
+%       Especifico Construcción del corpus de los periódicos: Crawler, Anotación (scpaCy).
+%       Especifico Implementacion de la interfaz gráfica para consultar los resultados.
 
-% Objetivos 
+En esta tesis se tiene como objetivo, proponer un algoritmo para 
+la extracción y análisis de estructuras argumentativas en textos 
+de la prensa cubana, constituyendo el primero de su tipo en lo que respecta a la búsqueda del autor. 
+Para lograr dicho objetivo se necesitan realizar varias operaciones.
+En primer lugar, es necesario obtener los textos a analizar del sitio 
+web del periódico Granma. Luego, se necesita confeccionar algoritmos capaces de realizar las tareas 
+de EA sobre estos textos, para estos algoritmos es necesaria la confección de conjuntos 
+de datos en español en los cuales se puedan entrenar. Finalmente, se requiere de una interfaz visual 
+en la que sea posible la interacción de los usuarios, en tareas como visualización y edición, 
+con los resultados obtenidos. 
 
-El objetivo principal de este trabajo fue el diseño e implementación de un algoritmo para 
-el estudio de la argumentación en el periódico digital Granma. Para esto primero
-fue necesaria la construcción de un corpus sobre el periódico. Se recolectaron los documentos
-del periódico mediante técnicas de scrapping para conformar un corpus inicial no anotado. Este
-fue anotado con las estructuras argumentativas por el modelo previamente entrenado usando técnicas 
-de proyección entre lenguajes [\cite{eger2018cross}]. Además de las anotaciones anteriores, se agregarán 
-otras, como partes de la oración y entidades nombradas para finalmente añadir el corpus a CORESPUC.
+Se propone la construcción de un programa capaz de realizar la extracción de los textos del periódico Granma, 
+en específico, se enfoca en su sección de Cartas a la Dirección. Para la extracción
+de argumentos se presentan dos modelos, el primero se encarga de la segmentación y clasificación
+de las componentes argumentativas. Este es un modelo secuencia a secuencia en el cual las palabras 
+son vectorizadas por sus características morfológicas mediante el uso de redes neuronales convolucionales
+(CNN) y \emph{Long Short Term Memory} (LSTM), por su información
+semántica mediante \emph{embeddings} \emph{Global Vectors} (GloVe) y por su información 
+estructural mediante su parte de la oración, estas 
+secuencias son procesadas por una red LSTM bidireccional y sus atributos son usados por una capa 
+de \emph{Conditional Random Field} (CRF) 
+para su clasificación final en etiquetas B (inicio de segmento), I (dentro del segmento), O (afuera de segmento), 
+E (fin de segmento) y S (segmento de un elemento) (BIOES) con información adicional para la clasificación de las 
+unidades de discurso argumentativas (UDA). El segundo modelo está encargado de la extracción y clasificación 
+de las relaciones entre las UDAs. En él se utilizan las representaciones GloVe de las palabras en las secuencias 
+y su distancia argumentativa para la clasificación de una tupla en la que su primer elemento 
+constituye el texto candidato de donde parte la relación o fuente y el segundo, el texto candidato a recibir la 
+relación u objetivo, en el tipo de relación existente entre estos elementos. La entrada es procesada mediante 
+una LSTM bidireccional y módulos de atención cruzada entre los elementos de la fuente y los elementos del objetivo.
+Para la visualización se crea un ambiente de desarrollo con la herramienta Brat [\cite{brat}], la cual permite realizar las 
+tareas requeridas a los datos anotados por los modelos.
 
-% Estructura del trabajo
+En resumen, se presenta un estudio de la argumentación en español al realizar la extracción de 
+argumentos en prensa, además se crea un conjunto de datos anotado que puede servir
+para un estudio más profundo sobre los esquemas argumentativos presentes en estos textos. 
 
-El trabajo está conformado por \dots ( Poner la estructura del trabajo)
+%    Estructura del trabajo
 
-
-% Esqueleto
-% \begin{itemize}
-%     \item Hablar sobre el conocimiento y el pensamiento del ser humano como ser racional.
-%     No existe una verdad única, si no diferente tipos de verdades para diferentes grupos de personas.
-%     Cada grupo de personas presentan argumentos por los cuales creen esas verdades y no creen otras.
-%     \item Introducir el tema de la argumentación en el PLN, su usos actuales e importancia.
-%     \item Introducción de la problemática (Formar un corpus de Granma con estructuras argumentativas),
-%     el porqué se quiere hacer esto (Justificación del proyecto CORESPUC, crear un estudio en español del tema)
-%     \item Hablar sobre la importancia teórica y práctica del trabajo. No existen estudios en español,
-%     los corpus en español son escasos. Ayuda a resolver la justificación de CORESPUC
-%     \item Planteo de los objetivos y las preguntas científicas (Crear corpus argumentativo en Español y un framework para la extracción de argumentos en periódicos)
-%     \item Estructura del trabajo
-% \end{itemize}
-
-
-% Aspectos que debe tratar la introducción (Se deben de decir implícitamente en los párrafos):
-
-% \begin{itemize}
-
-%     \item Contexto histórico-social donde se desarrolla
-%     \item Antecedentes del problema, justificación y motivación. Cómo se ha estudiado primero a mano y luego computacionalmente el problema en la prensa. Motivacion, el proyecto esta integrado en un proyecto nacional  reconocido CORESPUC, lo cual tiene una justificación también.
-%     \item Breve presentación de la problemática. (No es el estado del arte aunque se puede hablar un poco de él) Elementos involucrados en el punto de vista cientifico, lleva corpus.
-%     \item Actualidad, novedad e importancia teórica y práctica. Revisar literatura (Actualidad, en español no tiene mucho estudio), Se propone un modelo computacional para estudiar ese asutnto que se han propuesto poco, para Cuba no hay ninguno y poco de investigación. 
-%     \item Diseño teórico.
-
-%     \begin{itemize}
-
-%         \item Problema: 
-%         \item Objeto de Investigación: Procesamiento de Lenguaje Natural
-%         \item Campo de acción: Linguistica computacional
-%         \item Hipótesis o preguntas científicas
-%         \item Objetivos generales y específicos
-
-%         \begin{itemize}
-%             \item General
-%             \begin{itemize}
-%                 \item Diseño e implementación de un algoritmo para el estudio de la argumentación en el periódico digital Granma
-%             \end{itemize}
-%             \item Específicos
-%             \begin{itemize}
-%                 \item Construcción del corpus de los periódicos: Crawler, Anotación (scpaCy).
-%                 \item Arreglar etiquetas en corpus activo con archivos VRT.
-%                 \item Clasificar las secciones en de opinión o no.
-%                 \item Verificar la aparición o no de noticias entre la versión PDF y la versión online del periódico.
-%                 \item Implementacion de la interfaz gráfica para consultar los resultados.
-%                 \item Lograr interoperailidad de la plataforma CQPweb.
-%             \end{itemize}
-%         \end{itemize}
-
-%     \end{itemize}
-
-%     \item Estructura del trabajo
-
-% \end{itemize}
+El presente documento está dividido en cuatro capítulos.
+En el Capítulo \ref{chapter:argumentation} se presentan las definiciones necesarias para una introducción
+al tema de la argumentación y la EA.
+El Capítulo \ref{chapter:background} presenta un recorrido por los 
+conceptos, métodos y arquitecturas relacionadas con el Aprendizaje Automático para el problema 
+en cuestión, además de realizar un compendio y análisis de los enfoques utilizados para dar solución
+a los problemas asociados a la EA y el procedimiento de proyección de corpus, utilizado para la 
+traducción de conjuntos de datos del inglés al español. 
+Luego, en el Capítulo \ref{chapter:proposal}
+se describe la propuesta de los modelos para realizar la EA.
+En el Capítulo \ref{chapter:implementation} se mencionan los diferentes conjuntos de datos utilizados 
+en los experimentos y los resultados obtenidos en las tareas realizadas.
+Finalmente, se exponen conclusiones y recomendaciones sobre el trabajo 
+realizado.
