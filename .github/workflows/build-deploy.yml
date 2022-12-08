@@ -30,10 +30,18 @@ jobs:
           working_directory: document
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
+      - name: pdflatex Thesis
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: Presentation.tex
+          working_directory: presentation
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
       - name: Prepare for Deploy
         run: |
           mkdir build
           mv document/Thesis.pdf build/document.pdf
+          mv presentation/Presentation.pdf build/presentation.pdf
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:

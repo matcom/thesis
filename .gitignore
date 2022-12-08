@@ -9,6 +9,7 @@
 *.pdf
 *.dvi
 !document/Graphics/uhlogo.pdf
+!presentation/Graphics/uhlogo.pdf
 *.backup
 *.toc
 *~
@@ -22,3 +23,7 @@
 *.bcf
 *.xml
 *.pdf_tex
+*.nav
+*.snm
+presentation/IDEAS.md
+TODO.md

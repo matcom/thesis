@@ -1,9 +1,11 @@
-cd document/; echo q | pdflatex --shell-escape Thesis.tex 
+#!/bin/bash
 
-if [[ $1 = bib ]] 
+cd "$1"; echo q | pdflatex --shell-escape $2.tex 
+
+if [[ $3 = bib ]] 
 then
-    cd document/; biber Thesis 
+    cd "$1"; biber $2
 
-    cd document/; echo q | pdflatex --shell-escape Thesis.tex 
-    cd document/; echo q | pdflatex --shell-escape Thesis.tex 
+    cd "$1"; echo q | pdflatex --shell-escape $2.tex 
+    cd "$1"; echo q | pdflatex --shell-escape $2.tex 
 fi
