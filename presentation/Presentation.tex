@@ -43,8 +43,10 @@
     \pause
     \begin{block}{Importancia}
         \begin{itemize}
+            \pause
             \item Obtener puntos de vista en los textos, obteniendo información sobre 
             los argumentos principales utilizados.
+            \pause
             \item Detectar sobre qué se basan las justificación de 
             afirmaciones. 
         \end{itemize}
@@ -395,7 +397,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Selección de modelo}
+\begin{frame}{Selección del modelo}
     % DECIR: Para la selección del modelo se establecieron diferentes variantes y estas fueron entrenadas 
     % en el conjunto de datos de Ensayos Persuasivos. Se selecciona el mejor modelo de acuerdo a un 
     % criterio y finalmente los mejores hiperparámetros son utilizados en el entrenamiento de los 
@@ -410,14 +412,12 @@
             \item Macro F1.
             % DECIR: Se define como la proporcion de aciertos del modelo 
             \pause
-            \item \textit{Accuracy}. Peor valor: 0 Mejor valor: 1
-            \pause
-            \item \emph{Accuracy}
+            \item \emph{Accuracy}.
             % DECIR: Es una medida específica de la segmentación, en la que el número
             % representa el porciento del segmento que tiene que coincidir para 
             % que se considere válido el emparejamiento.
             \pause
-            \item 100\%F1 y 50\%F1. Peor valor: 0 Mejor valor: 1
+            \item 100\%F1 y 50\%F1.
         \end{itemize}
     \end{block}
 
@@ -427,28 +427,27 @@
 \end{frame}
 
 \begin{frame}{Selección del modelo de segmentación}
-    \begin{table}
-        \begin{center}
-            \begin{tabular}{|l|c|c|c|c|c|c|} \hline
-            Modelos 		& POS       & Char-CNN  & Char-LSTM & Res       & Norm      & Densa  \\ \hline
-            Modelo 1		& $\times$	& $\times$    & $\times$    & $\times$	& $\times$    & $\times$ \\ \hline
-            Modelo 2		& $\times$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
-            Modelo 3		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
-            Modelo 4		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
-            \end{tabular}
-        \caption{Variantes de arquitectura de los modelos de segmentación de UDA.}
-        \end{center}
-    \end{table}
-\end{frame}
-
-\begin{frame}{Selección del modelo de segmentación}
     \begin{onlyenv}<1>
+        \begin{table}
+            \begin{center}
+                \begin{tabular}{|l|c|c|c|c|c|c|} \hline
+                Modelos 		& POS       & Char-CNN  & Char-LSTM & Res       & Norm      & Densa  \\ \hline
+                Modelo 1		& $\times$	& $\times$    & $\times$    & $\times$	& $\times$    & $\times$ \\ \hline
+                Modelo 2		& $\times$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
+                Modelo 3		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
+                Modelo 4		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
+                \end{tabular}
+            \caption{Variantes de arquitectura de los modelos de segmentación de UDA.}
+            \end{center}
+        \end{table}
+    \end{onlyenv}
+    \begin{onlyenv}<2>
         \begin{figure}
             \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_macro_micro_metrics.png}
             \caption{Métricas de ensayos persuasivos en la clasificación de etiquetas.}
         \end{figure}
     \end{onlyenv}
-    \begin{onlyenv}<2>
+    \begin{onlyenv}<3>
         \begin{figure}
             \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_components.png}
             \caption{Métricas de ensayos persuasivos en la segmentación de UDAs.}
@@ -456,7 +455,21 @@
     \end{onlyenv}
     % DECIR: Por los resultados obtenidos se seleccionan los valores del modelo 4 para el 
     % entrenamiento del modelo en los demás conjuntos de datos
-    \begin{onlyenv}<3->
+    \begin{onlyenv}<4>
+        \begin{table}
+            \begin{center}
+                \begin{tabular}{|l|c|c|c|c|c|c|} \hline
+                Modelos 		& POS       & Char-CNN  & Char-LSTM & Res       & Norm      & Densa  \\ \hline
+                Modelo 1		& $\times$	& $\times$    & $\times$    & $\times$	& $\times$    & $\times$ \\ \hline
+                Modelo 2		& $\times$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
+                Modelo 3		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
+                \textbf{Modelo 4}		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
+                \end{tabular}
+            \caption{Variantes de arquitectura de los modelos de segmentación de UDA.}
+            \end{center}
+        \end{table}
+    \end{onlyenv}
+    \begin{onlyenv}<5->
         \begin{table}
             \begin{center}
                 \scalebox{0.85}{
@@ -474,29 +487,31 @@
 \end{frame}
 
 \begin{frame}{Selección del modelo de predicción de enlace}
-    \begin{table}
-        \begin{center}
-            \scalebox{0.7}{
-            \begin{tabular}{|l|c|c|c|c|c|c|} \hline
-            Modelos   	             & Atención      & Pooling  & \emph{Dropout}   & T. de aprendizaje & Paciencia & Devolver mejores     \\ \hline
-            Modelo 1            	 & $\times$	     &  5       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
-            Modelo 2                 & $\times$	 	 & 10       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
-            Modelo 3	             & $\checkmark$	 &  1       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
-            Modelo 4	             & $\checkmark$	 &  1       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
-            \end{tabular}
-            }
-        \caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{table:link_predictor_architecture_table}
-        \end{center}
-    \end{table}
 \end{frame}
 \begin{frame}{Selección del modelo de predicción de enlace}
     \begin{onlyenv}<1>
+        \begin{table}
+            \begin{center}
+                \scalebox{0.7}{
+                \begin{tabular}{|l|c|c|c|c|c|c|} \hline
+                Modelos   	             & Atención      & Pooling  & \emph{Dropout}   & T. de aprendizaje & Paciencia & Devolver mejores     \\ \hline
+                Modelo 1            	 & $\times$	     &  5       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
+                Modelo 2                 & $\times$	 	 & 10       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
+                Modelo 3	             & $\checkmark$	 &  1       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
+                Modelo 4	             & $\checkmark$	 &  1       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
+                \end{tabular}
+                }
+            \caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{table:link_predictor_architecture_table}
+            \end{center}
+        \end{table}
+    \end{onlyenv}
+    \begin{onlyenv}<2>
         \begin{figure}
             \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_all_relation_f1_scores.png}
             \caption{Métricas de ensayos persuasivos en la clasificación de enlaces y UDAs.}
         \end{figure}
     \end{onlyenv}
-    \begin{onlyenv}<2>
+    \begin{onlyenv}<3>
         \begin{figure}
             \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_all_relation_linked.png}
             \caption{Métricas de ensayos persuasivos en la extracción de enlaces de UDAs.}
@@ -504,7 +519,23 @@
     \end{onlyenv}
     % DECIR: Por los resultados obtenidos se seleccionan los valores del modelo 2 para el 
     % entrenamiento del modelo en los demás conjuntos de datos
-    \begin{onlyenv}<3->
+    \begin{onlyenv}<4>
+        \begin{table}
+            \begin{center}
+                \scalebox{0.7}{
+                \begin{tabular}{|l|c|c|c|c|c|c|} \hline
+                Modelos   	             & Atención      & Pooling  & \emph{Dropout}   & T. de aprendizaje & Paciencia & Devolver mejores     \\ \hline
+                Modelo 1            	 & $\times$	     &  5       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
+                \textbf{Modelo 2}                 & $\times$	 	 & 10       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
+                Modelo 3	             & $\checkmark$	 &  1       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
+                Modelo 4	             & $\checkmark$	 &  1       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
+                \end{tabular}
+                }
+            \caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{table:link_predictor_architecture_table}
+            \end{center}
+        \end{table}
+    \end{onlyenv}
+    \begin{onlyenv}<5->
         \begin{table}
             \begin{center}
                 \scalebox{0.7}{
@@ -574,11 +605,11 @@
     \begin{itemize}
         \item Se crean conjuntos de datos en español a partir de sus originales en inglés mediante la proyección de estos.
         \pause
-        \item Se obtiene un conjunto de datos relacionados con las Cartas a la Dirección.
+        \item Se obtiene un conjunto de datos de Cartas a la Dirección.
         \pause
         \item Se presenta un software para la extracción y visualización de estructuras argumentativas.
         \pause
-        \item Se crea un conjunto de datos de Cartas a la Dirección con sus textos anotados con las estructuras argumentativas.
+        \item Se etiquetan las estructuras argumentativas en las Cartas a la Dirección.
     \end{itemize}
 \end{frame}
 
