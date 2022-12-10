@@ -30,7 +30,7 @@ jobs:
           working_directory: document
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-      - name: pdflatex Thesis
+      - name: pdflatex Presentation
         uses: dante-ev/latex-action@latest
         with:
           root_file: Presentation.tex

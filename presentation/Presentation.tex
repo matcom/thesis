@@ -1,11 +1,13 @@
 
 % Inbuilt themes in beamer
 \documentclass{beamer}
+\renewcommand{\tablename}{Tabla}
 
 % Theme choice:
 % \usetheme{CambridgeUS}
 \usetheme{Darmstadt}
 \usepackage{svg}
+\usepackage{amsmath}
 
 % Title page details: 
 \title{Extracción automática de argumentos en textos de opinión en la prensa cubana} 
@@ -33,19 +35,30 @@
 \section{Introducción}
 \begin{frame}{Argumentación}
     \begin{block}{Argumentación}
-        La argumentación es una actividad verbal, social y racional destinada a convencer
+        Es una actividad verbal, social y racional destinada a convencer
         a un crítico razonable de la aceptabilidad de un punto de vista mediante la presentación 
         de una constelación de proposiciones que justifican o refutan la proposición
         expresada en el punto de vista.
     \end{block}
-    \pause 
+    \pause
+    \begin{block}{Importancia}
+        \begin{itemize}
+            \item Obtener puntos de vista en los textos, obteniendo información sobre 
+            los argumentos principales utilizados.
+            \item Detectar sobre qué se basan las justificación de 
+            afirmaciones. 
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Extracción de argumentos}
     \begin{block}{Extracción de Argumentos}
-        La Extracción de Argumentos nace como la rama del Procesamiento de Lenguaje Natural encargada del
+        \pause 
+        Es la rama del Procesamiento de Lenguaje Natural encargada del
         estudio de métodos para la extracción automática de las \textbf{estructuras argumentativas}
         de los textos y su posterior procesamiento.
     \end{block}
-\end{frame}
-\begin{frame}{Extracción de argumentos: Partes y tareas}
+    \pause 
     % Las estructuras argumentativas están compuestas por ...
     % Empezar a decir las definiciones de UDA.
     \begin{block}{Estructuras Argumentativas}
@@ -56,29 +69,65 @@
             \item Relaciones entre las UDAs.
         \end{itemize}
     \end{block}
-    \pause
-    % Las tareas de la EA son ...
-    \begin{block}{Tareas de extracción de argumentos}
-        \begin{itemize}
-            \pause
-            \item Extracción de las UDAs.
-            \pause
-            \item Clasificación de las UDAs.
-            \pause
-            \item Extracción de las relaciones entre las UDAs.
-            \pause
-            \item Clasificación de las relaciones entre las UDAs.
-        \end{itemize}
-    \end{block}
 \end{frame}
+
+\begin{frame}{Tareas de la extracción de argumentos}
+
+    \begin{block}{Tareas de extracción de argumentos}
+        \begin{enumerate}
+            \item<2-> Extracción de las UDAs.
+            \item<5-> Clasificación de las UDAs.
+            \item<8-> Extracción de las relaciones entre las UDAs.
+            \item<10-> Clasificación de las relaciones entre las UDAs.
+        \end{enumerate}
+    \end{block}
+
+    En primer lugar, \only<3->{[}\textbf<3->{el correo electrónico puede contar como uno de los resultados
+    más beneficiosos de la tecnología moderna}\only<3->{]}\begin{onlyenv}<6->{$_{\mathrm{Afirmaci\acute{o}n}}$}\end{onlyenv}. 
+    \only<4->{[}\textbf<4->{Años atrás, las personas pagaban gran cantidad de dinero para 
+    enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes 
+    podrían causar problemas que causarían que el correo no fuera enviado}\only<4->{]}\begin{onlyenv}<7->{$_{\mathrm{Premisa}}$}\end{onlyenv}\begin{onlyenv}<9->{$, _{-1}$}\end{onlyenv}\begin{onlyenv}<11->{$, _{\mathrm{apoyo}}$}\end{onlyenv}.
+
+\end{frame}
+
 \begin{frame}{Estructuras argumentativas como grafo}
-    \includesvg[scale=.6]{Graphics/Estructuras_argumentativas.svg}
+    \only<1>{Extracción de las UDAs:}
+    \only<2>{Clasificación de las UDAs:}
+    \only<3>{Extracción de las relaciones entre las UDAs:}
+    \only<4>{Clasificación de las relaciones entre las UDAs:}
+    \vspace{0.5cm}
+    \begin{onlyenv}<1>
+        \begin{columns}
+            \begin{column}{0.32\textwidth}
+                
+            \end{column}
+            \begin{column}{0.68\textwidth}
+                \includesvg[scale=.6]{Graphics/Estructuras_argumentativas1.svg}
+            \end{column}
+        \end{columns}
+    \end{onlyenv}
+    \begin{onlyenv}<2>
+        \begin{figure}
+            \includesvg[scale=.6]{Graphics/Estructuras_argumentativas2.svg}
+        \end{figure}
+    \end{onlyenv}
+    \begin{onlyenv}<3>
+        \begin{figure}
+            \includesvg[scale=.6]{Graphics/Estructuras_argumentativas3.svg}
+        \end{figure}
+    \end{onlyenv}
+    \begin{onlyenv}<4>
+        \begin{figure}
+            \includesvg[scale=.6]{Graphics/Estructuras_argumentativas.svg}
+        \end{figure}
+    \end{onlyenv}
+
 \end{frame}
 
 \section{Propuesta}
 
 \begin{frame}{Objetivos y propuesta}
-    % \textbf{Objetivo:}
+
     \begin{block}{Objetivo}
         \pause
         Proponer un algoritmo para la extracción y
@@ -101,6 +150,55 @@
             propuestos. 
         \end{itemize}
     \end{block}
+\end{frame}
+
+\begin{frame}{Modelación del problema de segmentación y clasificación de UDAs}
+    % DECIR: Se modela como un problema de clasificación de secuencia a secuencia en el que a cada 
+    % elemento de la secuencia de entrada se le asocia una etiqueta BIOES representando la posición
+    % del token con respecto a una UDA. A esta etiqueta BIOES se le asocia otra clasificación que 
+    % codifica la clasificación del tipo de UDA.
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{itemize}
+                \item<3-> B: Inicio de segmento.
+                \item<4-> I: Dentro del segmento.
+                \item<5-> E: Final del segmento.
+                \item<6-> S: Segmento de un elemento.
+                \item<7-> O: Afuera del segmento.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.2\textwidth}<2->
+            En\\
+            primer\\
+            lugar\\
+            ,\\
+            el\\
+            correo\\
+            electrónico\\
+            \dots\\
+            de\\
+            la\\
+            tecnología\\
+            moderna\\
+            .
+        \end{column}
+        \begin{column}{0.2\textwidth}<8->
+            O\\
+            O\\
+            O\\
+            O\\
+            B\only{-Afirmación}<9->\\
+            I\only{-Afirmación}<9->\\
+            I\only{-Afirmación}<9->\\
+            \dots\\
+            I\only{-Afirmación}<9->\\
+            I\only{-Afirmación}<9->\\
+            I\only{-Afirmación}<9->\\
+            E\only{-Afirmación}<9->\\
+            O
+        \end{column}
+        
+    \end{columns}
 \end{frame}
 
 \begin{frame}{Segmentación y clasificación de UDAs}
@@ -138,7 +236,7 @@
             \begin{itemize}
                 \item Tokenización.
                 \item Anotación de las partes de la oración.
-                \item Embeddings.
+                \item \textit{Embeddings}.
             \end{itemize}
         \end{column}
         \begin{column}<4->{0.5\textwidth}
@@ -151,19 +249,7 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Modelo de segmentación y clasificación de UDAs TODO}
-    % \begin{columns}
-    %     \begin{column}{0.5\textwidth}<1->
-    %         \begin{center}
-    %             \includesvg[scale=0.4]{Graphics/Modelo_segmenter_uda1.svg}
-    %         \end{center}
-    %     \end{column}
-    %     \begin{column}{0.5\textwidth}<2->
-    %         \begin{center}
-    %             \includesvg[scale=0.4]{Graphics/Modelo_segmenter_uda2.svg}
-    %         \end{center}
-    %     \end{column}
-    % \end{columns}
+\begin{frame}{Modelo de segmentación y clasificación de UDAs}
     \begin{onlyenv}<1>
         \begin{center}
             \includesvg[scale=0.4]{Graphics/Modelo_segmenter_uda1.svg}
@@ -175,57 +261,46 @@
             \includesvg[scale=0.4]{Graphics/Modelo_segmenter_uda2.svg}
         \end{center}
     \end{onlyenv}
-    % \begin{columns}
-    %     \begin{column}{0.25\textwidth}
-    %         Texto de ejemplo \\
-    %         \begin{center}
-    %             \begin{math}
-    %                 \Downarrow
-    %             \end{math}
-    %         \end{center}
-    %         \begin{block}{}
-    %             Embeddings (GloVe, Char-Embeddings, POS)
-    %         \end{block}
-    %         \begin{center}
-    %             \begin{math}
-    %                 \Downarrow
-    %             \end{math}
-    %         \end{center}
-    %         \begin{block}{}
-    %             Procesamiento (BiLSTM, Capas densas)
-    %         \end{block}
-    %         \begin{center}
-    %             \begin{math}
-    %                 \Downarrow
-    %             \end{math}
-    %         \end{center}
-    %         \begin{block}{}
-    %             Clasificación (CRF)
-    %         \end{block}
-    %         \begin{center}
-    %             \begin{math}
-    %                 \Downarrow
-    %             \end{math}
-    %         \end{center}
-    %         \begin{block}{}
-    %             Texto anotado BIO
-    %         \end{block}
-    %     \end{column}
-    %     % Usar \only<NUMERO>{Texto} para las explicaciones
-    %     \begin{column}{0.25\textwidth}
-    %         \begin{block}{}
-    %             Bloque1
-    %         \end{block}
-    %         \begin{center}
-    %             \begin{math}
-    %                 \Downarrow
-    %             \end{math}
-    %         \end{center}
-    %         \begin{block}{}
-    %             Bloque2
-    %         \end{block}
-    %     \end{column}
-    % \end{columns}
+\end{frame}
+
+\begin{frame}{Modelación del problema de extracción y clasificación de realciones}
+    % DECIR: El problema se modela como un problema de clasificación en el que, dado dos UDAs,
+    % se clasifica la relación entre estas. Para completar el grafo del documento, por cada 
+    % par de UDAs válidas se realiza la predicción de la relación.
+
+    \begin{columns}
+        \pause
+        \begin{column}{0.3\textwidth}
+            \begin{itemize}
+                \item UDA1 
+                \item UDA2 
+                \item UDA3
+            \end{itemize}
+        \end{column}
+        \pause
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item (UDA1, UDA2)
+                \item (UDA1, UDA3)
+                \item (UDA2, UDA1)
+                \item (UDA2, UDA3)
+                \item (UDA3, UDA1)
+                \item (UDA3, UDA2)
+            \end{itemize}
+        \end{column}
+        \pause
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item No Relacionado
+                \item No Relacionado
+                \item Apoyo 
+                \item No Relacionado
+                \item Ataque
+                \item Ataque
+            \end{itemize}
+        \end{column}
+    \end{columns}
+
 \end{frame}
 
 \begin{frame}{Extracción y clasificación de relaciones}
@@ -260,9 +335,9 @@
         \begin{column}<2->{0.5\textwidth}
             Procesamiento de entrada:
             \begin{itemize}
-                \item Tokenización.
-                \item Embeddings.
                 \item Creación de tuplas conteniendo la UDA fuente y la UDA objetivo y distancia argumentativa.
+                \item Tokenización.
+                \item \textit{Embeddings}.
             \end{itemize}
         \end{column}
         \begin{column}<4->{0.5\textwidth}
@@ -313,11 +388,42 @@
     \vspace{1cm}
     \uncover<2->{\textbf{Caractecrísticas:}}
     \begin{itemize}
-        \item<2-> Documentos: \only<2>{286 textos}\only<3>{731 comentarios}\only<4>{500 documentos}
-        \item<2-> Segmentado por: \only<2>{Cláusula}\only<3>{Oración}\only<4>{Oración}
-        \item<2-> Clasificación de UDAs: \only<2>{Major claim (12 \%), claim (25 \%) y premise (63 \%)}\only<3>{Policy (17 \%), value (45 \%), fact (16\%), testimony (21 \%)y reference (1 \%)}\only<4>{Major claim (3 \%), claim (30 \%) y premise (67 \%)}
-        \item<2-> Clasificación de relaciones: \only<2>{Attack (6 \%) y support (94 \%)}\only<3>{Reason (97 \%) y evidence (3 \%)}\only<4>{Support (85 \%), partial-attack (12 \%) y attack (3 \%)}
+        \item<2-> Documentos: \only<2>{286 textos argumentativos escritos por estudiantes sobre un tema}\only<3>{731 comentarios escritos por usuarios en un sitio web}\only<4>{500 resúmenes sobre investigaciones de enfermedades}.
+        \item<2-> Segmentado por: \only<2>{Cláusula}\only<3>{Oración}\only<4>{Oración}.
+        \item<2-> Clasificación de UDAs: \only<2>{Major claim (12\%), claim (25\%) y premise (63\%)}\only<3>{Policy (17\%), value (45\%), fact (16\%), testimony (21\%)y reference (1\%)}\only<4>{Major claim (3\%), claim (30\%) y premise (67\%)}.
+        \item<2-> Clasificación de relaciones: \only<2>{Attack (6\%) y support (94\%)}\only<3>{Reason (97\%) y evidence (3\%)}\only<4>{Support (85\%), partial-attack (12\%) y attack (3\%)}.
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Selección de modelo}
+    % DECIR: Para la selección del modelo se establecieron diferentes variantes y estas fueron entrenadas 
+    % en el conjunto de datos de Ensayos Persuasivos. Se selecciona el mejor modelo de acuerdo a un 
+    % criterio y finalmente los mejores hiperparámetros son utilizados en el entrenamiento de los 
+    % demás conjuntos de datos. Las métricas utilizadas como criterio son:
+
+    \pause
+    \begin{block}{Métricas}
+        \begin{itemize}
+            % DECIR: Se utiliza en la clasificación multimodal y se define como el promedio de 
+            % F1 de las clases presentes.
+            \pause
+            \item Macro F1.
+            % DECIR: Se define como la proporcion de aciertos del modelo 
+            \pause
+            \item \textit{Accuracy}. Peor valor: 0 Mejor valor: 1
+            \pause
+            \item \emph{Accuracy}
+            % DECIR: Es una medida específica de la segmentación, en la que el número
+            % representa el porciento del segmento que tiene que coincidir para 
+            % que se considere válido el emparejamiento.
+            \pause
+            \item 100\%F1 y 50\%F1. Peor valor: 0 Mejor valor: 1
+        \end{itemize}
+    \end{block}
+
+    \pause
+    Todas estas medidas oscilan entre 0 y 1 donde 1 es el mejor resultado posible.
+
 \end{frame}
 
 \begin{frame}{Selección del modelo de segmentación}
@@ -328,11 +434,28 @@
             Modelo 1		& $\times$	& $\times$    & $\times$    & $\times$	& $\times$    & $\times$ \\ \hline
             Modelo 2		& $\times$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
             Modelo 3		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\times$ \\ \hline
-            \textbf<2->{Modelo 4}		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
+            Modelo 4		& $\checkmark$	& $\checkmark$    & $\checkmark$    & $\checkmark$	& $\checkmark$    & $\checkmark$ \\ \hline
             \end{tabular}
-        \caption{Variantes de arquitectura de los modelos de segmentación de UDA.}\label{table:segmenter_architecture_table}
+        \caption{Variantes de arquitectura de los modelos de segmentación de UDA.}
         \end{center}
     \end{table}
+\end{frame}
+
+\begin{frame}{Selección del modelo de segmentación}
+    \begin{onlyenv}<1>
+        \begin{figure}
+            \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_macro_micro_metrics.png}
+            \caption{Métricas de ensayos persuasivos en la clasificación de etiquetas.}
+        \end{figure}
+    \end{onlyenv}
+    \begin{onlyenv}<2>
+        \begin{figure}
+            \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_components.png}
+            \caption{Métricas de ensayos persuasivos en la segmentación de UDAs.}
+        \end{figure}
+    \end{onlyenv}
+    % DECIR: Por los resultados obtenidos se seleccionan los valores del modelo 4 para el 
+    % entrenamiento del modelo en los demás conjuntos de datos
     \begin{onlyenv}<3->
         \begin{table}
             \begin{center}
@@ -357,7 +480,7 @@
             \begin{tabular}{|l|c|c|c|c|c|c|} \hline
             Modelos   	             & Atención      & Pooling  & \emph{Dropout}   & T. de aprendizaje & Paciencia & Devolver mejores     \\ \hline
             Modelo 1            	 & $\times$	     &  5       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
-            \textbf<2->{Modelo 2}    & $\times$	 	 & 10       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
+            Modelo 2                 & $\times$	 	 & 10       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
             Modelo 3	             & $\checkmark$	 &  1       & 0,1              & 0,003             & 5	       & $\times$            \\ \hline
             Modelo 4	             & $\checkmark$	 &  1       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
             \end{tabular}
@@ -365,6 +488,22 @@
         \caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{table:link_predictor_architecture_table}
         \end{center}
     \end{table}
+\end{frame}
+\begin{frame}{Selección del modelo de predicción de enlace}
+    \begin{onlyenv}<1>
+        \begin{figure}
+            \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_all_relation_f1_scores.png}
+            \caption{Métricas de ensayos persuasivos en la clasificación de enlaces y UDAs.}
+        \end{figure}
+    \end{onlyenv}
+    \begin{onlyenv}<2>
+        \begin{figure}
+            \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_all_relation_linked.png}
+            \caption{Métricas de ensayos persuasivos en la extracción de enlaces de UDAs.}
+        \end{figure}
+    \end{onlyenv}
+    % DECIR: Por los resultados obtenidos se seleccionan los valores del modelo 2 para el 
+    % entrenamiento del modelo en los demás conjuntos de datos
     \begin{onlyenv}<3->
         \begin{table}
             \begin{center}
@@ -382,10 +521,8 @@
     \end{onlyenv}
 \end{frame}
 
-\section{Conclusiones}
-
-\begin{frame}{Resultados}
-    Se anotaron las Cartas a la Dirección con los modelos entrenados en los diferentes conjuntos de datos 
+\begin{frame}{Experimentación}
+    Se anotaron las Cartas a la Dirección del periódico Granma con los modelos entrenados en los diferentes conjuntos de datos 
     para determinar el modelo que se ajusta a los datos, llegando a las siguientes consideraciones luego de
     analizar un subconjunto 15 pares de cartas seleccionadas:
     
@@ -420,6 +557,8 @@
     \only<15>{Se selecciona este conjunto de datos para la anotación final de las Cartas a la Dirección}
 \end{frame}
 
+\section{Conclusiones}
+
 % NOTA: Decir las conclusiones mostrando capturas del software final. Streamlit, Brat
 % - Se crearon modelos que permiten la extraccion automatica de las estructras argumentativas del texto
 % capaz de acomodarse a diferentes definiciones de estas
@@ -431,9 +570,21 @@
     \includegraphics[keepaspectratio=true,height=\textheight,width=\textwidth]{Graphics/brat_cdcp_example.png}<3>
 \end{frame}
 
+\begin{frame}{Conclusiones}
+    \begin{itemize}
+        \item Se crean conjuntos de datos en español a partir de sus originales en inglés mediante la proyección de estos.
+        \pause
+        \item Se obtiene un conjunto de datos relacionados con las Cartas a la Dirección.
+        \pause
+        \item Se presenta un software para la extracción y visualización de estructuras argumentativas.
+        \pause
+        \item Se crea un conjunto de datos de Cartas a la Dirección con sus textos anotados con las estructuras argumentativas.
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Recomendaciones}
     \begin{itemize}
-        \item<1-> Anotar las Cartas a la Dirección con las estructuras argumentativas por lingüístas.
+        \item<1-> Supervisar la anotación de las Cartas a la Dirección con las estructuras argumentativas por lingüístas.
         \item<2-> Aplicar el uso de otros \textit{embeddings}, como BERT, entrenados sobre el conjunto 
         de datos extraído.
         \item<3-> Proponer un modelo capaz de tomar en cuenta el contexto del texto completo para la
@@ -442,9 +593,11 @@
 \end{frame}
 
 % Title page frame
+\logo{\includegraphics[keepaspectratio=true,height=2cm,width=2cm]{Graphics/uhlogo.pdf}}
 \begin{frame}
     \titlepage 
 \end{frame}
+\logo{}
 
 \begin{frame}{Preguntas del oponente?}
     
