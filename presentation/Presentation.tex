@@ -9,7 +9,9 @@
 \usepackage{svg}
 \usepackage{amsmath}
 
-% Title page details: 
+% DECIR: Introducir la tesis:
+% Buenos días, gracias a todos por estar aquí, mi nombre es Luis Ernesto.
+% Hoy se presenta la defensa de la tesis NOMBRE DE TESIS.
 \title{Extracción automática de argumentos en textos de opinión en la prensa cubana} 
 \author{Luis Ernesto Ibarra Vázquez}
 \institute{Universidad de La Habana}
@@ -27,11 +29,6 @@
 % Remove logo from the next slides
 \logo{}
 
-% % Outline frame
-% \begin{frame}{Outline}
-%     \tableofcontents
-% \end{frame}
-
 \section{Introducción}
 \begin{frame}{Argumentación}
     \begin{block}{Argumentación}
@@ -40,6 +37,9 @@
         de una constelación de proposiciones que justifican o refutan la proposición
         expresada en el punto de vista.
     \end{block}
+    % DECIR: Ejemplos de argumentación:
+    % - Persona explicando una situación y cómo esta le afecta
+    % - En discursos políticos en las que se desea convencer a las personas que se afilien al partido
     \pause
     \begin{block}{Importancia}
         \begin{itemize}
@@ -54,6 +54,7 @@
 \end{frame}
 
 \begin{frame}{Extracción de argumentos}
+    % DECIR: Para el estudio computacional de la argumentación se forma
     \begin{block}{Extracción de Argumentos}
         \pause 
         Es la rama del Procesamiento de Lenguaje Natural encargada del
@@ -61,20 +62,30 @@
         de los textos y su posterior procesamiento.
     \end{block}
     \pause 
-    % Las estructuras argumentativas están compuestas por ...
-    % Empezar a decir las definiciones de UDA.
+    % DECIR: Las estructuras argumentativas (Notar el bold) son las 
+    % partes estructurales de la argumentación en los textos.
+    % Estas se componen por:
     \begin{block}{Estructuras Argumentativas}
         \begin{itemize}
             \pause
             \item Unidades de discuso argumentativas (UDA).
+            % DECIR: Definición de UDA:
+            % Un segmento de texto que juega un solo rol para el argumento analizado, 
+            % y es delimitado por segmentos vecinos que tienen roles diferentes o ningún rol
             \pause
             \item Relaciones entre las UDAs.
         \end{itemize}
     \end{block}
 \end{frame}
 
-\begin{frame}{Tareas de la extracción de argumentos}
-
+\begin{frame}[t]{Tareas de la extracción de argumentos}
+    % DECIR: Dadas las definiciones anteriores se conciben 4 tareas
+    % necesarias para la extracción de las estructuras argumentativas de
+    % texto.
+    % NOTA: A medida que se vaya haciendo progreso en el slide, ir mencionando
+    % lo que ocurre, el marcado de UDAs, su clasificación y explicar la parte de las 
+    % relaciones, que no se entiende a la primera seguro
+    % NOTA: Leer el ejemplo para dar contexto hablado de este.
     \begin{block}{Tareas de extracción de argumentos}
         \begin{enumerate}
             \item<2-> Extracción de las UDAs.
@@ -89,6 +100,10 @@
     \only<4->{[}\textbf<4->{Años atrás, las personas pagaban gran cantidad de dinero para 
     enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes 
     podrían causar problemas que causarían que el correo no fuera enviado}\only<4->{]}\begin{onlyenv}<7->{$_{\mathrm{Premisa}}$}\end{onlyenv}\begin{onlyenv}<9->{$, _{-1}$}\end{onlyenv}\begin{onlyenv}<11->{$, _{\mathrm{apoyo}}$}\end{onlyenv}.
+
+    % DECIR: Como se puede observar la representación directamente sobre el texto no es la mejor, 
+    % sobre todo en la parte de visualizar las relaciones. Para esto una vía alternativa de modelar 
+    % el problema consiste en hacerlo mediante un grafo.
 
 \end{frame}
 
@@ -129,13 +144,14 @@
 \section{Propuesta}
 
 \begin{frame}{Objetivos y propuesta}
-
+    % DECIR: Con lo anterior, el objetivo de este trabajo consiste en:
     \begin{block}{Objetivo}
         \pause
         Proponer un algoritmo para la extracción y
         análisis de estructuras argumentativas en textos de la prensa cubana.
     \end{block}
-    \pause
+    \pause  
+    % DECIR: Para esto se propone la creación de 
     \begin{block}{Propuesta}
         \pause
         \begin{itemize}
@@ -146,7 +162,10 @@
                 \pause
                 \item Extracción y clasificación de relaciones.
             \end{enumerate}
-            % NOTA: Decir los problemas de falta de datos al español
+            % DECIR: En la extracción de argumentos no se presentan 
+            % conjuntos de datos en español para el entrenamiento de dichos modelos 
+            % por lo tanto se necesita conseguir estos a partir de los presentes en otros lenguajes.
+            % Para resolver esto se propone:
             \pause
             \item Proyección de conjuntos de datos al español para el entrenamiento de los modelos
             propuestos. 
@@ -156,8 +175,9 @@
 
 \begin{frame}{Modelación del problema de segmentación y clasificación de UDAs}
     % DECIR: Se modela como un problema de clasificación de secuencia a secuencia en el que a cada 
-    % elemento de la secuencia de entrada se le asocia una etiqueta BIOES representando la posición
-    % del token con respecto a una UDA. A esta etiqueta BIOES se le asocia otra clasificación que 
+    % elemento de la secuencia de entrada (SLIDE) se le asocia una etiqueta BIOES (SLIDE y explicar BIOES).
+    % NOTA: Delimitar la UDA.
+    % A esta etiqueta BIOES se le asocia otra clasificación (SLIDE) que 
     % codifica la clasificación del tipo de UDA.
     \begin{columns}
         \begin{column}{0.6\textwidth}
@@ -204,6 +224,17 @@
 \end{frame}
 
 \begin{frame}{Segmentación y clasificación de UDAs}
+    % DECIR: La entrada del algoritmo consiste en texto (SLIDE),
+    % este es procesado (SLIDE) al realizarle los procesos de tokenización y 
+    % de anotación de partes de la oración. Con esta información se crea una 
+    % secuencia de tokens representando a cada token con un embeddings que contiene
+    % información semántica (GloVe), sintáctica (POS) y morfológica (Char info) con el 
+    % objetivo de capturar la mayor cantidad de información del texto como los rasgos lingüísticos
+    % que denotan a un texto como argumentativo.
+
+    % DECIR: Esta secuencia de embedding es procesada por el modelo propuesto y (SLIDE)
+    % la salida de este es arreglada la estructura BIOES, obteniendo finalmente las UDAs 
+    % clasificadas.
     \begin{columns}
         \begin{column}{0.10\textwidth}
             \begin{block}{}
@@ -252,12 +283,17 @@
 \end{frame}
 
 \begin{frame}{Modelo de segmentación y clasificación de UDAs}
+    % NOTA: Hacer referencia a los embeddings y a su concatenación 
     \begin{onlyenv}<1>
         \begin{center}
             \includesvg[scale=0.4]{Graphics/Modelo_segmenter_uda1.svg}
         \end{center}
     \end{onlyenv}
-    
+    % NOTA: Hacer referencia al procesamiento de la secuencia de embeddigns
+    % - LSTM bidireccional
+    % - Conexion residual
+    % - Capa Densa
+    % - CRF: Devuelve la secuencia de mayor probabilidad dado los features 
     \begin{onlyenv}<2>
         \begin{center}
             \includesvg[scale=0.4]{Graphics/Modelo_segmenter_uda2.svg}
@@ -266,9 +302,11 @@
 \end{frame}
 
 \begin{frame}{Modelación del problema de extracción y clasificación de realciones}
-    % DECIR: El problema se modela como un problema de clasificación en el que, dado dos UDAs,
-    % se clasifica la relación entre estas. Para completar el grafo del documento, por cada 
-    % par de UDAs válidas se realiza la predicción de la relación.
+    % DECIR: El problema se modela como uno de clasificación en el que, dado dos UDAs,
+    % se clasifica la relación entre estas. Para completar el grafo del documento (SLIDE),
+    % se tiene un conjunto de UDAs en él, por cada 
+    % par (SLIDE) de UDAs válidas se realiza la predicción de la relación (SIDE).
+    % Conformando el resultado final.
 
     \begin{columns}
         \pause
@@ -375,25 +413,26 @@
 
 \section{Experimentación}
 
-% NOTA: Dada la falta de un corpus en el dominio de las cartas a la direccion se
+% DECIR: Dada la falta de un corpus en el dominio de las cartas a la dirección se
 % entrenó el modelo propuesto con diferentes conjuntos de datos.
 % El modelo aprende el criterio de segmentación y clasificación de las UDAs y de las
 % relaciones directamente del conjunto de datos.
-% Destacar el desbalance de los datos.
-\begin{frame}{Conjuntos de datos}
+% NOTA: Destacar el desbalance, escasez y heterogeniedad de los datos
+\begin{frame}[t]{Conjuntos de datos}
     \textbf{Conjuntos de datos:}
     \begin{itemize}
+        \item Cartas a la Dirección.
         \item<2-> Ensayos Argumentativos.
         \item<3-> Cornell eRulemaking Corpus (CDCP).
         \item<4-> Abstracts Randomized Control Trials (AbsTRCT).
     \end{itemize}
-    \vspace{1cm}
+    \vspace{0.5cm}
     \uncover<2->{\textbf{Caractecrísticas:}}
     \begin{itemize}
-        \item<2-> Documentos: \only<2>{286 textos argumentativos escritos por estudiantes sobre un tema}\only<3>{731 comentarios escritos por usuarios en un sitio web}\only<4>{500 resúmenes sobre investigaciones de enfermedades}.
+        \item<2-> Documentos: \only<2>{286 textos argumentativos escritos por estudiantes sobre temáticas diferentes}\only<3>{731 comentarios escritos por usuarios en un sitio web}\only<4>{500 resúmenes sobre investigaciones de enfermedades}.
         \item<2-> Segmentado por: \only<2>{Cláusula}\only<3>{Oración}\only<4>{Oración}.
-        \item<2-> Clasificación de UDAs: \only<2>{Major claim (12\%), claim (25\%) y premise (63\%)}\only<3>{Policy (17\%), value (45\%), fact (16\%), testimony (21\%)y reference (1\%)}\only<4>{Major claim (3\%), claim (30\%) y premise (67\%)}.
-        \item<2-> Clasificación de relaciones: \only<2>{Attack (6\%) y support (94\%)}\only<3>{Reason (97\%) y evidence (3\%)}\only<4>{Support (85\%), partial-attack (12\%) y attack (3\%)}.
+        \item<2-> Clasificación de UDAs: \only<2>{\textit{Major claim} (12\%), \textit{claim} (25\%) y \textit{premise} (63\%)}\only<3>{\textit{Policy} (17\%), \textit{value} (45\%), \textit{fact} (16\%), \textit{testimony} (21\%) y \textit{reference} (1\%)}\only<4>{\textit{Major claim} (3\%), \textit{claim} (30\%) y \textit{premise} (67\%)}.
+        \item<2-> Clasificación de relaciones: \only<2>{\textit{Attack} (6\%) y \textit{support} (94\%)}\only<3>{\textit{Reason} (97\%) y \textit{evidence} (3\%)}\only<4>{\textit{Support} (85\%), \textit{partial-attack} (12\%) y \textit{attack} (3\%)}.
     \end{itemize}
 \end{frame}
 
@@ -487,9 +526,7 @@
 \end{frame}
 
 \begin{frame}{Selección del modelo de predicción de enlace}
-\end{frame}
-\begin{frame}{Selección del modelo de predicción de enlace}
-    \begin{onlyenv}<1>
+    \begin{onlyenv}<2>
         \begin{table}
             \begin{center}
                 \scalebox{0.7}{
@@ -501,17 +538,17 @@
                 Modelo 4	             & $\checkmark$	 &  1       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
                 \end{tabular}
                 }
-            \caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{table:link_predictor_architecture_table}
+            \caption{Variantes de arquitectura de los modelos de predicción de enlaces.}
             \end{center}
         \end{table}
     \end{onlyenv}
-    \begin{onlyenv}<2>
+    \begin{onlyenv}<3>
         \begin{figure}
             \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_all_relation_f1_scores.png}
             \caption{Métricas de ensayos persuasivos en la clasificación de enlaces y UDAs.}
         \end{figure}
     \end{onlyenv}
-    \begin{onlyenv}<3>
+    \begin{onlyenv}<4>
         \begin{figure}
             \includegraphics[scale=0.6]{Graphics/persuasive_essays_all_linked_all_relation_linked.png}
             \caption{Métricas de ensayos persuasivos en la extracción de enlaces de UDAs.}
@@ -519,7 +556,7 @@
     \end{onlyenv}
     % DECIR: Por los resultados obtenidos se seleccionan los valores del modelo 2 para el 
     % entrenamiento del modelo en los demás conjuntos de datos
-    \begin{onlyenv}<4>
+    \begin{onlyenv}<5>
         \begin{table}
             \begin{center}
                 \scalebox{0.7}{
@@ -531,11 +568,11 @@
                 Modelo 4	             & $\checkmark$	 &  1       & 0,5              & 0,0015            & 10	       & $\checkmark$        \\ \hline
                 \end{tabular}
                 }
-            \caption{Variantes de arquitectura de los modelos de predicción de enlaces.}\label{table:link_predictor_architecture_table}
+            \caption{Variantes de arquitectura de los modelos de predicción de enlaces.}
             \end{center}
         \end{table}
     \end{onlyenv}
-    \begin{onlyenv}<5->
+    \begin{onlyenv}<6->
         \begin{table}
             \begin{center}
                 \scalebox{0.7}{
@@ -552,7 +589,7 @@
     \end{onlyenv}
 \end{frame}
 
-\begin{frame}{Experimentación}
+\begin{frame}[t]{Experimentación}
     Se anotaron las Cartas a la Dirección del periódico Granma con los modelos entrenados en los diferentes conjuntos de datos 
     para determinar el modelo que se ajusta a los datos, llegando a las siguientes consideraciones luego de
     analizar un subconjunto 15 pares de cartas seleccionadas:
@@ -590,11 +627,14 @@
 
 \section{Conclusiones}
 
-% NOTA: Decir las conclusiones mostrando capturas del software final. Streamlit, Brat
-% - Se crearon modelos que permiten la extraccion automatica de las estructras argumentativas del texto
-% capaz de acomodarse a diferentes definiciones de estas
-% - Se anotaron las estructuras argumentativas de las Cartas a la Dirección con dichos modelos
-% - Se visualizan dichos datos de tal forma que puedan ser modificados
+% DECIR: 
+% - Streamlit: Tiene el objetivo de una interacción fácil con el software, permitiendo realizar todas 
+% las actividades en sus versiones elementales. Inferencia de archivos, entrenamiento de modelo, 
+% proyección de corpus.
+% - Colab: Esta aplicacion tiene como principal objetivo el entrenamiento y exportación de los modelos.
+% Aunque permite también realizar inferencia y visualización de resultados básica.
+% - Brat: Este software permite la visualización de las estructuras argumentativas, además de poder
+% editar estas.
 \begin{frame}{Resultados}
     \includegraphics[keepaspectratio=true,height=\textheight,width=\textwidth]{Graphics/streamlit_app.png}<1>
     \includegraphics[keepaspectratio=true,height=\textheight,width=\textwidth]{Graphics/colab.png}<2>
