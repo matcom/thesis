@@ -68,7 +68,7 @@
     \begin{block}{Estructuras Argumentativas}
         \begin{itemize}
             \pause
-            \item Unidades de discuso argumentativas (UDA).
+            \item Unidades de discurso argumentativas (UDA).
             % DECIR: Definición de UDA:
             % Un segmento de texto que juega un solo rol para el argumento analizado, 
             % y es delimitado por segmentos vecinos que tienen roles diferentes o ningún rol
@@ -670,8 +670,144 @@
 \end{frame}
 \logo{}
 
-\begin{frame}{Preguntas del oponente?}
+\begin{frame}[t]{Preguntas del oponente}
+    1. En el trabajo se utiliza GloVe y se menciona a BERT cómo una recomendación para mejorar la 
+    solución. ¿Qué impidió el uso de BERT en primera instancia?
+
+    % 1- No se usa BERT debido principalmente a un tema de tiempo, en los papers hablaban de
+    % GloVe y otros embeddings en donde GloVe había obtenido buenos resultados, por eso se empezó
+    % utilizando este embedding, luego apareció Bert y me pareció interesante probar su uso en el
+    % modelo, ya que esta representación está dejando buenos resultados en las tareas de NLP. 
     
+    % TODO Buscar articulos donde aparezca GloVe y Bert
+
+    % Aunque la inclusión de BERT no es tarea complicada, los cambios a realizar en el modelo son mínimos
+    % ya que solamente hace falta cambiar la capa de Embedding del modelo por la capa BERT devolviendo 
+    % la representación vectorial correspondiente. Entre los modelos BERT existentes que pudiesen ser
+    % utilizados se encuentran BETO https://github.com/dccuchile/beto y también en TensorFlow Hub
+    % https://tfhub.dev/s?language=es&module-type=text-embedding&q=Bert
+    % se encuentran cuatro modelos BERT, aunque estos son para el caso multi lenguaje (xlm_roberta_multi_cased).
+
+    \begin{onlyenv}<2>
+        \begin{figure}
+            \includesvg[scale=0.4]{Graphics/Modelo_segmenter_uda1.svg}
+        \end{figure}
+    \end{onlyenv}
+    \begin{onlyenv}<3>
+        \begin{figure}
+            \includesvg[scale=0.4]{Graphics/Modelo_segmenter_uda1_bert.svg}
+        \end{figure}
+    \end{onlyenv}
 \end{frame}
+
+\begin{frame}[t]{Preguntas del oponente}
+    2. El paso del postprocesamiento de segmentación utiliza una serie de heurísticas. 
+    ¿Puede proponer una idea de solución a este paso que utilice un enfoque de aprendizaje automático?
+
+    % 2- Una propuesta podría ser que dado una ventana de procesamiento inválida devuelva una versión 
+    % válida de esta. Se plantearía como un problema de clasificación entre las posibles ventanas válidas, 
+    % manteniendo la ventana en un tamaño pequeño. El conjunto de datos se crearía con los mismos errores
+    % que comente actualmente el modelo con respecto a sus etiquetas originales. Este modelo aún podría 
+    % cometer errores en la inferencia debido a algún caso que no se vio u otra situación, por lo que igual 
+    % se recomienda usar el algoritmo de heurística como fase final. 
+
+    % El algoritmo utilizado para la corrección de las etiquetas corresponde de dos pasos. En primer 
+    % lugar corregir la estructura BIOES de la secuencia y en segundo lugar corregir las metaetiquetas 
+    % de las secuencias. En la primera sección el algoritmo utilizado consiste en mantener una ventana de 
+    % tamaño 3 sobre la secuencia BIOES. Sobre dicha ventana se itera y al encontrarse una ventana BIOES
+    % inválida se procede a arreglarla. Al analizar la ventana se asume que se desea arreglar la etiqueta 
+    % del medio de esta teniendo como premisa que la primera etiqueta esta correctamente posicionada, a esta
+    % primera etiqueta se le puede llamar como contexto de la ventana. Para arreglar se conciben dos casos:
+    
+    % Se tiene una ventana inválida y se tiene dos ventanas inválidas consecutivas. En el primer caso se hace 
+    % el arreglo de la ventana de manera prefijada de acuerdo a para que la ventana sea válida. En el caso 
+    % de que sean dos consecutivas se puede probar que solamente arreglando una de las dos ventanas se
+    % devuelve una secuencia que no es necesaria hacerle cambios en estos dos lugares para que sea válida.
+    % Para seleccionar cual segmento se arregla se crea una función de relevancia de error, la cual es escrita
+    % a mano. 
+
+
+    \begin{columns}[T]
+        \begin{column}{0.3\textwidth}
+            \pause
+            Caso correcto:\\
+            (O, O, B)\\
+            \pause
+            (O, B, I)\\
+            \pause
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            Caso incorrecto:\\
+            \pause
+            (B, I, O)\\ 
+            \pause
+        \end{column}
+        \begin{column}{0.3\textwidth}
+            Casos posibles:\\
+            \pause
+            (B, E, O)\\
+            (B, I, I)\\
+            (B, I, E)\\
+            % DECIR La ambiguedad presente en arreglar el segmento y como 
+            % partiendo de las premisas anteriores se elimina o disminuye dicha ambiguedad
+            % Solo es arreglar I que en este caso consiste en una sola forma. Solamente existe ambiguiedad
+            % en los casos [E, S, O] _ [B, O, S] => [E, S, O] [S,O] [B, O, S], pero dado el dominio la opcion
+            % de O es mejor
+        \end{column}
+    \end{columns}
+
+    % Propuesta 1:
+
+    % Dado una entrada de una ventana de tamaño 3 inválida de etiquetas BIOES, predecir cual es la secuencia
+    % que arregla dicha ventana que minimiza la cantidad de errores comentidos en el proceso de inferencia.
+    % El conjunto de datos se puede crear a partir de las etiquetas inferidas por el modelo y las etiquetas
+    % reales presentes en los datos. El problema se puede modelar como uno de clasificación en el cual se 
+    % las categorías son ventanas válidas BIOES. Aunque este procedimiento sigue estando propenso a errores.
+
+    % Propuesa 2:
+
+    % Dado que el arreglo de la ventana con las restricciones de arreglar solamente la etiqueta central 
+    % no presenta ambigüedad, el problema recide
+    % en encontrar la función que diga cual de las dos ventanas es la mejor a arreglar, donde mejor sea la que
+    % minimice el error con las etiquetas reales. Esta variante no presentaría errores ya que el algoritmo
+    % es el mismo.
+
+\end{frame}
+
+\begin{frame}[t]{Preguntas del oponente}
+    3. ¿Cómo fue realizado el ajuste de hiperparámetros de los modelos propuestos durante la 
+    experimentación? ¿Tiene alguna recomendación sobre ese proceso para futuras investigaciones?
+
+    % 3- Un método de optimización de hiperparametros como grid search u otro no fue utilizado, el espacio 
+    % de búsqueda de ellos es muy grande en comparación con el tiempo que se toma en entrenar el modelo. 
+    % Como hiperparametros bases se eligieron los que proponían las investigaciones originales de los modelos 
+    % los cuales ya presentaban un proceso de ajuste y sobre estos se eligieron variantes en cuanto a 
+    % arquitecturas y features nuevos agregados (para ver 
+    % cómo afectaba estos a los resultados) y se realizó en el caso del modelo de segmentación de modelos 
+    % una pequeña búsqueda sobre el Learning rate, tamaño del pooling, dropout, entre otros.
+
+    % Para la optimización se pueden usar herramientas como:
+    % - Ray Tune
+    % - Optuna 
+    % - Hyperopt
+
+    % DECIR Investigar herramientas especializadas en el tema
+    Herramientas para la optimización de hiperparámetros:
+    \begin{itemize}
+        \pause
+        \item Ray Tune
+        \pause
+        \item Optuna
+        \pause
+        \item Hyperopt
+    \end{itemize}
+\end{frame}
+
+% Title page frame
+\logo{\includegraphics[keepaspectratio=true,height=2cm,width=2cm]{Graphics/uhlogo.pdf}}
+\begin{frame}
+    \titlepage 
+\end{frame}
+\logo{}
 
 \end{document}
