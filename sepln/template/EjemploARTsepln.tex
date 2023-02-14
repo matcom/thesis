@@ -1,0 +1,299 @@
+\documentclass[a4paper,11pt,twocolumn,twoside]{article}
+\usepackage[dvips]{graphicx}
+\usepackage{sepln}
+\usepackage{fullname_esp}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nosectiondot, es-tabla, es-noindentfirst, es-nolists]{babel}
+
+\input epsf
+
+
+
+\setlength\titlebox{4in} %esto por defecto
+
+\title{Título completo del artículo centrado con Times New Roman negrita, tamaño 16}
+
+\author {\textbf{Nombre Apellidos1,$^1$} \textbf{Nombre Apellidos2$^2$}\\
+$^1$Universidad o lugar de trabajo\\
+$^2$Universidad o lugar de trabajo\\
+Información de contacto\\
+}
+
+\seplntranstitle{Título traducido del artículo centrado con Times New Roman negrita, cursiva, tamaño 14}
+
+\seplnclave{Palabras, palabras, palabras en castellano...}
+
+\seplnresumen{Resumen del artículo en castellano con una sangría a izquierda y
+derecha de 1 cm, justificado por ambos lados, con tamaño de fuente
+11.}
+
+
+\seplnkey{Palabras, palabras, palabras en inglés...}
+
+\seplnabstract{Resumen del artículo en inglés con una sangría a izquierda y
+derecha de 1 cm, justificado por ambos lados, con tamaño de fuente
+11.}
+
+\firstpageno{1}
+
+
+\begin{document}
+
+% la siguiente instrucción sólo se debe usar si el abstract sobrescribe el texto
+% la longitud variará según se necesite
+
+%\setlength\titlebox{20cm} % se aumenta el tamaño del espacio reservado para datos de título
+
+
+\label{firstpage} \maketitle
+
+%\begin{abstract}
+%Resumen del artículo con una sangría a izquierda y derecha de 0.32
+%cm, justificado por ambos lados, con tamaño de fuente 11.
+%
+%\end{abstract}
+
+\section{Título de nivel uno}
+
+\subsection{Título de nivel dos}
+
+\subsubsection{Título de nivel tres}
+
+El primer párrafo de la sección no lleva sangría. El resto del
+texto vendrá con fuente Times New Roman tamaño 11 y justificado
+por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+
+\section{Título de nivel uno}
+
+El primer párrafo de la sección no lleva sangría. El resto del
+texto vendrá con fuente Times New Roman tamaño 11 y justificado
+por ambos lados\footnote{Ejemplo de nota al pie de página ... Más
+texto Más texto Más texto Más texto Más texto Más texto Más texto
+Más texto Más texto.}.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+\section{Ejemplo de una cita}
+
+Ejemplo de una cita dentro de un párrafo: ``Lo dicho por el
+autor...".
+
+Otro ejemplo de cita en un párrafo independiente:
+
+\parbox{6.5cm}{\textit{Texto de la cita, iu poiu poiu poiu poiu poiu poiu poi
+upoiu poiu poi upoiu oiu oiupoiu opiu poip.}}
+
+Continuación del texto. El resto del texto vendrá con fuente
+Times New Roman tamaño 11 con una sangría en la primera línea de
+0,5 cm y justificado por ambos lados.
+
+
+\section{Ejemplos de tablas y figuras}
+
+Ejemplo de tabla. En la Tabla \ref{tabla1} se muestran los
+resultados...
+\begin{table} [h]
+\begin{center}
+\begin{tabular} {|l|c|}
+  \hline\rule{-2pt}{15pt}
+  {\bf Descripción} & {\bf Cantidad}\\
+  \hline\rule{-4pt}{10pt}
+  Peras & 330\\
+  Manzanas & 70\\
+  Naranjas &  88\\
+  Limones & 16\\
+  Sandías & 73\\
+  \hline\rule{-2pt}{10pt}
+  {\bf Total}  & {\bf 577}\\
+  \hline
+\end{tabular}
+\end{center}
+\caption{\label{tabla1}Descripción.}
+\end{table}
+
+Ejemplo de Figura. En la Figura \ref{figura1} se muestran los
+resultados...
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=5cm,clip]{ejem1.eps}
+  \caption{Descripción.}
+  \label{figura1}
+\end{figure}
+
+
+Este es un ejemplo de una referencia.
+
+Podemos referirnos a un autor poniendo su cita directamente
+\cite{Allen97}...
+
+También podemos referirnos a un autor incluyendo su nombre en la
+oración como ocurre con la propuesta de \namecite{allen2000}.
+
+\section{Ejemplos de ejemplos y fórmulas}
+En la fórmula \ref{formula1} se muestra...
+\begin{equation}
+\sum (a_n*b_n) \label{formula1}
+\end{equation}
+
+En el ejemplo \ref{ejemplo1} se muestra...
+\begin{example}
+Este es un ejemplo hecho utilizando el formato de los ejemplos.
+\label{ejemplo1}
+\end{example}
+
+\section{Nueva sección}
+
+El primer párrafo de la sección no lleva sangría. El resto del
+texto vendrá con fuente Times New Roman tamaño 11 y justificado
+por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+Aquí tenemos distintos tipos de referencias según su publicación.
+
+\begin{itemize}
+\item Cita de un artículo en revista
+\cite{Carletta96}.
+
+\item Cita de un artículo en congreso
+\cite{Connolly94}.
+
+\item Cita de un libro \cite{Casares94}.
+
+\item Cita de un informe técnico \cite{Ersan94}.
+\end{itemize}
+
+\section*{Agradecimientos}
+
+Los siguientes párrafos llevan una sangría en la primera línea de
+0,5 cm. El resto del texto vendrá con fuente Times New Roman
+tamaño 11 y justificado por ambos lados.
+
+
+\bibliographystyle{fullname_esp}
+\bibliography{EjemploARTsepln}
+
+\appendix
+\section{Anexo 1: Descripción} Texto del anexo j klj ñlkj ñlkj ñlkj
+lkj ñlkj lkj lkj lkj ñlkj ñlkj ñlkj ñlk jñlkj ñlkj ñlkj
+ñlkjñlkjñlkjñlkjñlkjñlkj.
+
+\section{Anexo 2: Descripción} Texto del anexo j klj ñlkj ñlkj ñlkj
+lkj ñlkj lkj lkj lkj ñlkj ñlkj ñlkj ñlk jñlkj ñlkj ñlkj
+ñlkjñlkjñlkjñlkjñlkjñlkj.
+
+\end{document}
