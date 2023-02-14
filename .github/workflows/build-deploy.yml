@@ -49,8 +49,8 @@ jobs:
         with:
           root_file: EjemploARTsepln
           working_directory: sepln/template
-          compiler: biber
-          # compiler: bibtex
+          # compiler: biber
+          compiler: bibtex
           args: 
       - name: pdflatex template-sepln
         uses: dante-ev/latex-action@latest
