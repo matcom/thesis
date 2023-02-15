@@ -74,6 +74,7 @@ jobs:
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
       - name: bibtex sepln
+        if: success() || failure()
         uses: dante-ev/latex-action@latest
         with:
           root_file: sepln
@@ -82,6 +83,7 @@ jobs:
           compiler: bibtex
           args: 
       - name: pdflatex sepln
+        if: success() || failure()
         uses: dante-ev/latex-action@latest
         with:
           root_file: sepln.tex
