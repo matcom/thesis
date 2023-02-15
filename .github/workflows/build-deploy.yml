@@ -1,7 +1,7 @@
 name: Build & Deploy
 on:
   push:
-    branches: [ main, tesis-dev ]
+    branches: [ main, sepln-dev ]
   workflow_dispatch:
 jobs:
   build-deploy:
@@ -59,29 +59,42 @@ jobs:
           working_directory: sepln/template
           compiler: pdflatex
           args: -interaction=nonstopmode -shell-escape
-
-      # - name: pdflatex sepln
-      #   uses: dante-ev/latex-action@latest
-      #   with:
-      #     root_file: sepln.tex
-      #     working_directory: sepln
-      #     compiler: pdflatex
-      #     args: -interaction=nonstopmode -shell-escape
-      # - name: bibtex sepln
-      #   uses: dante-ev/latex-action@latest
-      #   with:
-      #     root_file: sepln
-      #     working_directory: sepln
-      #     # compiler: biber
-      #     compiler: bibtex
-      #     args: 
-      # - name: pdflatex sepln
-      #   uses: dante-ev/latex-action@latest
-      #   with:
-      #     root_file: sepln.tex
-      #     working_directory: sepln
-      #     compiler: pdflatex
-      #     args: -interaction=nonstopmode -shell-escape
+      - name: pdflatex template-sepln
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: EjemploARTsepln.tex
+          working_directory: sepln/template
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: pdflatex sepln
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: sepln.tex
+          working_directory: sepln
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: bibtex sepln
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: sepln
+          working_directory: sepln
+          # compiler: biber
+          compiler: bibtex
+          args: 
+      - name: pdflatex sepln
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: sepln.tex
+          working_directory: sepln
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+      - name: pdflatex sepln
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: sepln.tex
+          working_directory: sepln
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
 
       - name: Prepare for Deploy
         run: |
@@ -89,6 +102,7 @@ jobs:
           mv document/Thesis.pdf build/document.pdf
           mv presentation/Presentation.pdf build/presentation.pdf
           mv sepln/template/EjemploARTsepln.pdf build/EjemploARTsepln.pdf
+          mv sepln/sepln.pdf build/sepln.pdf
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
