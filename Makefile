@@ -7,3 +7,5 @@ thesis:
 	./compile.sh document Thesis
 thesis_full:
 	./compile.sh document Thesis bib
+sepln:
+	./compile.sh sepln EjemploARTsepln bib
