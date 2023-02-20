@@ -92,7 +92,7 @@ ready to be studied by linguists.
 % la siguiente instrucción sólo se debe usar si el abstract sobrescribe el texto
 % la longitud variará según se necesite
 
-\setlength\titlebox{20cm} % se aumenta el tamaño del espacio reservado para datos de título
+\setlength\titlebox{30cm} % se aumenta el tamaño del espacio reservado para datos de título
 
 
 \label{firstpage} \maketitle
@@ -1457,21 +1457,24 @@ Se observa una composición heterogénea entre estos, principalmente CDCP difier
 
 \begin{table}[h]
 	\begin{center}
+		\scalebox{0.8}{
 		\begin{tabular}{|l|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}                 & {\bf Tokens} & {\bf Tokens } 	   & {\bf UDAs} & {\bf Relaciones} \\
-										 & 			    & {\bf argumentativos} & 			& {\bf por UDA} \\
+			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP } 	   & {\bf AbsTRCT}  \\
+										 & {\bf Argumentativos} & 				   & 			    \\
 			\hline\rule{-4pt}{10pt}
-			Ensayos 	   		   &     	& 	                    & 	   & 	                \\
-			Argumentativos 		   & 381    & 68\%                  & 35\% & 1,08               \\
-			CDCP                   & 127    & 99\%                  & 97\% & 0,30               \\
-			AbsTRCT                & 371    & 50\%                  & 47\% & 0,63               \\ 
+			Tokens	 	   		   	     & 381 	   			    & 127              & 371            \\
+			Tokens	 	   		   	     &     	   			    & 	               & 	            \\
+			Argumentativos 		   	     & 68\%    			    & 99\%             & 50\%           \\
+			UDAs                   	     & 35\%    			    & 97\%             & 47\%           \\
+			Relaciones		     	     & 	    			    & 	               &	            \\ 
+			por UDA     	     		 & 1,08    			    & 0,30             & 0,63           \\ 
 			\hline
 		\end{tabular}
+		}
 	\end{center}
 	\caption{\label{table:corpus_info}Información de promedios de los conjuntos de datos.}
 \end{table}
-
 \subsection{Creación de corpus en español}
 
 \subsubsection{Aumento de datos}
@@ -1485,15 +1488,18 @@ longitud original del texto.
 
 \begin{table}[h]
 	\begin{center}
+		\scalebox{0.7}{
 		\begin{tabular}{|l|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}                 & {\bf Jaccard} & {\bf Levenshtein} & {\bf $\frac{|\mathrm{Palabras} \quad \mathrm{originales}|}{|\mathrm{Palabras \quad aumentadas}|}$} \\ 
+			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP} & {\bf AbsTRCT} \\ 
+						                 & {\bf Argumentativos} & 		 	 & 	 			 \\ 
 			\hline\rule{-4pt}{10pt}
-			Ensayos Argumentativos & 0.69    & 96          & 1.00	\\
-			CDCP                   & 0.72    & 30          & 1.02	\\
-			AbsTRCT                & 0.74    & 86          & 1.04	\\ 
+			Jaccard 					 																				& 0.69    & 0.72          & 0.74	\\
+			Levenshtein                  																				& 96	  & 30			  & 86		\\
+			$\frac{|\mathrm{Palabras} \, \mathrm{originales}|}{|\mathrm{Palabras \, aumentadas}|}$                & 1.00    & 1.02          & 1.04	\\ 
 			\hline
 		\end{tabular}
+		}
 	\end{center}
 	\caption{Datos promedios comparando los textos originales con los aumentados.}\label{table:data_augmentation}
 \end{table}
@@ -1622,14 +1628,16 @@ presencia o no de las siguientes componentes, presentando cuatro candidatos (Tab
 
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|c|c|} 
+		\begin{tabular}{|l|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			Modelos  & POS          & Char-CNN     & Char-LSTM    & Res          & Norm         & Densa        \\ 
+			{\bf Modelos}  & {\bf 1}     & {\bf 2}     & {\bf 3}     & {\bf 4}     \\ 
 			\hline\rule{-4pt}{10pt}
-			Modelo 1 & $\times$     & $\times$     & $\times$     & $\times$     & $\times$     & $\times$     \\
-			Modelo 2 & $\times$     & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     \\
-			Modelo 3 & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\times$     \\
-			Modelo 4 & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\ 
+			POS 	  & $\times$  & $\times$ 	 & $\checkmark$ & $\checkmark$ \\
+			Char-CNN  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+			Char-LSTM & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+			Residual  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+			Norm 	  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+			Densa 	  & $\times$  & $\times$ 	 & $\times$ 	& $\checkmark$ \\
 			\hline
 		\end{tabular}
 	\end{center}
@@ -1669,29 +1677,39 @@ en Tabla \ref{table:test_metrics_segmenter} y Tabla \ref{table:test_bioes_metric
 
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|c|} 
+		\scalebox{0.7}{
+		\begin{tabular}{|l|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}                 & {\bf F1 Ponderado} & {\bf Macro F1} & {\bf \textit{Accuracy}} & {\bf 100\%F1} & {\bf 50\%F1} \\ 
+			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP} & {\bf AbsTRCT} \\ 
+						                 & {\bf Argumentativos} & 			 & 				 \\ 
 			\hline\rule{-4pt}{10pt}
-			Ensayos Argumentativos & 0,76         & 0,56     & 0,77            & 0,72    & 0,83   \\
-			CDCP                   & 0,65         & 0,45     & 0,66            & 0,61    & 0,68   \\
-			AbsTRCT                & 0,86         & 0,50     & 0,87            & 0,61    & 0,75   \\ 
+			F1 Ponderado 				 & 0,76         		& 0,65     	 & 0,86          \\
+			Macro F1                     & 0,56         		& 0,45     	 & 0,50          \\
+			\textit{Accuracy}            & 0,77         		& 0,66     	 & 0,87          \\ 
+			100\%F1                		 & 0,72         		& 0,61     	 & 0,61          \\ 
+			50\%F1                		 & 0,83         		& 0,68     	 & 0,75          \\ 
 			\hline
 		\end{tabular}
+		}
 	\end{center}
 	\caption{\label{table:test_metrics_segmenter}Métricas de las pruebas del segmentador de UDA.}
 \end{table}
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|c|} 
+		\scalebox{0.7}{
+		\begin{tabular}{|l|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}                 & {\bf F1 Ponderado} & {\bf Macro F1} & {\bf \textit{Accuracy}} & {\bf 100\%F1} & {\bf 50\%F1} \\ 
+			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP} & {\bf AbsTRCT} \\ 
+						                 & {\bf Argumentativos} & 			 & 				 \\ 
 			\hline\rule{-4pt}{10pt}
-			Ensayos Argumentativos & 0,89         & 0,82     & 0,89            & 0,81    & 0,94   \\
-			CDCP                   & 0,95         & 0,56     & 0,96            & 0,82    & 0,93   \\
-			AbsTRCT                & 0,90         & 0,79     & 0,91            & 0,66    & 0,82   \\
+			F1 Ponderado 				 & 0,89         		& 0,95     	 & 0,90          \\
+			Macro F1                     & 0,82         		& 0,56     	 & 0,79          \\
+			\textit{Accuracy}            & 0,89         		& 0,96     	 & 0,91          \\ 
+			100\%F1                		 & 0,81         		& 0,82     	 & 0,66          \\ 
+			50\%F1                		 & 0,94         		& 0,93     	 & 0,82          \\ 
 			\hline
 		\end{tabular}
+		}
 	\end{center}
 	\caption{\label{table:test_bioes_metrics_segmenter}Métricas BIOES de las pruebas del segmentador de UDA.}
 \end{table}
@@ -1708,16 +1726,22 @@ el conjunto de datos de Ensayos Argumentativos. De las variaciones surgieron las
 
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|c|c|} 
+		\scalebox{0.9}{
+		\begin{tabular}{|l|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			Modelos  & Atención     & Pooling & \textit{Dropout} & Tasa de aprendizaje & Paciencia & Devolver mejores \\ 
+			{\bf Modelos}  		& {\bf 1}      & {\bf 2}  & {\bf 3} 	 & {\bf 4} 		\\ 
 			\hline\rule{-4pt}{10pt}
-			Modelo 1 & $\times$     & 5       & 0,5            & 0,0015              & 10        & $\checkmark$     \\
-			Modelo 2 & $\times$     & 10      & 0,1            & 0,003               & 5         & $\times$         \\
-			Modelo 3 & $\checkmark$ & 1       & 0,1            & 0,003               & 5         & $\times$         \\
-			Modelo 4 & $\checkmark$ & 1       & 0,5            & 0,0015              & 10        & $\checkmark$     \\
+			Atención 		    & $\times$     & $\times$ & $\checkmark$ & $\checkmark$ \\
+			Pooling  		    & 5    		   & 10       & 1       	 & 1    		\\
+			\textit{Dropout}    & 0,5   	   & 0,1      & 0,1       	 & 0,5	    	\\
+			Tasa de 			&			   & 		  &		     	 & 		    	\\
+			aprendizaje 		& 0,0015 	   & 0,003    & 0,003      	 & 0,0015    	\\
+			Paciencia			& 10 		   & 5		  & 5       	 & 10		   	\\
+			Devolver			&			   & 		  & 		  	 & 				\\
+			mejores				& $\checkmark$ & $\times$ & $\times$  	 & $\checkmark$ \\
 			\hline
 		\end{tabular}
+		}
 	\end{center}
 	\caption{\label{table:link_predictor_architecture_table}Variantes de arquitectura de los modelos de predicción de enlaces.}
 \end{table}
@@ -1755,21 +1779,39 @@ fueron utilizados para el entrenamiento con los demás conjuntos de datos.
 \end{figure}
 
 En el entrenamiento del modelo en los demás conjuntos de datos se obtuvieron los resultados de las Tablas 
-\ref{table:test_relation_metrics_link_predictor} y \ref{table:test_source_metrics_link_predictor}.
+\ref{table:test_relation_metrics_link_predictor_relation_classification}, \ref{table:test_relation_metrics_link_predictor_link_prediction} 
+y \ref{table:test_source_metrics_link_predictor}.
 
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|} 
+		\begin{tabular}{|l|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}                 & {\bf Macro F1} & {\bf \textit{Accuracy}} & {\bf Macro F1 Enlace} & {\bf \textit{Accuracy} Enlace} \\
+			{\bf Corpus}                 & {\bf Macro F1} & {\bf \textit{Accuracy}} \\
 			\hline\rule{-4pt}{10pt}
-			Ensayos Argumentativos & 0,33     & 0,57            & 0,68            & 0,75                   \\ 
-			CDCP                   & 0,37     & 0,63            & 0,79            & 0,68                   \\ 
-			AbsTRCT                & 0,39     & 0,61            & 0,83            & 0,74                   \\ 
+			Ensayos				 		 & 				  & 						\\ 
+			argumentativos 		 		 & 0,33			  & 0,57					\\ 
+			CDCP                   		 & 0,37			  & 0,63					\\ 
+			AbsTRCT               		 & 0,39			  & 0,61					\\ 
 			\hline
 		\end{tabular}
 	\end{center}
-	\caption{\label{table:test_relation_metrics_link_predictor}Métricas de predicción de relaciones de las pruebas del predictor de enlace.}
+	\caption{\label{table:test_relation_metrics_link_predictor_relation_classification}Métricas de clasificación de relaciones de las pruebas del predictor de enlace.}
+\end{table}
+
+\begin{table}[h]
+	\begin{center}
+		\begin{tabular}{|l|c|c|} 
+			\hline\rule{-2pt}{15pt}
+			{\bf Corpus}                 & {\bf Macro F1}  & {\bf \textit{Accuracy}} \\
+			\hline\rule{-4pt}{10pt}
+			Ensayos 			 		 & 	               & 	                    \\ 
+			argumentativos 				 & 0,68            & 0,75                   \\ 
+			CDCP                   		 & 0,79            & 0,68                   \\ 
+			AbsTRCT               		 & 0,83            & 0,74                   \\ 
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{\label{table:test_relation_metrics_link_predictor_link_prediction}Métricas de predicción de relaciones de las pruebas del predictor de enlace.}
 \end{table}
 
 \begin{table}[h]
@@ -1778,7 +1820,8 @@ En el entrenamiento del modelo en los demás conjuntos de datos se obtuvieron lo
 			\hline\rule{-2pt}{15pt}
 			{\bf Corpus}                 & {\bf F1 Macro} & {\bf \textit{Accuracy}} \\ 
 			\hline\rule{-4pt}{10pt}
-			Ensayos Argumentativos & 0,48     & 0,60            \\ 
+			Ensayos				   & 	      & 	            \\ 
+			argumentativos		   & 0,48     & 0,60            \\ 
 			CDCP                   & 0,26     & 0,52            \\ 
 			AbsTRCT                & 0,51     & 0,79            \\ 
 			\hline
@@ -1793,7 +1836,8 @@ En el entrenamiento del modelo en los demás conjuntos de datos se obtuvieron lo
 			\hline\rule{-2pt}{15pt}
 			{\bf Corpus}           & {\bf Macro F1} & {\bf \textit{Accuracy}} \\ 
 			\hline\rule{-4pt}{10pt}
-			Ensayos Argumentativos & 0,52     & 0,57            \\
+			Ensayos				   & 	      & 	            \\
+			argumentativos 		   & 0,52     & 0,57            \\
 			CDCP                   & 0,36     & 0,54            \\
 			AbsTRCT                & 0,53     & 0,81            \\ 
 			\hline
@@ -1843,64 +1887,52 @@ datos. En la comparación $\checkmark$ significa que son directamente comparable
 $*$ que el método de comparación es el mismo, pero no son usados los mismos 
 elementos para calcular la métrica, y $\times$ que la métrica no se encontraba disponible.
 
-% TODO Remove this
-% \begin{table}[h]
-% 	\begin{center}
-% 		\begin{tabular} {|l|c|}
-% 			\hline\rule{-2pt}{15pt}
-% 			{\bf Descripción} & {\bf Cantidad} \\
-% 			\hline\rule{-4pt}{10pt}
-% 			Peras             & 330            \\
-% 			Sandías           & 73             \\
-% 			\hline\rule{-2pt}{10pt}
-% 			{\bf Total}       & {\bf 577}      \\
-% 			\hline
-% 		\end{tabular}
-% 	\end{center}
-% 	\caption{\label{tabla1}Descripción.}
-% \end{table}
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|c|} 
+		\scalebox{0.5}{
+		\begin{tabular}{|l|c|c|c|c} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}      & {\bf Propuesto} & {\bf \cite{stab2017parsing}} & {\bf \cite{niculae2017argument}} & {\bf \cite{galassi2021deep}} \\ 
+			{\bf Modelo}      			& {\bf BIOES F1} & {\bf Clas UDA F1} & {\bf Rel Pred F1} & {\bf Rel Clas F1} \\ 
 			\hline\rule{-4pt}{10pt}
-			BIOES F1    & 0,82      & 0,85 $\checkmark$      & $\times$                   & $\times$               \\
-			Clas UDA F1 & 0,56      & 0,82                   & 0,77                       & 0,53                   \\
-			Rel Pred F1 & 0,68      & 0,58                   & 0,60                       & 0,36 *                 \\
-			Rel Clas F1 & 0,33      & 0,70                   & $\times$                   & 0,18 *                 \\ 
+			Propuesto    				& 0,82     				 & 0,56      & 0,68              & 0,33               \\
+			\cite{stab2017parsing} 		& 0,85  $\checkmark$     & 0,82      & 0,58              & 0,70                  \\
+			\cite{niculae2017argument}  & $\times$   			 & 0,77      & 0,60              & $\times$                 \\
+			\cite{galassi2021deep}      & $\times$  			 & 0,53      & 0,36 *            & 0,18 *                 \\ 
 			\hline
 		\end{tabular}
+		}
 		\caption{\label{table:comparative_test_essays_f1_metrics_segmenter}Métricas comparativas de Ensayos Persuasivos.}
 	\end{center}
 \end{table}
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|c|} 
+		\scalebox{0.5}{
+		\begin{tabular}{|l|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}      & {\bf Propuesto} & {\bf \cite{niculae2017argument}} & {\bf \cite{galassi2021deep}} \\ 
+			{\bf Modelo}      			& {\bf BIOES F1} & {\bf Clas UDA F1} & {\bf Rel Pred F1} & {\bf Rel Clas F1} \\ 
 			\hline\rule{-4pt}{10pt}
-			BIOES F1    & 0,56      & $\times$                   & $\times$               \\
-			Clas UDA F1 & 0,45      & 0,73                       & 0,79                   \\
-			Rel Pred F1 & 0,68      & 0,27                       & 0,30	*                  \\
-			Rel Clas F1 & 0,37      & $\times$                   & 0,15	*                  \\ 
+			Propuesto    				& 0,56      	 & 0,45         	 & 0,68 			 & 0,37               \\
+			\cite{niculae2017argument}  & $\times$       & 0,73              & 0,27 			 &  $\times$          \\
+			\cite{galassi2021deep} 		& $\times$  	 & 0,79              & 0,30	*   		 &  0,15	*         \\
 			\hline
 		\end{tabular}
+		}
 		\caption{\label{table:comparative_test_cdcp_f1_metrics_segmenter}Métricas comparativas de CDCP.}
 	\end{center}
 \end{table}
 \begin{table}[h]
 	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|c|} 
+		\scalebox{0.5}{
+		\begin{tabular}{|l|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}      & {\bf Propuesto} & {\bf \cite{mayer2020transformer}} & {\bf \cite{galassi2021deep}} \\ 
+			{\bf Modelo}      			& {\bf BIOES F1} & {\bf Clas UDA F1} & {\bf Rel Pred F1} & {\bf Rel Clas F1} \\ 
 			\hline\rule{-4pt}{10pt}
-			BIOES F1    & 0,79      & $\times$                    & $\times$               \\
-			Clas UDA F1 & 0,50      & 0,88	$\checkmark$            & 0,91                   \\
-			Rel Pred F1 & 0,74      & $\times$                    & 0,54 *                 \\
-			Rel Clas F1 & 0,39      & 0,66  *                     & 0,70 *                 \\ 
+			Propuesto    				& 0,79      	 & 0,50              & 0,74 			 & 0,39               \\
+			\cite{mayer2020transformer} & $\times$       & 0,88	$\checkmark$ & $\times$  		 & 0,66 *             \\
+			\cite{galassi2021deep} 		& $\times$  	 & 0,91 	         & 0,54 *            & 0,70 *    		  \\
 			\hline
 		\end{tabular}
+		}
 		\caption{\label{table:comparative_test_abstrct_f1_metrics_segmenter}Métricas comparativas de AbsTRCT.}
 	\end{center}
 \end{table}
