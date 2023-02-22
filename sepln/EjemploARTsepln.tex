@@ -28,60 +28,32 @@ luise98cu@gmail.com, damian@correo.com\\ % TODO poner el correo de Damian
 \seplnclave{Extracción de argumentos, } % TODO Seguir en esto
 
 \seplnresumen{El estudio de la argumentación en la prensa cubana es un campo en donde se han reportado
-relativamente pocas investigaciones. En estos estudios es posible obtener 
-información de los esquemas argumentativos utilizados en los textos y
-realizar acciones en base a estos.
+relativamente pocas investigaciones.
 Este problema tradicionalmente es resuelto mediante 
 una anotación manual por expertos en lingüística, trabajo que se 
-caracteriza por tomar mucho tiempo y recursos. La Extracción
-de Argumentos es la rama del Procesamiento del Lenguaje Natural
-encargada de estudiar algoritmos y métodos para solucionar los problemas
-asociados a la anotación de las estructuras argumentativas. Mediante el uso 
-de estos es posible automatizar el procedimiento de anotación
-de la argumentación. 
-En este trabajo se propone la anotación de textos argumentativos
-mediante el uso de dos modelos de aprendizaje profundo, entrenados con 
-conjuntos de datos traducidos y proyectados del inglés, encargados de resolver
-las tareas relacionadas al problema. 
-El primer modelo propuesto 
-consiste en uno secuencia a secuencia usado para la extracción y clasificación
-de las unidades de discurso argumentativas (UDA) mediante el uso de \textit{Long Short Term Memory} 
-(LSTM) y \textit{Conditional Random Field} (CRF). Para la extracción y clasificación de 
-enlaces entre las UDAs se propone un modelo de clasificación basado en redes residuales,
-atención y LSTM. Ambos modelos utilizan \textit{embeddings} GloVe para la representación 
-de las palabras. Los resultados obtenidos en la extracción de UDAs alcanzaron valores de
+caracteriza por tomar mucho tiempo y recursos. El presente trabajo propone y 
+muestra los resultados de aplicar algoritmos de aprendizaje profundo al campo de la Extracción de Argumentos.
+Se presentan dos modelos encargados de la extracción y clasificación de las estructuras argumentativas presentes
+en las ``Cartas a la Dirección'' del periódico cubano Granma. Los resultados obtenidos en la extracción de 
+unidades de discurso argumentativas (UDA) alcanzaron valores de
 0,82 en la métrica F1 comparados con 0,85 obtenidos en el estado del arte. 
 En las demás tareas, los resultados no son directamente comparables con los del estado del arte, 
 los mejores valores F1 obtenidos fueron 0,56 en la clasificación de UDAs, 0,74 en la predicción
-de enlaces y 0,39 en la clasificación de enlaces.
-Con dichos modelos se anotaron las ``Cartas a la Dirección'', del 
-periódico Granma, creándose un conjunto de datos con las estructuras argumentativas anotadas
-y listas para el estudio de estas por lingüistas.}
+de enlaces y 0,39 en la clasificación de enlaces.}
 
 
 \seplnkey{Argument extraction, } % TODO Seguir en esto
 
 \seplnabstract{
-    The study of argumentation in the Cuban press is a field in which relatively little
-research has been reported. In these studies it is possible to obtain information on 
-the argumentative schemes used in the texts and take actions based on them. This problem
-is traditionally solved through manual annotation by linguistic experts, a work that takes 
-a lot of time and resources. Argument Extraction is the branch of Natural Language Processing 
-in charge of studying algorithms and methods to solve the problems associated with the annotation 
-of argument structures. By using these algorithms it is possible to automate the argumentation 
-annotation procedure.  In this paper we propose the annotation of argumentative texts by using 
-two deep learning models, trained with translated and projected English datasets, in charge of 
-solving the tasks related to the problem.  The first proposed model consists of a sequence to 
-sequence one used for the extraction and classification of argumentative discourse units (ADUs) 
-by using Long Short Term Memory (LSTM) and Conditional Random Field (CRF). A classification model 
-based on residual networks, attention and LSTM is proposed for the extraction and classification of 
-links between ADUs. Both models use GloVe for word representation. The results obtained in the 
-extraction of ADUs reached values of 0.82 in the F1 metric compared to 0.85 obtained in the state 
-of the art.  In the other tasks, the results are not directly comparable with those of the state of 
-the art, the best F1 values obtained were 0.56 in UDAs classification, 0.74 in link prediction and 
-0.39 in link classification. With these models, the ``Letters to the Management'' of the Granma 
-newspaper were annotated, creating a data set with the argumentative structures annotated and 
-ready to be studied by linguists. 
+	The study of argumentation in the Cuban press is a field in which relatively little research has been reported.
+    This problem is traditionally solved by means of by manual annotation by linguistic experts, which is a time-consuming and resource-intensive task. and resources. 
+    This paper proposes and shows the results of applying deep learning algorithms to the field of Argument Extraction. 
+    Two models are presented for the extraction and classification of the argumentative structures present
+    in the ``Letters to the Management'' of the Cuban newspaper Granma. The results obtained in the extraction of 
+    argumentative discourse units (ADU) reached values of
+    0.82 in metric F1 compared to 0.85 obtained in the state of the art. 
+    In the other tasks, the results are not directly comparable with those of the state of the art, the best F1 values obtained were 0.56 in ADU classification, 
+    0.74 in link prediction and 0.39 in link prediction. prediction and 0.39 in link classification.
 }
 
 \firstpageno{1}
@@ -92,7 +64,7 @@ ready to be studied by linguists.
 % la siguiente instrucción sólo se debe usar si el abstract sobrescribe el texto
 % la longitud variará según se necesite
 
-\setlength\titlebox{30cm} % se aumenta el tamaño del espacio reservado para datos de título
+\setlength\titlebox{20cm} % se aumenta el tamaño del espacio reservado para datos de título
 
 
 \label{firstpage} \maketitle
@@ -179,13 +151,6 @@ lo correspondiente a Cuba no se encontró ninguna referencia.
 %   En español no tiene mucho estudio. Citar casos del español, para Cuba ninguno
 %   Creación de un corpus anotado el cual se podrá mejorar con el tiempo
 
-% TODO Poner este parrafo en Agradecimientos???
-Este trabajo tributa a "Dinámicas sociales, políticas y económicas en el discurso público 
-en Cuba de principio del siglo XXI: estudios de CORESPUC". Proyecto 
-asociado al Programa Nacional de Ciencia y Técnica "Las Ciencias Sociales y las humanidades. 
-Desafíos ante la estrategia de desarrollo de la sociedad cubana", Código PN223LH011-011, Ministerio
-de Ciencia, Tecnología y Medio Ambiente (CITMA), Cuba, 2021-2023.
-
 % Diseño teórico.
 %    Problema: 
 %    Objeto de Investigación: Procesamiento de Lenguaje Natural
@@ -196,8 +161,8 @@ de Ciencia, Tecnología y Medio Ambiente (CITMA), Cuba, 2021-2023.
 %       Especifico Construcción del corpus de los periódicos: Crawler, Anotación (scpaCy).
 %       Especifico Implementacion de la interfaz gráfica para consultar los resultados.
 
-En esta tesis se tiene como objetivo, proponer un algoritmo para 
-la extracción y análisis de estructuras argumentativas en textos 
+En esta investigación se tiene como objetivo, proponer un algoritmo basado en aprendizaje profundo 
+para la extracción y análisis de estructuras argumentativas en textos 
 de la prensa cubana, constituyendo el primero de su tipo en lo que respecta a la búsqueda del autor. 
 Para lograr dicho objetivo se necesitan realizar varias operaciones.
 En primer lugar, es necesario obtener los textos a analizar del sitio 
@@ -229,25 +194,21 @@ Para la visualización se crea un ambiente de desarrollo con la herramienta Brat
 tareas requeridas a los datos anotados por los modelos.
 
 En resumen, se presenta un estudio de la argumentación en español al realizar la extracción de 
-argumentos en prensa, además se crea un conjunto de datos anotado que puede servir
-para un estudio más profundo sobre los esquemas argumentativos presentes en estos textos. 
+argumentos en prensa, tributando además conjuntos de datos anotados en español que puede servir
+para un estudio más profundo sobre los esquemas argumentativos presentes en estos textos.
 
-%    Estructura del trabajo % TODO Cambiar esto a la estructura del artuculo
+% Estructura del trabajo
 
-El presente documento está dividido en cuatro capítulos.
-En el Capítulo \ref{chapter:argumentation} se presentan las definiciones necesarias para una introducción
-al tema de la argumentación y la EA.
-El Capítulo \ref{chapter:background} presenta un recorrido por los 
-conceptos, métodos y arquitecturas relacionadas con el Aprendizaje Automático para el problema 
-en cuestión, además de realizar un compendio y análisis de los enfoques utilizados para dar solución
-a los problemas asociados a la EA y el procedimiento de proyección de corpus, utilizado para la 
-traducción de conjuntos de datos del inglés al español. 
-Luego, en el Capítulo \ref{chapter:proposal}
-se describe la propuesta de los modelos para realizar la EA.
-En el Capítulo \ref{chapter:implementation} se mencionan los diferentes conjuntos de datos utilizados 
-en los experimentos y los resultados obtenidos en las tareas realizadas.
-Finalmente, se exponen conclusiones y recomendaciones sobre el trabajo 
-realizado.
+El artículo se encuentra dividido en cuatro secciones. Primero se presentan las definiciones 
+necesarias para una introducción al tema de la argumentación y la EA. Luego se presentan 
+algunas investigaciones previas en el dominio de la EA con una discusión de sus distintas 
+ventajas y desventajas y además se introduce la proyección de conjuntos de datos. Más adelante 
+se presentan los modelos propuestos para realizar las diferentes tareas relacionadas al problema en 
+cuestión. A continuación se muestran los resultados alcanzados en el entrenamiento de los modelos y en 
+la anotación de los textos de ``Cartas a la Dirección''. Finalmente se exponen las conclusiones y 
+recomendaciones del trabajo.
+
+% ARGUMENTACION
 
 \section{Argumentación}
 
@@ -323,11 +284,7 @@ de la gran variedad de marcadores presentes en la argumentación.
 
 \section{Extracción de Argumentos}
 
-El PLN es un subcampo de la Inteligencia Artificial que tiene como objetivo la comprensión 
-del lenguaje humano por las computadoras. 
-Mediante el uso de sus algoritmos es posible el procesamiento masivo de texto para la extracción de información 
-relevante de este. Entre las tareas pertenecientes a dicho campo se encuentran la Traducción Automática, 
-la Generación de Lenguaje Natural y la Extracción de Argumentos (EA). La EA constituye la identificación y extracción 
+La EA constituye la identificación y extracción 
 automática de las estructuras de inferencia y 
 razonamiento expresadas como argumentos presentes en el lenguaje natural \cite{lawrence2020argument}.
 En la actualidad, tareas del PLN como el análisis de sentimientos permiten 
@@ -425,603 +382,559 @@ relaciones entre las UDAs. Dichos vértices se anotan con el tipo de relación e
 	\label{fig:arg_struct}
 \end{figure}
 
-\section{Aprendizaje Automático}
-
-Existen varios problemas para los cuales es difícil escribir un programa de forma tradicional que pueda
-resolverlo, por ejemplo, decir si en una imagen existe un gato o un perro, o transcribir una grabación. En el caso
-de que se escribiera este programa probablemente sería frágil y poco escalable. El AA constituye el 
-estudio de técnicas que pueden aprender de la experiencia \cite{d2l} y mediante su uso 
-se puede automatizar el proceso de encontrar soluciones a dichos problemas, haciendo que sus resultados sean 
-robustos y escalables. 
-
-En AA existen tres tipos de aprendizaje:
-\begin{itemize}
-	\item Aprendizaje no supervisado: trabaja con datos no anotados y los algoritmos tratan de
-	      extraer información de estos.
-	\item Aprendizaje reforzado: trabaja en la creación de agentes que interactúen con
-	      un ambiente obteniendo información de qué tan buenas son las acciones realizadas.
-	\item Aprendizaje supervisado: trabaja con datos anotados y los algoritmos tratan de minimizar
-	      el error cometido en las predicciones.
-\end{itemize}
-A este último principalmente se refiere esta sección.
-
-Los componentes básicos de un problema de aprendizaje supervisado se pueden resumir en los datos de los que 
-aprender, el modelo para transformar los datos, una función de pérdida que cuantifica qué tan malo o bueno es el 
-modelo y un algoritmo que ajuste los parámetros del modelo para minimizar la pérdida.
-
-Matemáticamente, un modelo constituye una función $\hat{y} = f_{\theta}(x)$ cuyo argumento son las 
-representaciones de las entradas originales $x$ y devuelve una salida $\hat{y}$. Esta función $f$ se encuentra
-parametrizada por el vector $\theta$ el cual constituye los parámetros en los que el modelo se basa para realizar sus
-cálculos. La función de pérdida se puede definir como $e(y, \hat{y})$, donde $y$ es el resultado esperado para $x$. 
-El objetivo final del algoritmo de ajuste es encontrar $\theta$ tal que:
-
-\begin{equation}
-	\arg \min_{\theta} e(y, f_{\theta}(x)).
-	\label{eq:arg_min_theta}
-\end{equation}
-
-Los parámetros $\theta$ eventualmente se van ajustando con algún algoritmo de optimización para que 
-la función de error alcance un valor óptimo, aunque un óptimo global en la práctica es difícil de conseguir
-debido a la complejidad del espacio de búsqueda.
-
-Una manera de observar la complejidad de estos modelos sería la cantidad de capas de procesamiento que lo integran.
-Los primeros modelos empezaron utilizando una sola capa\footnote{A estos modelos se les conoce
-	como \textit{shallow} o poco profundos.} para realizar 
-las tareas, más tarde estos modelos fueron ganando en complejidad al superponerle otras, dando paso al 
-aprendizaje profundo (\textit{Deep Learning}). La superposición se refiere
-a la composición de funciones $f_i$ y $f_{i+1}$ de tal forma que la imagen de $f_i$ sea compatible con el dominio de 
-$f_{i+1}$, entonces se obtiene $f_{i+2}(x) = f_{i+1}(f_i(x))$, al aplicar este esquema se pueden agregar múltiples
-capas y profundizar $f$ tanto como se desee.
-
-
-\subsection{Representación de datos}
-
-La representación de los datos constituye una parte importante al modelar un problema. Esta 
-es la encargada de presentar datos abstractos, como imágenes, párrafos o sonidos, en formas tratables
-por los algoritmos. Generalmente, se buscan configuraciones que recojan la mayor cantidad de información 
-de la entrada relevante al problema.
-
-En el PLN los datos suele estar representados con distintos niveles de granularidad.
-De menor granularidad a mayor se pueden ir mencionando los documentos, párrafos, oraciones, palabras y
-caracteres. Estos elementos es posible representarlos mediante vectores que codifiquen propiedades
-objetivas del problema a tratar como características morfológicas o semánticas de estos. Por ejemplo, 
-los textos tienen una popular manera de representarse mediante vectores de TF-IDF \cite{manning2008introduction},
-una desventaja de esta representación es que no toma en cuenta el orden de las palabras, por lo que 
-la representación de \textit{no me gusta,} y \textit{no, me gusta} serían iguales aunque semánticamente 
-sean opuestas. Para agregarle la información de orden a la representación se introducen los llamados 
-$n-$gramas, los cuales toman en cuenta una ventana de tamaño $n$ para conformar conjuntamente una representación.
-Este enfoque conlleva a la limitante de que solo un contexto finito está disponible para hacer las inferencias,
-para esto finalmente se crean representaciones individuales para cada palabra, las cuales codifican 
-información y la secuencia completa es introducida al modelo para realizar la inferencia.
-La manera más simple de representar una palabra es mediante la representación \textit{one-hot}, 
-en esta, a cada palabra se le asigna un índice y el vector resultante posee la dimensión del 
-vocabulario y es rellenado con ceros en todos sus elementos excepto en el índice de la palabra, donde se le asigna 1.
-Esta representación asume que las palabras son independientes entre sí y 
-computacionalmente ocupan un espacio considerable. Existen otras representaciones 
-que brindan información al algoritmo sobre la morfología y la semántica de la palabra que representa.
-
-Las características morfológicas son aquellas que describen cómo está formado el elemento a analizar.
-Estas pueden ser extraídas con relativa facilidad, entre tales características se encuentran: tamaño, 
-cantidad, posición de palabras o párrafos, presencia de sufijos, prefijos, acentos u otros marcadores
-en el texto. Las características semánticas presentan una mayor dificultad a la hora de ser extraídas.
-Para esto se utilizan diferentes modelos que codifican esta información en vectores continuos conocidos como 
-\textit{embeddings}, entre los modelos existentes se encuentran
-word2vec \cite{mikolov2013efficient}, 
-\textit{Global Vectors} (GloVe) \cite{pennington2014glove}, 
-\textit{Bidirectional Encoder Representations from Transformers} (BERT) \cite{devlin2018bert},
-entre otros.
-
-\subsection{Modelación de problemas}
-
-Los problemas en la vida real se presentan en un principio como una descripción a un nivel de abstracción 
-más alto que el requerido por los algoritmos existentes, se hablan de entidades abstractas como imágenes,
-sonidos, textos o usuarios, además de la información que se desea extraer o las operaciones que se
-desean aplicar sobre estas entidades. A lo largo del desarrollo del AA han aparecido diferentes tipos de problemas 
-que aparecen frecuentemente en la práctica y sus respectivas maneras de solucionarlos. Uno de estos tipos de problemas
-es el de secuencia a secuencia (\textit{seq2seq}), cuyo objetivo es la conversión de una secuencia en un dominio de entrada a otra 
-secuencia en un dominio de salida. Con este tipo de problemas se modelan tareas como traducción automática, en 
-donde el dominio de entrada es texto en un lenguaje de partida y el dominio de salida es texto en un lenguaje de llegada.
-Otro problema que se resuelve con \textit{seq2seq} es la segmentación de texto, cuya entrada es una lista de \textit{tokens}
-y la salida son etiquetas que indican cuándo empieza y termina un segmento de texto. Las etiquetas utilizadas para 
-la segmentación, generalmente, son:
-
-\begin{itemize}
-	\item B (\textit{begin}): representa el inicio del segmento.
-	\item I (\textit{inside}): representa la continuación del segmento previamente iniciado.
-	\item O (\textit{outside}): representa la no pertenencia a un segmento.
-\end{itemize}
-
-Este esquema presenta una versión más elaborada en la que se agregan dos clases que representan el final 
-de un segmento E (\textit{end}) y un segmento de un solo elemento S (\textit{single}). La tarea anterior es 
-utilizada como base para otra un poco más compleja, en la que, además de segmentar el texto, se desea 
-clasificar sus segmentos. Para este problema se añaden meta etiquetas correspondientes a los tipos a identificar $C$
-obteniendo un conjunto final $R = \{ B, I, E, S \} \times C \cup \{ O \}$. En tareas como la extracción de entidades
-nombradas este método es empleado, donde el conjunto $C$ contiene las posibles categorías de entidades a identificar.
-
-\subsection{Arquitecturas}
-
-En aprendizaje profundo existen una gran cantidad de arquitecturas que se pueden utilizar para formar el modelo 
-final. Estas deben de ser seleccionadas en dependencia de los datos y el problema a tratar, ya que sus diseños 
-emulan diferentes operaciones sobre datos que pueden ser más beneficiosas en situaciones específicas.
-
-\subsubsection{Capas densas}
-
-El perceptrón consiste es una transformación lineal del vector de datos $\textbf{x}$ con un sesgo $b$ y 
-luego aplicar una transformación no lineal $g$, conocida como función de activación, 
-para la obtención del resultado final:
-
-\begin{equation}
-	f(\textbf{x}) = g(\textbf{w}\textbf{x} + b).
-\end{equation}
-
-El perceptrón constituye la unidad básica de las capas densas, ya que estas consisten en la aplicación
-de este modelo varias veces sobre la misma entrada $\textbf{x}$ produciendo vectores de la dimensión $k$
-deseada como salida final. Los parámetros se codifican en la matriz $\textbf{W}$ y sus sesgo en el 
-vector $\textbf{b}$:
-
-\begin{equation}
-	f(\textbf{x}) = g(\textbf{Wx} + \textbf{b}).
-\end{equation}
-
-Para las funciones de activación existen varias elecciones. Una de estas es la función sigmoidal. 
-Esta devuelve un valor entre 0 y 1, es usada en tareas de regresión logística. 
-Se puede interpretar como el nivel de activación de la neurona:
-
-\begin{equation}
-	sigm(x) = \frac{1}{1-e^{-x}}.
-\end{equation}
-
-\textit{Rectified Linear Unit} (ReLU) se define como la parte positiva del argumento. Una ventaja que trae esta 
-función de activación es su rápido cálculo de su derivada y que previene en parte de los problemas 
-de desaparición de gradiente de la sigmoidal:
-
-\begin{equation}
-	relu(x) = \max(0, x).
-\end{equation}
-
-La función de activación \textit{softmax} es diferente a las anteriores en el sentido que necesita
-el vector salida de la capa anterior para ser computada. Esta función convierte las $q$ salidas
-en una distribución de probabilidad, algo necesario en tareas de clasificación:
-
-\begin{equation}
-	softmax_k(\textbf{x}) = \frac{e^{x_k}}{\sum\limits_{i=1}^{q} e^{x_i}}.
-\end{equation}
-
-\subsubsection{Redes Neuronales Convolucionales}
-
-Las redes neuronales convolucionales (CNN, en inglés) 
-son un tipo de redes usadas
-principalmente para tratar datos donde su estructura espacial es relevante, por ejemplo,
-en datos bidimensionales como imágenes y en unidimensionales como sonido y texto.
-Estas redes aplican de una función de kernel sobre los datos, $f * g$ donde $f$ son los
-datos, $g$ es el kernel o filtro y $*$ es el operador de convolución \cite{d2l}. La función $g$ se puede 
-aprender en el proceso o también puede ser una función de agrupación predefinida. 
-Un ejemplo bidimensional de una función de kernel se muestra en la Figura \ref{fig:conv_kernel}.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm,clip]{Graphics/kernel_convolution.png}
-	\caption{Convolución con kernel (Tomado de \cite{d2l} pág. 241).}
-	\label{fig:conv_kernel}
-\end{figure}
-
-En este se observa cómo una nueva representación es computada al operar el kernel por la matriz de datos. Este
-corrimiento se puede realizar de diferentes formas, por ejemplo, se puede mover de dos en dos en vez de uno en uno, este
-parámetro se le conoce como tamaño de paso (\textit{stride}). Es posible además preservar las dimensiones
-iniciales de los datos al aplicarle un aumento de los datos en los bordes de tal forma que el resultado sea de la misma
-dimensión, este aumento se realiza, generalmente, rellenando convenientemente los espacios con ceros, 
-a esto se le llama \textit{padding} (Figura \ref{fig:conv_kernel_padding}).
-
-\begin{figure}[h]
-    \centering
-	\includegraphics[width=7cm,clip]{Graphics/kernel_convolution_padding.png}
-	\caption{Convolución con kernel con \textit{padding} (Tomado de \cite{d2l} pág. 241).}
-	\label{fig:conv_kernel_padding}
-\end{figure}
-
-Existen varias funciones de agrupación usadas. Entre estas se encuentran las de agrupación máxima y de 
-agrupación media. Como sus nombres indican, la de agrupación máxima devuelve el valor máximo de los encontrados
-en la ventana del kernel, la de media calcula el promedio de estos valores. Estas capas tienen la capacidad de obtener
-información resumida sobre los datos.
-
-\subsubsection{Redes Residuales}
-
-Al crear modelos de aprendizaje profundo se tienen un conjunto de parámetros $\theta$. Las posibles combinaciones 
-de estos forman un espacio de funciones $F$ al cual pertenecen todas las posibles instancias del modelo.
-Agregar nuevas capas aumenta la complejidad de este, pero no hay garantía de que el viejo espacio 
-de funciones $F$ sea subconjunto del nuevo espacio $F'$, lo que implica que el nuevo modelo no es necesariamente
-estrictamente superior al antiguo. Este problema es la razón para la aparición de las Redes Residuales. 
-Una red residual está formada por 
-uno o varios bloques residuales, en los que a la salida de cada bloque residual le es sumada la entrada de 
-este mediante una conexión residual.
-El objetivo de realizar tal operación es que es posible hacer la contribución del bloque 0 obteniendo así
-un modelo equivalente a uno sin el bloque, garantizando la condición de subconjunto $F \subset F'$, además,
-dicho bloque no pierde poder expresivo, dado que en caso de que su aporte al resultado final sea considerable, 
-se tendría que aprender solamente la función $f(x) - x$ donde $x$ es la entrada del bloque y $f$ es la función 
-aprendida por el bloque sin la conexión residual, para mitigar el efecto de la conexión residual como se muestra
-en la Figura \ref{fig:res_block}.
-
-\begin{figure}[h]
-    \centering
-	\includegraphics[width=7cm,clip]{Graphics/resnet.png}
-	\caption{Bloque residual (Tomado de \cite{d2l} pág. 289).}
-	\label{fig:res_block}
-\end{figure}
-
-\subsubsection{Redes Neuronales Recurrentes}
-
-Las redes neuronales recurrentes (RNN, en inglés) son
-un tipo especial de arquitectura especializada en el trabajo con datos secuenciales. Este tipo de arquitectura
-presenta variables en las que se almacenan información pasada, que es usada para el computo de la salida. El 
-problema se puede modelar probabilísticamente mediante la estimación de $P(x_t | x_{t-1}, \dots, x_{1})$,
-donde existen dos variantes principales. En una variante se fija un tamaño de ventana $\alpha$ en el tiempo, 
-dando como resultado $P(x_t | x_{t-1}, \dots, x_{t-\alpha})$, a este tipo de modelos se les conoce como autorregresivos. 
-Otra estrategia consiste en guardar un contexto de observaciones pasadas $h_t$ y con este realizar la estimación 
-$P(x_t | h_t)$, el contexto se actualiza en cada paso mediante una función $h_t = g(h_{t-1}, x_{t-1})$, a estos 
-se les nombra modelos autorregresivos latentes, debido a la existencia de variables ocultas $h_t$. 
-
-En la práctica estos modelos presentan problemas de gradientes, ya que estas pueden volverse extremadamente grandes o 
-desaparecer.
-Para esto se han creado arquitecturas que disminuyen estos problemas. Una de estas arquitecturas es las de memorias
-de corto largo plazo (LSTM, en inglés) \cite{hochreiter1997long}.
-Este modelo guarda un contexto del procesamiento y está constituido por varias compuertas que regulan las 
-actualizaciones de los estados internos. LSTM (Figura \ref{fig:rnn_lstm}) posee dos variables de estado, la memoria 
-$C$ y el estado oculto $H$. Entre sus compuertas se encuentran la compuerta de olvido, esta regula cuánto de la 
-memoria permanece en el próximo paso, la compuerta de entrada ajusta la cantidad de información nueva que entrará, 
-la compuerta de salida maneja el cálculo del próximo estado oculto.
-
-\begin{figure}[h]
-    \centering
-	\includegraphics[width=7cm,clip]{Graphics/rnn_lstm.png}
-	\caption{LSTM (Tomado de \cite{d2l} pág. 357).}
-	\label{fig:rnn_lstm}
-\end{figure}
-
-El método de aprendizaje de las RNN solamente observa los elementos anteriores de la secuencia, aunque existen
-tareas en las que, observando los elementos posteriores, se brinda más contexto e información a la tarea, sin que interfiera
-en el proceso de inferencia. El modelo bidireccional presenta una alternativa para tratar con este tipo de problemas, 
-este modelo consiste en, además de hacer el recorrido de inicio a final de la secuencia, realizar otro recorrido en orden 
-inverso (Figura \ref{fig:rnn_bidirectional}), estos recorridos van generando dos estados ocultos $\overrightarrow{H}_{i}$ y $\overleftarrow{H}_{i}$
-que luego son mezclados para obtener el contexto final $H_i$, los tipos de mezclas comunes son la concatenación de los 
-estados o la multiplicación elemento a elemento de estos.
-
-\begin{figure}[h]
-    \centering
-	\includegraphics[width=7cm,clip]{Graphics/rnn_bidirectional.png}
-	\caption{Red neuronal bidireccional (Tomado de \cite{d2l} pág. 367).}
-	\label{fig:rnn_bidirectional}
-\end{figure}
-
-
-\subsubsection{Atención}
-
-% Definicion, qué hace, uso en secuencias
-La atención es una técnica en la cual se hace una selección ponderada de atributos en un contexto específico. 
-Este mecanismo presenta dos partes, una consulta $q$ y una colección de pares llave-valor, $(k_i, v_i)$. La 
-consulta representa el contexto en donde se quiere aplicar la atención y las llaves $k_i$ son elementos que 
-relacionan la consulta a los valores $v_i$. El proceso de calcular el resultado consiste en, primero, calcular 
-el vector compatibilidad $e$ entre las llaves y la consulta mediante la función $f$, este vector es luego 
-modificado por una función $g$ que distribuye los valores obteniendo el vector atención $a$. Finalmente 
-este vector es utilizado para calcular el resultado final al aplicarle la función $o = z(a, V)$:
-
-\begin{equation}
-	e = f(q, K),
-\end{equation}
-\begin{equation}
-	a = g(e),
-\end{equation}
-\begin{equation}
-	o = z(a, V).
-\end{equation}
-
-En dependencia de cómo se seleccionen las funciones $f$, $g$ y $z$ se pueden obtener distintos tipos de atención.
-Una configuración simple consiste en definir $f$ como el producto punto de la consulta con la llave,
-$g$ como \textit{softmax} y $z$ la suma ponderada de $v_i$ con los valores de atención.
-
-\subsubsection{Campo Aleatorio Condicional}
-
-% Definicion de CRF, qué modela, Ventajas de CRF en secuencias, mirar relacion con Hidden Markov Models
-
-El campo aleatorio condicional (CRF, en inglés) es un 
-tipo de modelo gráfico probabilístico que trabaja eficientemente con secuencias,
-modelando conjuntamente la probabilidad de las etiquetas de sus elementos dadas sus observaciones \cite{lafferty2001conditional}.
-En trabajos de secuencias, la forma más simple que toma el grafo consiste en una cadena de las variables representando
-las etiquetas de las secuencias $Y$, conectadas de la forma $(Y_i, Y_{i+1})$ y las variables observadas $X$, conectadas
-a las variables $Y$ \cite{wallach2004conditional}.
-
-El objetivo de CRF es calcular la secuencia $Y^*$ tal que:
-
-\begin{equation}
-	Y^* = \arg \max_Y P(Y | X).
-	\label{eq:crf}
-\end{equation}
-
-En esta expresión se observa que devuelve la secuencia más probable, dadas las variables observadas o atributos $X$,
-por lo que esta capa es usada al final del proceso para problemas de clasificación de secuencias.
-
-\subsection{Evaluación del modelo y métricas}
-
-Los modelos de AA necesitan maneras de expresar qué tan buenos son 
-en las tareas encomendadas. Para esto se crean funciones que evalúan los resultados obtenidos
-por dichos modelos, estas funciones se les da el nombre de métricas. Existen diferentes tipos de
-métricas para tratar con diferentes tipos de problemas. En aprendizaje supervisado una métrica se
-define como una función $m_s(Y, \hat{Y})$, donde $Y$ son las predicciones verdaderas y $\hat{Y}$ son las predicciones
-hechas por el modelo. En algoritmos de aprendizaje no supervisado como K-Means y K-NN son usadas funciones $m_{ns}(\hat{Y})$
-donde $\hat{Y}$ son las predicciones finales. En comparación con su versión supervisada estas funciones no tiene acceso
-a las predicciones verdaderas del problema.
-
-\subsubsection{Clasificación}
-
-En problemas de clasificación (problemas en donde las etiquetas a predecir son discretas) 
-son empleadas medidas que toman en cuenta la naturaleza discreta de su conjunto imagen.
-Medidas como precisión, recobrado, \textit{accuracy} y F1 son utilizadas en la 
-evaluación de los resultados, mientras que como función de error se usa entropía cruzada 
-(\textit{cross entropy} en inglés) \cite{grandini2020metrics}.
-
-La matriz de confusión es una vía de representar los resultados de dos clasificadores. Esta matriz en $M_{ij}$
-indica la cantidad de elementos que clasificó como clase $i$ el primer clasificador y
-como clase $j$ el segundo clasificador. En su uso práctico,
-un clasificador son las etiquetas verdaderas mientras que el otro es el clasificador que se está evaluando. 
-En problemas de la clasificación binaria, donde se busca saber si existe pertenencia o no de un elemento a una clase,
-se pueden observar los siguientes casos:
-
-\begin{itemize}
-	\item Verdaderos Positivos (VP): elementos clasificados correctamente que pertenecen a la clase.
-	\item Verdaderos Negativos (VN): elementos clasificados correctamente que no pertenecen a la clase.
-	\item Falsos Positivos (FP): elementos que no pertenecen a la clase clasificados incorrectamente en que pertenecen.
-	\item Falsos Negativos (FN): elementos que pertenecen a la clase clasificados incorrectamente en que no pertenecen.
-\end{itemize}
-
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{|l|c|c|} 
-			\hline\rule{-2pt}{15pt}
-			{\bf Clases}   & {\bf Positivo} & {\bf Negativo} \\ 
-			\hline\rule{-4pt}{10pt}
-			Positivo & VP       & FN       \\ 
-			Negativo & FP       & VN       \\ 
-			\hline
-		\end{tabular}
-	\end{center}
-	\caption{\label{fig:confusion_matrix}Matriz de confusión binaria.}
-\end{table}
-
-La precisión es la medida que indica la probabilidad de que la clasificación de una clase sea correcta. Esto 
-se puede observar como la proporción de los elementos correctamente clasificados sobre el total de 
-elementos clasificados:
-
-\begin{equation}
-	prec_i = \frac{VP}{VP + FP}.
-\end{equation}
-
-En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todas
-las precisiones de las clases existentes:
-
-\begin{equation}
-	prec_{macro} = \sum^K_{i=1} \frac{prec_i}{K}.
-\end{equation}
-
-El recobrado es la medida que indica la probabilidad de que se clasifique correctamente un elemento de la clase
-del total existente. Esto se puede observar como la proporción de los elementos correctamente clasificados sobre el 
-total de elementos que pertenecen a la clase:
-
-\begin{equation}
-	rec_i = \frac{VP}{VP + FN}.
-\end{equation}
-
-En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todos
-los recobrados de las clases existentes:
-
-\begin{equation}
-	rec_{macro} = \sum^K_{i=1} \frac{rec_i}{K}.
-\end{equation}
-
-La medida F1 es la media armónica de la precisión y el recobrado. En esta la contribución de la precisión y el
-recobrado al resultado final es el mismo, aunque es posible buscar variaciones de acuerdo a al problema a tratar:
-
-\begin{equation}
-	F1_i = 2 \frac{prec_i \cdot rec_i}{prec_i + rec_i}.
-\end{equation}
-
-En problemas de clasificación múltiple surge la versión macro de esta medida calculada la propia medida F1, pero
-utilizando la precisión y recobrado macro del problema:
-
-\begin{equation}
-	F1_{macro} = 2 \frac{prec_{macro} \cdot rec_{macro}}{prec_{macro} + rec_{macro}}.
-\end{equation}
-
-La métrica $\alpha$\%F1 \cite{persing2016end} es una métrica basada en la idea de F1 orientada para el 
-trabajo con secuencias donde $\alpha$ denota el porcentaje de secuencia inferida que debe coincidir con 
-la secuencia anotada para ser considerado una coincidencia. Esta versión permite
-establecer el rango de flexibilidad si $\alpha=100$ (100\%F1), significa que deben coincidir completamente, 
-mientras si $\alpha = 50$ (50\%F1) significa que, si coinciden en una proporción mayor o igual a la mitad, 
-se considera como un verdadero positivo. La definición de los valores de verdaderos positivos, negativos 
-y falsos negativos es:
-
-\begin{equation}
-	VP = |\{ j | \exists i | gl(j) = pl(i) \land i = j \}|,
-\end{equation}
-\begin{equation}
-	FP = |\{ i | pl(i) \neq n \land \not\exists j | gl(j) = pl(i) \land i = j \}|,
-\end{equation}
-\begin{equation}
-	FN = |\{ j | \not\exists i | gl(j) = pl(i) \land i = j \}|,
-\end{equation}
-
-donde $i$ y $j$ son las UDAs extraídas, $gl(j)$ es la etiqueta correcta para $j$, $pl(i)$ es 
-la etiqueta inferida para $i$, $n$ es la clase no argumentativa, $i = j$ significa que $i$ es 
-una coincidencia para $j$.
-
-Las métricas anteriores están acotadas por los valores 0 y 1, donde 1 representa la mejor evaluación y 0 la 
-peor.
-
-La entropía cruzada se encarga de evaluar qué tan diferentes son dos funciones de distribución $p$ y $q$, su 
-resultado es un número no negativo que, a medida que sean más pequeños los valores, indican mayor similitud. 
-En su versión discreta se formula:
-
-\begin{equation}
-	H(p, q) = - \sum_{x \in D} p(x) \log q(x).
-\end{equation}
-
-\subsubsection{Cadenas}
-
-Para textos o cadenas existen diferentes métricas que constituyen formas de saber la similitud 
-entre dos elementos. Una de esas métricas es la similitud de Jaccard, esa se puede ver como 
-la proporción de elementos comunes que presentan dos conjuntos, los elementos sería palabras:
-
-\begin{equation}
-	jac(X, Y) = \frac{|X \cap Y|}{|X \cup Y|}.
-\end{equation}
-Otra medida de similitud es la distancia de Levenshtein, la cual se define como la mínima cantidad 
-de cambios de eliminar, cambiar y agregar que se tienen que hacer a dos secuencias para que sean 
-iguales. Esta medida se puede usar tanto en palabras, en donde se mediría la cantidad de cambios 
-a los caracteres, como en listas de palabras, donde se mediría la cantidad de palabras que 
-se tienen que cambiar. 
-
-\subsubsection{Curvas de aprendizaje}
-
-Es necesario además de evaluar el resultado final del modelo, evaluar el proceso de entrenamiento. En esta etapa 
-se pueden diagnosticar varias deficiencias en este proceso. Para un correcto entrenamiento se divide el conjunto de 
-datos en tres partes:
-
-\begin{itemize}
-	\item \textbf{entrenamiento}: utilizada para el entrenamiento del modelo.
-	\item \textbf{validación}: utilizada para evaluar el desempeño del modelo durante el entrenamiento.
-	\item \textbf{prueba}: utilizada para evaluar el resultado final.
-\end{itemize}
-
-Las curvas de aprendizaje constituyen la principal herramienta para evaluar el proceso de aprendizaje.
-Estas están formadas por las mediciones de métricas a lo largo del entrenamiento calculadas a partir de 
-los conjuntos de validación y entrenamiento. En estas, el eje horizontal representa el número de época del entrenamiento,
-iteración sobre el conjunto de entrenamiento, y el eje vertical representa el valor de la métrica a analizar. 
-La línea correspondiente al conjunto de entrenamiento cuantifica 
-el aprendizaje del modelo o también el error de entrenamiento, y la correspondiente a la de validación cuantifica 
-la generalización o el error de generalización. Existen tres comportamientos esenciales a analizar:
-
-\begin{itemize}
-	\item Bajo ajuste (\textit{underfitting}).
-	\item Sobreajuste (\textit{overfitting}).
-	\item Buen ajuste.
-\end{itemize}
-
-El bajo ajuste ocurre cuando el modelo no es capaz de aprender del conjunto de datos o cuando este aún puede aprender 
-más. Las curvas de aprendizaje en estos casos se caracterizan por ser una línea plana o valores ruidosos con alta pérdida
-(Figura \ref{fig:underfit}).
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm,clip]{Graphics/underfit_missing_training.png}
-	\includegraphics[width=7cm,clip]{Graphics/underfit_not_learning.png}
-	\caption{Curvas de entrenamiento con bajo ajuste por falta de entrenamiento (arriba)
-		y por modelo que no aprende de los datos (abajo) (Tomado de \cite{brownlee2018better} pág. XXVII).}
-	\label{fig:underfit}
-\end{figure}
-
-Entre las formas más sencillas de combatir el bajo ajuste de los modelos consiste en complejizarlo, al añadir
-capas o aumentar las dimensiones de este aumenta su expresividad y, por lo tanto, su ajuste. Si este método 
-no funciona es posible considerar un cambio de arquitectura hacia una que pueda extraer más información de la 
-estructura de los datos. 
-
-El sobreajuste es el fenómeno en el que el modelo aprende los datos de entrenamiento extremadamente bien, incluso
-el ruido en estos, esto trae consigo que falla en generalizar el problema para nuevas entradas. Las curvas 
-características de este fenómeno presentan una divergencia en los errores de entrenamiento y validación a medida
-que se entrena el modelo, mientras que la de entrenamiento mejora la de validación tiende a empeorar (Figura \ref{fig:overfit}). 
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm,clip]{Graphics/overfit_raising_val_error.png}
-	\caption{Curvas de entrenamiento con sobreajuste (Tomado de \cite{brownlee2018better} pág. XXIX).}
-	\label{fig:overfit}
-\end{figure}
-
-Existen varios métodos para combatir el sobreajuste, uno sencillo es simplificar el modelo quitándole capas 
-o disminuyendo sus dimensiones. Además de esto, existen regularizaciones que se pueden aplicar para evitar que 
-las capas dependan exclusivamente de pocos atributos, entre esta familia los más usados son la regularización
-L1 y L2 las cuales se definen como la suma del valor absoluto de los atributos y la suma del cuadrado de sus 
-atributos respectivamente. Otra medida para prevenir el sobreajuste es el agrego de capas de abandono 
-(\textit{dropout}). Estas capas desactivan neuronas de la arquitectura, obligando a 
-estas a ser robustas y depender del comportamiento de la población, en lugar de la actividad de otras unidades 
-específicas \cite{baldi2013dropout}. La terminación temprana (\textit{early stopping}) del entrenamiento
-se utiliza para parar este en el momento en que el error de generalización comienza a subir, impidiendo así que 
-se sobreentrene el modelo.
-
-Finalmente, un buen ajuste es el resultado que se alcanza cuando tanto la curva de validación como de entrenamiento
-presentan valores pequeños y similares, consecuentes con una correcto aprendizaje y generalización (Figura \ref{fig:good_fit}).
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm,clip]{Graphics/good_fit.png}
-	\caption{Curvas de entrenamiento con buen ajuste (Tomado de \cite{brownlee2018better} pág. XXX).}
-	\label{fig:good_fit}
-\end{figure}
-
-Otro problema observable a partir del análisis de las curvas de aprendizaje constituye la detección de conjuntos
-de datos no representativos. Un conjunto de datos no representativo es uno que puede no 
-capturar las características estadísticas relativas a otro conjunto de datos extraído del mismo dominio.
-Esto puede pasar que los conjuntos de entrenamiento o de validación. En caso del conjunto de entrenamiento
-se puede identificar si la pérdida en el conjunto de entrenamiento conlleva a una ganancia en el conjunto de 
-validación y viceversa quedando al final con una separación entre ambos valores. En el caso del conjunto de 
-validación se presenta como una curva ruidosa, también se puede dar el caso de que el conjunto  de validación
-sea más fácil de predecir que el de entrenamiento, en este caso se observa como la curva de validación permanece
-siempre por debajo de la de entrenamiento (Figura \ref{fig:unrepresentative_data}).
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm,clip]{Graphics/unrepresentative_dev_set.png}
-	\includegraphics[width=7cm,clip]{Graphics/unrepresentative_train_set.png}
-	\caption{Curvas de entrenamiento con datos poco representativos en el conjunto de validación (arriba)
-		y en el conjunto de entrenamiento (abajo) (Tomado de \cite{brownlee2018better} pág. XXXII).}
-	\label{fig:unrepresentative_data}
-\end{figure}
-
-Para combatir estos problemas se puede aumentar la cantidad de elementos en los conjuntos de entrenamiento o 
-validación en dependencia de donde ocurra.
-
-\subsection{Aumento de datos}
-
-El aumento de datos consiste en acciones para aumentar la diversidad de un conjunto de datos sin recolectar
-nuevos datos explícitamente \cite{feng2021data}. En datos continuos, como imágenes o valores numéricos el 
-aumento de datos puede ser realizado al añadirle perturbaciones a entradas existentes, en caso de las imágenes 
-técnicas como el volteado (\textit{flipping}) o recortado (\textit{cropping}) son usadas. Los textos son un tipo 
-de datos discreto y, por lo tanto, las técnicas anteriores no pueden ser aplicadas directamente. Para el PLN
-se han estudiado diversas técnicas de aumento de datos, una de estas consiste en el cambio del árbol de 
-dependencia de la oración mediante operaciones de intercambio y borrado de nodos \cite{csahin2019data}, también se han utilizado 
-el intercambio de palabras por sinónimos \cite{dai2020analysis} y la traducción de textos hacia un lenguaje y luego 
-de vuelta al lenguaje origen (\textit{backtranslation}) \cite{sennrich2015improving}. 
-
-\subsection{Aprendizaje Conjunto}
-
-El aprendizaje conjunto (\textit{ensemble learning}) son técnicas encaminadas al aprovechamiento
-de soluciones encontradas por diferentes modelos, combinándolas y mejorándolas para encontrar una mejor solución 
-al problema. Estos métodos son efectivos en la reducción de la varianza y el sesgo de los modelos, obteniendo así
-mejores resultados \cite{dietterich2002ensemble}. Una forma de este tipo de aprendizaje en problemas de 
-clasificación constituye el voto conjunto, en donde los diferentes clasificadores votan sobre la clase a la que 
-pertenece el elemento y, al final, se asigna la etiqueta que más votos obtuvo.
-
-\subsection{Métodos de optimización}
-
-El objetivo del AA es encontrar los extremos de una función de costo, este proceso es una tarea 
-desafiante ya que la gran mayoría de estas funciones no son convexas y, por lo tanto, no existe un algoritmo
-que asegure la convergencia hacia un extremo global. Para resolver este problema existen múltiples heurísticas,
-la más usada es el descenso por gradiente. La idea básica consiste 
-en el cálculo del vector gradiente de la función de error $f$ con respecto a los parámetros del modelo $x$ y, una vez se 
-tiene dicho vector, se evalúa en la asignación actual de los parámetros $x_i$ y se realiza un corrimiento de este punto 
-en contra del gradiente para disminuir el error (Eq. \ref{eq:gradien_descent}).
-
-\begin{equation}
-	x_{i+1} = x_i - \alpha \nabla f(x_i)\label{eq:gradien_descent}
-\end{equation}
-
-En la ecuación \ref{eq:gradien_descent} anterior, $\alpha$ es la tasa de aprendizaje (\textit{learning rate}),
-que cuantifica cuánto se toma del vector de gradiente para actualizar los parámetros, esto 
-se puede ver como el aprendizaje del modelo.
-
-Variantes eficientes de este algoritmo para el entrenamiento de modelos de AA han sido 
-creadas, las variaciones se encuentran principalmente en la selección de $\alpha$ en cada paso y la 
-selección de los conjuntos de datos con que se estimará el gradiente. Entre las técnicas utilizadas se 
-encuentran Descenso por Gradiente Estocástico, variaciones de tasa de aprendizaje dinámica con 
-sus diferentes variantes (exponencial, polinómica), RMSProp \cite{tieleman2012rmsp}
-y Adam \cite{kingma2014adam}.
+% MARCO TEORICO
+
+% TODO Hablar un poco de la representacino de los datos en el articulo.
+% \subsection{Representación de datos} 
+
+% La representación de los datos constituye una parte importante al modelar un problema. Esta 
+% es la encargada de presentar datos abstractos, como imágenes, párrafos o sonidos, en formas tratables
+% por los algoritmos. Generalmente, se buscan configuraciones que recojan la mayor cantidad de información 
+% de la entrada relevante al problema.
+
+% En el PLN los datos suele estar representados con distintos niveles de granularidad.
+% De menor granularidad a mayor se pueden ir mencionando los documentos, párrafos, oraciones, palabras y
+% caracteres. Estos elementos es posible representarlos mediante vectores que codifiquen propiedades
+% objetivas del problema a tratar como características morfológicas o semánticas de estos. Por ejemplo, 
+% los textos tienen una popular manera de representarse mediante vectores de TF-IDF \cite{manning2008introduction},
+% una desventaja de esta representación es que no toma en cuenta el orden de las palabras, por lo que 
+% la representación de \textit{no me gusta,} y \textit{no, me gusta} serían iguales aunque semánticamente 
+% sean opuestas. Para agregarle la información de orden a la representación se introducen los llamados 
+% $n-$gramas, los cuales toman en cuenta una ventana de tamaño $n$ para conformar conjuntamente una representación.
+% Este enfoque conlleva a la limitante de que solo un contexto finito está disponible para hacer las inferencias,
+% para esto finalmente se crean representaciones individuales para cada palabra, las cuales codifican 
+% información y la secuencia completa es introducida al modelo para realizar la inferencia.
+% La manera más simple de representar una palabra es mediante la representación \textit{one-hot}, 
+% en esta, a cada palabra se le asigna un índice y el vector resultante posee la dimensión del 
+% vocabulario y es rellenado con ceros en todos sus elementos excepto en el índice de la palabra, donde se le asigna 1.
+% Esta representación asume que las palabras son independientes entre sí y 
+% computacionalmente ocupan un espacio considerable. Existen otras representaciones 
+% que brindan información al algoritmo sobre la morfología y la semántica de la palabra que representa.
+
+% Las características morfológicas son aquellas que describen cómo está formado el elemento a analizar.
+% Estas pueden ser extraídas con relativa facilidad, entre tales características se encuentran: tamaño, 
+% cantidad, posición de palabras o párrafos, presencia de sufijos, prefijos, acentos u otros marcadores
+% en el texto. Las características semánticas presentan una mayor dificultad a la hora de ser extraídas.
+% Para esto se utilizan diferentes modelos que codifican esta información en vectores continuos conocidos como 
+% \textit{embeddings}, entre los modelos existentes se encuentran
+% word2vec \cite{mikolov2013efficient}, 
+% \textit{Global Vectors} (GloVe) \cite{pennington2014glove}, 
+% \textit{Bidirectional Encoder Representations from Transformers} (BERT) \cite{devlin2018bert},
+% entre otros.
+
+% \subsection{Modelación de problemas}
+
+% Los problemas en la vida real se presentan en un principio como una descripción a un nivel de abstracción 
+% más alto que el requerido por los algoritmos existentes, se hablan de entidades abstractas como imágenes,
+% sonidos, textos o usuarios, además de la información que se desea extraer o las operaciones que se
+% desean aplicar sobre estas entidades. A lo largo del desarrollo del AA han aparecido diferentes tipos de problemas 
+% que aparecen frecuentemente en la práctica y sus respectivas maneras de solucionarlos. Uno de estos tipos de problemas
+% es el de secuencia a secuencia (\textit{seq2seq}), cuyo objetivo es la conversión de una secuencia en un dominio de entrada a otra 
+% secuencia en un dominio de salida. Con este tipo de problemas se modelan tareas como traducción automática, en 
+% donde el dominio de entrada es texto en un lenguaje de partida y el dominio de salida es texto en un lenguaje de llegada.
+% Otro problema que se resuelve con \textit{seq2seq} es la segmentación de texto, cuya entrada es una lista de \textit{tokens}
+% y la salida son etiquetas que indican cuándo empieza y termina un segmento de texto. Las etiquetas utilizadas para 
+% la segmentación, generalmente, son:
+
+% \begin{itemize}
+% 	\item B (\textit{begin}): representa el inicio del segmento.
+% 	\item I (\textit{inside}): representa la continuación del segmento previamente iniciado.
+% 	\item O (\textit{outside}): representa la no pertenencia a un segmento.
+% \end{itemize}
+
+% Este esquema presenta una versión más elaborada en la que se agregan dos clases que representan el final 
+% de un segmento E (\textit{end}) y un segmento de un solo elemento S (\textit{single}). La tarea anterior es 
+% utilizada como base para otra un poco más compleja, en la que, además de segmentar el texto, se desea 
+% clasificar sus segmentos. Para este problema se añaden meta etiquetas correspondientes a los tipos a identificar $C$
+% obteniendo un conjunto final $R = \{ B, I, E, S \} \times C \cup \{ O \}$. En tareas como la extracción de entidades
+% nombradas este método es empleado, donde el conjunto $C$ contiene las posibles categorías de entidades a identificar.
+
+% \subsection{Arquitecturas}
+
+% En aprendizaje profundo existen una gran cantidad de arquitecturas que se pueden utilizar para formar el modelo 
+% final. Estas deben de ser seleccionadas en dependencia de los datos y el problema a tratar, ya que sus diseños 
+% emulan diferentes operaciones sobre datos que pueden ser más beneficiosas en situaciones específicas.
+
+% \subsubsection{Capas densas}
+
+% El perceptrón consiste es una transformación lineal del vector de datos $\textbf{x}$ con un sesgo $b$ y 
+% luego aplicar una transformación no lineal $g$, conocida como función de activación, 
+% para la obtención del resultado final:
+
+% \begin{equation}
+% 	f(\textbf{x}) = g(\textbf{w}\textbf{x} + b).
+% \end{equation}
+
+% El perceptrón constituye la unidad básica de las capas densas, ya que estas consisten en la aplicación
+% de este modelo varias veces sobre la misma entrada $\textbf{x}$ produciendo vectores de la dimensión $k$
+% deseada como salida final. Los parámetros se codifican en la matriz $\textbf{W}$ y sus sesgo en el 
+% vector $\textbf{b}$:
+
+% \begin{equation}
+% 	f(\textbf{x}) = g(\textbf{Wx} + \textbf{b}).
+% \end{equation}
+
+% Para las funciones de activación existen varias elecciones. Una de estas es la función sigmoidal. 
+% Esta devuelve un valor entre 0 y 1, es usada en tareas de regresión logística. 
+% Se puede interpretar como el nivel de activación de la neurona:
+
+% \begin{equation}
+% 	sigm(x) = \frac{1}{1-e^{-x}}.
+% \end{equation}
+
+% \textit{Rectified Linear Unit} (ReLU) se define como la parte positiva del argumento. Una ventaja que trae esta 
+% función de activación es su rápido cálculo de su derivada y que previene en parte de los problemas 
+% de desaparición de gradiente de la sigmoidal:
+
+% \begin{equation}
+% 	relu(x) = \max(0, x).
+% \end{equation}
+
+% La función de activación \textit{softmax} es diferente a las anteriores en el sentido que necesita
+% el vector salida de la capa anterior para ser computada. Esta función convierte las $q$ salidas
+% en una distribución de probabilidad, algo necesario en tareas de clasificación:
+
+% \begin{equation}
+% 	softmax_k(\textbf{x}) = \frac{e^{x_k}}{\sum\limits_{i=1}^{q} e^{x_i}}.
+% \end{equation}
+
+% \subsubsection{Redes Neuronales Convolucionales}
+
+% Las redes neuronales convolucionales (CNN, en inglés) 
+% son un tipo de redes usadas
+% principalmente para tratar datos donde su estructura espacial es relevante, por ejemplo,
+% en datos bidimensionales como imágenes y en unidimensionales como sonido y texto.
+% Estas redes aplican de una función de kernel sobre los datos, $f * g$ donde $f$ son los
+% datos, $g$ es el kernel o filtro y $*$ es el operador de convolución \cite{d2l}. La función $g$ se puede 
+% aprender en el proceso o también puede ser una función de agrupación predefinida. 
+% Un ejemplo bidimensional de una función de kernel se muestra en la Figura \ref{fig:conv_kernel}.
+
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm,clip]{Graphics/kernel_convolution.png}
+% 	\caption{Convolución con kernel (Tomado de \cite{d2l} pág. 241).}
+% 	\label{fig:conv_kernel}
+% \end{figure}
+
+% En este se observa cómo una nueva representación es computada al operar el kernel por la matriz de datos. Este
+% corrimiento se puede realizar de diferentes formas, por ejemplo, se puede mover de dos en dos en vez de uno en uno, este
+% parámetro se le conoce como tamaño de paso (\textit{stride}). Es posible además preservar las dimensiones
+% iniciales de los datos al aplicarle un aumento de los datos en los bordes de tal forma que el resultado sea de la misma
+% dimensión, este aumento se realiza, generalmente, rellenando convenientemente los espacios con ceros, 
+% a esto se le llama \textit{padding} (Figura \ref{fig:conv_kernel_padding}).
+
+% \begin{figure}[h]
+%     \centering
+% 	\includegraphics[width=7cm,clip]{Graphics/kernel_convolution_padding.png}
+% 	\caption{Convolución con kernel con \textit{padding} (Tomado de \cite{d2l} pág. 241).}
+% 	\label{fig:conv_kernel_padding}
+% \end{figure}
+
+% Existen varias funciones de agrupación usadas. Entre estas se encuentran las de agrupación máxima y de 
+% agrupación media. Como sus nombres indican, la de agrupación máxima devuelve el valor máximo de los encontrados
+% en la ventana del kernel, la de media calcula el promedio de estos valores. Estas capas tienen la capacidad de obtener
+% información resumida sobre los datos.
+
+% \subsubsection{Redes Residuales}
+
+% Al crear modelos de aprendizaje profundo se tienen un conjunto de parámetros $\theta$. Las posibles combinaciones 
+% de estos forman un espacio de funciones $F$ al cual pertenecen todas las posibles instancias del modelo.
+% Agregar nuevas capas aumenta la complejidad de este, pero no hay garantía de que el viejo espacio 
+% de funciones $F$ sea subconjunto del nuevo espacio $F'$, lo que implica que el nuevo modelo no es necesariamente
+% estrictamente superior al antiguo. Este problema es la razón para la aparición de las Redes Residuales. 
+% Una red residual está formada por 
+% uno o varios bloques residuales, en los que a la salida de cada bloque residual le es sumada la entrada de 
+% este mediante una conexión residual.
+% El objetivo de realizar tal operación es que es posible hacer la contribución del bloque 0 obteniendo así
+% un modelo equivalente a uno sin el bloque, garantizando la condición de subconjunto $F \subset F'$, además,
+% dicho bloque no pierde poder expresivo, dado que en caso de que su aporte al resultado final sea considerable, 
+% se tendría que aprender solamente la función $f(x) - x$ donde $x$ es la entrada del bloque y $f$ es la función 
+% aprendida por el bloque sin la conexión residual, para mitigar el efecto de la conexión residual como se muestra
+% en la Figura \ref{fig:res_block}.
+
+% \begin{figure}[h]
+%     \centering
+% 	\includegraphics[width=7cm,clip]{Graphics/resnet.png}
+% 	\caption{Bloque residual (Tomado de \cite{d2l} pág. 289).}
+% 	\label{fig:res_block}
+% \end{figure}
+
+% \subsubsection{Redes Neuronales Recurrentes}
+
+% Las redes neuronales recurrentes (RNN, en inglés) son
+% un tipo especial de arquitectura especializada en el trabajo con datos secuenciales. Este tipo de arquitectura
+% presenta variables en las que se almacenan información pasada, que es usada para el computo de la salida. El 
+% problema se puede modelar probabilísticamente mediante la estimación de $P(x_t | x_{t-1}, \dots, x_{1})$,
+% donde existen dos variantes principales. En una variante se fija un tamaño de ventana $\alpha$ en el tiempo, 
+% dando como resultado $P(x_t | x_{t-1}, \dots, x_{t-\alpha})$, a este tipo de modelos se les conoce como autorregresivos. 
+% Otra estrategia consiste en guardar un contexto de observaciones pasadas $h_t$ y con este realizar la estimación 
+% $P(x_t | h_t)$, el contexto se actualiza en cada paso mediante una función $h_t = g(h_{t-1}, x_{t-1})$, a estos 
+% se les nombra modelos autorregresivos latentes, debido a la existencia de variables ocultas $h_t$. 
+
+% En la práctica estos modelos presentan problemas de gradientes, ya que estas pueden volverse extremadamente grandes o 
+% desaparecer.
+% Para esto se han creado arquitecturas que disminuyen estos problemas. Una de estas arquitecturas es las de memorias
+% de corto largo plazo (LSTM, en inglés) \cite{hochreiter1997long}.
+% Este modelo guarda un contexto del procesamiento y está constituido por varias compuertas que regulan las 
+% actualizaciones de los estados internos. LSTM (Figura \ref{fig:rnn_lstm}) posee dos variables de estado, la memoria 
+% $C$ y el estado oculto $H$. Entre sus compuertas se encuentran la compuerta de olvido, esta regula cuánto de la 
+% memoria permanece en el próximo paso, la compuerta de entrada ajusta la cantidad de información nueva que entrará, 
+% la compuerta de salida maneja el cálculo del próximo estado oculto.
+
+% \begin{figure}[h]
+%     \centering
+% 	\includegraphics[width=7cm,clip]{Graphics/rnn_lstm.png}
+% 	\caption{LSTM (Tomado de \cite{d2l} pág. 357).}
+% 	\label{fig:rnn_lstm}
+% \end{figure}
+
+% El método de aprendizaje de las RNN solamente observa los elementos anteriores de la secuencia, aunque existen
+% tareas en las que, observando los elementos posteriores, se brinda más contexto e información a la tarea, sin que interfiera
+% en el proceso de inferencia. El modelo bidireccional presenta una alternativa para tratar con este tipo de problemas, 
+% este modelo consiste en, además de hacer el recorrido de inicio a final de la secuencia, realizar otro recorrido en orden 
+% inverso (Figura \ref{fig:rnn_bidirectional}), estos recorridos van generando dos estados ocultos $\overrightarrow{H}_{i}$ y $\overleftarrow{H}_{i}$
+% que luego son mezclados para obtener el contexto final $H_i$, los tipos de mezclas comunes son la concatenación de los 
+% estados o la multiplicación elemento a elemento de estos.
+
+% \begin{figure}[h]
+%     \centering
+% 	\includegraphics[width=7cm,clip]{Graphics/rnn_bidirectional.png}
+% 	\caption{Red neuronal bidireccional (Tomado de \cite{d2l} pág. 367).}
+% 	\label{fig:rnn_bidirectional}
+% \end{figure}
+
+
+% \subsubsection{Atención}
+
+% % Definicion, qué hace, uso en secuencias
+% La atención es una técnica en la cual se hace una selección ponderada de atributos en un contexto específico. 
+% Este mecanismo presenta dos partes, una consulta $q$ y una colección de pares llave-valor, $(k_i, v_i)$. La 
+% consulta representa el contexto en donde se quiere aplicar la atención y las llaves $k_i$ son elementos que 
+% relacionan la consulta a los valores $v_i$. El proceso de calcular el resultado consiste en, primero, calcular 
+% el vector compatibilidad $e$ entre las llaves y la consulta mediante la función $f$, este vector es luego 
+% modificado por una función $g$ que distribuye los valores obteniendo el vector atención $a$. Finalmente 
+% este vector es utilizado para calcular el resultado final al aplicarle la función $o = z(a, V)$:
+
+% \begin{equation}
+% 	e = f(q, K),
+% \end{equation}
+% \begin{equation}
+% 	a = g(e),
+% \end{equation}
+% \begin{equation}
+% 	o = z(a, V).
+% \end{equation}
+
+% En dependencia de cómo se seleccionen las funciones $f$, $g$ y $z$ se pueden obtener distintos tipos de atención.
+% Una configuración simple consiste en definir $f$ como el producto punto de la consulta con la llave,
+% $g$ como \textit{softmax} y $z$ la suma ponderada de $v_i$ con los valores de atención.
+
+% \subsubsection{Campo Aleatorio Condicional}
+
+% % Definicion de CRF, qué modela, Ventajas de CRF en secuencias, mirar relacion con Hidden Markov Models
+
+% El campo aleatorio condicional (CRF, en inglés) es un 
+% tipo de modelo gráfico probabilístico que trabaja eficientemente con secuencias,
+% modelando conjuntamente la probabilidad de las etiquetas de sus elementos dadas sus observaciones \cite{lafferty2001conditional}.
+% En trabajos de secuencias, la forma más simple que toma el grafo consiste en una cadena de las variables representando
+% las etiquetas de las secuencias $Y$, conectadas de la forma $(Y_i, Y_{i+1})$ y las variables observadas $X$, conectadas
+% a las variables $Y$ \cite{wallach2004conditional}.
+
+% El objetivo de CRF es calcular la secuencia $Y^*$ tal que:
+
+% \begin{equation}
+% 	Y^* = \arg \max_Y P(Y | X).
+% 	\label{eq:crf}
+% \end{equation}
+
+% En esta expresión se observa que devuelve la secuencia más probable, dadas las variables observadas o atributos $X$,
+% por lo que esta capa es usada al final del proceso para problemas de clasificación de secuencias.
+
+% \subsection{Evaluación del modelo y métricas}
+
+% Los modelos de AA necesitan maneras de expresar qué tan buenos son 
+% en las tareas encomendadas. Para esto se crean funciones que evalúan los resultados obtenidos
+% por dichos modelos, estas funciones se les da el nombre de métricas. Existen diferentes tipos de
+% métricas para tratar con diferentes tipos de problemas. En aprendizaje supervisado una métrica se
+% define como una función $m_s(Y, \hat{Y})$, donde $Y$ son las predicciones verdaderas y $\hat{Y}$ son las predicciones
+% hechas por el modelo. En algoritmos de aprendizaje no supervisado como K-Means y K-NN son usadas funciones $m_{ns}(\hat{Y})$
+% donde $\hat{Y}$ son las predicciones finales. En comparación con su versión supervisada estas funciones no tiene acceso
+% a las predicciones verdaderas del problema.
+
+% \subsubsection{Clasificación}
+
+% En problemas de clasificación (problemas en donde las etiquetas a predecir son discretas) 
+% son empleadas medidas que toman en cuenta la naturaleza discreta de su conjunto imagen.
+% Medidas como precisión, recobrado, \textit{accuracy} y F1 son utilizadas en la 
+% evaluación de los resultados, mientras que como función de error se usa entropía cruzada 
+% (\textit{cross entropy} en inglés) \cite{grandini2020metrics}.
+
+% La matriz de confusión es una vía de representar los resultados de dos clasificadores. Esta matriz en $M_{ij}$
+% indica la cantidad de elementos que clasificó como clase $i$ el primer clasificador y
+% como clase $j$ el segundo clasificador. En su uso práctico,
+% un clasificador son las etiquetas verdaderas mientras que el otro es el clasificador que se está evaluando. 
+% En problemas de la clasificación binaria, donde se busca saber si existe pertenencia o no de un elemento a una clase,
+% se pueden observar los siguientes casos:
+
+% \begin{itemize}
+% 	\item Verdaderos Positivos (VP): elementos clasificados correctamente que pertenecen a la clase.
+% 	\item Verdaderos Negativos (VN): elementos clasificados correctamente que no pertenecen a la clase.
+% 	\item Falsos Positivos (FP): elementos que no pertenecen a la clase clasificados incorrectamente en que pertenecen.
+% 	\item Falsos Negativos (FN): elementos que pertenecen a la clase clasificados incorrectamente en que no pertenecen.
+% \end{itemize}
+
+% \begin{table}[h]
+% 	\begin{center}
+% 		\begin{tabular}{|l|c|c|} 
+% 			\hline\rule{-2pt}{15pt}
+% 			{\bf Clases}   & {\bf Positivo} & {\bf Negativo} \\ 
+% 			\hline\rule{-4pt}{10pt}
+% 			Positivo & VP       & FN       \\ 
+% 			Negativo & FP       & VN       \\ 
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% 	\caption{\label{fig:confusion_matrix}Matriz de confusión binaria.}
+% \end{table}
+
+% La precisión es la medida que indica la probabilidad de que la clasificación de una clase sea correcta. Esto 
+% se puede observar como la proporción de los elementos correctamente clasificados sobre el total de 
+% elementos clasificados:
+
+% \begin{equation}
+% 	prec_i = \frac{VP}{VP + FP}.
+% \end{equation}
+
+% En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todas
+% las precisiones de las clases existentes:
+
+% \begin{equation}
+% 	prec_{macro} = \sum^K_{i=1} \frac{prec_i}{K}.
+% \end{equation}
+
+% El recobrado es la medida que indica la probabilidad de que se clasifique correctamente un elemento de la clase
+% del total existente. Esto se puede observar como la proporción de los elementos correctamente clasificados sobre el 
+% total de elementos que pertenecen a la clase:
+
+% \begin{equation}
+% 	rec_i = \frac{VP}{VP + FN}.
+% \end{equation}
+
+% En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todos
+% los recobrados de las clases existentes:
+
+% \begin{equation}
+% 	rec_{macro} = \sum^K_{i=1} \frac{rec_i}{K}.
+% \end{equation}
+
+% La medida F1 es la media armónica de la precisión y el recobrado. En esta la contribución de la precisión y el
+% recobrado al resultado final es el mismo, aunque es posible buscar variaciones de acuerdo a al problema a tratar:
+
+% \begin{equation}
+% 	F1_i = 2 \frac{prec_i \cdot rec_i}{prec_i + rec_i}.
+% \end{equation}
+
+% En problemas de clasificación múltiple surge la versión macro de esta medida calculada la propia medida F1, pero
+% utilizando la precisión y recobrado macro del problema:
+
+% \begin{equation}
+% 	F1_{macro} = 2 \frac{prec_{macro} \cdot rec_{macro}}{prec_{macro} + rec_{macro}}.
+% \end{equation}
+
+% La métrica $\alpha$\%F1 \cite{persing2016end} es una métrica basada en la idea de F1 orientada para el 
+% trabajo con secuencias donde $\alpha$ denota el porcentaje de secuencia inferida que debe coincidir con 
+% la secuencia anotada para ser considerado una coincidencia. Esta versión permite
+% establecer el rango de flexibilidad si $\alpha=100$ (100\%F1), significa que deben coincidir completamente, 
+% mientras si $\alpha = 50$ (50\%F1) significa que, si coinciden en una proporción mayor o igual a la mitad, 
+% se considera como un verdadero positivo. La definición de los valores de verdaderos positivos, negativos 
+% y falsos negativos es:
+
+% \begin{equation}
+% 	VP = |\{ j | \exists i | gl(j) = pl(i) \land i = j \}|,
+% \end{equation}
+% \begin{equation}
+% 	FP = |\{ i | pl(i) \neq n \land \not\exists j | gl(j) = pl(i) \land i = j \}|,
+% \end{equation}
+% \begin{equation}
+% 	FN = |\{ j | \not\exists i | gl(j) = pl(i) \land i = j \}|,
+% \end{equation}
+
+% donde $i$ y $j$ son las UDAs extraídas, $gl(j)$ es la etiqueta correcta para $j$, $pl(i)$ es 
+% la etiqueta inferida para $i$, $n$ es la clase no argumentativa, $i = j$ significa que $i$ es 
+% una coincidencia para $j$.
+
+% Las métricas anteriores están acotadas por los valores 0 y 1, donde 1 representa la mejor evaluación y 0 la 
+% peor.
+
+% La entropía cruzada se encarga de evaluar qué tan diferentes son dos funciones de distribución $p$ y $q$, su 
+% resultado es un número no negativo que, a medida que sean más pequeños los valores, indican mayor similitud. 
+% En su versión discreta se formula:
+
+% \begin{equation}
+% 	H(p, q) = - \sum_{x \in D} p(x) \log q(x).
+% \end{equation}
+
+% \subsubsection{Cadenas}
+
+% Para textos o cadenas existen diferentes métricas que constituyen formas de saber la similitud 
+% entre dos elementos. Una de esas métricas es la similitud de Jaccard, esa se puede ver como 
+% la proporción de elementos comunes que presentan dos conjuntos, los elementos sería palabras:
+
+% \begin{equation}
+% 	jac(X, Y) = \frac{|X \cap Y|}{|X \cup Y|}.
+% \end{equation}
+% Otra medida de similitud es la distancia de Levenshtein, la cual se define como la mínima cantidad 
+% de cambios de eliminar, cambiar y agregar que se tienen que hacer a dos secuencias para que sean 
+% iguales. Esta medida se puede usar tanto en palabras, en donde se mediría la cantidad de cambios 
+% a los caracteres, como en listas de palabras, donde se mediría la cantidad de palabras que 
+% se tienen que cambiar. 
+
+% \subsubsection{Curvas de aprendizaje}
+
+% Es necesario además de evaluar el resultado final del modelo, evaluar el proceso de entrenamiento. En esta etapa 
+% se pueden diagnosticar varias deficiencias en este proceso. Para un correcto entrenamiento se divide el conjunto de 
+% datos en tres partes:
+
+% \begin{itemize}
+% 	\item \textbf{entrenamiento}: utilizada para el entrenamiento del modelo.
+% 	\item \textbf{validación}: utilizada para evaluar el desempeño del modelo durante el entrenamiento.
+% 	\item \textbf{prueba}: utilizada para evaluar el resultado final.
+% \end{itemize}
+
+% Las curvas de aprendizaje constituyen la principal herramienta para evaluar el proceso de aprendizaje.
+% Estas están formadas por las mediciones de métricas a lo largo del entrenamiento calculadas a partir de 
+% los conjuntos de validación y entrenamiento. En estas, el eje horizontal representa el número de época del entrenamiento,
+% iteración sobre el conjunto de entrenamiento, y el eje vertical representa el valor de la métrica a analizar. 
+% La línea correspondiente al conjunto de entrenamiento cuantifica 
+% el aprendizaje del modelo o también el error de entrenamiento, y la correspondiente a la de validación cuantifica 
+% la generalización o el error de generalización. Existen tres comportamientos esenciales a analizar:
+
+% \begin{itemize}
+% 	\item Bajo ajuste (\textit{underfitting}).
+% 	\item Sobreajuste (\textit{overfitting}).
+% 	\item Buen ajuste.
+% \end{itemize}
+
+% El bajo ajuste ocurre cuando el modelo no es capaz de aprender del conjunto de datos o cuando este aún puede aprender 
+% más. Las curvas de aprendizaje en estos casos se caracterizan por ser una línea plana o valores ruidosos con alta pérdida
+% (Figura \ref{fig:underfit}).
+
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm,clip]{Graphics/underfit_missing_training.png}
+% 	\includegraphics[width=7cm,clip]{Graphics/underfit_not_learning.png}
+% 	\caption{Curvas de entrenamiento con bajo ajuste por falta de entrenamiento (arriba)
+% 		y por modelo que no aprende de los datos (abajo) (Tomado de \cite{brownlee2018better} pág. XXVII).}
+% 	\label{fig:underfit}
+% \end{figure}
+
+% Entre las formas más sencillas de combatir el bajo ajuste de los modelos consiste en complejizarlo, al añadir
+% capas o aumentar las dimensiones de este aumenta su expresividad y, por lo tanto, su ajuste. Si este método 
+% no funciona es posible considerar un cambio de arquitectura hacia una que pueda extraer más información de la 
+% estructura de los datos. 
+
+% El sobreajuste es el fenómeno en el que el modelo aprende los datos de entrenamiento extremadamente bien, incluso
+% el ruido en estos, esto trae consigo que falla en generalizar el problema para nuevas entradas. Las curvas 
+% características de este fenómeno presentan una divergencia en los errores de entrenamiento y validación a medida
+% que se entrena el modelo, mientras que la de entrenamiento mejora la de validación tiende a empeorar (Figura \ref{fig:overfit}). 
+
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm,clip]{Graphics/overfit_raising_val_error.png}
+% 	\caption{Curvas de entrenamiento con sobreajuste (Tomado de \cite{brownlee2018better} pág. XXIX).}
+% 	\label{fig:overfit}
+% \end{figure}
+
+% Existen varios métodos para combatir el sobreajuste, uno sencillo es simplificar el modelo quitándole capas 
+% o disminuyendo sus dimensiones. Además de esto, existen regularizaciones que se pueden aplicar para evitar que 
+% las capas dependan exclusivamente de pocos atributos, entre esta familia los más usados son la regularización
+% L1 y L2 las cuales se definen como la suma del valor absoluto de los atributos y la suma del cuadrado de sus 
+% atributos respectivamente. Otra medida para prevenir el sobreajuste es el agrego de capas de abandono 
+% (\textit{dropout}). Estas capas desactivan neuronas de la arquitectura, obligando a 
+% estas a ser robustas y depender del comportamiento de la población, en lugar de la actividad de otras unidades 
+% específicas \cite{baldi2013dropout}. La terminación temprana (\textit{early stopping}) del entrenamiento
+% se utiliza para parar este en el momento en que el error de generalización comienza a subir, impidiendo así que 
+% se sobreentrene el modelo.
+
+% Finalmente, un buen ajuste es el resultado que se alcanza cuando tanto la curva de validación como de entrenamiento
+% presentan valores pequeños y similares, consecuentes con una correcto aprendizaje y generalización (Figura \ref{fig:good_fit}).
+
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm,clip]{Graphics/good_fit.png}
+% 	\caption{Curvas de entrenamiento con buen ajuste (Tomado de \cite{brownlee2018better} pág. XXX).}
+% 	\label{fig:good_fit}
+% \end{figure}
+
+% Otro problema observable a partir del análisis de las curvas de aprendizaje constituye la detección de conjuntos
+% de datos no representativos. Un conjunto de datos no representativo es uno que puede no 
+% capturar las características estadísticas relativas a otro conjunto de datos extraído del mismo dominio.
+% Esto puede pasar que los conjuntos de entrenamiento o de validación. En caso del conjunto de entrenamiento
+% se puede identificar si la pérdida en el conjunto de entrenamiento conlleva a una ganancia en el conjunto de 
+% validación y viceversa quedando al final con una separación entre ambos valores. En el caso del conjunto de 
+% validación se presenta como una curva ruidosa, también se puede dar el caso de que el conjunto  de validación
+% sea más fácil de predecir que el de entrenamiento, en este caso se observa como la curva de validación permanece
+% siempre por debajo de la de entrenamiento (Figura \ref{fig:unrepresentative_data}).
+
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm,clip]{Graphics/unrepresentative_dev_set.png}
+% 	\includegraphics[width=7cm,clip]{Graphics/unrepresentative_train_set.png}
+% 	\caption{Curvas de entrenamiento con datos poco representativos en el conjunto de validación (arriba)
+% 		y en el conjunto de entrenamiento (abajo) (Tomado de \cite{brownlee2018better} pág. XXXII).}
+% 	\label{fig:unrepresentative_data}
+% \end{figure}
+
+% Para combatir estos problemas se puede aumentar la cantidad de elementos en los conjuntos de entrenamiento o 
+% validación en dependencia de donde ocurra.
+
+% \subsection{Aumento de datos}
+
+% El aumento de datos consiste en acciones para aumentar la diversidad de un conjunto de datos sin recolectar
+% nuevos datos explícitamente \cite{feng2021data}. En datos continuos, como imágenes o valores numéricos el 
+% aumento de datos puede ser realizado al añadirle perturbaciones a entradas existentes, en caso de las imágenes 
+% técnicas como el volteado (\textit{flipping}) o recortado (\textit{cropping}) son usadas. Los textos son un tipo 
+% de datos discreto y, por lo tanto, las técnicas anteriores no pueden ser aplicadas directamente. Para el PLN
+% se han estudiado diversas técnicas de aumento de datos, una de estas consiste en el cambio del árbol de 
+% dependencia de la oración mediante operaciones de intercambio y borrado de nodos \cite{csahin2019data}, también se han utilizado 
+% el intercambio de palabras por sinónimos \cite{dai2020analysis} y la traducción de textos hacia un lenguaje y luego 
+% de vuelta al lenguaje origen (\textit{backtranslation}) \cite{sennrich2015improving}. 
+
+% \subsection{Aprendizaje Conjunto}
+
+% El aprendizaje conjunto (\textit{ensemble learning}) son técnicas encaminadas al aprovechamiento
+% de soluciones encontradas por diferentes modelos, combinándolas y mejorándolas para encontrar una mejor solución 
+% al problema. Estos métodos son efectivos en la reducción de la varianza y el sesgo de los modelos, obteniendo así
+% mejores resultados \cite{dietterich2002ensemble}. Una forma de este tipo de aprendizaje en problemas de 
+% clasificación constituye el voto conjunto, en donde los diferentes clasificadores votan sobre la clase a la que 
+% pertenece el elemento y, al final, se asigna la etiqueta que más votos obtuvo.
+
+% \subsection{Métodos de optimización}
+
+% El objetivo del AA es encontrar los extremos de una función de costo, este proceso es una tarea 
+% desafiante ya que la gran mayoría de estas funciones no son convexas y, por lo tanto, no existe un algoritmo
+% que asegure la convergencia hacia un extremo global. Para resolver este problema existen múltiples heurísticas,
+% la más usada es el descenso por gradiente. La idea básica consiste 
+% en el cálculo del vector gradiente de la función de error $f$ con respecto a los parámetros del modelo $x$ y, una vez se 
+% tiene dicho vector, se evalúa en la asignación actual de los parámetros $x_i$ y se realiza un corrimiento de este punto 
+% en contra del gradiente para disminuir el error (Eq. \ref{eq:gradien_descent}).
+
+% \begin{equation}
+% 	x_{i+1} = x_i - \alpha \nabla f(x_i)\label{eq:gradien_descent}
+% \end{equation}
+
+% En la ecuación \ref{eq:gradien_descent} anterior, $\alpha$ es la tasa de aprendizaje (\textit{learning rate}),
+% que cuantifica cuánto se toma del vector de gradiente para actualizar los parámetros, esto 
+% se puede ver como el aprendizaje del modelo.
+
+% Variantes eficientes de este algoritmo para el entrenamiento de modelos de AA han sido 
+% creadas, las variaciones se encuentran principalmente en la selección de $\alpha$ en cada paso y la 
+% selección de los conjuntos de datos con que se estimará el gradiente. Entre las técnicas utilizadas se 
+% encuentran Descenso por Gradiente Estocástico, variaciones de tasa de aprendizaje dinámica con 
+% sus diferentes variantes (exponencial, polinómica), RMSProp \cite{tieleman2012rmsp}
+% y Adam \cite{kingma2014adam}.
+
+% INVESTIGACIONES PREVIAS
 
 \section{Preliminares de Extracción de Argumentos}
 
@@ -1029,7 +942,7 @@ Varias investigaciones han dado respuesta a los problemas asociados a EA, mostra
 una variedad en enfoques y métodos.
 
 En \cite{palau2009argumentation} se propone
-el uso de modelos estadísticos como \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM)
+el uso de modelos como \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM)
 para la clasificación de 
 oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa. En este
 se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
@@ -1531,73 +1444,73 @@ representa. Del total de cartas, se seleccionaron las que fueran en respuesta a 
 cartas que fueron respondidas para tener una mayor concentración de cartas que fueran argumentativas, 
 esta selección está conformada por 1702 cartas, lo que representa un 59\% del total de cartas.
 
-\section{Implementación}
+% \section{Implementación}
 
-La implementación de los modelos y algoritmos de procesamiento y visualización de datos se encuentran en 
-un repositorio de GitHub\footnote{\url{https://github.com/luisoibarra/argument-mining}}. Esta implementación
-está concebida para que se pueda extender fácilmente para el uso con otros idiomas diferentes del inglés y el 
-español. Se basa en una arquitectura de procesamiento secuencial en el cual cada paso del proceso realiza
-una tarea específica y lo más desacoplada posible de las otras. Las tareas realizadas son:
+% La implementación de los modelos y algoritmos de procesamiento y visualización de datos se encuentran en 
+% un repositorio de GitHub\footnote{\url{https://github.com/luisoibarra/argument-mining}}. Esta implementación
+% está concebida para que se pueda extender fácilmente para el uso con otros idiomas diferentes del inglés y el 
+% español. Se basa en una arquitectura de procesamiento secuencial en el cual cada paso del proceso realiza
+% una tarea específica y lo más desacoplada posible de las otras. Las tareas realizadas son:
 
-\begin{itemize}
-	\item Creación del corpus en un formato estándar: dado que los corpus vienen en diferentes
-	      formas, este paso se realiza para trabajar sobre una misma representación de este.
-	\item Proyección del corpus de un lenguaje fuente a un lenguaje objetivo: en el caso de
-	      uso del trabajo se proyecta del inglés al español.
-	      \begin{itemize}
-		      \item Traducción y alineación de oraciones.
-		      \item Alineación de palabras.
-		      \item Proyección de etiquetas.
-	      \end{itemize}
-	\item Extracción y clasificación de UDAs.
-	\item Extracción y clasificación de las relaciones entre las UDAs.
-	\item Visualización de los resultados.
-\end{itemize}
+% \begin{itemize}
+% 	\item Creación del corpus en un formato estándar: dado que los corpus vienen en diferentes
+% 	      formas, este paso se realiza para trabajar sobre una misma representación de este.
+% 	\item Proyección del corpus de un lenguaje fuente a un lenguaje objetivo: en el caso de
+% 	      uso del trabajo se proyecta del inglés al español.
+% 	      \begin{itemize}
+% 		      \item Traducción y alineación de oraciones.
+% 		      \item Alineación de palabras.
+% 		      \item Proyección de etiquetas.
+% 	      \end{itemize}
+% 	\item Extracción y clasificación de UDAs.
+% 	\item Extracción y clasificación de las relaciones entre las UDAs.
+% 	\item Visualización de los resultados.
+% \end{itemize}
 
-\subsection{Herramientas}
+% \subsection{Herramientas}
 
-El lenguaje empleado para la confección del software fue Python \cite{python}, este presenta 
-una gran variedad de herramientas 
-para el trabajo con texto, visualización de datos y creación de modelos de aprendizaje profundo.
-Se utilizó tensorflow \cite{tensorflow} en su versión 2.9.2 para la construcción y entrenamiento de los modelos. 
-Para el procesamiento de los textos se utilizaron nltk \cite{nltk} y spacy \cite{spacy}, con estos se realizaron tareas
-como la extracción de tokens y oraciones del texto, la anotación de las etiquetas de partes de la oración. Se utilizaron 
-ambos paquetes para el procesamiento debido a que, en dependencia de la situación, cada uno presenta diferentes
-ventajas. En el caso de nltk, presenta algoritmos rápidos para el procesamiento de texto que no 
-requieren de muchos recursos computacionales, sin embargo, estos algoritmos no están disponibles de inmediato
-para otros lenguajes como el español. Spacy por su parte presenta algoritmos más certeros a costo 
-de mayor tiempo de procesamiento y gasto de recursos computacionales, y también presenta una cantidad mayor de lenguajes 
-disponibles. Para la visualización y manejo de los datos, y cálculo de métricas se utilizaron 
-matplotlib \cite{matplotlib}, pandas \cite{pandas} y sklearn \cite{sklearn}. 
-Para la recolección de las Cartas a la Dirección del periódico Granma se utilizó scrapy \cite{scrapy}.
-Como interfaz visual para el usuario se utilizó la herramienta Brat \cite{brat}
-(Figura \ref{fig:brat_persuasive_granma_letters}). Esta herramienta permite
-la visualización y edición de las estructuras argumentativas. Dado que Brat es una página web, esta se puede
-desplegar y permite su uso online.
+% El lenguaje empleado para la confección del software fue Python \cite{python}, este presenta 
+% una gran variedad de herramientas 
+% para el trabajo con texto, visualización de datos y creación de modelos de aprendizaje profundo.
+% Se utilizó tensorflow \cite{tensorflow} en su versión 2.9.2 para la construcción y entrenamiento de los modelos. 
+% Para el procesamiento de los textos se utilizaron nltk \cite{nltk} y spacy \cite{spacy}, con estos se realizaron tareas
+% como la extracción de tokens y oraciones del texto, la anotación de las etiquetas de partes de la oración. Se utilizaron 
+% ambos paquetes para el procesamiento debido a que, en dependencia de la situación, cada uno presenta diferentes
+% ventajas. En el caso de nltk, presenta algoritmos rápidos para el procesamiento de texto que no 
+% requieren de muchos recursos computacionales, sin embargo, estos algoritmos no están disponibles de inmediato
+% para otros lenguajes como el español. Spacy por su parte presenta algoritmos más certeros a costo 
+% de mayor tiempo de procesamiento y gasto de recursos computacionales, y también presenta una cantidad mayor de lenguajes 
+% disponibles. Para la visualización y manejo de los datos, y cálculo de métricas se utilizaron 
+% matplotlib \cite{matplotlib}, pandas \cite{pandas} y sklearn \cite{sklearn}. 
+% Para la recolección de las Cartas a la Dirección del periódico Granma se utilizó scrapy \cite{scrapy}.
+% Como interfaz visual para el usuario se utilizó la herramienta Brat \cite{brat}
+% (Figura \ref{fig:brat_persuasive_granma_letters}). Esta herramienta permite
+% la visualización y edición de las estructuras argumentativas. Dado que Brat es una página web, esta se puede
+% desplegar y permite su uso online.
 
-\begin{figure}[h]
-	\centering
-	% \includegraphics[scale=.4]{Graphics/persuasive_2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.png}
-	\includegraphics[width=7cm]{Graphics/persuasive_2019-03-22_inconformidad-con-la-chequera.png}
-	\caption{Visualización con Brat de las estructuras argumentativas.}
-	\label{fig:brat_persuasive_granma_letters}
-\end{figure}
+% \begin{figure}[h]
+% 	\centering
+% 	% \includegraphics[scale=.4]{Graphics/persuasive_2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.png}
+% 	\includegraphics[width=7cm]{Graphics/persuasive_2019-03-22_inconformidad-con-la-chequera.png}
+% 	\caption{Visualización con Brat de las estructuras argumentativas.}
+% 	\label{fig:brat_persuasive_granma_letters}
+% \end{figure}
 
-\subsection{Formato Estándar}
+% \subsection{Formato Estándar}
 
-El formato estándar creado es basado en el esquema de anotación CoNLL, donde se anotan a nivel de token todos los aspectos 
-relevantes para las tareas a realizar. La segmentación de las UDAs son representadas por las anotaciones 
-BIO o BIOES en cada palabra, en adición, las clasificaciones de estas son anotadas al adicionar el nombre 
-de esta separada por un guión. Las relaciones son anotadas auxiliándose de la distancia argumentativa, estas 
-son agregadas al anotar el tipo de relación con su respectiva distancia ambas separadas por un guión. A 
-continuación se muestran ejemplos de este formato, conformado por el token, su clasificación BIOES, su clasificación
-UDA, y las relaciones representadas por su clasificación y su distancia argumentativa:
+% El formato estándar creado es basado en el esquema de anotación CoNLL, donde se anotan a nivel de token todos los aspectos 
+% relevantes para las tareas a realizar. La segmentación de las UDAs son representadas por las anotaciones 
+% BIO o BIOES en cada palabra, en adición, las clasificaciones de estas son anotadas al adicionar el nombre 
+% de esta separada por un guión. Las relaciones son anotadas auxiliándose de la distancia argumentativa, estas 
+% son agregadas al anotar el tipo de relación con su respectiva distancia ambas separadas por un guión. A 
+% continuación se muestran ejemplos de este formato, conformado por el token, su clasificación BIOES, su clasificación
+% UDA, y las relaciones representadas por su clasificación y su distancia argumentativa:
 
-\begin{itemize}
-	\item Elemento fuera de una UDA: $an\text{á}lisis \quad O$
-	\item UDA intermedia con una relación: $contribuye \quad I-Premise-attacks-5$
-	\item Inicio de UDA con dos relaciones: $atletas \quad B-Claim-attacks--1-attacks-12$
-\end{itemize}
+% \begin{itemize}
+% 	\item Elemento fuera de una UDA: $an\text{á}lisis \quad O$
+% 	\item UDA intermedia con una relación: $contribuye \quad I-Premise-attacks-5$
+% 	\item Inicio de UDA con dos relaciones: $atletas \quad B-Claim-attacks--1-attacks-12$
+% \end{itemize}
 
 \section{Experimentación}
 
@@ -1606,13 +1519,15 @@ las arquitecturas e hiperparámetros de los modelos propuestos. La mejor combina
 para el entrenamiento de los corpus restantes. Finalmente, los modelos fueron utilizados para anotar las Cartas 
 a la Dirección. 
 
-\subsection{Hardware}
+% \subsection{Hardware}
 
-Gran parte del procesamiento se llevo a cabo en una computadora $i5$ con $8GB$ de RAM ampliada con $4GB$ de memoria 
-\textit{swap} \cite{swap}, aunque se requirió el uso de la plataforma Colab \cite{colab} para 
-el entrenamiento de algunos modelos por falta de recursos locales.
+% Gran parte del procesamiento se llevo a cabo en una computadora $i5$ con $8GB$ de RAM ampliada con $4GB$ de memoria 
+% \textit{swap} \cite{swap}, aunque se requirió el uso de la plataforma Colab \cite{colab} para 
+% el entrenamiento de algunos modelos por falta de recursos locales.
 
 \subsection{Segmentador de UDA}
+
+% TODO Resumir esto de seleccion de modelo
 
 En el entrenamiento del segmentador de UDA se hicieron variaciones en la arquitectura propuesta con respecto a la
 presencia o no de las siguientes componentes, presentando cuatro candidatos (Tabla \ref{table:segmenter_architecture_table}):
@@ -1716,6 +1631,8 @@ en Tabla \ref{table:test_metrics_segmenter} y Tabla \ref{table:test_bioes_metric
 
 \subsection{Predictor de Enlaces}
 
+% TODO Resumir esto de seleccion de modelo
+
 Para el modelo se realizó un voto conjunto del ensamblado de 3 modelos, dado que el entrenamiento 
 está basado en la aleatoriedad, se entrenan los modelos con los mismos datos obteniendo inferencias no
 necesariamente iguales.
@@ -1764,7 +1681,6 @@ muestran que el modelo 2 constituye una opción ligeramente superior en lo corre
 predicción de enlace a los otros modelos. Esos hiperparámetros
 fueron utilizados para el entrenamiento con los demás conjuntos de datos.
 
-% TODO Fix
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=7cm]{Graphics/persuasive_essays_all_linked_all_relation_f1_scores.png}\\
@@ -1846,15 +1762,15 @@ y \ref{table:test_source_metrics_link_predictor}.
 	\caption{\label{table:test_target_metrics_link_predictor}Métricas de predicción de objetivo de las pruebas del predictor de enlace.}
 \end{table}
 
-\subsection{Acoplamiento de los modelos}
+% \subsection{Acoplamiento de los modelos}
 
-Dado que la clasificación de UDAs es hecha tanto en el segmentador como en el predictor de enlaces, es necesaria 
-la selección de cómo se va a desambiguar esta clasificación. En caso de seleccionar el predictor de enlaces como 
-clasificador final, surgen varias cuestiones, como por ejemplo, que las UDAs pueden tomar varias clasificaciones o el
-predictor no toma el contexto del texto completo en la clasificación. Aunque la primera puede ser corregida
-mediante la selección de la clase más votada o algún otro criterio, la segunda presenta un mayor problema. Por
-esto es seleccionada la clasificación del segmentador como etiqueta final para las UDAs y el predictor es usado para 
-la tarea de extracción y clasificación de relaciones.
+% Dado que la clasificación de UDAs es hecha tanto en el segmentador como en el predictor de enlaces, es necesaria 
+% la selección de cómo se va a desambiguar esta clasificación. En caso de seleccionar el predictor de enlaces como 
+% clasificador final, surgen varias cuestiones, como por ejemplo, que las UDAs pueden tomar varias clasificaciones o el
+% predictor no toma el contexto del texto completo en la clasificación. Aunque la primera puede ser corregida
+% mediante la selección de la clase más votada o algún otro criterio, la segunda presenta un mayor problema. Por
+% esto es seleccionada la clasificación del segmentador como etiqueta final para las UDAs y el predictor es usado para 
+% la tarea de extracción y clasificación de relaciones.
 
 \subsection{Comparación con el estado del arte}
 
@@ -2167,10 +2083,11 @@ de métodos que tomen esto en cuenta, una variante podría ser las \textit{Graph
 
 \section*{Agradecimientos}
 
-Los siguientes párrafos llevan una sangría en la primera línea de
-0,5 cm. El resto del texto vendrá con fuente Times New Roman
-tamaño 11 y justificado por ambos lados.
-
+Este trabajo tributa a "Dinámicas sociales, políticas y económicas en el discurso público 
+en Cuba de principio del siglo XXI: estudios de CORESPUC". Proyecto 
+asociado al Programa Nacional de Ciencia y Técnica "Las Ciencias Sociales y las humanidades. 
+Desafíos ante la estrategia de desarrollo de la sociedad cubana", Código PN223LH011-011, Ministerio
+de Ciencia, Tecnología y Medio Ambiente (CITMA), Cuba, 2021-2023.
 
 \bibliographystyle{fullname_esp}
 \bibliography{EjemploARTsepln}
