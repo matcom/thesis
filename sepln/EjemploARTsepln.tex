@@ -25,35 +25,40 @@ luise98cu@gmail.com, damian@correo.com\\ % TODO poner el correo de Damian
 
 \seplntranstitle{Automatic argument extraction in opinion texts in cuban press}
 
-\seplnclave{Extracción de argumentos, } % TODO Seguir en esto
+\seplnclave{Extracción de argumentos, procesamiento de lenguaje natural, aprendizaje profundo.} % TODO Seguir en esto
 
-\seplnresumen{El estudio de la argumentación en la prensa cubana es un campo en donde se han reportado
-relativamente pocas investigaciones.
-Este problema tradicionalmente es resuelto mediante 
-una anotación manual por expertos en lingüística, trabajo que se 
-caracteriza por tomar mucho tiempo y recursos. El presente trabajo propone y 
-muestra los resultados de aplicar algoritmos de aprendizaje profundo al campo de la Extracción de Argumentos.
-Se presentan dos modelos encargados de la extracción y clasificación de las estructuras argumentativas presentes
-en las ``Cartas a la Dirección'' del periódico cubano Granma. Los resultados obtenidos en la extracción de 
-unidades de discurso argumentativas (UDA) alcanzaron valores de
+\seplnresumen{
+La Extracción de Argumentos es un problema que tradicionalmente es resuelto mediante la anotación
+manual de expertos en lingüística, trabajo que se caracteriza por tomar mucho tiempo y recursos. 
+El presente trabajo propone y muestra los resultados de aplicar algoritmos de aprendizaje profundo 
+al campo de la Extracción de Argumentos en la prensa cubana, en donde dichos estudios son escasos.
+Para esto se presenta un programa capaz de: 1) crear conjuntos de datos a partir de otros idiomas para
+el entrenamiento de modelos, 2) entrenar los modelos propuestos y 3) realizar
+la anotación automática de las unidades de discurso argumentativas (UDA).
+De los conjuntos de datos disponibles, se realiza un análisis en el que se exponen las ventajas y 
+deficiencias de cada uno para la anotación de las ``Cartas a la Dirección'' del periódico cubano Granma. 
+Los resultados obtenidos en la extracción UDAs alcanzaron valores de
 0,82 en la métrica F1 comparados con 0,85 obtenidos en el estado del arte. 
 En las demás tareas, los resultados no son directamente comparables con los del estado del arte, 
 los mejores valores F1 obtenidos fueron 0,56 en la clasificación de UDAs, 0,74 en la predicción
 de enlaces y 0,39 en la clasificación de enlaces.}
 
 
-\seplnkey{Argument extraction, } % TODO Seguir en esto
+\seplnkey{Argument extraction, natural language processing, deep learning.} % TODO Seguir en esto
 
 \seplnabstract{
-	The study of argumentation in the Cuban press is a field in which relatively little research has been reported.
-    This problem is traditionally solved by means of by manual annotation by linguistic experts, which is a time-consuming and resource-intensive task. and resources. 
-    This paper proposes and shows the results of applying deep learning algorithms to the field of Argument Extraction. 
-    Two models are presented for the extraction and classification of the argumentative structures present
-    in the ``Letters to the Management'' of the Cuban newspaper Granma. The results obtained in the extraction of 
-    argumentative discourse units (ADU) reached values of
-    0.82 in metric F1 compared to 0.85 obtained in the state of the art. 
-    In the other tasks, the results are not directly comparable with those of the state of the art, the best F1 values obtained were 0.56 in ADU classification, 
-    0.74 in link prediction and 0.39 in link prediction. prediction and 0.39 in link classification.
+	Argument Extraction is a problem that is traditionally solved by manual annotation by linguistic 
+	experts, a work that takes a lot of time and resources. This paper proposes and shows the results 
+	of applying deep learning algorithms to the field of Argument Extraction in the Cuban press, where 
+	such studies are scarce. For this purpose, a program capable of: 1) creating data sets from other 
+	languages for model training, 2) training the proposed models and 3) performing the automatic 
+	annotation of argumentative discourse units (ADUs) is presented. From the available datasets, an 
+	analysis is carried out in which the advantages and deficiencies of each one for the annotation of
+	the ``Letters to the Management'' of the Cuban newspaper Granma are exposed. The results obtained 
+	in the ADUs extraction reached values of 0.82 in the F1 metric compared to 0.85 obtained in the 
+	state of the art. In the other tasks, the results are not directly comparable with those of the 
+	state of the art, the best F1 values obtained were 0.56 in ADUs classification, 0.74 in link 
+	prediction and 0.39 in link classification.
 }
 
 \firstpageno{1}
@@ -64,7 +69,7 @@ de enlaces y 0,39 en la clasificación de enlaces.}
 % la siguiente instrucción sólo se debe usar si el abstract sobrescribe el texto
 % la longitud variará según se necesite
 
-\setlength\titlebox{20cm} % se aumenta el tamaño del espacio reservado para datos de título
+\setlength\titlebox{21cm} % se aumenta el tamaño del espacio reservado para datos de título
 
 
 \label{firstpage} \maketitle
@@ -83,18 +88,21 @@ de enlaces y 0,39 en la clasificación de enlaces.}
 La argumentación es una actividad verbal, social y racional destinada a convencer 
 a un crítico razonable de la aceptabilidad de un punto de vista mediante la presentación 
 de una constelación de proposiciones que justifican o refutan la proposición expresada 
-en el punto de vista \cite{van2004systematic}. Esta definición concentra en ella 
-partes esenciales de lo que es la argumentación, dicha actividad se encuentra presente
-en varias facetas de la cotidianedad humana, como en la escritura o lectura de documentos y
-en las interacciones sociales de las personas. En resumen, la argumentación está presente 
-cada vez que se plantea un argumento y se trata de que este triunfe en un debate donde 
-se exponen elementos que lo apoyen.   
+en el punto de vista \cite{van2004systematic}. 
+% Esta definición concentra en ella 
+% partes esenciales de lo que es la argumentación, dicha actividad se encuentra presente
+% en varias facetas de la cotidianedad humana, como en la escritura o lectura de documentos y
+% en las interacciones sociales de las personas. En resumen, la argumentación está presente 
+% cada vez que se plantea un argumento y se trata de que este triunfe en un debate donde 
+% se exponen elementos que lo apoyen.
 
-En la actualidad es necesario tener acceso a la información
-de forma rápida y simple. Esto no siempre es posible dado la gran cantidad de información existente y
-que es generada en cada momento. En caso de tener una vía de acceder a esta, se podrían realizar acciones
-con mayor rapidez y calidad. Con la argumentación, se podría hacer explícitas las razones de las personas 
-al afirmar algo sobre un tema teniendo así su punto de vista individual, y con suficientes personas, colectivo.
+
+
+% En la actualidad es necesario tener acceso a la información
+% de forma rápida y simple. Esto no siempre es posible dado la gran cantidad de información existente y
+% que es generada en cada momento. En caso de tener una vía de acceder a esta, se podrían realizar acciones
+% con mayor rapidez y calidad. Con la argumentación, se podría hacer explícitas las razones de las personas 
+% al afirmar algo sobre un tema teniendo así su punto de vista individual, y con suficientes personas, colectivo.
 
 % Antecedentes del problema, justificación y motivación. 
 % Antecedentes: 
@@ -105,14 +113,12 @@ al afirmar algo sobre un tema teniendo así su punto de vista individual, y con 
 %   Se quiere hacer el trabajo automatico.
 %   El proyecto esta integrado en un proyecto nacional  reconocido CORESPUC
 
-Varias tareas en el Procesamiento de Lenguaje Natural (PLN) se han desarrollado en 
-torno a diferentes problemas relacionados con 
-la argumentación. Entre tales tareas se encuentran: el minado de opiniones, el cual es el 
-estudio computacional de las opiniones, sentimientos y emociones expresadas en un texto 
-\cite{liu2010sentiment}, la detección de controversias, enfocada en la identificación de 
-temas y textos en donde puntos de vista conflictivos están presentes; y también la zonificación
-argumentativa que clasifica las oraciones por su rol argumentativo dentro de un artículo
-científico. Estas tareas solamente muestran cuáles opiniones, puntos de conflictos y roles 
+Varias tareas en el Procesamiento de Lenguaje Natural (PLN) se han desarrollado alrededor
+de diferentes problemas relacionados con 
+la argumentación. Entre tales tareas se encuentran: el minado de opiniones, sentimientos y 
+emociones expresadas en un texto 
+\cite{liu2010sentiment}, la detección de controversias, y la zonificación
+argumentativa. Estas tareas solamente muestran cuáles opiniones, puntos de conflictos y roles 
 de argumentos 
 presenta el texto, pero lo realizan de manera separada y no muestran el porqué de estas. 
 Para lograr extraer esta información faltante es necesario realizar un 
@@ -175,31 +181,39 @@ con los resultados obtenidos.
 Se propone la construcción de un programa capaz de realizar la extracción de los textos del periódico Granma, 
 en específico, se enfoca en su sección de Cartas a la Dirección. Para la extracción
 de argumentos se presentan dos modelos, el primero se encarga de la segmentación y clasificación
-de las componentes argumentativas. Este es un modelo secuencia a secuencia en el cual las palabras 
-son vectorizadas por sus características morfológicas mediante el uso de redes neuronales convolucionales
-(CNN) y \textit{Long Short Term Memory} (LSTM), por su información
-semántica mediante \textit{embeddings} \textit{Global Vectors} (GloVe) y por su información 
-estructural mediante su parte de la oración, estas 
-secuencias son procesadas por una red LSTM bidireccional y sus atributos son usados por una capa 
-de \textit{Conditional Random Field} (CRF)
-para su clasificación final en etiquetas B (inicio de segmento), I (dentro del segmento), O (afuera de segmento), 
-E (fin de segmento) y S (segmento de un elemento) (BIOES) con información adicional para la clasificación de las 
-unidades de discurso argumentativas (UDA). El segundo modelo está encargado de la extracción y clasificación 
-de las relaciones entre las UDAs. En él se utilizan las representaciones GloVe de las palabras en las secuencias 
-y su distancia argumentativa para la clasificación de una tupla en la que su primer elemento 
-constituye el texto candidato de donde parte la relación o fuente y el segundo, el texto candidato a recibir la 
-relación u objetivo, en el tipo de relación existente entre estos elementos. La entrada es procesada mediante 
-una LSTM bidireccional y módulos de atención cruzada entre los elementos de la fuente y los elementos del objetivo.
-Para la visualización se crea un ambiente de desarrollo con la herramienta Brat \cite{brat}, la cual permite realizar las 
-tareas requeridas a los datos anotados por los modelos.
+de las componentes argumentativas mediante la clasificación de los tokens en etiquetas BIOES que 
+delimitan y clasifican las unidades de discurso argumentativas (UDA), en el segundo se clasifica 
+una tupla en la que su primer elemento constituye el texto candidato de donde parte la relación 
+o fuente y el segundo, el texto candidato a recibir la 
+relación u objetivo, en el tipo de relación existente entre estos elementos. Los modelos utilizan 
+redes neuronales convolucionales (CNN), \textit{Long Short Term Memory} (LSTM) y \textit{Conditional Random Field} (CRF)
+como elementos principales en sus arquitecturas, además se emplean los vectores GloVe para la representación
+de las palabras.
 
-En resumen, se presenta un estudio de la argumentación en español al realizar la extracción de 
-argumentos en prensa, tributando además conjuntos de datos anotados en español que puede servir
-para un estudio más profundo sobre los esquemas argumentativos presentes en estos textos.
+% Este es un modelo secuencia a secuencia en el cual las palabras 
+% son vectorizadas por sus características morfológicas mediante el uso de redes neuronales convolucionales
+% (CNN) y \textit{Long Short Term Memory} (LSTM), por su información
+% semántica mediante \textit{embeddings} \textit{Global Vectors} (GloVe) y por su información 
+% estructural mediante su parte de la oración, estas 
+% secuencias son procesadas por una red LSTM bidireccional y sus atributos son usados por una capa 
+% de \textit{Conditional Random Field} (CRF)
+% para su clasificación final en etiquetas BIOES, con información adicional para la clasificación de las 
+% unidades de discurso argumentativas (UDA). El segundo modelo está encargado de la extracción y clasificación 
+% de las relaciones entre las UDAs. En él se utilizan las representaciones GloVe de las palabras en las secuencias 
+% y su distancia argumentativa para la clasificación de una tupla en la que su primer elemento 
+% constituye el texto candidato de donde parte la relación o fuente y el segundo, el texto candidato a recibir la 
+% relación u objetivo, en el tipo de relación existente entre estos elementos. La entrada es procesada mediante 
+% una LSTM bidireccional y módulos de atención cruzada entre los elementos de la fuente y los elementos del objetivo.
+% Para la visualización se crea un ambiente de desarrollo con la herramienta Brat\footnote{\url{https://brat.nlplab.org/}},
+% la cual permite realizar las tareas requeridas a los datos anotados por los modelos.
 
-% Estructura del trabajo
+% En resumen, se presenta un estudio de la argumentación en español al realizar la extracción de 
+% argumentos en prensa, tributando además conjuntos de datos anotados en español que puede servir
+% para un estudio más profundo sobre los esquemas argumentativos presentes en estos textos.
 
-El artículo se encuentra dividido en cuatro secciones. Primero se presentan las definiciones 
+% Estructura del trabajo % TODO para el final
+
+El artículo se encuentra dividido en varias secciones. Primero se presentan las definiciones 
 necesarias para una introducción al tema de la argumentación y la EA. Luego se presentan 
 algunas investigaciones previas en el dominio de la EA con una discusión de sus distintas 
 ventajas y desventajas y además se introduce la proyección de conjuntos de datos. Más adelante 
@@ -212,18 +226,27 @@ recomendaciones del trabajo.
 
 \section{Argumentación}
 
-La argumentación es un tema tratado desde la antigüedad, Aristóteles lo defendía como la 
-habilidad de, dada una pregunta, considerar los elementos útiles para persuadir a alguien, algo
-similar a la retórica. De una perspectiva más contemporánea surgen las ideas de 
-\cite{perelman1969rhetoric}
+Para el estudio de la argumentación han surgido algunos enfoques que componen un marco teórico 
+en donde se sustentan las investigaciones. Las ideas de \cite{perelman1969rhetoric} están
 enfocadas en un análisis de la retórica en donde se estipula que la teoría de la argumentación
 responde a provocar o aumentar la adhesión de las personas a las tesis presentadas, por medio de 
-técnicas discursivas. En 
-\cite{toulmin_2003}
-se considera como argumento todo aquello que ofrece, 
+técnicas discursivas. En \cite{toulmin_2003} se considera como argumento todo aquello que ofrece, 
 o todo lo que es utilizado, para justificar o refutar una proposición. En este último, se toma 
 una perspectiva más racional y deductiva de la argumentación, dando como resultado lo que se 
-conoce como el Método de Toulmin. 
+conoce como el Método de Toulmin.
+
+% La argumentación es un tema tratado desde la antigüedad, Aristóteles lo defendía como la 
+% habilidad de, dada una pregunta, considerar los elementos útiles para persuadir a alguien, algo
+% similar a la retórica. De una perspectiva más contemporánea surgen las ideas de 
+% \cite{perelman1969rhetoric}
+% enfocadas en un análisis de la retórica en donde se estipula que la teoría de la argumentación
+% responde a provocar o aumentar la adhesión de las personas a las tesis presentadas, por medio de 
+% técnicas discursivas. En 
+% \cite{toulmin_2003}
+% se considera como argumento todo aquello que ofrece, 
+% o todo lo que es utilizado, para justificar o refutar una proposición. En este último, se toma 
+% una perspectiva más racional y deductiva de la argumentación, dando como resultado lo que se 
+% conoce como el Método de Toulmin. 
 
 \subsection{Método de Toulmin}
 
@@ -236,24 +259,25 @@ Las justificaciones pueden estar explícitas o implícitas y son suposiciones qu
 fundamentos con las afirmaciones, estas a su vez pueden ser respaldadas por conocimiento.
 El esquema introduce la posibilidad de otra situación válida a la establecida en las afirmaciones
 mediante la refutación. Los calificadores son usados para dar más información de la calidad o seguridad
-de las afirmaciones dadas. Un ejemplo\footnote{Extraído de
-	\cite{toulminArgument}.
-} de este esquema es:
+de las afirmaciones dadas. 
+% Un ejemplo\footnote{Extraído de
+% 	\cite{toulminArgument}.
+% } de este esquema es:
 
-\begin{adjustwidth}{25pt}{25pt}
-	[\textit{Se escucharon ladridos y aullidos en la distancia}]$_{\mathrm{fundamento}}$, 
-	[\textit{probablemente}]$_{\mathrm{calificador}}$
-	[\textit{haya perros en las cercanías}]$_{\mathrm{\text{afirmación}}}$.
-\end{adjustwidth}
+% \begin{adjustwidth}{25pt}{25pt}
+% 	[\textit{Se escucharon ladridos y aullidos en la distancia}]$_{\mathrm{fundamento}}$, 
+% 	[\textit{probablemente}]$_{\mathrm{calificador}}$
+% 	[\textit{haya perros en las cercanías}]$_{\mathrm{\text{afirmación}}}$.
+% \end{adjustwidth}
 
-En este ejemplo, además de las partes explícitas, se encuentran partes implícitas como la justificación 
-(\textit{los perros son animales que ladran y aúllan}), el respaldo (\textit{se sabe que existen perros en la zona}) y 
-la refutación (\textit{puede ser que hayan lobos o coyotes cerca}).
+% En este ejemplo, además de las partes explícitas, se encuentran partes implícitas como la justificación 
+% (\textit{los perros son animales que ladran y aúllan}), el respaldo (\textit{se sabe que existen perros en la zona}) y 
+% la refutación (\textit{puede ser que hayan lobos o coyotes cerca}).
 
-Este método crea una definición compacta que ayuda a los investigadores a enfocar su búsqueda 
-en las diferentes categorías definidas. Además, engloba de manera comprensible un tema tan complejo 
-como la argumentación al tomar en cuenta gran parte de los elementos presentes en el razonamiento
-realizado para llegar a conclusiones, incorporando incluso elementos probabilísticos en el proceso. 
+% Este método crea una definición compacta que ayuda a los investigadores a enfocar su búsqueda 
+% en las diferentes categorías definidas. Además, engloba de manera comprensible un tema tan complejo 
+% como la argumentación al tomar en cuenta gran parte de los elementos presentes en el razonamiento
+% realizado para llegar a conclusiones, incorporando incluso elementos probabilísticos en el proceso. 
 
 \subsection{Rasgos lingüísticos}
 
@@ -282,14 +306,12 @@ En
 se determinan 16 categorías y 51 rasgos lingüísticos, dando una idea 
 de la gran variedad de marcadores presentes en la argumentación.
 
-\section{Extracción de Argumentos}
+\section{Extracción de Argumentos} %% RESUMED
 
 La EA constituye la identificación y extracción 
 automática de las estructuras de inferencia y 
 razonamiento expresadas como argumentos presentes en el lenguaje natural \cite{lawrence2020argument}.
-En la actualidad, tareas del PLN como el análisis de sentimientos permiten 
-extraer cuáles son las opiniones o sentimientos presentes, sin embargo, este análisis presenta una falta 
-de información, ya que no justifica el porqué de las opiniones. La EA permite dar respuesta a este problema presentando
+La EA permite dar respuesta a este problema presentando
 los argumentos y cómo sus relaciones justifican las posiciones del hablante. Dicho problema está constituido por diferentes 
 estructuras y se compone de distintas tareas necesarias para su solución.
 
@@ -310,64 +332,24 @@ razones que la justifican o refutan, y en las relaciones de ataque y apoyo.
 Dada la definición de estructuras argumentativas y que el objetivo de la EA es extraerlas,
 se conciben las siguientes tareas principales:
 
-\subsubsection{Extracción de UDAs}
+\begin{itemize}
+	\item Extracción de UDAs: Separar los segmentos de texto que formarán parte de la UDA.
+	\item Clasificación de UDAs: Asignar una categoría argumentativa a la UDA segmentada.
+	\item Extracción de relaciones entre las UDAs: Determinar si están relacionadas las UDAs o no.
+	\item Clasificación de relaciones entre las UDAs: Asignar una categoría a la relación extraída.
+\end{itemize}
 
-Consiste en la separación de los segmentos de texto que formarán parte de la estructura.
-En este proceso el texto es segmentado y se obtiene un conjunto de UDAs. En el siguiente 
-ejemplo\footnote{Traducido del corpus de
-	\cite{stab2017parsing}
-	.} se representa 
-la extracción de UDAs marcadas en \textit{cursiva} de un texto dado:
-
-\begin{adjustwidth}{25pt}{25pt}
-	En primer lugar, [\textit{el correo electrónico puede contar como uno de los resultados
-				más beneficiosos de la tecnología moderna}]. [\textit{Años atrás, las personas pagaban gran cantidad de dinero para
-		enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
-		causar problemas que causarían que el correo no fuera enviado}].
-\end{adjustwidth}
-
-\subsubsection{Clasificación de UDAs}
-
-La clasificación de UDAs consiste en asignarle la categoría que toma la UDA en la argumentación. En general, 
-las clasificaciones parten de dos clases bases, las afirmaciones y premisas, aunque estas pueden ser tantas
-como sea necesario por el problema específico a tratar. Siguiendo con el ejemplo, se observa la clasificación
-en afirmación y premisa asignada a los segmentos extraídos en el paso anterior:
+A continuación se presenta un ejemplo en donde se encuentran realizadas dichas tareas, clasificando
+las UDAs en afirmación y premisa y la relación en apoyo:
 
 \begin{adjustwidth}{25pt}{25pt}
 	En primer lugar, [\textit{el correo electrónico puede contar como uno de los resultados
-				más beneficiosos de la tecnología moderna}]$_{\mathrm{\text{Afirmación}}}$. [\textit{Años atrás, las personas pagaban gran cantidad de dinero para
-				enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
-				causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa}}$.
-\end{adjustwidth}
-
-\subsubsection{Extracción de relaciones entre las UDAs}
-
-La extracción de relaciones constituye el paso donde se determina si están relacionadas las UDAs o no. 
-La disposición de estas relaciones forma el proceso de razonamiento en que se basa el autor para validar 
-su posición. En el ejemplo se representa la existencia de relación mediante su distancia argumentativa con 
-la UDA con la que se relaciona. La distancia argumentativa es la cantidad de UDAs del texto que separan la 
-UDA fuente del objetivo \cite{galassi2021deep}, en caso de ser negativa (positiva) el objetivo se encuentra 
-antes (después) que la fuente.
-
-\begin{adjustwidth}{25pt}{25pt}
-	En primer lugar, [\textit{el correo electrónico puede contar como uno de los resultados
-				más beneficiosos de la tecnología moderna}]$_{\mathrm{\text{Afirmación}}}$. [\textit{Años atrás, las personas pagaban gran cantidad de dinero para
-				enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
-				causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa, -1}}$.
-\end{adjustwidth}
-
-\subsubsection{Clasificación de relaciones entre las UDAs}
-
-La clasificación de las relaciones consiste en clasificar las relaciones extraídas en las categorías pertinentes.
-Los tipos de relaciones, nacen de dos clases bases por lo general, las relaciones de apoyo y de ataque.
-Las de apoyo son aquellas en las que la UDA fuente afirme la UDA objetivo, las de ataque son 
-las que la UDA fuente apoya la negación de la UDA objetivo.
-
-\begin{adjustwidth}{25pt}{25pt}
-	En primer lugar, [\textit{el correo electrónico puede contar como uno de los resultados
-				más beneficiosos de la tecnología moderna}]$_{\mathrm{\text{Afirmación}}}$. [\textit{Años atrás, las personas pagaban gran cantidad de dinero para
-				enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
-				causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa, -1, apoyo}}$.
+	más beneficiosos de la tecnología moderna}]$_{\mathrm{\text{Afirmación}}}$. [\textit{Años atrás, las personas pagaban gran cantidad de dinero para
+	enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
+	causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa, -1, apoyo}}$
+	\footnote{El -1 representa la distancia argumentativa, que es la cantidad de UDAs del texto que separan la 
+	UDA fuente del objetivo \cite{galassi2021deep}, en caso de ser negativa (positiva) el objetivo se encuentra 
+	antes (después) que la fuente.}.
 \end{adjustwidth}
 
 Partiendo de esto, se puede observar que las estructuras argumentativas de un texto constituyen un grafo dirigido 
@@ -936,7 +918,7 @@ relaciones entre las UDAs. Dichos vértices se anotan con el tipo de relación e
 
 % INVESTIGACIONES PREVIAS
 
-\section{Preliminares de Extracción de Argumentos}
+\subsection{Preliminares de Extracción de Argumentos} %% TODO MISSING RESUMED
 
 Varias investigaciones han dado respuesta a los problemas asociados a EA, mostrando
 una variedad en enfoques y métodos.
@@ -1024,7 +1006,7 @@ En cambio un enfoque \textit{end-to-end} poseen la habilidad de modelar el probl
 desde su inicio hasta su final de manera conjunta, mediante \textit{Multi-Task Learning} (MTL) se modelan
 las tareas de manera conjunta creando un solo modelo complejo con una propagación de error menor.
 
-\section{Proyección de corpus}
+\subsection{Proyección de corpus} %% RESUMED % TODO No hacerlo seccion
 
 La EA no presenta una gran cantidad de datos anotados con los cuales se pueda realizar 
 un entrenamiento, además de esto la gran mayoría de corpus existentes se encuentran en lenguajes como inglés o alemán,
@@ -1040,139 +1022,175 @@ lenguaje objetivo. En \cite{eger2018cross} se propone un algoritmo de proyecció
 palabras. El proceso se divide en varias partes:
 
 \begin{enumerate}
-	\item Traducción de oraciones.
-	\item Alineación de palabras.
-	\item Proyección de etiquetas.
+	\item Traducción automática de oraciones: Consiste en el proceso de
+	traducir texto de un lenguaje fuente a un lenguaje objetivo sin la intervención humana.
+	\item Alineación de palabras: Consiste en encontrar las palabras generadas en el lenguaje objetivo por las 
+	palabras en el lenguaje fuente.
+	\item Proyección de etiquetas: Consiste en transportar las etiquetas de las palabras en la secuencia origen
+	hacia las palabras de la secuencia destino tomando como datos las alineaciones entre estas.
 \end{enumerate}
 
-\subsection{Traducción de oraciones}
+% A continuación se presentan dos ejemplos\footnote{Extraído del corpus de \cite{stab2017parsing}.} del 
+% procedimiento descrito. En estos se observa el proceso de alineación
+% de los índices de los tokens en inglés con sus respectivos tokens en español, esta relación puede ser de 
+% muchos a muchos y no necesariamente se conserva el orden de las palabras. Luego se observa el paso de 
+% etiquetas del lenguaje fuente al objetivo basadas en la información de la alineación. 
 
-La Traducción Automática consiste en el proceso de usar inteligencia artificial para
-traducir texto de un lenguaje fuente a un lenguaje objetivo sin la intervención humana.
-En la actualidad, este campo ha dado un gran paso pasando de modelos estadísticos a modelos
-neuronales obteniendo traducciones de una alta calidad sin variar significativamente de la humana, 
-condición necesaria para una buena proyección \cite{eger2018cross}.
+% \begin{adjustwidth}{25pt}{25pt}
+% 	Firstly$_0$ ,$_1$ people$_2$ normally$_3$ have$_4$ lots$_5$ of$_6$ things$_7$ to$_8$ do$_9$ .$_{10}$ \\\\
+% 	En primer$_0$ lugar$_0$ ,$_1$ la gente$_2$ normalmente$_3$ tiene$_4$ muchas$_5$ cosas$_7$ que$_8$ hacer$_9$ .$_{10}$
+% \end{adjustwidth}
+% \text{}\newline
+% \begin{adjustwidth}{25pt}{25pt}
+% 	Firstly$_O$ ,$_O$ people$_B$ normally$_I$ have$_I$ lots$_I$ of$_I$ things$_I$ to$_I$ do$_I$ .$_O$ \\\\
+% 	En$_O$ primer$_O$ lugar$_O$ ,$_O$ la$_O$ gente$_B$ normalmente$_I$ tiene$_I$ muchas$_I$ cosas$_I$ que$_I$ hacer$_I$ .$_O$
+% \end{adjustwidth}
 
-Este primer paso de la proyección de corpus consiste en traducir todas las oraciones existentes 
-en el conjunto de datos hacia el lenguaje objetivo. 
-A continuación se muestra una oración en inglés y su traducción al español\footnote{Extraído del corpus de \cite{stab2017parsing}.}:
 
-\begin{adjustwidth}{25pt}{25pt}
-	Firstly , people normally have lots of things to do . \\
-	En primer lugar , la gente normalmente tiene muchas cosas que hacer .
-\end{adjustwidth}
+% \subsection{Traducción de oraciones}
 
-\subsection{Alineación de palabras}
+% La Traducción Automática consiste en el proceso de usar inteligencia artificial para
+% traducir texto de un lenguaje fuente a un lenguaje objetivo sin la intervención humana.
+% En la actualidad, este campo ha dado un gran paso pasando de modelos estadísticos a modelos
+% neuronales obteniendo traducciones de una alta calidad sin variar significativamente de la humana, 
+% condición necesaria para una buena proyección \cite{eger2018cross}.
 
-La alineación de palabras consiste en encontrar las palabras generadas en el lenguaje objetivo por las 
-palabras en el lenguaje fuente.
-Algoritmos basado en modelos bayesianos, como FastAlign \cite{dyer2013fastalign}, 
-y Cadenas de Markov-Monte Carlo, como EFEMARAL \cite{ostling2016efficient} se ubican entre
-las primeras herramientas para la solución del problema. 
-Modelos más recientes se han enfocado en explotar las representaciones
-vectoriales de palabras y el uso de métodos de atención para la extracción de las
-alineaciones \cite{dou2021word}. Algunas consideraciones sobre el proceso: las relaciones 
-formadas entre palabras pueden ser de tipo muchos a muchos, además de no tener el mismo orden de la 
-oración inicial o incluso no estar relacionadas directamente con una palabra en la oración objetivo.
-Estas consideraciones dan una medida de la dificultad de la tarea en cuestión.
-En el ejemplo siguiente se observa el resultado de las herramientas de alineación, en este 
-las palabras en el idioma de origen (inglés) están anotadas con su posición en la oración y 
-las palabras en el idioma objetivo (español) están anotadas con la posición de la palabra que 
-la originó en el idioma origen:
+% Este primer paso de la proyección de corpus consiste en traducir todas las oraciones existentes 
+% en el conjunto de datos hacia el lenguaje objetivo. 
+% A continuación se muestra una oración en inglés y su traducción al español\footnote{Extraído del corpus de \cite{stab2017parsing}.}:
 
-\begin{adjustwidth}{25pt}{25pt}
-	Firstly$_0$ ,$_1$ people$_2$ normally$_3$ have$_4$ lots$_5$ of$_6$ things$_7$ to$_8$ do$_9$ .$_{10}$ \\
-	En primer$_0$ lugar$_0$ ,$_1$ la gente$_2$ normalmente$_3$ tiene$_4$ muchas$_5$ cosas$_7$ que$_8$ hacer$_9$ .$_{10}$
-\end{adjustwidth}
+% \begin{adjustwidth}{25pt}{25pt}
+% 	Firstly , people normally have lots of things to do . \\
+% 	En primer lugar , la gente normalmente tiene muchas cosas que hacer .
+% \end{adjustwidth}
 
-\subsection{Proyección de etiquetas}
+% \subsection{Alineación de palabras}
 
-La proyección de etiquetas consiste en transportar las etiquetas de las palabras en la secuencia origen
-hacia las palabras de la secuencia destino tomando como datos las alineaciones entre estas. En \cite{yarowsky2001inducing}
-se trata el problema de proyección de frases nominales, estas frases tienen como característica que son resistentes
-a ser divididas en caso de ser traducidas, y aunque evidencian 
-cambios en el orden de las palabras, mantienen la misma ventana; dicha propiedad se cumple para las UDAs también.
-La proyección de UDAs es más simple en dado
-que solamente se tiene en cuenta la ventana y las etiquetas en estas son constantes, no pasa con la proyección en
-frases nominales, las cuales pueden cambiar dentro de una ventana, por lo que algoritmos más simples existen
-para esta tarea \cite{eger2018cross}. En el ejemplo de proyección están anotadas las etiquetas originales en formato BIO
-de las palabras de la oración en el lenguaje origen (inglés) y se muestra el
-resultado de proyectar estas al lenguaje objetivo utilizando los resultados de la alineación de palabras:
+% La alineación de palabras consiste en encontrar las palabras generadas en el lenguaje objetivo por las 
+% palabras en el lenguaje fuente.
+% Algoritmos basado en modelos bayesianos, como FastAlign \cite{dyer2013fastalign}, 
+% y Cadenas de Markov-Monte Carlo, como EFEMARAL \cite{ostling2016efficient} se ubican entre
+% las primeras herramientas para la solución del problema. 
+% Modelos más recientes se han enfocado en explotar las representaciones
+% vectoriales de palabras y el uso de métodos de atención para la extracción de las
+% alineaciones \cite{dou2021word}. Algunas consideraciones sobre el proceso: las relaciones 
+% formadas entre palabras pueden ser de tipo muchos a muchos, además de no tener el mismo orden de la 
+% oración inicial o incluso no estar relacionadas directamente con una palabra en la oración objetivo.
+% Estas consideraciones dan una medida de la dificultad de la tarea en cuestión.
+% En el ejemplo siguiente se observa el resultado de las herramientas de alineación, en este 
+% las palabras en el idioma de origen (inglés) están anotadas con su posición en la oración y 
+% las palabras en el idioma objetivo (español) están anotadas con la posición de la palabra que 
+% la originó en el idioma origen:
 
-\begin{adjustwidth}{25pt}{25pt}
-	Firstly$_O$ ,$_O$ people$_B$ normally$_I$ have$_I$ lots$_I$ of$_I$ things$_I$ to$_I$ do$_I$ .$_O$ \\
-	En$_O$ primer$_O$ lugar$_O$ ,$_O$ la$_O$ gente$_B$ normalmente$_I$ tiene$_I$ muchas$_I$ cosas$_I$ que$_I$ hacer$_I$ .$_O$
-\end{adjustwidth}
+% \begin{adjustwidth}{25pt}{25pt}
+% 	Firstly$_0$ ,$_1$ people$_2$ normally$_3$ have$_4$ lots$_5$ of$_6$ things$_7$ to$_8$ do$_9$ .$_{10}$ \\
+% 	En primer$_0$ lugar$_0$ ,$_1$ la gente$_2$ normalmente$_3$ tiene$_4$ muchas$_5$ cosas$_7$ que$_8$ hacer$_9$ .$_{10}$
+% \end{adjustwidth}
+% \begin{adjustwidth}{25pt}{25pt}
+% 	Firstly$_O$ ,$_O$ people$_B$ normally$_I$ have$_I$ lots$_I$ of$_I$ things$_I$ to$_I$ do$_I$ .$_O$ \\
+% 	En$_O$ primer$_O$ lugar$_O$ ,$_O$ la$_O$ gente$_B$ normalmente$_I$ tiene$_I$ muchas$_I$ cosas$_I$ que$_I$ hacer$_I$ .$_O$
+% \end{adjustwidth}
+
+
+% \subsection{Proyección de etiquetas}
+
+% La proyección de etiquetas consiste en transportar las etiquetas de las palabras en la secuencia origen
+% hacia las palabras de la secuencia destino tomando como datos las alineaciones entre estas. En \cite{yarowsky2001inducing}
+% se trata el problema de proyección de frases nominales, estas frases tienen como característica que son resistentes
+% a ser divididas en caso de ser traducidas, y aunque evidencian 
+% cambios en el orden de las palabras, mantienen la misma ventana; dicha propiedad se cumple para las UDAs también.
+% La proyección de UDAs es más simple en dado
+% que solamente se tiene en cuenta la ventana y las etiquetas en estas son constantes, no pasa con la proyección en
+% frases nominales, las cuales pueden cambiar dentro de una ventana, por lo que algoritmos más simples existen
+% para esta tarea \cite{eger2018cross}. En el ejemplo de proyección están anotadas las etiquetas originales en formato BIO
+% de las palabras de la oración en el lenguaje origen (inglés) y se muestra el
+% resultado de proyectar estas al lenguaje objetivo utilizando los resultados de la alineación de palabras:
+
+% \begin{adjustwidth}{25pt}{25pt}
+% 	Firstly$_O$ ,$_O$ people$_B$ normally$_I$ have$_I$ lots$_I$ of$_I$ things$_I$ to$_I$ do$_I$ .$_O$ \\
+% 	En$_O$ primer$_O$ lugar$_O$ ,$_O$ la$_O$ gente$_B$ normalmente$_I$ tiene$_I$ muchas$_I$ cosas$_I$ que$_I$ hacer$_I$ .$_O$
+% \end{adjustwidth}
 
 \section{Segmentación y clasificación de UDAs}
 
-Esta primera parte se modela como un problema secuencia a secuencia cuyo objetivo es asignar a los tokens 
-extraídos del documento entrada una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
-de UDA, al conjunto de etiquetas BIES se le añadieron las clasificaciones que presenta el corpus entrenante.
-En el siguiente ejemplo se muestra una salida del modelo presentando las clasificaciones de
-$A$ como argumento y $P$ como premisa:
+% TODO Hablar de: 
+	% [ ] Como se modela el problema en cuestion
+	% [ ] Como se repersentan las palabras y porque
+	% [ ] Poner solamente el modelo que se escoge y usa al final
 
-\begin{adjustwidth}{25pt}{25pt}
-	En$_O$ primer$_O$ lugar$_O$ ,$_O$
-	[\textit{el$_{B-A}$}
-	\textit{correo$_{I-A}$}
-	\textit{electrónico$_{I-A}$}
-	\textit{puede$_{I-A}$}
-	\textit{contar$_{I-A}$}
-	\textit{como$_{I-A}$}
-	\textit{uno$_{I-A}$}
-	\textit{de$_{I-A}$}
-	\textit{los$_{I-A}$}
-	\textit{resultados$_{I-A}$}
-	\textit{más$_{I-A}$}
-	\textit{beneficiosos$_{I-A}$}
-	\textit{de$_{I-A}$}
-	\textit{la$_{I-A}$}
-	\textit{tecnología$_{I-A}$}
-	\textit{moderna$_{E-A}$}]
-	.$_{O}$
-	[\textit{Años$_{B-P}$}
-	\textit{atrás$_{I-P}$}
-	\textit{,$_{I-P}$}
-	\textit{las$_{I-P}$}
-	\textit{personas$_{I-P}$}
-	\textit{pagaban$_{I-P}$}
-	\textit{gran$_{I-P}$}
-	\textit{cantidad$_{I-P}$}
-	\textit{de$_{I-P}$}
-	\textit{dinero$_{I-P}$}
-	\textit{para$_{I-P}$}
-	\textit{enviar$_{I-P}$}
-	\textit{sus$_{I-P}$}
-	\textit{cartas$_{I-P}$}
-	\textit{y$_{I-P}$}
-	\textit{sus$_{I-P}$}
-	\textit{pagos$_{I-P}$}
-	\textit{estaban$_{I-P}$}
-	\textit{sujetos$_{I-P}$}
-	\textit{al$_{I-P}$}
-	\textit{peso$_{I-P}$}
-	\textit{de$_{I-P}$}
-	\textit{sus$_{I-P}$}
-	\textit{cartas$_{I-P}$}
-	\textit{o$_{I-P}$}
-	\textit{paquetes$_{I-P}$}
-	\textit{y$_{I-P}$}
-	\textit{muchos$_{I-P}$}
-	\textit{accidentes$_{I-P}$}
-	\textit{podrían$_{I-P}$}
-	\textit{causar$_{I-P}$}
-	\textit{problemas$_{I-P}$}
-	\textit{que$_{I-P}$}
-	\textit{causarían$_{I-P}$}
-	\textit{que$_{I-P}$}
-	\textit{el$_{I-P}$}
-	\textit{correo$_{I-P}$}
-	\textit{no$_{I-P}$}
-	\textit{fuera$_{I-P}$}
-	\textit{enviado$_{E-P}$}]
-	.$_{O}$
-\end{adjustwidth}
+Las tareas de segmentación y clasificación de UDAs se resuelven conjuntamente. Para esto se modela 
+como un problema secuencia a secuencia cuyo objetivo es asignar, a los tokens extraídos del documento 
+entrada, una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
+de UDA, al conjunto de etiquetas BIES se le añade otra etiqueta que representa el tipo de UDA. Con 
+este esquema se obtiene una cantidad de etiquetas $|\{B,I,E,S\}| \cdot |Clasificaciones \, de \, UDA| + |\{O\}|$
+
+% Esta primera parte se modela como un problema secuencia a secuencia cuyo objetivo es asignar a los tokens 
+% extraídos del documento entrada una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
+% de UDA, al conjunto de etiquetas BIES se le añadieron las clasificaciones que presenta el corpus entrenante.
+% En el siguiente ejemplo se muestra una salida del modelo presentando las clasificaciones de
+% $A$ como argumento y $P$ como premisa:
+
+% \begin{adjustwidth}{25pt}{25pt}
+% 	En$_O$ primer$_O$ lugar$_O$ ,$_O$
+% 	[\textit{el$_{B-A}$}
+% 	\textit{correo$_{I-A}$}
+% 	\textit{electrónico$_{I-A}$}
+% 	\textit{puede$_{I-A}$}
+% 	\textit{contar$_{I-A}$}
+% 	\textit{como$_{I-A}$}
+% 	\textit{uno$_{I-A}$}
+% 	\textit{de$_{I-A}$}
+% 	\textit{los$_{I-A}$}
+% 	\textit{resultados$_{I-A}$}
+% 	\textit{más$_{I-A}$}
+% 	\textit{beneficiosos$_{I-A}$}
+% 	\textit{de$_{I-A}$}
+% 	\textit{la$_{I-A}$}
+% 	\textit{tecnología$_{I-A}$}
+% 	\textit{moderna$_{E-A}$}]
+% 	.$_{O}$
+% 	[\textit{Años$_{B-P}$}
+% 	\textit{atrás$_{I-P}$}
+% 	\textit{,$_{I-P}$}
+% 	\textit{las$_{I-P}$}
+% 	\textit{personas$_{I-P}$}
+% 	\textit{pagaban$_{I-P}$}
+% 	\textit{gran$_{I-P}$}
+% 	\textit{cantidad$_{I-P}$}
+% 	\textit{de$_{I-P}$}
+% 	\textit{dinero$_{I-P}$}
+% 	\textit{para$_{I-P}$}
+% 	\textit{enviar$_{I-P}$}
+% 	\textit{sus$_{I-P}$}
+% 	\textit{cartas$_{I-P}$}
+% 	\textit{y$_{I-P}$}
+% 	\textit{sus$_{I-P}$}
+% 	\textit{pagos$_{I-P}$}
+% 	\textit{estaban$_{I-P}$}
+% 	\textit{sujetos$_{I-P}$}
+% 	\textit{al$_{I-P}$}
+% 	\textit{peso$_{I-P}$}
+% 	\textit{de$_{I-P}$}
+% 	\textit{sus$_{I-P}$}
+% 	\textit{cartas$_{I-P}$}
+% 	\textit{o$_{I-P}$}
+% 	\textit{paquetes$_{I-P}$}
+% 	\textit{y$_{I-P}$}
+% 	\textit{muchos$_{I-P}$}
+% 	\textit{accidentes$_{I-P}$}
+% 	\textit{podrían$_{I-P}$}
+% 	\textit{causar$_{I-P}$}
+% 	\textit{problemas$_{I-P}$}
+% 	\textit{que$_{I-P}$}
+% 	\textit{causarían$_{I-P}$}
+% 	\textit{que$_{I-P}$}
+% 	\textit{el$_{I-P}$}
+% 	\textit{correo$_{I-P}$}
+% 	\textit{no$_{I-P}$}
+% 	\textit{fuera$_{I-P}$}
+% 	\textit{enviado$_{E-P}$}]
+% 	.$_{O}$
+% \end{adjustwidth}
 
 \subsection{Modelo de segmentación y clasificación de UDAs}
 
@@ -1198,7 +1216,7 @@ utilizan vectores de tamaño $l$, el resultado final constituye la concatenació
 hacia atrás formando una representación de dimensión $1 \times 2 \cdot l$ del token. Este vector es concatenado a la representación
 del token correspondiente. Otro atributo usado en la representación de los tokens constituyen las etiquetas de 
 Partes de la Oración de estos.
-El conjunto de etiquetas elegido es un conjunto universal \cite{petrov2011universal} aplicable a cualquier idioma.
+El conjunto de etiquetas elegido es un conjunto universal \cite{petrov2011universal} aplicable a muchos idioma.
 De estas etiquetas se les extrae la codificación \textit{one-hot} y esta es transformada por una capa densa con $p=5$ neuronas
 y función de activación \textit{ReLU}, el resultado es concatenado a la representación del token correspondiente. Mediante 
 la extracción de estos atributos el token es representado en tres maneras, semántica, morfológica y estructural, con el 
@@ -1218,37 +1236,53 @@ Para prevenir el sobreentrenamiento se aplicó una
 terminación temprana de este cuando no se encontraba una mejora de la función de pérdida en el conjunto de validación
 por más de 10 épocas consecutivas. Como optimizador se utilizó Adam con una tasa de aprendizaje de $0.001$.
 
-\subsection{Posprocesamiento de segmentación y clasificación de UDAs}
+La salida del modelo es procesada para eliminar los errores en las etiquetas BIOES, errores como segmentos 
+que no empiecen en B o terminen en E o segmentos con más de una clasificación son arreglados, 
+obteniendo un formato BIOES válido.
 
-La salida del modelo constituye una secuencia de etiquetas en formato BIOES. Esta está propensa
-a contener errores en su formato, por ejemplo, secuencias no terminadas en E, segmentos continuos con más de una 
-meta-etiqueta, entre otros.
-Para la corrección de la estructura se propone el siguiente algoritmo con dos partes. La primera
-consiste en arreglar la estructura BIOES, para esto se mantiene una ventana de tamaño
-3, [\_ , \_ , \_], sobre la secuencia y se asume que la parte anterior a la posición de la ventana no presenta errores. Al encontrar una
-ventana inválida se necesita observar la siguiente ventana para poder decidir cómo se arregla el error, ya que se
-podría dar el caso que se observe [O, O, I] y la próxima sea [O, I, O], en donde solamente viendo la primera ventana no se podría saber si el cambio 
-correcto corresponde a sustituir I por B o por S. Una vez observadas las dos ventanas, se procede a realizar el 
-arreglo correspondiente. En casos donde sea ambigua la manera de arreglar la ventana, [I, I, O] por ejemplo
-(La I o la O pueden ser 
-sustituidas por una E), se utiliza una función que recibe un segmento y devuelve la gravedad del error.
-El error con mayor gravedad será arreglado, en caso de ser iguales se arreglará la etiqueta más a la izquierda.
-Este procedimiento devuelve una secuencia BIOES correctamente anotada, debido a que a partir de una secuencia sin 
-errores en cada paso se va arreglando la ventana y una vez esta llega al final arregló todos los elementos de la secuencia.
-Una vez la secuencia tiene la estructura BIOES correctamente anotada el problema
-consiste en arreglar las meta-etiquetas, ya que una misma secuencia BIOES pudo haber sido anotada con diferentes
-tipos, en este caso se toma la etiqueta más representativa del segmento continuo.
+% \subsection{Posprocesamiento de segmentación y clasificación de UDAs}
+
+% La salida del modelo constituye una secuencia de etiquetas en formato BIOES. Esta está propensa
+% a contener errores en su formato, por ejemplo, secuencias no terminadas en E, segmentos continuos con más de una 
+% meta-etiqueta, entre otros.
+% Para la corrección de la estructura se propone el siguiente algoritmo con dos partes. La primera
+% consiste en arreglar la estructura BIOES, para esto se mantiene una ventana de tamaño
+% 3, [\_ , \_ , \_], sobre la secuencia y se asume que la parte anterior a la posición de la ventana no presenta errores. Al encontrar una
+% ventana inválida se necesita observar la siguiente ventana para poder decidir cómo se arregla el error, ya que se
+% podría dar el caso que se observe [O, O, I] y la próxima sea [O, I, O], en donde solamente viendo la primera ventana no se podría saber si el cambio 
+% correcto corresponde a sustituir I por B o por S. Una vez observadas las dos ventanas, se procede a realizar el 
+% arreglo correspondiente. En casos donde sea ambigua la manera de arreglar la ventana, [I, I, O] por ejemplo
+% (La I o la O pueden ser 
+% sustituidas por una E), se utiliza una función que recibe un segmento y devuelve la gravedad del error.
+% El error con mayor gravedad será arreglado, en caso de ser iguales se arreglará la etiqueta más a la izquierda.
+% Este procedimiento devuelve una secuencia BIOES correctamente anotada, debido a que a partir de una secuencia sin 
+% errores en cada paso se va arreglando la ventana y una vez esta llega al final arregló todos los elementos de la secuencia.
+% Una vez la secuencia tiene la estructura BIOES correctamente anotada el problema
+% consiste en arreglar las meta-etiquetas, ya que una misma secuencia BIOES pudo haber sido anotada con diferentes
+% tipos, en este caso se toma la etiqueta más representativa del segmento continuo.
 
 \begin{figure}[h]
 	\centering
 	\includesvg[width=7cm]{Graphics/Modelo_Segmenter_UDA.svg}
-	\caption{Segmentador UDAs.}
+	\caption{Segmentador UDAs.\footnote{Todos los componentes fueron utilizados.}}
 	\label{fig:segmenter_model}
 \end{figure}
 
 \section{Predicción y clasificación de enlaces}
 
-En esta segunda parte el modelo se encarga de las tareas de extracción y clasificación de enlaces.
+% TODO Hablar de: 
+	% [ ] Como se modela el problema en cuestion
+	% [ ] Como se repersentan las palabras y porque
+	% [ ] Poner solamente el modelo que se escoge y usa al final
+	% [ ] Poner detalles de implementacion como el doble for por los pares posibles de UDAs en el documento
+
+% Las tareas de segmentación y clasificación de UDAs se resuelven conjuntamente. Para esto se modela 
+% como un problema secuencia a secuencia cuyo objetivo es asignar, a los tokens extraídos del documento 
+% entrada, una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
+% de UDA, al conjunto de etiquetas BIES se le añade otra etiqueta que representa el tipo de UDA. Con 
+% este esquema se obtiene una cantidad de etiquetas $|\{B,I,E,S\}| \cdot |Clasificaciones \, de \, UDA| + |\{O\}|$
+	
+Las tareas de extracción y clasificación de enlaces son modeladas de forma conjunta.
 El problema consiste en clasificar pares de UDAs, representando origen y objetivo del enlace, 
 en el tipo de relación que existen entre estas.
 Como tarea auxiliar se clasifican los tipos de UDAs que intervienen en la relación. La salida 
@@ -1266,10 +1300,11 @@ Estos vectores son modificados por una red densa compuesta por $ca = 4$ capas co
 de dimensiones $50$, $50$, $50$, $300$, añadiendo una conexión residual a la salida de esta. 
 El próximo paso consiste en aplicar una capa densa de dimensión $di=50$ y luego un \textit{average pooling}
 de tamaño $dp=10$, obteniendo vectores de dimensión $\frac{q}{dp} \times di$. 
-Estos vectores son modificados por un LSTM bidireccional con $lm=50$ unidades. Un módulo de atención es aplicado 
-sobre los vectores fuentes, 
-en este actúan como consultas el promedio de los vectores objetivo y como llaves y valores los vectores fuentes,
-el procedimiento simétrico es realizado para los vectores objetivos.
+Estos vectores son modificados por un LSTM bidireccional con $lm=50$ unidades. 
+% Un módulo de atención es aplicado 
+% sobre los vectores fuentes, 
+% en este actúan como consultas el promedio de los vectores objetivo y como llaves y valores los vectores fuentes,
+% el procedimiento simétrico es realizado para los vectores objetivos.
 La salida de los procesamientos son concatenados con la distancia argumentativa obteniendo una representación 
 conjunta de la relación a analizar. Esta representación conjunta es modificada por una red residual obteniendo
 una representación final de dimensión $l=20$ y luego sometida a los clasificadores de relación y de tipos de UDAs
@@ -1314,7 +1349,7 @@ y son devueltas aquellas que se clasifiquen como enlazadas según el criterio an
 \begin{figure}[h]
 	\centering
 	\includesvg[width=7cm]{Graphics/Modelo_Link_Prediction1.svg}
-	\caption{Predictor de enlaces.}
+	\caption{Predictor de enlaces.\footnote{El módulo de atención no está presente en el modelo final.}}
 	\label{fig:link_predictor_model1}
 \end{figure}
 \begin{figure}[h]
@@ -1329,8 +1364,9 @@ y son devueltas aquellas que se clasifiquen como enlazadas según el criterio an
 Para el entrenamiento de los modelos propuestos se utilizaron corpus diferentes, estos
 presentan esquemas de anotación distintos entre sí, difiriendo principalmente en la definición de UDA y 
 las clasificaciones dadas a estas y a las relaciones. A todos los conjuntos se les proyectó al lenguaje 
-español y se les realizó un aumento de datos. Como conjunto para la validación fueron usadas 
-una parte de las Cartas a la Dirección del periódico Granma.
+español y se les realizó un aumento de datos. 
+% Como conjunto para la validación fueron usadas 
+% una parte de las Cartas a la Dirección del periódico Granma.
 
 \subsection{Ensayos Argumentativos}\label{corpus:persuasive_essays}
 
@@ -1364,21 +1400,22 @@ argumentativas. Estas se clasifican en \textit{MajorClaim} (93, 3\%), \textit{Cl
 Las relaciones están representadas por tres categorías: \textit{support} (1763, 85\%), \textit{partial-attack} (238, 12\%) y
 \textit{attack} (60, 3\%).
 
-En resumen, estos datos no son grandes y contiene una gran cantidad de desbalance en sus clases.
+En resumen, estos datos no son grandes y contienen una gran cantidad de desbalance en sus clases.
 En la Tabla \ref{table:corpus_info} se muestran los datos promedio de la composición de los diferentes corpus. 
 Se observa una composición heterogénea entre estos, principalmente CDCP difiere en gran número de los demás.
 
 \begin{table}[h]
 	\begin{center}
 		\scalebox{0.8}{
-		\begin{tabular}{|l|c|c|c|c|} 
+		\begin{tabular}{|p{20mm}|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
 			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP } 	   & {\bf AbsTRCT}  \\
-										 & {\bf Argumentativos} & 				   & 			    \\
+										 & {\bf Argumen-} 		& 				   & 			    \\
+										 & {\bf tativos} 		& 				   & 			    \\
 			\hline\rule{-4pt}{10pt}
 			Tokens	 	   		   	     & 381 	   			    & 127              & 371            \\
-			Tokens	 	   		   	     &     	   			    & 	               & 	            \\
-			Argumentativos 		   	     & 68\%    			    & 99\%             & 50\%           \\
+			Tokens Argu- 	   		   	 &     	   			    & 	               & 	            \\
+			mentativos	 		   	     & 68\%			    	& 99\%             & 50\%           \\
 			UDAs                   	     & 35\%    			    & 97\%             & 47\%           \\
 			Relaciones		     	     & 	    			    & 	               &	            \\ 
 			por UDA     	     		 & 1,08    			    & 0,30             & 0,63           \\ 
@@ -1388,36 +1425,39 @@ Se observa una composición heterogénea entre estos, principalmente CDCP difier
 	\end{center}
 	\caption{\label{table:corpus_info}Información de promedios de los conjuntos de datos.}
 \end{table}
+
 \subsection{Creación de corpus en español}
 
-\subsubsection{Aumento de datos}
+% \subsubsection{Aumento de datos}
 
-A los conjuntos de datos a analizar se les realizó un aumento de datos mediante la técnica de \textit{backtranslation},
-aplicándole la proyección de etiquetas de los elementos originales a los aumentados.
-Esto contribuyó a duplicar la cantidad de elementos disponibles. Los resultados obtenidos al comparar los 
-elementos originales con los aumentados se reflejan en la Tabla \ref{table:data_augmentation}.
-Estos muestran que se logró una variación pequeña en los datos, aunque conservando la 
-longitud original del texto. 
+% A los conjuntos de datos a analizar se les realizó un aumento de datos mediante la técnica de \textit{backtranslation},
+% aplicándole la proyección de etiquetas de los elementos originales a los aumentados.
+% Esto contribuyó a duplicar la cantidad de elementos disponibles. Los resultados obtenidos al comparar los 
+% elementos originales con los aumentados se reflejan en la Tabla \ref{table:data_augmentation}.
+% Estos muestran que se logró una variación pequeña en los datos, aunque conservando la 
+% longitud original del texto. 
 
-\begin{table}[h]
-	\begin{center}
-		\scalebox{0.7}{
-		\begin{tabular}{|l|c|c|c|c|} 
-			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP} & {\bf AbsTRCT} \\ 
-						                 & {\bf Argumentativos} & 		 	 & 	 			 \\ 
-			\hline\rule{-4pt}{10pt}
-			Jaccard 					 																				& 0.69    & 0.72          & 0.74	\\
-			Levenshtein                  																				& 96	  & 30			  & 86		\\
-			$\frac{|\mathrm{Palabras} \, \mathrm{originales}|}{|\mathrm{Palabras \, aumentadas}|}$                & 1.00    & 1.02          & 1.04	\\ 
-			\hline
-		\end{tabular}
-		}
-	\end{center}
-	\caption{Datos promedios comparando los textos originales con los aumentados.}\label{table:data_augmentation}
-\end{table}
+% \begin{table}[h]
+% 	\begin{center}
+% 		\scalebox{0.7}{
+% 		\begin{tabular}{|l|c|c|c|c|} 
+% 			\hline\rule{-2pt}{15pt}
+% 			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP} & {\bf AbsTRCT} \\ 
+% 						                 & {\bf Argumentativos} & 		 	 & 	 			 \\ 
+% 			\hline\rule{-4pt}{10pt}
+% 			Jaccard 					 																				& 0.69    & 0.72          & 0.74	\\
+% 			Levenshtein                  																				& 96	  & 30			  & 86		\\
+% 			$\frac{|\mathrm{Palabras} \, \mathrm{originales}|}{|\mathrm{Palabras \, aumentadas}|}$                & 1.00    & 1.02          & 1.04	\\ 
+% 			\hline
+% 		\end{tabular}
+% 		}
+% 	\end{center}
+% 	\caption{Datos promedios comparando los textos originales con los aumentados.}\label{table:data_augmentation}
+% \end{table}
 
-\subsubsection{Proyección de corpus}
+% \subsubsection{Proyección de corpus}
+
+% TODO Posible resumen: Solamente decir que se utilizo AwesomeAlign
 
 Todos los conjuntos de datos están originalmente en inglés, por lo tanto, se les aplicó el algoritmo de proyección
 de corpus para obtener uno en español para ser usado en el entrenamiento de los modelos. 
@@ -1436,9 +1476,11 @@ cartas enviadas por la población o empresas a dicha entidad. En general, las ca
 presentan dudas o problemas de la población con el objetivo de obtener respuestas del organismo
 asociado. Se extrajeron 2891 cartas desde el 30 de agosto del 2013 hasta el 28 de octubre del 2022. Estas 
 contienen aproximadamente 975000 palabras en los datos, en promedio, la cantidad de palabras por carta es de 330.
-Se encontraron 874 cartas en respuesta a cartas enviadas, lo que representa un 30\% del total. Se extrajeron
-los comentarios asociados a las cartas, en este sentido 987 cartas no presentan comentarios y, en promedio, 
-se realizan 2 comentarios por carta. Los textos presentan un título y un formato relativamente libre, 
+Se encontraron 874 cartas en respuesta a cartas enviadas, lo que representa un 30\% del total. 
+% Se extrajeron
+% los comentarios asociados a las cartas, en este sentido 987 cartas no presentan comentarios y, en promedio, 
+% se realizan 2 comentarios por carta. 
+Los textos presentan un título y un formato relativamente libre, 
 aunque en las cartas de respuesta se puede observar una firma de la persona que respondió y la entidad que 
 representa. Del total de cartas, se seleccionaron las que fueran en respuesta a otra y también las 
 cartas que fueron respondidas para tener una mayor concentración de cartas que fueran argumentativas, 
@@ -1527,65 +1569,65 @@ a la Dirección.
 
 \subsection{Segmentador de UDA}
 
-% TODO Resumir esto de seleccion de modelo
+% TODO Resumir esto de seleccion de modelo, Darle introduccion
 
-En el entrenamiento del segmentador de UDA se hicieron variaciones en la arquitectura propuesta con respecto a la
-presencia o no de las siguientes componentes, presentando cuatro candidatos (Tabla \ref{table:segmenter_architecture_table}):
+% En el entrenamiento del segmentador de UDA se hicieron variaciones en la arquitectura propuesta con respecto a la
+% presencia o no de las siguientes componentes, presentando cuatro candidatos (Tabla \ref{table:segmenter_architecture_table}):
 
-\begin{itemize}
-	\item Atributos de POS en la entrada del algoritmo (POS).
-	\item Atributos extraídos por la CNN de la palabra (Char-CNN).
-	\item Atributos extraídos por la LSTM bidireccional de la palabra (Char-LSTM).
-	\item Conexiones residuales (Res).
-	\item Capa densa final (Densa).
-	\item Capas de normalizaciones (Norm).
-\end{itemize}
+% \begin{itemize}
+% 	\item Atributos de POS en la entrada del algoritmo (POS).
+% 	\item Atributos extraídos por la CNN de la palabra (Char-CNN).
+% 	\item Atributos extraídos por la LSTM bidireccional de la palabra (Char-LSTM).
+% 	\item Conexiones residuales (Res).
+% 	\item Capa densa final (Densa).
+% 	\item Capas de normalizaciones (Norm).
+% \end{itemize}
 
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{|l|c|c|c|c|} 
-			\hline\rule{-2pt}{15pt}
-			{\bf Modelos}  & {\bf 1}     & {\bf 2}     & {\bf 3}     & {\bf 4}     \\ 
-			\hline\rule{-4pt}{10pt}
-			POS 	  & $\times$  & $\times$ 	 & $\checkmark$ & $\checkmark$ \\
-			Char-CNN  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
-			Char-LSTM & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
-			Residual  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
-			Norm 	  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
-			Densa 	  & $\times$  & $\times$ 	 & $\times$ 	& $\checkmark$ \\
-			\hline
-		\end{tabular}
-	\end{center}
-	\caption{\label{table:segmenter_architecture_table}Variantes de arquitectura de los modelos de segmentación de UDA.}
-\end{table}
+% \begin{table}[h]
+% 	\begin{center}
+% 		\begin{tabular}{|l|c|c|c|c|} 
+% 			\hline\rule{-2pt}{15pt}
+% 			{\bf Modelos}  & {\bf 1}     & {\bf 2}     & {\bf 3}     & {\bf 4}     \\ 
+% 			\hline\rule{-4pt}{10pt}
+% 			POS 	  & $\times$  & $\times$ 	 & $\checkmark$ & $\checkmark$ \\
+% 			Char-CNN  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+% 			Char-LSTM & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+% 			Residual  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+% 			Norm 	  & $\times$  & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
+% 			Densa 	  & $\times$  & $\times$ 	 & $\times$ 	& $\checkmark$ \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% 	\caption{\label{table:segmenter_architecture_table}Variantes de arquitectura de los modelos de segmentación de UDA.}
+% \end{table}
 
-En la Figura \ref{fig:segmenter_model_loss} se observan las diferentes curvas de aprendizaje de los modelos 
-probados. Se muestra la rápida convergencia de los modelos con conexiones residuales y normalizaciones.
-Se muestra también la tendencia al sobreajuste en el entrenamiento entre los pasos 17-20, en donde se detiene el 
-entrenamiento para evitar el crecimiento del error de generalización.
+% En la Figura \ref{fig:segmenter_model_loss} se observan las diferentes curvas de aprendizaje de los modelos 
+% probados. Se muestra la rápida convergencia de los modelos con conexiones residuales y normalizaciones.
+% Se muestra también la tendencia al sobreajuste en el entrenamiento entre los pasos 17-20, en donde se detiene el 
+% entrenamiento para evitar el crecimiento del error de generalización.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm,clip]{Graphics/persuasive_essays_all_linked_crf_loss.png}
-	\caption{Pérdida de los modelos segmentadores.}
-	\label{fig:segmenter_model_loss}
-\end{figure}
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm,clip]{Graphics/persuasive_essays_all_linked_crf_loss.png}
+% 	\caption{Pérdida de los modelos segmentadores.}
+% 	\label{fig:segmenter_model_loss}
+% \end{figure}
 
-Las métricas 100\%F1 y 50\%F1 muestran que los modelos 1 y 2 presentan un desempeño menor que los 3 y 4. 
-Se muestra un ligero aumento de 1\% en las 50\%F1 en el modelo 4 con respecto 
-al modelo 3, aunque las métricas de F1 en el 3 superan a las de 4. Se considera a la 
-segmentación como tarea principal, por lo que se selecciona como mejor modelo al 4 (Figura \ref{fig:test_segmenter_model_metrics}).
-Las distinciones BIOES en los nombres de tablas o métricas constituyen las métricas correspondientes 
-a la segmentación estrictamente, mientras las que no poseen dicha distinción constituyen al proceso 
-conjunto de segmentación y clasificación de UDAs. 
+% Las métricas 100\%F1 y 50\%F1 muestran que los modelos 1 y 2 presentan un desempeño menor que los 3 y 4. 
+% Se muestra un ligero aumento de 1\% en las 50\%F1 en el modelo 4 con respecto 
+% al modelo 3, aunque las métricas de F1 en el 3 superan a las de 4. Se considera a la 
+% segmentación como tarea principal, por lo que se selecciona como mejor modelo al 4 (Figura \ref{fig:test_segmenter_model_metrics}).
+% Las distinciones BIOES en los nombres de tablas o métricas constituyen las métricas correspondientes 
+% a la segmentación estrictamente, mientras las que no poseen dicha distinción constituyen al proceso 
+% conjunto de segmentación y clasificación de UDAs. 
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm,clip]{Graphics/persuasive_essays_all_linked_components.png}
-	\includegraphics[width=7cm,clip]{Graphics/persuasive_essays_all_linked_macro_micro_metrics.png}
-	\caption{Métricas del conjunto de pruebas de los modelos segmentadores.}
-	\label{fig:test_segmenter_model_metrics}
-\end{figure}
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm,clip]{Graphics/persuasive_essays_all_linked_components.png}
+% 	\includegraphics[width=7cm,clip]{Graphics/persuasive_essays_all_linked_macro_micro_metrics.png}
+% 	\caption{Métricas del conjunto de pruebas de los modelos segmentadores.}
+% 	\label{fig:test_segmenter_model_metrics}
+% \end{figure}
 
 El modelo seleccionado fue usado en el entrenamiento de los demás conjuntos de datos obteniendo los resultados mostrados
 en Tabla \ref{table:test_metrics_segmenter} y Tabla \ref{table:test_bioes_metrics_segmenter}.
@@ -1636,63 +1678,63 @@ en Tabla \ref{table:test_metrics_segmenter} y Tabla \ref{table:test_bioes_metric
 Para el modelo se realizó un voto conjunto del ensamblado de 3 modelos, dado que el entrenamiento 
 está basado en la aleatoriedad, se entrenan los modelos con los mismos datos obteniendo inferencias no
 necesariamente iguales.
-Para la selección del modelo se entrenaron diferentes variantes de arquitecturas e hiperparámetros, y 
-al igual que en el segmentador de UDAs se realizó la selección del modelo que mejor se desempeñó en 
-el conjunto de datos de Ensayos Argumentativos. De las variaciones surgieron las siguientes propuestas
-(Tabla \ref{table:link_predictor_architecture_table}):
+% Para la selección del modelo se entrenaron diferentes variantes de arquitecturas e hiperparámetros, y 
+% al igual que en el segmentador de UDAs se realizó la selección del modelo que mejor se desempeñó en 
+% el conjunto de datos de Ensayos Argumentativos. De las variaciones surgieron las siguientes propuestas
+% (Tabla \ref{table:link_predictor_architecture_table}):
 
-\begin{table}[h]
-	\begin{center}
-		\scalebox{0.9}{
-		\begin{tabular}{|l|c|c|c|c|} 
-			\hline\rule{-2pt}{15pt}
-			{\bf Modelos}  		& {\bf 1}      & {\bf 2}  & {\bf 3} 	 & {\bf 4} 		\\ 
-			\hline\rule{-4pt}{10pt}
-			Atención 		    & $\times$     & $\times$ & $\checkmark$ & $\checkmark$ \\
-			Pooling  		    & 5    		   & 10       & 1       	 & 1    		\\
-			\textit{Dropout}    & 0,5   	   & 0,1      & 0,1       	 & 0,5	    	\\
-			Tasa de 			&			   & 		  &		     	 & 		    	\\
-			aprendizaje 		& 0,0015 	   & 0,003    & 0,003      	 & 0,0015    	\\
-			Paciencia			& 10 		   & 5		  & 5       	 & 10		   	\\
-			Devolver			&			   & 		  & 		  	 & 				\\
-			mejores				& $\checkmark$ & $\times$ & $\times$  	 & $\checkmark$ \\
-			\hline
-		\end{tabular}
-		}
-	\end{center}
-	\caption{\label{table:link_predictor_architecture_table}Variantes de arquitectura de los modelos de predicción de enlaces.}
-\end{table}
+% \begin{table}[h]
+% 	\begin{center}
+% 		\scalebox{0.9}{
+% 		\begin{tabular}{|l|c|c|c|c|} 
+% 			\hline\rule{-2pt}{15pt}
+% 			{\bf Modelos}  		& {\bf 1}      & {\bf 2}  & {\bf 3} 	 & {\bf 4} 		\\ 
+% 			\hline\rule{-4pt}{10pt}
+% 			Atención 		    & $\times$     & $\times$ & $\checkmark$ & $\checkmark$ \\
+% 			Pooling  		    & 5    		   & 10       & 1       	 & 1    		\\
+% 			\textit{Dropout}    & 0,5   	   & 0,1      & 0,1       	 & 0,5	    	\\
+% 			Tasa de 			&			   & 		  &		     	 & 		    	\\
+% 			aprendizaje 		& 0,0015 	   & 0,003    & 0,003      	 & 0,0015    	\\
+% 			Paciencia			& 10 		   & 5		  & 5       	 & 10		   	\\
+% 			Devolver			&			   & 		  & 		  	 & 				\\
+% 			mejores				& $\checkmark$ & $\times$ & $\times$  	 & $\checkmark$ \\
+% 			\hline
+% 		\end{tabular}
+% 		}
+% 	\end{center}
+% 	\caption{\label{table:link_predictor_architecture_table}Variantes de arquitectura de los modelos de predicción de enlaces.}
+% \end{table}
 
-Las curvas de aprendizaje del proceso de entrenamiento de los modelos (Figura \ref{fig:link_prediction_model_loss}) 
-muestran un nivel de sobreajuste 
-elevado que disminuyen cuando el \textit{dropout} aumenta. Además, se observan valores de pérdida elevados lo que significa 
-que al modelo le cuesta ajustarse de manera satisfactoria a los datos.
+% Las curvas de aprendizaje del proceso de entrenamiento de los modelos (Figura \ref{fig:link_prediction_model_loss}) 
+% muestran un nivel de sobreajuste 
+% elevado que disminuyen cuando el \textit{dropout} aumenta. Además, se observan valores de pérdida elevados lo que significa 
+% que al modelo le cuesta ajustarse de manera satisfactoria a los datos.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm,clip]{Graphics/persuassive_essays_all_linked_link_prediction_loss_model_1.png}
-	\caption{Curvas de aprendizaje de los modelos de predicción de enlaces.}
-	\label{fig:link_prediction_model_loss}
-\end{figure}
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm,clip]{Graphics/persuassive_essays_all_linked_link_prediction_loss_model_1.png}
+% 	\caption{Curvas de aprendizaje de los modelos de predicción de enlaces.}
+% 	\label{fig:link_prediction_model_loss}
+% \end{figure}
 
-Las métricas obtenidas por las diferentes versiones de los modelos 
-(Figura \ref{fig:link_prediction_model_metrics}) 
-muestran que el modelo 2 constituye una opción ligeramente superior en lo correspondiente a 
-predicción de enlace a los otros modelos. Esos hiperparámetros
-fueron utilizados para el entrenamiento con los demás conjuntos de datos.
+% Las métricas obtenidas por las diferentes versiones de los modelos 
+% (Figura \ref{fig:link_prediction_model_metrics}) 
+% muestran que el modelo 2 constituye una opción ligeramente superior en lo correspondiente a 
+% predicción de enlace a los otros modelos. Esos hiperparámetros
+% fueron utilizados para el entrenamiento con los demás conjuntos de datos.
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=7cm]{Graphics/persuasive_essays_all_linked_all_relation_f1_scores.png}\\
-	\text{a)}\\
-	\includegraphics[width=7cm]{Graphics/persuasive_essays_all_linked_all_relation_accuracy.png}\\
-	\text{b)}\\
-	\includegraphics[width=7cm]{Graphics/persuasive_essays_all_linked_all_relation_linked.png}\\
-	\text{c)}
-	\caption{Métricas F1 de la clasificación de enlace (a), \textit{accuracy} (b) y
-		F1 de la predicción de enlace (c) de los modelos de predicción de enlaces.}
-	\label{fig:link_prediction_model_metrics}
-\end{figure}
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=7cm]{Graphics/persuasive_essays_all_linked_all_relation_f1_scores.png}\\
+% 	\text{a)}\\
+% 	\includegraphics[width=7cm]{Graphics/persuasive_essays_all_linked_all_relation_accuracy.png}\\
+% 	\text{b)}\\
+% 	\includegraphics[width=7cm]{Graphics/persuasive_essays_all_linked_all_relation_linked.png}\\
+% 	\text{c)}
+% 	\caption{Métricas F1 de la clasificación de enlace (a), \textit{accuracy} (b) y
+% 		F1 de la predicción de enlace (c) de los modelos de predicción de enlaces.}
+% 	\label{fig:link_prediction_model_metrics}
+% \end{figure}
 
 En el entrenamiento del modelo en los demás conjuntos de datos se obtuvieron los resultados de las Tablas 
 \ref{table:test_relation_metrics_link_predictor_relation_classification}, \ref{table:test_relation_metrics_link_predictor_link_prediction} 
@@ -1730,37 +1772,37 @@ y \ref{table:test_source_metrics_link_predictor}.
 	\caption{\label{table:test_relation_metrics_link_predictor_link_prediction}Métricas de predicción de relaciones de las pruebas del predictor de enlace.}
 \end{table}
 
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{|l|c|c|c|} 
-			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}                 & {\bf F1 Macro} & {\bf \textit{Accuracy}} \\ 
-			\hline\rule{-4pt}{10pt}
-			Ensayos				   & 	      & 	            \\ 
-			argumentativos		   & 0,48     & 0,60            \\ 
-			CDCP                   & 0,26     & 0,52            \\ 
-			AbsTRCT                & 0,51     & 0,79            \\ 
-			\hline
-		\end{tabular}
-	\end{center}
-	\caption{\label{table:test_source_metrics_link_predictor}Métricas de predicción de fuente de las pruebas del predictor de enlace.}
-\end{table}
+% \begin{table}[h]
+% 	\begin{center}
+% 		\begin{tabular}{|l|c|c|c|} 
+% 			\hline\rule{-2pt}{15pt}
+% 			{\bf Corpus}                 & {\bf F1 Macro} & {\bf \textit{Accuracy}} \\ 
+% 			\hline\rule{-4pt}{10pt}
+% 			Ensayos				   & 	      & 	            \\ 
+% 			argumentativos		   & 0,48     & 0,60            \\ 
+% 			CDCP                   & 0,26     & 0,52            \\ 
+% 			AbsTRCT                & 0,51     & 0,79            \\ 
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% 	\caption{\label{table:test_source_metrics_link_predictor}Métricas de predicción de fuente de las pruebas del predictor de enlace.}
+% \end{table}
 
-\begin{table}[h]
-	\begin{center}
-		\begin{tabular}{|l|c|c|c|} 
-			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}           & {\bf Macro F1} & {\bf \textit{Accuracy}} \\ 
-			\hline\rule{-4pt}{10pt}
-			Ensayos				   & 	      & 	            \\
-			argumentativos 		   & 0,52     & 0,57            \\
-			CDCP                   & 0,36     & 0,54            \\
-			AbsTRCT                & 0,53     & 0,81            \\ 
-			\hline
-		\end{tabular}
-	\end{center}
-	\caption{\label{table:test_target_metrics_link_predictor}Métricas de predicción de objetivo de las pruebas del predictor de enlace.}
-\end{table}
+% \begin{table}[h]
+% 	\begin{center}
+% 		\begin{tabular}{|l|c|c|c|} 
+% 			\hline\rule{-2pt}{15pt}
+% 			{\bf Corpus}           & {\bf Macro F1} & {\bf \textit{Accuracy}} \\ 
+% 			\hline\rule{-4pt}{10pt}
+% 			Ensayos				   & 	      & 	            \\
+% 			argumentativos 		   & 0,52     & 0,57            \\
+% 			CDCP                   & 0,36     & 0,54            \\
+% 			AbsTRCT                & 0,53     & 0,81            \\ 
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% 	\caption{\label{table:test_target_metrics_link_predictor}Métricas de predicción de objetivo de las pruebas del predictor de enlace.}
+% \end{table}
 
 % \subsection{Acoplamiento de los modelos}
 
@@ -1805,15 +1847,16 @@ elementos para calcular la métrica, y $\times$ que la métrica no se encontraba
 
 \begin{table}[h]
 	\begin{center}
-		\scalebox{0.5}{
-		\begin{tabular}{|l|c|c|c|c} 
+		\scalebox{0.65}{
+		\begin{tabular}{|p{30mm}|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Modelo}      			& {\bf BIOES F1} & {\bf Clas UDA F1} & {\bf Rel Pred F1} & {\bf Rel Clas F1} \\ 
+			{\bf Modelo}      				& {\bf BIOES} 			 & {\bf Clas} 	& {\bf Rel} 	& {\bf Rel} 	\\ 
+						      				& {\bf F1} 				 & {\bf UDA F1} & {\bf Pred F1} & {\bf Clas F1} \\ 
 			\hline\rule{-4pt}{10pt}
-			Propuesto    				& 0,82     				 & 0,56      & 0,68              & 0,33               \\
-			\cite{stab2017parsing} 		& 0,85  $\checkmark$     & 0,82      & 0,58              & 0,70                  \\
-			\cite{niculae2017argument}  & $\times$   			 & 0,77      & 0,60              & $\times$                 \\
-			\cite{galassi2021deep}      & $\times$  			 & 0,53      & 0,36 *            & 0,18 *                 \\ 
+			Propuesto    					& 0,82     				 & 0,56      	& 0,68          & 0,33              \\
+			\namecite{stab2017parsing} 		& 0,85  $\checkmark$     & 0,82      	& 0,58          & 0,70              \\
+			\namecite{niculae2017argument}  & $\times$   			 & 0,77      	& 0,60          & $\times$          \\
+			\namecite{galassi2021deep}      & $\times$  			 & 0,53      	& 0,36 *        & 0,18 *            \\ 
 			\hline
 		\end{tabular}
 		}
@@ -1822,10 +1865,11 @@ elementos para calcular la métrica, y $\times$ que la métrica no se encontraba
 \end{table}
 \begin{table}[h]
 	\begin{center}
-		\scalebox{0.5}{
-		\begin{tabular}{|l|c|c|c|c|} 
+		\scalebox{0.65}{
+		\begin{tabular}{|p{30mm}|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Modelo}      			& {\bf BIOES F1} & {\bf Clas UDA F1} & {\bf Rel Pred F1} & {\bf Rel Clas F1} \\ 
+			{\bf Modelo}      				& {\bf BIOES} 			 & {\bf Clas} 	& {\bf Rel} 	& {\bf Rel} 	\\ 
+						      				& {\bf F1} 				 & {\bf UDA F1} & {\bf Pred F1} & {\bf Clas F1} \\ 
 			\hline\rule{-4pt}{10pt}
 			Propuesto    				& 0,56      	 & 0,45         	 & 0,68 			 & 0,37               \\
 			\cite{niculae2017argument}  & $\times$       & 0,73              & 0,27 			 &  $\times$          \\
@@ -1838,10 +1882,11 @@ elementos para calcular la métrica, y $\times$ que la métrica no se encontraba
 \end{table}
 \begin{table}[h]
 	\begin{center}
-		\scalebox{0.5}{
-		\begin{tabular}{|l|c|c|c|c|} 
+		\scalebox{0.65}{
+		\begin{tabular}{|p{30mm}|c|c|c|c|} 
 			\hline\rule{-2pt}{15pt}
-			{\bf Modelo}      			& {\bf BIOES F1} & {\bf Clas UDA F1} & {\bf Rel Pred F1} & {\bf Rel Clas F1} \\ 
+			{\bf Modelo}      				& {\bf BIOES} 			 & {\bf Clas} 	& {\bf Rel} 	& {\bf Rel} 	\\ 
+												& {\bf F1} 				 & {\bf UDA F1} & {\bf Pred F1} & {\bf Clas F1} \\ 
 			\hline\rule{-4pt}{10pt}
 			Propuesto    				& 0,79      	 & 0,50              & 0,74 			 & 0,39               \\
 			\cite{mayer2020transformer} & $\times$       & 0,88	$\checkmark$ & $\times$  		 & 0,66 *             \\
@@ -1916,14 +1961,14 @@ Ejemplos malos:
 
 Ejemplos buenos:
 \begin{itemize}
-	\item \text{} [no se le puede volver a despachar, tiene que ver a la administración (si está ahí en ese momento),
-		      si no, regresar al día siguiente para que se le acredite lo sucedido]$_{MC}$ % 2021-02-26_inconvenientes-con-tarjetas-de-combustible-en-moneda-nacional.txt.conll.link.conll.ann
+	% \item \text{} [no se le puede volver a despachar, tiene que ver a la administración (si está ahí en ese momento),
+	% 	      si no, regresar al día siguiente para que se le acredite lo sucedido]$_{MC}$ % 2021-02-26_inconvenientes-con-tarjetas-de-combustible-en-moneda-nacional.txt.conll.link.conll.ann
 	\item \text{} [administración de la EMI Yuri Gagarin desde inicios de la confección del expediente para
 		      mi jubilación, no contempló el salario obtenido por pluriempleo]$_{MC}$ % 2019-03-22_inconformidad-con-la-chequera.txt.conll.link.conll.ann
 	\item pudiese [contribuir al ahorro de agua y la prestación de un mejor servicio]$_C$ % 2018-10-05_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
 	\item \text{} [es que estamos limitados de este servicio, y no desde hace un tiempo, es que nunca lo hemos tenido]$_P$ % 2018-05-18_sin-cobertura-en-guara-mayabeque.txt.conll.link.conll.ann
-	\item \text{} [el número de carné de identidad que se encontraba en dicha base de datos correspondía a otra persona que
-		      fue reportada como fallecida]$_P$ % 2017-06-30_inass-reconoce-razon-de-ramiro-castellanos-por-inconformidad-con-trato-de-especialista-de-las-tunas_pregunta-quien-le-paga-su-jubilacion.txt.conll.link.conll.ann
+	% \item \text{} [el número de carné de identidad que se encontraba en dicha base de datos correspondía a otra persona que
+	% 	      fue reportada como fallecida]$_P$ % 2017-06-30_inass-reconoce-razon-de-ramiro-castellanos-por-inconformidad-con-trato-de-especialista-de-las-tunas_pregunta-quien-le-paga-su-jubilacion.txt.conll.link.conll.ann
 \end{itemize}
 
 Las relaciones anotadas por el modelo tienden a contener una gran cantidad de falsos positivos, además
@@ -1954,8 +1999,8 @@ Ejemplos malos:
 \begin{itemize}
 	\item \text{} [\dots Bayamo, km 1 No.]$_T$ [30 A (interior), \dots]$_T$
 	      : Uso del \textbf{.} para abreviar número se toma como separador de UDA. % 2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
-	\item \text{} [\dots ,desde el 1ro.]$_T$ [de marzo \dots]$_T$
-	      : Uso del \textbf{.} para abreviar primero se toma como separador de UDA. % 2019-05-24_le-retribuyen-la-diferencia-reclamada-de-su-pension_inconformidad-con-la-chequera.txt.conll.link.conll.ann
+	% \item \text{} [\dots ,desde el 1ro.]$_T$ [de marzo \dots]$_T$
+	%       : Uso del \textbf{.} para abreviar primero se toma como separador de UDA. % 2019-05-24_le-retribuyen-la-diferencia-reclamada-de-su-pension_inconformidad-con-la-chequera.txt.conll.link.conll.ann
 	\item \text{} [Junto a la misiva se le entregó al Inass certificados de salarios devengados y las tarjetas sn2-25.]$_T$
 	      : Se clasifica mejor como \textit{fact}. % 2019-03-22_inconformidad-con-la-chequera.txt.conll.link.conll.ann
 	\item \text{} [Caridad Real Gutiérrez, Jefe de Trámites y Pensiones, Inass.]$_T$
@@ -2017,9 +2062,10 @@ Ejemplos buenos:
 
 Las relaciones tienen la menor cantidad de elementos de los otros conjuntos de datos, proliferando
 las relaciones de \textit{support}. En las clasificadas como \textit{partial-attack} se evidenció, a 
-consideración del autor, una baja precisión. Por ejemplo 
-	[\textit{cierto que la responsabilidad es de todos, pero la institucional es de la Dirección de Comunales.}]
-ataca a [\textit{Antonio Blanco, Director de Servicios Comunales Plaza,}].
+consideración del autor, una baja precisión. 
+% Por ejemplo 
+% 	[\textit{cierto que la responsabilidad es de todos, pero la institucional es de la Dirección de Comunales.}]
+% ataca a [\textit{Antonio Blanco, Director de Servicios Comunales Plaza,}].
 
 \subsection{Resultados}
 
@@ -2027,10 +2073,11 @@ Se considera que el conjunto de datos CDCP se ajusta mejor a las característica
 a la Dirección. Este presenta orígenes similares, es contenido generado por usuarios en una plataforma
 web, y, por lo tanto, presenta un conjunto de etiquetas de UDAs que se ajustan más a lo observado 
 en las cartas. También las cartas presentan un alto contenido argumentativo, por lo que marcar 
-todas las oraciones como argumentativas no constituye una fuente grande de errores, aunque esta 
-parte puede ser mejorada. Una desventaja de este esquema sobre otros es la carencia de una 
+todas las oraciones como argumentativas no constituye una fuente grande de errores
+% , aunque esta parte puede ser mejorada
+. Una desventaja de este esquema sobre otros es la carencia de una 
 clasificación de las relaciones que implique un ataque, aunque esto se cubre con el hecho de 
-que en los conjuntos en donde existen estas los resultados son bastante pobres en ese aspecto. La cantidad 
+que en los conjuntos en donde existen estas, los resultados son bastante pobres en ese aspecto. La cantidad 
 y calidad de relaciones, aunque tiene bastante espacio para mejorar, es aceptable dada la dificultad 
 del problema en EA.
 
