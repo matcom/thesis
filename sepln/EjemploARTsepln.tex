@@ -20,7 +20,7 @@
 \author {\textbf{Luis Ernesto Ibarra Vázquez,$^1$} \textbf{Damian Valdés Santiago$^1$}\\
 $^1$Universidad de la Habana\\
 % $^2$Universidad de la Habana\\
-luise98cu@gmail.com, damian@correo.com\\ % TODO poner el correo de Damian
+luise98cu@gmail.com, dvs@matcom.uh.cu\\
 }
 
 \seplntranstitle{Automatic argument extraction in opinion texts in cuban press}
@@ -182,12 +182,11 @@ Se propone la construcción de un programa capaz de realizar la extracción de l
 en específico, se enfoca en su sección de Cartas a la Dirección. Para la extracción
 de argumentos se presentan dos modelos, el primero se encarga de la segmentación y clasificación
 de las componentes argumentativas mediante la clasificación de los tokens en etiquetas BIOES que 
-delimitan y clasifican las unidades de discurso argumentativas (UDA), en el segundo se clasifica 
-una tupla en la que su primer elemento constituye el texto candidato de donde parte la relación 
-o fuente y el segundo, el texto candidato a recibir la 
-relación u objetivo, en el tipo de relación existente entre estos elementos. Los modelos utilizan 
+delimitan y clasifican las unidades de discurso argumentativas (UDA), en el segundo se analizan 
+las posibles relaciones entre UDAs de manera independiente para saber si están relacionadas o no y saber
+el tipo de relación existente. Los modelos utilizan 
 redes neuronales convolucionales (CNN), \textit{Long Short Term Memory} (LSTM) y \textit{Conditional Random Field} (CRF)
-como elementos principales en sus arquitecturas, además se emplean los vectores GloVe para la representación
+como elementos principales en sus arquitecturas, además se emplean vectores GloVe para la representación
 de las palabras.
 
 % Este es un modelo secuencia a secuencia en el cual las palabras 
@@ -224,16 +223,16 @@ recomendaciones del trabajo.
 
 % ARGUMENTACION
 
-\section{Argumentación}
+% \section{Argumentación}
 
-Para el estudio de la argumentación han surgido algunos enfoques que componen un marco teórico 
-en donde se sustentan las investigaciones. Las ideas de \cite{perelman1969rhetoric} están
-enfocadas en un análisis de la retórica en donde se estipula que la teoría de la argumentación
-responde a provocar o aumentar la adhesión de las personas a las tesis presentadas, por medio de 
-técnicas discursivas. En \cite{toulmin_2003} se considera como argumento todo aquello que ofrece, 
-o todo lo que es utilizado, para justificar o refutar una proposición. En este último, se toma 
-una perspectiva más racional y deductiva de la argumentación, dando como resultado lo que se 
-conoce como el Método de Toulmin.
+% Para el estudio de la argumentación han surgido algunos enfoques que componen un marco teórico 
+% en donde se sustentan las investigaciones. Las ideas de \cite{perelman1969rhetoric} están
+% enfocadas en un análisis de la retórica en donde se estipula que la teoría de la argumentación
+% responde a provocar o aumentar la adhesión de las personas a las tesis presentadas, por medio de 
+% técnicas discursivas. En \cite{toulmin_2003} se considera como argumento todo aquello que ofrece, 
+% o todo lo que es utilizado, para justificar o refutar una proposición. En este último, se toma 
+% una perspectiva más racional y deductiva de la argumentación, dando como resultado lo que se 
+% conoce como el Método de Toulmin.
 
 % La argumentación es un tema tratado desde la antigüedad, Aristóteles lo defendía como la 
 % habilidad de, dada una pregunta, considerar los elementos útiles para persuadir a alguien, algo
@@ -248,18 +247,18 @@ conoce como el Método de Toulmin.
 % una perspectiva más racional y deductiva de la argumentación, dando como resultado lo que se 
 % conoce como el Método de Toulmin. 
 
-\subsection{Método de Toulmin}
+% \subsection{Método de Toulmin}
 
-Este método divide los argumentos en seis partes: afirmación 
-(\textit{claim}), fundamento (\textit{grounds}), justificación (\textit{warrant}), calificador 
-(\textit{qualifier}), refutación (\textit{rebuttal}) y respaldo (\textit{backing}).
-Mediante las afirmaciones se conoce el argumento principal que el autor quiere probar a la audiencia,
-estas son respaldadas con fundamentos, siendo estos las evidencias y hechos en que se apoya el autor.
-Las justificaciones pueden estar explícitas o implícitas y son suposiciones que vinculan los
-fundamentos con las afirmaciones, estas a su vez pueden ser respaldadas por conocimiento.
-El esquema introduce la posibilidad de otra situación válida a la establecida en las afirmaciones
-mediante la refutación. Los calificadores son usados para dar más información de la calidad o seguridad
-de las afirmaciones dadas. 
+% Este método divide los argumentos en seis partes: afirmación 
+% (\textit{claim}), fundamento (\textit{grounds}), justificación (\textit{warrant}), calificador 
+% (\textit{qualifier}), refutación (\textit{rebuttal}) y respaldo (\textit{backing}).
+% Mediante las afirmaciones se conoce el argumento principal que el autor quiere probar a la audiencia,
+% estas son respaldadas con fundamentos, siendo estos las evidencias y hechos en que se apoya el autor.
+% Las justificaciones pueden estar explícitas o implícitas y son suposiciones que vinculan los
+% fundamentos con las afirmaciones, estas a su vez pueden ser respaldadas por conocimiento.
+% El esquema introduce la posibilidad de otra situación válida a la establecida en las afirmaciones
+% mediante la refutación. Los calificadores son usados para dar más información de la calidad o seguridad
+% de las afirmaciones dadas. 
 % Un ejemplo\footnote{Extraído de
 % 	\cite{toulminArgument}.
 % } de este esquema es:
@@ -279,32 +278,32 @@ de las afirmaciones dadas.
 % como la argumentación al tomar en cuenta gran parte de los elementos presentes en el razonamiento
 % realizado para llegar a conclusiones, incorporando incluso elementos probabilísticos en el proceso. 
 
-\subsection{Rasgos lingüísticos}
+% \subsection{Rasgos lingüísticos}
 
-Los rasgos lingüísticos son aquellas características que se encuentran presentes en los textos 
-que hacen que estos se clasifiquen argumentativos \cite{venegas2005hacia}. Con 
-la identificación de estos se hace la tarea de extracción más sencilla y con un marco teórico 
-que respalde las decisiones tomadas. Ejemplos de rasgos presentes en textos argumentativos:
+% Los rasgos lingüísticos son aquellas características que se encuentran presentes en los textos 
+% que hacen que estos se clasifiquen argumentativos \cite{venegas2005hacia}. Con 
+% la identificación de estos se hace la tarea de extracción más sencilla y con un marco teórico 
+% que respalde las decisiones tomadas. Ejemplos de rasgos presentes en textos argumentativos:
 
-\begin{enumerate}
-	\item Marcas de orden que introducen párrafos: \textit{primero}, \textit{segundo}, \textit{por un lado},
-	      \textit{por otra parte}, \textit{finalmente}.
-	\item Comillas y citas: citar palabras que refuercen la intervención recurriendo a autoridades
-	      o personajes.
-	\item Nexos que expresan causa o consecuencias: \textit{ya que}, \textit{porque}, \textit{pues},
-	      \textit{con motivo de}, \textit{gracias a}, \textit{considerando que}, \textit{por lo tanto}, \textit{de manera que}.
-\end{enumerate}
+% \begin{enumerate}
+% 	\item Marcas de orden que introducen párrafos: \textit{primero}, \textit{segundo}, \textit{por un lado},
+% 	      \textit{por otra parte}, \textit{finalmente}.
+% 	\item Comillas y citas: citar palabras que refuercen la intervención recurriendo a autoridades
+% 	      o personajes.
+% 	\item Nexos que expresan causa o consecuencias: \textit{ya que}, \textit{porque}, \textit{pues},
+% 	      \textit{con motivo de}, \textit{gracias a}, \textit{considerando que}, \textit{por lo tanto}, \textit{de manera que}.
+% \end{enumerate}
 
-Estos rasgos además de dar indicación de la existencia de argumentos dan pie para conocer las relaciones
-entre estos y los tipos de argumentos. Por ejemplo, \textit{por lo tanto}, implica que lo que viene 
-a continuación es una conclusión apoyada en lo dicho anteriormente en el texto. Algo parecido
-sucede con \textit{ya que}, en este caso implica que lo siguiente es un argumento que se encuentra 
-relacionado con lo mencionado antes.
+% Estos rasgos además de dar indicación de la existencia de argumentos dan pie para conocer las relaciones
+% entre estos y los tipos de argumentos. Por ejemplo, \textit{por lo tanto}, implica que lo que viene 
+% a continuación es una conclusión apoyada en lo dicho anteriormente en el texto. Algo parecido
+% sucede con \textit{ya que}, en este caso implica que lo siguiente es un argumento que se encuentra 
+% relacionado con lo mencionado antes.
 
-En
-\cite{venegas2005hacia}
-se determinan 16 categorías y 51 rasgos lingüísticos, dando una idea 
-de la gran variedad de marcadores presentes en la argumentación.
+% En
+% \cite{venegas2005hacia}
+% se determinan 16 categorías y 51 rasgos lingüísticos, dando una idea 
+% de la gran variedad de marcadores presentes en la argumentación.
 
 \section{Extracción de Argumentos} %% RESUMED
 
@@ -315,10 +314,18 @@ La EA permite dar respuesta a este problema presentando
 los argumentos y cómo sus relaciones justifican las posiciones del hablante. Dicho problema está constituido por diferentes 
 estructuras y se compone de distintas tareas necesarias para su solución.
 
+Para dicha tarea se existen diferentes estudios que forman una metodología de análisis y de cómo 
+identificar los argumentos. El Método de Toulmin \cite{toulmin_2003} introduce una serie de categorías 
+con distintas funciones dentro de la argumentación, dando así un primer paso a la estructuración. En 
+el idioma español existen rasgos lingüísticos que, además de dar indicación de la existencia de argumentos, 
+dan pie para conocer las relaciones entre estos y los tipos de argumentos, en \cite{venegas2005hacia}
+se determinan 16 categorías y 51 rasgos lingüísticos, dando una idea de la gran variedad de marcadores 
+presentes en la argumentación.
+
 \subsection{Estructuras Argumentativas}
 
 Las estructuras argumentativas son las partes de la argumentación de los textos y sus relaciones.
-Estas se componen de dos elementos principales: las Unidades de Discurso Argumentativas (UDA) y los enlaces
+Estas se componen de dos elementos principales: las Unidades de Discurso Argumentativas y los enlaces
 existentes entre estas. Las UDAs corresponden a la unidad mínima de argumentación, definida 
 como un segmento de texto que juega un solo rol para el argumento analizado, y es 
 delimitado por segmentos vecinos que tienen roles diferentes o ningún rol \cite{stede2018argumentation}.
@@ -1006,7 +1013,7 @@ En cambio un enfoque \textit{end-to-end} poseen la habilidad de modelar el probl
 desde su inicio hasta su final de manera conjunta, mediante \textit{Multi-Task Learning} (MTL) se modelan
 las tareas de manera conjunta creando un solo modelo complejo con una propagación de error menor.
 
-\subsection{Proyección de corpus} %% RESUMED % TODO No hacerlo seccion
+\subsection{Proyección de corpus} %% RESUMED
 
 La EA no presenta una gran cantidad de datos anotados con los cuales se pueda realizar 
 un entrenamiento, además de esto la gran mayoría de corpus existentes se encuentran en lenguajes como inglés o alemán,
@@ -1363,8 +1370,16 @@ y son devueltas aquellas que se clasifiquen como enlazadas según el criterio an
 
 Para el entrenamiento de los modelos propuestos se utilizaron corpus diferentes, estos
 presentan esquemas de anotación distintos entre sí, difiriendo principalmente en la definición de UDA y 
-las clasificaciones dadas a estas y a las relaciones. A todos los conjuntos se les proyectó al lenguaje 
-español y se les realizó un aumento de datos. 
+las clasificaciones dadas a estas y a las relaciones. 
+Todos los conjuntos de datos están originalmente en inglés, por lo tanto, se les aplicó el algoritmo de proyección
+de corpus para obtener uno en español para ser usado en el entrenamiento de los modelos. 
+Para la traducción automática se utilizó el servicio de Google Translate\footnote{\url{https://translate.google.com/}}, 
+para obtener las alineaciones de palabras se probaron dos algoritmos: FastAlign \cite{dyer2013fastalign} y AwesomeAlign 
+\cite{dou2021word}, siendo este último el seleccionado, finalmente la proyección de etiquetas
+fue llevada a cabo por el algoritmo propuesto en \cite{eger2018cross}.
+
+% A todos los conjuntos se les proyectó al lenguaje 
+% español y se les realizó un aumento de datos. Para la proyección se utilizó 
 % Como conjunto para la validación fueron usadas 
 % una parte de las Cartas a la Dirección del periódico Granma.
 
@@ -1426,7 +1441,7 @@ Se observa una composición heterogénea entre estos, principalmente CDCP difier
 	\caption{\label{table:corpus_info}Información de promedios de los conjuntos de datos.}
 \end{table}
 
-\subsection{Creación de corpus en español}
+% \subsection{Creación de corpus en español}
 
 % \subsubsection{Aumento de datos}
 
@@ -1459,15 +1474,15 @@ Se observa una composición heterogénea entre estos, principalmente CDCP difier
 
 % TODO Posible resumen: Solamente decir que se utilizo AwesomeAlign
 
-Todos los conjuntos de datos están originalmente en inglés, por lo tanto, se les aplicó el algoritmo de proyección
-de corpus para obtener uno en español para ser usado en el entrenamiento de los modelos. 
-Para la traducción automática se utilizó el servicio de Google Translate\footnote{\url{https://translate.google.com/}}. 
-Para calcular las 
-alineaciones de palabras se probaron dos algoritmos: FastAlign \cite{dyer2013fastalign} y AwesomeAlign 
-\cite{dou2021word}. Se observó que el primero, aunque es más rápido posee una calidad menor en los resultados,
-el segundo posee una mayor calidad, aunque requiere de mayor tiempo y recursos para ejecutarse. Para los experimentos
-se usó finalmente AwesomeAlign. La proyección de las etiquetas fue llevada a cabo por el algoritmo propuesto 
-en \cite{eger2018cross}.
+% Todos los conjuntos de datos están originalmente en inglés, por lo tanto, se les aplicó el algoritmo de proyección
+% de corpus para obtener uno en español para ser usado en el entrenamiento de los modelos. 
+% Para la traducción automática se utilizó el servicio de Google Translate\footnote{\url{https://translate.google.com/}}. 
+% Para calcular las 
+% alineaciones de palabras se probaron dos algoritmos: FastAlign \cite{dyer2013fastalign} y AwesomeAlign 
+% \cite{dou2021word}. Se observó que el primero, aunque es más rápido posee una calidad menor en los resultados,
+% el segundo posee una mayor calidad, aunque requiere de mayor tiempo y recursos para ejecutarse. Para los experimentos
+% se usó finalmente AwesomeAlign. La proyección de las etiquetas fue llevada a cabo por el algoritmo propuesto 
+% en \cite{eger2018cross}.
 
 \subsection{Cartas a la Dirección}
 
@@ -1630,7 +1645,10 @@ a la Dirección.
 % \end{figure}
 
 El modelo seleccionado fue usado en el entrenamiento de los demás conjuntos de datos obteniendo los resultados mostrados
-en Tabla \ref{table:test_metrics_segmenter} y Tabla \ref{table:test_bioes_metrics_segmenter}.
+en Tabla \ref{table:test_metrics_segmenter}\footnote{Las métricas 50\%F1 y 100\%F1 se encuentran definidas en \cite{persing2016end}.
+Métrica basada en la idea de F1 orientada para el trabajo con secuencias donde el número denota el porcentaje de secuencia inferida que debe coincidir con 
+la secuencia anotada para ser considerado una coincidencia.} 
+y Tabla \ref{table:test_bioes_metrics_segmenter}.
 
 \begin{table}[h]
 	\begin{center}
@@ -1643,7 +1661,7 @@ en Tabla \ref{table:test_metrics_segmenter} y Tabla \ref{table:test_bioes_metric
 			F1 Ponderado 				 & 0,76         		& 0,65     	 & 0,86          \\
 			Macro F1                     & 0,56         		& 0,45     	 & 0,50          \\
 			\textit{Accuracy}            & 0,77         		& 0,66     	 & 0,87          \\ 
-			100\%F1                		 & 0,72         		& 0,61     	 & 0,61          \\ 
+			100\%F1						 & 0,72         		& 0,61     	 & 0,61          \\ 
 			50\%F1                		 & 0,83         		& 0,68     	 & 0,75          \\ 
 			\hline
 		\end{tabular}
@@ -1737,8 +1755,9 @@ necesariamente iguales.
 % \end{figure}
 
 En el entrenamiento del modelo en los demás conjuntos de datos se obtuvieron los resultados de las Tablas 
-\ref{table:test_relation_metrics_link_predictor_relation_classification}, \ref{table:test_relation_metrics_link_predictor_link_prediction} 
-y \ref{table:test_source_metrics_link_predictor}.
+\ref{table:test_relation_metrics_link_predictor_relation_classification} y 
+\ref{table:test_relation_metrics_link_predictor_link_prediction}.
+% y \ref{table:test_source_metrics_link_predictor}.
 
 \begin{table}[h]
 	\begin{center}
@@ -2099,7 +2118,8 @@ Cartas a la Dirección del periódico Granma. Para esto se
 extrajeron los textos de las Cartas creando un conjunto de datos
 conteniendo, no solo el texto de las cartas, si no, los comentarios 
 escritos por los usuarios e información sobre la carta a la que responde, si es una respuesta.
-Se creó un software que puede ser utilizado no solo para el trabajo con las Cartas a la Dirección, si no
+Se creó un software\footnote{\url{https://github.com/luisoibarra/argument-mining}} que puede 
+ser utilizado no solo para el trabajo con las Cartas a la Dirección, si no
 que este permite un uso general para las tareas de proyección de corpus y trabajo relacionados a la EA.
 Este permite incorporar nuevas componentes haciendo posible una extensión simple y desacoplada. 
 Para la anotación de las estructuras se crearon conjuntos de datos en español a partir de conjuntos 
@@ -2120,7 +2140,8 @@ La principal dificultad en el trabajo fue la carencia de un conjunto de anotados
 sobre el tema en específico relacionado con la extracción de argumentos en la prensa.
 Por lo que se propone la creación de este conjunto para poder realizar una mejor 
 validación y entrenamiento del modelo propuesto. También se considera la creación de un servicio 
-online basado en Brat para la socialización y mejora de los resultados obtenidos.
+online basado en Brat\footnote{\url{https://brat.nlplab.org/}} para la socialización y mejora de 
+los resultados obtenidos.
 El uso de representaciones BERT ha llevado a muchas tareas de PLN a nuevos estados 
 del arte, por lo tanto se propone investigar el uso de estos \textit{embeddings} en 
 el modelo. El problema principal obtenido en el modelo fue relacionado con la 
@@ -2130,10 +2151,10 @@ de métodos que tomen esto en cuenta, una variante podría ser las \textit{Graph
 
 \section*{Agradecimientos}
 
-Este trabajo tributa a "Dinámicas sociales, políticas y económicas en el discurso público 
-en Cuba de principio del siglo XXI: estudios de CORESPUC". Proyecto 
-asociado al Programa Nacional de Ciencia y Técnica "Las Ciencias Sociales y las humanidades. 
-Desafíos ante la estrategia de desarrollo de la sociedad cubana", Código PN223LH011-011, Ministerio
+Este trabajo tributa a ``Dinámicas sociales, políticas y económicas en el discurso público 
+en Cuba de principio del siglo XXI: estudios de CORESPUC''. Proyecto 
+asociado al Programa Nacional de Ciencia y Técnica ``Las Ciencias Sociales y las humanidades. 
+Desafíos ante la estrategia de desarrollo de la sociedad cubana'', Código PN223LH011-011, Ministerio
 de Ciencia, Tecnología y Medio Ambiente (CITMA), Cuba, 2021-2023.
 
 \bibliographystyle{fullname_esp}
