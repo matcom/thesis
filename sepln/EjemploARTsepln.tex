@@ -925,93 +925,170 @@ relaciones entre las UDAs. Dichos vértices se anotan con el tipo de relación e
 
 % INVESTIGACIONES PREVIAS
 
-\subsection{Preliminares de Extracción de Argumentos} %% TODO MISSING RESUMED
+\subsection{Variantes para la Extracción de Argumentos} %% TODO MISSING RESUMED
 
 Varias investigaciones han dado respuesta a los problemas asociados a EA, mostrando
-una variedad en enfoques y métodos.
+una variedad en enfoques y métodos.\\
 
-En \cite{palau2009argumentation} se propone
-el uso de modelos como \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM)
-para la clasificación de 
-oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa. En este
-se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
-se usa un enfoque basado en reglas con la creación de una Gramática Libre de Contexto. Las representaciones
-de las oraciones consisten en atributos creados a mano, dado el conocimiento experto sobre la argumentación
-en el tema tratado, elementos como adverbios, verbos, signos de puntuación, palabras clave, estadísticas del texto
-(tamaño de oración, distancia media de palabras) son usados para la extracción y clasificación de las UDAs, además,
-se usan también como base en la creación de las reglas de la gramática para la extracción de relaciones.
+En \cite{palau2009argumentation}:
 
-\cite{goudas2015argument} al igual que \cite{palau2009argumentation} clasifica a las oraciones como
-argumentativas o no, mediante diferentes clasificadores como NB, \textit{Random Forest}, Regresión
-Logística y SVM. Sin embargo, \cite{goudas2015argument} aumenta la grandularidad de la segmentación al permitir
-la extracción de los segmentos que contienen la carga argumentativa de dentro de las oraciones previamente clasificadas
-como tal, esto se realiza mediante la extracción de etiquetas BIO de las oraciones con el uso de un 
-CRF. La predicción de las relaciones es modelado como un problema de clasificación
-usando SVM para clasificar pares de UDAs en relacionados o no. Atributos creados a mano 
-son usados en la extracción de UDAs; entre estos están posición de la oración en el texto, cantidad de verbos, comas, adverbios,
-palabras, entidades en la oración, también se emplean listas que guardan entidades relacionadas con el dominio 
-específico y palabras clave indicadoras de frases argumentativas. 
+\begin{itemize}
+	\item Se analizan las UDAs a nivel de oraciones.
+	\item Propone \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM) para la clasificación
+	de oraciones de oraciones en argumentativas o no.
+	\item Las oraciones se representan con un vector conformado de atributos a partir de conocimiento experto
+	de la argumentación.
+	\item Para la predicción de relaciones utilizan una Gramática Libre de Contexto. 
+\end{itemize}
 
-\cite{stab2017parsing} proponen un mecanismo de segmentación basado en CRF. La clasificación
-y predicción de relaciones se modela conjuntamente con dos clasificadores SVM y un problema
-de Optimización Lineal Entero que encuentra la mejor estructura y asegura una disposición arbórea. En la segmentación
-de las UDAs, se extraen por cada token su posición en el texto, si precede o sucede a un signo de puntuación, su parte de
-la oración, la probabilidad de que sea el comienzo de una UDA dado sus tokens anteriores, entre otros. Para la extracción
-y clasificación de relaciones se proponen otros conjuntos de atributos como la cantidad de sustantivos comunes entre
-las componentes fuente y el objetivo, la presencia de indicadores argumentativos, representaciones vectoriales de tokens,
-entre otros.
+% En \cite{palau2009argumentation} se propone
+% el uso de modelos como \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM)
+% para la clasificación de 
+% oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa. En este
+% se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
+% se usa un enfoque basado en reglas con la creación de una Gramática Libre de Contexto. Las representaciones
+% de las oraciones consisten en atributos creados a mano, dado el conocimiento experto sobre la argumentación
+% en el tema tratado, elementos como adverbios, verbos, signos de puntuación, palabras clave, estadísticas del texto
+% (tamaño de oración, distancia media de palabras) son usados para la extracción y clasificación de las UDAs, además,
+% se usan también como base en la creación de las reglas de la gramática para la extracción de relaciones.
 
-En \cite{eger2017neural} trabajan el problema de EA como uno \textit{end-to-end}. 
-Para esto presentaron varias propuestas, entre ellas se encontraba
-modelar el problema como uno de secuencia a secuencia, usando RNN como 
-LSTM en versiones bidireccionales capturando información desde ambos lados de la secuencia.
-Para la representación de las palabras se extrajo información morfológica de las palabras mediante 
-la aplicación de una CNN a los caracteres de estas,
-al final, realizan la clasificación de la secuencia con un CRF. 
-Realizaron experimentos al modelar el problema como uno de \textit{Dependency Parsing} \cite{kiperwasser2016simple}. Este problema
-consiste en construir un árbol de dependencia que codifique las estructuras argumentativas. En este 
-se tiene que decidir entre varias opciones (\textit{shift}, \textit{reduce}) en dependencia del contenido de la pila y del \textit{buffer}
-para la confección del árbol.
-El problema fue modelado también como un problema de reconocimiento de entidades nombradas, en donde las entidades son las UDAs.
+En \cite{goudas2015argument}:
 
-En \cite{dykes2020reconstructing} se proponen métodos basados en reglas para la extracción de argumentos sobre
-textos en Twitter. Estos métodos se centran en la confección de reglas basadas en anotaciones lingüísticas como
-partes de la oración y lemas de palabras. La recuperación está basada en los esquemas argumentativos comunes presentes
-en los textos. Dada las reglas creadas y el tipo
-de datos con que se trabaja, o sea, cadenas de texto pequeñas; estos algoritmos tienden a tener una alta precisión aunque 
-bajo recobrado, esto no es un gran problema en conjuntos de datos grandes, pero en conjuntos de menor tamaño o estructura 
-más compleja pierden efectividad.
+\begin{itemize}
+	\item Se analizan las UDAs a nivel de oraciones.
+	\item Propone NB, \textit{Random Forest}, Regresión Logística y SVM 
+	para la clasificación en argumentativas o no.
+	\item En las oraciones argumentativas, se extraen las secciones con carga argumentativa 
+	mediante anotación de etiquetas BIO con un CRF.
+	\item Se predicen las relaciones como un problema de clasificación de pares de UDAs en donde emplean
+	SVM. 
+	\item Utilizan atributos escogidos a mano mediante conocimiento experto para la representación de 
+	las oraciones y palabras.
+\end{itemize}
 
-\cite{galassi2021deep} propone el uso de redes residuales y mecanismos de atención
-para la creación de un modelo que, conjuntamente, clasifica el tipo de UDA y la relación existente entre estas.
-Este trabajo define el concepto de distancia argumentativa, añadiéndolo como característica y asume que las UDAs ya fueron 
-extraídas. En este caso, además de la distancia argumentativa, las secuencias son representadas 
-vectorialmente con GloVe.
+% \cite{goudas2015argument} al igual que \cite{palau2009argumentation} clasifica a las oraciones como
+% argumentativas o no, mediante diferentes clasificadores como NB, \textit{Random Forest}, Regresión
+% Logística y SVM. Sin embargo, \cite{goudas2015argument} aumenta la grandularidad de la segmentación al permitir
+% la extracción de los segmentos que contienen la carga argumentativa de dentro de las oraciones previamente clasificadas
+% como tal, esto se realiza mediante la extracción de etiquetas BIO de las oraciones con el uso de un 
+% CRF. La predicción de las relaciones es modelado como un problema de clasificación
+% usando SVM para clasificar pares de UDAs en relacionados o no. Atributos creados a mano 
+% son usados en la extracción de UDAs; entre estos están posición de la oración en el texto, cantidad de verbos, comas, adverbios,
+% palabras, entidades en la oración, también se emplean listas que guardan entidades relacionadas con el dominio 
+% específico y palabras clave indicadoras de frases argumentativas. 
 
-En resumen, se contemplan disímiles enfoques al problema de EA desde una perspectiva enmarcada en modelos 
-simbólicos, estadísticos y neuronales en versiones tanto secuenciales como \textit{end-to-end}. 
-Cada uno de estos modelos presentan sus ventajas y desventajas a la hora de construirlos, 
-extenderlos y comprender su funcionamiento. En modelos simbólicos se presenta una alta
-precisión en dominios específicos debido a que se construyen teniendo en cuenta reglas específicas a un
-contexto dado. Estos modelos son poco escalables y difíciles de mantener ya que sus reglas son construídas
-a mano y dicho proceso requiere de conocimiento experto y tiempo. Los modelos estadísticos 
-se caracterizan por usar conjuntos de atributos creados a mano, dichos atributos son difíciles
-de encontrar, calcular y pueden no poseer relevancia en otros contextos diferentes a los que fueron creados,
-además, la necesidad de conocimiento experto es necesaria para su confección. Los modelos neuronales poseen
-una mayor adaptabilidad, en estos la entrada puede ser codificada en una representación que es aprendida por
-el mismo algoritmo, permitiendo su uso en esquemas argumentativos con características diferentes. Los modelos simbólicos y 
-estadísticos poseen la ventaja de poder explicar el porqué de los resultados devueltos cosa que se vuelve casi
-imposible en modelos neuronales.
+En \cite{stab2017parsing}:
 
-Dado que la EA es un proceso en el cual se necesita pasar por varias tareas, estas deben de ser completadas
-de alguna forma. Una manera de completarlas es hacerla una a la vez, independiente una de otra y pasándole
-la salida de etapas anteriores a las etapas siguientes. Esta manera secuencial de realizar las 
-tareas es bastante simple y ayuda a la creación de modelos simples y con tareas bien definidas, aunque trae consigo 
-la propagación de los errores a través del proceso y el no aprovechamiento de las interrelaciones entre variables 
-computadas de procesos anteriores. También requiere de la construcción, entrenamiento y evaluación de varios modelos.
-En cambio un enfoque \textit{end-to-end} poseen la habilidad de modelar el problema 
-desde su inicio hasta su final de manera conjunta, mediante \textit{Multi-Task Learning} (MTL) se modelan
-las tareas de manera conjunta creando un solo modelo complejo con una propagación de error menor.
+\begin{itemize}
+	\item Se extraen las UDAs mediante un modelo CRF con clasificación en etiquetas BIO.
+	\item La predicción y clasificación de relaciones se modela conjuntamente mediante dos SVMs,
+	optimizando la estructura final con un problema de Optimización Lineal Entero.
+	\item Las representaciones vectoriales de los tokens y las UDAs se constituyen por atributos 
+	seleccionados a mano por conocimiento experto.
+\end{itemize}
+
+% \cite{stab2017parsing} proponen un mecanismo de segmentación basado en CRF. La clasificación
+% y predicción de relaciones se modela conjuntamente con dos clasificadores SVM y un problema
+% de Optimización Lineal Entero que encuentra la mejor estructura y asegura una disposición arbórea. En la segmentación
+% de las UDAs, se extraen por cada token su posición en el texto, si precede o sucede a un signo de puntuación, su parte de
+% la oración, la probabilidad de que sea el comienzo de una UDA dado sus tokens anteriores, entre otros. Para la extracción
+% y clasificación de relaciones se proponen otros conjuntos de atributos como la cantidad de sustantivos comunes entre
+% las componentes fuente y el objetivo, la presencia de indicadores argumentativos, representaciones vectoriales de tokens,
+% entre otros.
+
+En \cite{eger2017neural}:
+
+\begin{itemize}
+	\item Presenta un enfoques \textit{end-to-end}, modelando el problema como:
+	\begin{itemize}
+		\item Anotación secuencia a secuencia (Capa de clasificación CRF al final).
+		\item \textit{Dependency Parsing} \cite{kiperwasser2016simple}.
+		\item Reconocimiento de Entidades Nombradas, en donde las entidades son UDAs.
+	\end{itemize}
+	\item Las representaciones de los tokens son aprendidas por el algoritmo mediante la 
+	aplicación de capas CNN sobre los caracteres.
+\end{itemize}
+
+% En \cite{eger2017neural} trabajan el problema de EA como uno \textit{end-to-end}. 
+% Para esto presentaron varias propuestas, entre ellas se encontraba
+% modelar el problema como uno de secuencia a secuencia, usando RNN como 
+% LSTM en versiones bidireccionales capturando información desde ambos lados de la secuencia.
+% Para la representación de las palabras se extrajo información morfológica de las palabras mediante 
+% la aplicación de una CNN a los caracteres de estas,
+% al final, realizan la clasificación de la secuencia con un CRF. 
+% Realizaron experimentos al modelar el problema como uno de \textit{Dependency Parsing} \cite{kiperwasser2016simple}. Este problema
+% consiste en construir un árbol de dependencia que codifique las estructuras argumentativas. En este 
+% se tiene que decidir entre varias opciones (\textit{shift}, \textit{reduce}) en dependencia del contenido de la pila y del \textit{buffer}
+% para la confección del árbol.
+% El problema fue modelado también como un problema de reconocimiento de entidades nombradas, en donde las entidades son las UDAs.
+
+En \cite{dykes2020reconstructing}:
+
+\begin{itemize}
+	\item Se proponen métodos basados en reglas basadas en anotaciones lingüísticas (partes de la oración, lemas de palabras, etc.) 
+	para la extracción de argumentos. 
+\end{itemize}
+
+% En \cite{dykes2020reconstructing} se proponen métodos basados en reglas para la extracción de argumentos sobre
+% textos en Twitter. Estos métodos se centran en la confección de reglas basadas en anotaciones lingüísticas como
+% partes de la oración y lemas de palabras. La recuperación está basada en los esquemas argumentativos comunes presentes
+% en los textos. Dada las reglas creadas y el tipo
+% de datos con que se trabaja, o sea, cadenas de texto pequeñas; estos algoritmos tienden a tener una alta precisión aunque 
+% bajo recobrado, esto no es un gran problema en conjuntos de datos grandes, pero en conjuntos de menor tamaño o estructura 
+% más compleja pierden efectividad.
+
+En \cite{galassi2021deep}:
+
+\begin{itemize}
+	\item Propone el uso de redes residuales y mecanismos de atención.
+	\item Clasifica conjuntamente el tipo de UDA y la relación entre estas.
+	\item Representa el texto como una secuencia de vectores GloVe para los tokens.
+\end{itemize}
+
+% \cite{galassi2021deep} propone el uso de redes residuales y mecanismos de atención
+% para la creación de un modelo que, conjuntamente, clasifica el tipo de UDA y la relación existente entre estas.
+% Este trabajo define el concepto de distancia argumentativa, añadiéndolo como característica y asume que las UDAs ya fueron 
+% extraídas. En este caso, además de la distancia argumentativa, las secuencias son representadas 
+% vectorialmente con GloVe.
+
+Cada modo tiene su ventaja y desvantaja, el modelado secuencial de los problemas, aunque simple, introduce
+una propagación de error en las etapas posteriores e impide que el modelo obtenga toda la información de
+la fuente original. Las reglas y vectorizaciones creadas a mano introducen la información de expertos 
+directamente en el proceso de aprendizaje, aunque para obtener estas se necesita una mayor cantidad 
+de tiempo y recursos, y se hacen más dificiles de escalar y mantener que las representaciones aprendidas
+automaticamente en el proceso de entrenamiento, representaciones que se pueden moldear a los distintos
+tipos de situaciones y esquemas presentes en los datos.
+
+Para los modelos propuestos, gran parte de las representaciones son aprendidas en el proceso de 
+entrenamiento y las que se agregan de forma manual casi no influyen en la escalabilidad del sistema.
+Dado que se tienen dos modelos independientes se tiene una propagación del error al unir los resultados 
+del primero con el segundo, aunque se hace uso del modelado conjunto de problemas para evitar esta 
+situación en las tareas de extracción y clasificación de UDAs y extracción y clasificación de relaciones.
+
+% En resumen, se contemplan disímiles enfoques al problema de EA desde una perspectiva enmarcada en modelos 
+% simbólicos, estadísticos y neuronales en versiones tanto secuenciales como \textit{end-to-end}. 
+% Cada uno de estos modelos presentan sus ventajas y desventajas a la hora de construirlos, 
+% extenderlos y comprender su funcionamiento. En modelos simbólicos se presenta una alta
+% precisión en dominios específicos debido a que se construyen teniendo en cuenta reglas específicas a un
+% contexto dado. Estos modelos son poco escalables y difíciles de mantener ya que sus reglas son construídas
+% a mano y dicho proceso requiere de conocimiento experto y tiempo. Los modelos estadísticos 
+% se caracterizan por usar conjuntos de atributos creados a mano, dichos atributos son difíciles
+% de encontrar, calcular y pueden no poseer relevancia en otros contextos diferentes a los que fueron creados,
+% además, la necesidad de conocimiento experto es necesaria para su confección. Los modelos neuronales poseen
+% una mayor adaptabilidad, en estos la entrada puede ser codificada en una representación que es aprendida por
+% el mismo algoritmo, permitiendo su uso en esquemas argumentativos con características diferentes. Los modelos simbólicos y 
+% estadísticos poseen la ventaja de poder explicar el porqué de los resultados devueltos cosa que se vuelve casi
+% imposible en modelos neuronales.
+
+% Dado que la EA es un proceso en el cual se necesita pasar por varias tareas, estas deben de ser completadas
+% de alguna forma. Una manera de completarlas es hacerla una a la vez, independiente una de otra y pasándole
+% la salida de etapas anteriores a las etapas siguientes. Esta manera secuencial de realizar las 
+% tareas es bastante simple y ayuda a la creación de modelos simples y con tareas bien definidas, aunque trae consigo 
+% la propagación de los errores a través del proceso y el no aprovechamiento de las interrelaciones entre variables 
+% computadas de procesos anteriores. También requiere de la construcción, entrenamiento y evaluación de varios modelos.
+% En cambio un enfoque \textit{end-to-end} poseen la habilidad de modelar el problema 
+% desde su inicio hasta su final de manera conjunta, mediante \textit{Multi-Task Learning} (MTL) se modelan
+% las tareas de manera conjunta creando un solo modelo complejo con una propagación de error menor.
 
 \subsection{Proyección de corpus} %% RESUMED
 
