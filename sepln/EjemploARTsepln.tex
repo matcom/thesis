@@ -15,7 +15,7 @@
 
 \setlength\titlebox{4in} %esto por defecto
 
-\title{Extracción automática de argumentos en textos de opinión en la prensa cubana}
+\title{Extracción automática de estructuras argumentativas en textos de opinión cubanos mediante proyección de etiquetas y aprendizaje profundo}
 
 \author {\textbf{Luis Ernesto Ibarra Vázquez,$^1$} \textbf{Damian Valdés Santiago$^1$}\\
 $^1$Facultad de Matemática y Computación, Universidad de La Habana, Cuba\\
@@ -23,43 +23,50 @@ $^1$Facultad de Matemática y Computación, Universidad de La Habana, Cuba\\
 luise98cu@gmail.com, dvs89cs@matcom.uh.cu\\
 }
 
-\seplntranstitle{Automatic argument extraction in opinion texts in cuban press}
+\seplntranstitle{Automatic extraction of argumentative structures in Cuban opinion texts through label projection and deep learning}
 
 \seplnclave{Extracción de argumentos, procesamiento de lenguaje natural, aprendizaje profundo.} % TODO Seguir en esto
 
 \seplnresumen{
 La Extracción de Argumentos se realiza tradicionalmente mediante anotación
 manual de expertos en lingüística, lo que demora mucho tiempo. 
-Este artículo propone y muestra los resultados de aplicar algoritmos de aprendizaje profundo 
+Este artículo propone aplicar algoritmos de aprendizaje profundo 
 al campo de la Extracción de Argumentos en textos de la prensa cubana, constituyendo el 
 primero de su tipo publicado  y adaptado para textos del español de Cuba, hasta donde los autores conocen.
-Para ello, 1) se crear conjuntos de datos a partir de otros idiomas para
-el entrenamiento de los modelos, 2) se proponen y entrenan los modelos y 3) se realiza
-la anotación automática de las unidades de discurso argumentativas (UDA).
+Para ello, 1) se crean conjuntos de datos a partir de provenientes del idioma inglés,
+2) se proponen y entrenan los modelos y 3) se anotan
+automáticamente las unidades de discurso argumentativas (UDA). Los atributos
+utilizados para la representaciones de los textos son aprendidos en el proceso de entrenamiento 
+para ajustarse al criterio argumentativo de los datos.
 De los conjuntos de datos disponibles, se realizó un análisis de las ventajas y 
-deficiencias de cada uno para la anotación de las ``Cartas a la Dirección'' del periódico cubano Granma. 
+deficiencias de cada uno para la anotación de las ``Cartas a la Dirección'' del periódico cubano \textit{Granma}. 
+Este análisis fue hecho por los autores y en un subconjunto de 30 de las Cartas, dada la no existencia de un conjunto anotado
+de estas.
 Los resultados obtenidos en la extracción de UDAs alcanzaron valores de
 F1 = 0,82 comparados con 0,85 del estado del arte.
 En las demás tareas, los resultados no son directamente comparables con los del estado del arte, 
-los mejores valores F1 obtenidos fueron 0,56 en la clasificación de UDAs, 0,74 en la predicción
-de enlaces y 0,39 en la clasificación de enlaces.}
+debido a las diferentes aproximaciones tomadas en las investigaciones para
+la extracción de argumentos.
+Los mejores valores F1 obtenidos fueron 0,56 en la clasificación de UDAs, 0,74 en la predicción
+de enlaces y 0,39 en la clasificación de enlaces.
+}
 
 
 \seplnkey{Argument extraction, natural language processing, deep learning.} % TODO Seguir en esto
 
 \seplnabstract{
-	Argument Extraction is a problem that is traditionally solved by manual annotation by linguistic 
-	experts, a work that takes a lot of time and resources. This paper proposes and shows the results 
-	of applying deep learning algorithms to the field of Argument Extraction in the Cuban press, where 
-	such studies are scarce. For this purpose, a program capable of: 1) creating data sets from other 
-	languages for model training, 2) training the proposed models and 3) performing the automatic 
-	annotation of argumentative discourse units (ADUs) is presented. From the available datasets, an 
-	analysis is carried out in which the advantages and deficiencies of each one for the annotation of
-	the ``Letters to the Management'' of the Cuban newspaper Granma are exposed. The results obtained 
-	in the ADUs extraction reached values of 0.82 in the F1 metric compared to 0.85 obtained in the 
-	state of the art. In the other tasks, the results are not directly comparable with those of the 
-	state of the art, the best F1 values obtained were 0.56 in ADUs classification, 0.74 in link 
-	prediction and 0.39 in link classification.
+Argument Extraction is traditionally performed by manual annotation by linguistic experts, which takes lots of time. 
+This paper proposes deep learning algorithms to perform the Argument Extraction in 
+Cuban press texts, constituting the first of its kind published and adapted for Cuban Spanish texts, as far as the authors 
+knowledge. To this end, 1) datasets are created by annotation projection from other ones in English language, 2) models are proposed and trained, 
+and 3) automatic annotation of Argumentative Discourse Units (ADUs) is performed. The features used for text representations
+are learned in the training process to match the argumentative criteria of the data. From the available data sets, an analysis 
+of the advantages and deficiencies of each one was made for the annotation of the ``Letters to the Editor'' of the Cuban newspaper
+\textit{Granma}. This analysis was done by the authors and on a subset of 30 of the Letters given the non-existence of an annotated set of 
+it. The results obtained in the extraction of ADUs reached values of F1 = 0.82 compared to 0.85 of the state of the art. In 
+the other tasks, the results are not directly comparable with those of the state of the art, due to the different approaches 
+taken by the researchers when performing the arguments extraction. The best F1 values obtained 
+were 0.56 in ADU classification, 0.74 in link prediction and 0.39 in link classification.
 }
 
 \firstpageno{1}
@@ -70,7 +77,7 @@ de enlaces y 0,39 en la clasificación de enlaces.}
 % la siguiente instrucción sólo se debe usar si el abstract sobrescribe el texto
 % la longitud variará según se necesite
 
-\setlength\titlebox{21cm} % se aumenta el tamaño del espacio reservado para datos de título
+\setlength\titlebox{25cm} % se aumenta el tamaño del espacio reservado para datos de título
 
 
 \label{firstpage} \maketitle
@@ -119,18 +126,20 @@ de diferentes problemas relacionados con
 la argumentación. Entre estas se encuentran: el minado de opiniones, sentimientos y 
 emociones expresadas en un texto 
 \cite{liu2010sentiment}, la detección de controversias, y la zonificación
-argumentativa. Estas tareas muestran cuáles opiniones, puntos de conflictos y roles 
-de argumentos 
-presenta el texto, pero lo realizan de manera separada y no muestran el porqué de estas. 
+argumentativa. 
+% Estas tareas muestran cuáles opiniones, puntos de conflictos y roles 
+% de argumentos 
+% presenta el texto, pero lo realizan de manera separada y no muestran el porqué de estas. 
 
-Para lograr extraer esta información faltante es necesario realizar un 
+Es necesario realizar un 
 análisis de los argumentos dados, para transformar el texto no estructurado a datos argumentativos 
 que permitan el entendimiento de los puntos de vista y de cómo se ``apoyan'' o ``atacan'' entre sí. Este análisis
 es posible realizarlo manualmente o utilizando programas
 especializados para la anotación, aunque la práctica ha demostrado que este proceso requiere 
-de una gran cantidad de tiempo y de personal calificado. Con la inmensa cantidad de datos 
-que se genera a diario este análisis es impracticable de realizar de forma manual, por esto se 
-estudian y crean métodos para automatizar esta tarea.
+de una gran cantidad de tiempo y de personal calificado \cite{eger2018cross}. 
+% Con la inmensa cantidad de datos 
+% que se genera a diario este análisis es impracticable de realizar de forma manual, por esto se 
+% estudian y crean métodos para automatizar esta tarea.
 
 % Breve presentación de la problemática. 
 %   Por todo lo anterior nace la EA, rama de PLN ..., definir tareas de la EA, tocar los enfoques realizados
@@ -144,7 +153,7 @@ argumentativas del texto, y iii) la extracción y
 iv) clasificación de las relaciones entre estas. 
 
 Esta es un área de investigación muy activa donde estas tareas han sido abordadas de diferentes maneras:
-desde modelos secuenciales \cite{palau2009argumentation}, \cite{goudas2015argument} hasta 
+desde modelos secuenciales \cite{palau2009argumentation,goudas2015argument} hasta 
 \textit{end-to-end} \cite{eger2017neural}, desde el uso de clasificadores clásicos 
 como \textit{Naive Bayes} o máquinas de soporte vectorial (SVM, en inglés) \cite{niculae2017argument}, \cite{stab2017parsing} hasta el uso de 
 aprendizaje profundo \cite{galassi2021deep}, \cite{mayer2020transformer}.
@@ -167,29 +176,31 @@ realizada por los autores.
 %    Campo de acción: Linguistica computacional
 %    Hipótesis o preguntas científicas
 %    Objetivos generales y específicos
-%       General: Diseño e implementación de un algoritmo para el estudio de la argumentación en el periódico digital Granma
+%       General: Diseño e implementación de un algoritmo para el estudio de la argumentación en el periódico digital \textit{Granma}
 %       Especifico Construcción del corpus de los periódicos: Crawler, Anotación (scpaCy).
 %       Especifico Implementacion de la interfaz gráfica para consultar los resultados.
 
 El objetivo, de esta investigación es proponer un algoritmo basado en aprendizaje profundo 
 para la extracción y análisis de estructuras argumentativas en textos 
-de la prensa cubana, constituyendo el primero de su tipo publicado y adaptado para
+de la prensa cubana (en particular, la sección ``Cartas a la Dirección'' del períodico \textit{Granma}), 
+constituyendo el primero de su tipo publicado y adaptado para
 textos del español de Cuba, hasta donde los autores conocen. 
 Para lograr dicho objetivo, en primer lugar, es necesario obtener mediante \textit{crawling} los textos a analizar del sitio 
-web del periódico Granma. Luego, se proponen algoritmos de aprendizaje automático capaces de realizar las tareas 
+web del periódico \textit{Granma}. Luego, se proponen algoritmos de aprendizaje automático capaces de realizar las tareas 
 de EA sobre estos textos, que requiren conjuntos 
 de datos anotados en español sobre los cuales se puedan entrenar.
 
 Para la extracción
 de argumentos se presentan dos modelos, el primero se encarga de la segmentación y clasificación
-de las componentes argumentativas mediante la clasificación de los \textit{tokens} en etiquetas BIOES, que 
+de las componentes argumentativas mediante la clasificación de los \textit{tokens} en etiquetas BIOES, que % TODO citar las etiquetas BIOES
 delimitan y clasifican las unidades de discurso argumentativas (UDA). En el segundo, se analizan 
 las posibles relaciones entre UDAs de manera independiente para saber si están relacionadas o no y saber
 el tipo de relación existente. Los modelos utilizan 
 redes neuronales convolucionales (CNN, en inglés), \textit{Long Short Term Memory} (LSTM, en inglés) \cite{hochreiter1997long} y \textit{Conditional Random Field} (CRF, en inglés) \cite{lafferty2001conditional}
 como elementos principales en sus arquitecturas, además se emplean vectores GloVe \cite{pennington2014glove} para la representación
-de las palabras. Los algoritmos propuestos se aplican a textos del periódico Granma, 
-en específico, se enfoca en su sección de ``Cartas a la Dirección''.
+de las palabras. 
+% Los algoritmos propuestos se aplican a textos del periódico \textit{Granma}, 
+% en específico, se enfoca en su sección de ``Cartas a la Dirección''.
 
 % Este es un modelo secuencia a secuencia en el cual las palabras 
 % son vectorizadas por sus características morfológicas mediante el uso de redes neuronales convolucionales
@@ -214,11 +225,11 @@ en específico, se enfoca en su sección de ``Cartas a la Dirección''.
 
 % Estructura del trabajo % TODO para el final
 
-El artículo se dividide en varias secciones. Primero, se presentan las definiciones 
+El artículo se divide en varias secciones. Primero, se presentan las definiciones 
 relativas a la argumentación y la EA. Luego, se presenta 
 un estado del arte de la EA con una discusión de las
-ventajas y desventajas de cada enfoque y se introduce la proyección de conjuntos de datos. Más adelante, 
-se presentan los modelos propuestos para realizar las diferentes tareas para resolver el problema en 
+ventajas y desventajas de cada enfoque y se introduce la proyección de corpus. Más adelante, 
+se presentan los modelos propuestos para resolver el problema en 
 cuestión. A continuación se muestran los resultados del entrenamiento de los modelos y en 
 la anotación de los textos de ``Cartas a la Dirección''. Finalmente, se exponen las conclusiones y 
 recomendaciones de la investigación.
@@ -317,7 +328,7 @@ los argumentos y cómo sus relaciones justifican las posiciones del hablante. Di
 estructuras y se compone de distintas tareas necesarias para su solución.
 
 Existen diferentes estudios que conforman una metodología de análisis para
-identificar los argumentos. El Método de Toulmin \cite{toulmin_2003} introduce categorías 
+identificar los argumentos. El modelo de Toulmin \cite{toulmin_2003} introduce categorías 
 con distintas funciones dentro de la argumentación. En 
 el idioma español existen rasgos lingüísticos que, además de dar indicación de la existencia de argumentos, 
 dan pie para conocer las relaciones entre estos y los tipos de argumentos. \namecite{venegas2005hacia}
@@ -334,7 +345,7 @@ delimitado por segmentos vecinos que tienen roles diferentes o ningún rol \cite
 
 Las UDAs se relacionan entre sí conformando el proceso de inferencia y razonamiento del argumento.
 Tanto los enlaces como las UDAs son clasificados en dependencia de su rol en la argumentación. Estas clasificaciones 
-parten de los conceptos de afirmación, declaración controversial y parte central del argumento, y premisa,
+parten de los conceptos de afirmación, declaración controversial y parte central del argumento, y premisa, % TODO Poner referencias a los conceptos, o eliminarlos
 razones que la justifican o refutan, y en las relaciones de ataque y apoyo. 
 
 \subsection{Tareas de extracción de argumentos}
@@ -349,35 +360,34 @@ se conciben las siguientes tareas principales:
 	\item Clasificación de relaciones entre las UDAs: asignar una categoría a la relación extraída.
 \end{enumerate}
 
-A continuación se presenta un ejemplo en donde se encuentran realizadas dichas tareas, clasificando
-las UDAs en afirmación y premisa y la relación en apoyo:
+% A continuación se presenta un ejemplo en donde se encuentran realizadas dichas tareas, clasificando
+% las UDAs en afirmación y premisa y la relación en apoyo:
 
-\begin{adjustwidth}{25pt}{25pt}
-	En primer lugar, [\textit{el correo electrónico puede contar como uno de los resultados
-	más beneficiosos de la tecnología moderna}]$_{\mathrm{\text{Afirmación}}}$. [\textit{Años atrás, las personas pagaban gran cantidad de dinero para
-	enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
-	causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa, -1, apoyo}}$.
-\end{adjustwidth}
+% \begin{adjustwidth}{25pt}{25pt}
+% 	En primer lugar, [\textit{el correo electrónico puede contar como uno de los resultados
+% 	más beneficiosos de la tecnología moderna}]$_{\mathrm{\text{Afirmación}}}$. [\textit{Años atrás, las personas pagaban gran cantidad de dinero para
+% 	enviar sus cartas y sus pagos estaban sujetos al peso de sus cartas o paquetes y muchos accidentes podrían 
+% 	causar problemas que causarían que el correo no fuera enviado}]$_{\mathrm{Premisa, -1, apoyo}}$.
+% \end{adjustwidth}
 
-El -1 representa la distancia argumentativa, que es la cantidad de UDAs del texto que separan la 
-UDA fuente del objetivo \cite{galassi2021deep}, en caso de ser negativa (positiva) el objetivo se encuentra 
-antes (después) que la fuente.
+% El -1 representa la distancia argumentativa, que es la cantidad de UDAs del texto que separan la 
+% UDA fuente del objetivo \cite{galassi2021deep}, en caso de ser negativa (positiva) el objetivo se encuentra 
+% antes (después) que la fuente.
 
-Puede observarse que las estructuras argumentativas de un texto constituyen un grafo dirigido 
-en donde sus nodos representan las UDAs y están etiquetados con su tipología, y sus aristas representan las 
-relaciones entre las UDAs. Dichas aristas se anotan con el tipo de relación existente entre ambas 
-(Figura \ref{fig:arg_struct}).
+% Puede observarse que las estructuras argumentativas de un texto constituyen un grafo dirigido 
+% en donde sus nodos representan las UDAs y están etiquetados con su tipología, y sus aristas representan las 
+% relaciones entre las UDAs. Dichas aristas se anotan con el tipo de relación existente entre ambas 
+% (Figura \ref{fig:arg_struct}).
 
-\begin{figure}[h]
-	\centering
-	\includesvg[width=7cm]{Graphics/Estructuras_argumentativas.svg}
-	\caption{Estructuras Argumentativas.}
-	\label{fig:arg_struct}
-\end{figure}
+% \begin{figure}[h]
+% 	\centering
+% 	\includesvg[width=7cm]{Graphics/Estructuras_argumentativas.svg}
+% 	\caption{Estructuras Argumentativas.}
+% 	\label{fig:arg_struct}
+% \end{figure}
 
 % MARCO TEORICO
 
-% TODO Hablar un poco de la representacino de los datos en el articulo.
 % \subsection{Representación de datos} 
 
 % La representación de los datos constituye una parte importante al modelar un problema. Esta 
@@ -929,7 +939,7 @@ relaciones entre las UDAs. Dichas aristas se anotan con el tipo de relación exi
 
 % INVESTIGACIONES PREVIAS
 
-\subsection{Variantes para la Extracción de Argumentos} %% TODO MISSING RESUMED
+\subsection{Variantes para la Extracción de Argumentos}
 
 Varias investigaciones han dado respuesta a los problemas asociados a EA, mostrando
 una variedad en enfoques y métodos.\\
@@ -1008,7 +1018,7 @@ y las UDAs están representados por vectores con atributos seleccionados por exp
 % \cite{stab2017parsing} proponen un mecanismo de segmentación basado en CRF. La clasificación
 % y predicción de relaciones se modela conjuntamente con dos clasificadores SVM y un problema
 % de Optimización Lineal Entero que encuentra la mejor estructura y asegura una disposición arbórea. En la segmentación
-% de las UDAs, se extraen por cada token su posición en el texto, si precede o sucede a un signo de puntuación, su parte de
+% de las UDAs, se extraen por cada \textit{token} su posición en el texto, si precede o sucede a un signo de puntuación, su parte de
 % la oración, la probabilidad de que sea el comienzo de una UDA dado sus \textit{tokens} anteriores, entre otros. Para la extracción
 % y clasificación de relaciones se proponen otros conjuntos de atributos como la cantidad de sustantivos comunes entre
 % las componentes fuente y el objetivo, la presencia de indicadores argumentativos, representaciones vectoriales de \textit{tokens} 
@@ -1090,7 +1100,7 @@ de tiempo y recursos, y puede ser más difícil de escalar y mantener que repres
 automáticamente en el proceso de entrenamiento, estas se pueden moldear a los distintos
 tipos de situaciones y esquemas presentes en los datos.
 
-En los modelos propuestos (\ref{ssec:segm_clsf_uda}, \ref{ssec:pred_clsf_enlaces}), gran parte de las representaciones son aprendidas en el proceso de 
+En los modelos propuestos (ver secciones \ref{ssec:segm_clsf_uda} y \ref{ssec:pred_clsf_enlaces}), gran parte de las representaciones son aprendidas en el proceso de 
 entrenamiento y las que se agregan de forma manual casi no influyen en la escalabilidad del sistema.
 Dado que se tienen dos modelos independientes se tiene una propagación del error al unir los resultados 
 del primero con el segundo, aunque se hace uso del modelado conjunto de problemas para evitar esta 
@@ -1121,7 +1131,7 @@ situación en las tareas de extracción y clasificación de UDAs y extracción y
 % desde su inicio hasta su final de manera conjunta, mediante \textit{Multi-Task Learning} (MTL) se modelan
 % las tareas de manera conjunta creando un solo modelo complejo con una propagación de error menor.
 
-\subsection{Proyección de corpus} %% RESUMED
+\subsection{Proyección de etiquetas} %% RESUMED
 
 La EA no presenta una gran cantidad de datos anotados en español con los cuales se pueda realizar 
 un entrenamiento, además de esto la gran mayoría de corpus existentes se encuentran en lenguajes como inglés o alemán.
@@ -1142,7 +1152,7 @@ palabras. El proceso se divide en varias partes:
 	hacia las palabras de la secuencia destino tomando como datos las alineaciones entre estas.
 \end{enumerate}
 
-% A continuación se presentan dos ejemplos\footnote{Extraído del corpus de \cite{stab2017parsing}.} del 
+% A continuación se presentan un ejemplo\footnote{Extraído del corpus de \cite{stab2017parsing}.} del 
 % procedimiento descrito. En estos se observa el proceso de alineación
 % de los índices de los \textit{tokens} en inglés con sus respectivos \textit{tokens} en español, esta relación puede ser de 
 % muchos a muchos y no necesariamente se conserva el orden de las palabras. Luego se observa el paso de 
@@ -1225,16 +1235,11 @@ palabras. El proceso se divide en varias partes:
 
 \section{Segmentación y clasificación de UDAs}
 
-% TODO Hablar de: 
-	% [ ] Como se modela el problema en cuestion
-	% [ ] Como se repersentan las palabras y porque
-	% [ ] Poner solamente el modelo que se escoge y usa al final
-
 Las tareas de segmentación y clasificación de UDAs se resuelven conjuntamente. Para esto se modela 
 como un problema secuencia a secuencia cuyo objetivo es asignar, a los \textit{tokens} extraídos del documento 
 entrada, una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
 de UDA, al conjunto de etiquetas BIES se le añade otra etiqueta que representa el tipo de UDA. Con 
-este esquema se obtiene una cantidad de etiquetas $|\{B,I,E,S\}| \cdot |Clasificaciones \, de \, UDA| + |\{O\}|$
+este esquema se obtiene una cantidad de etiquetas $|\{B,I,E,S\}| \cdot |Clasificaciones \, de \, UDA| + |\{O\}|$.
 
 % Esta primera parte se modela como un problema secuencia a secuencia cuyo objetivo es asignar a los \textit{tokens} 
 % extraídos del documento entrada una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
@@ -1307,35 +1312,36 @@ este esquema se obtiene una cantidad de etiquetas $|\{B,I,E,S\}| \cdot |Clasific
 \subsection{Modelo de segmentación y clasificación de UDAs}\label{ssec:segm_clsf_uda}
 
 Sea $D$ un documento entrada, este es separado en una secuencia de $n$ \textit{tokens} $D_i$, donde $n$ es la mayor longitud encontrada
-en los documentos del conjunto de datos (si la cantidad de \textit{tokens} es menor que $n$ entonces $D_i$ es completado con un token especial de enmascarado). 
-A cada token se le asigna
+en los documentos del conjunto de datos (si la cantidad de \textit{tokens} es menor que $n$ entonces $D_i$ es completado con un \textit{token} especial de enmascarado). 
+A cada \textit{token} se le asigna
 su representación vectorial GloVe de dimensión $g=300$, dando como resultado $G_{ij} \in \mathbb{R}^{n \times g}$.
 Esta representación inicial presenta información semántica de las palabras y conserva las relaciones 
 espaciales entre ellas. 
 
 Para la representación de información morfológica de la palabra se construyen dos
-codificadores que procesan los caracteres de cada token y devuelven una representación vectorial de estos.
-A cada caracter se le asigna un vector que será entrenado convirtiendo un token en un vector de dimensión
+codificadores que procesan los caracteres de cada \textit{token} y devuelven una representación vectorial de estos.
+A cada caracter se le asigna un vector que será entrenado convirtiendo un \textit{token} en un vector de dimensión
 $q \times c$, donde $q$ es el tamaño máximo de palabra en el conjunto de datos y $c$ es la dimensión del vector
 asignado a cada caracter.
 
 Uno de los modelos entrenados está basado en CNN, este modelo entrena una representación de caracteres de dimensión
-$cd=50$, representando un token como un vector de dimensión $q \times cd$. Se conforma por una capa de convolución unidimensional
+$cd=50$, representando un \textit{token} como un vector de dimensión $q \times cd$. Se conforma por una capa de convolución unidimensional
 con $f=30$ filtros y un kernel de tamaño $k=3$, seguida por una capa \textit{max pooling} que convierte la secuencia en un vector
-de dimensión $1 \times f$, que luego es concatenado a la representación del token a que pertenece.
+de dimensión $1 \times f$, que luego es concatenado a la representación del \textit{token} a que pertenece.
 
 Otro modelo utilizado para calcular una representación morfológica está basado en RNN. Se usó
-un modelo LSTM bidireccional con dimensión $l=25$ para calcular la representación del token, para las dimensiones de los caracteres se
+un modelo LSTM bidireccional con dimensión $l=25$ para calcular la representación del \textit{token}, para las dimensiones de los caracteres se
 utilizaron vectores de tamaño $l$, el resultado final constituye la concatenación de la corrida hacia adelante y
-hacia atrás, formando una representación de dimensión $1 \times 2 \cdot l$ del token. Este vector es concatenado a la representación
-del token correspondiente. 
+hacia atrás, formando una representación de dimensión $1 \times 2 \cdot l$ del \textit{token}. Este vector es concatenado a la representación
+del \textit{token} correspondiente. 
 
 Otro atributo usado en la representación de los \textit{tokens} constituyen las etiquetas de 
 partes de la oración de estos.
 El conjunto de etiquetas elegido es un conjunto universal \cite{petrov2011universal} aplicable a muchos idiomas.
-De estas etiquetas se les extrae la codificación \textit{one-hot} y esta es transformada por una capa densa con $p=5$ neuronas
-y función de activación \textit{ReLU}. El resultado se concatena a la representación del token correspondiente. Mediante 
-la extracción de estos atributos el token es representado en tres maneras: semántica, morfológica y estructural, con el 
+Estas etiquetas se representan como un vector al que se le asigna 1 en la posición correspondiente a la clase y 0 en 
+los otros elementos (codificación \textit{one-hot}) y este es transformado por una capa densa con $p=5$ neuronas
+y función de activación \textit{ReLU}. El resultado se concatena a la representación del \textit{token} correspondiente. Mediante 
+la extracción de estos atributos el \textit{token} es representado en tres maneras: semántica, morfológica y estructural, con el 
 objetivo de que sean aprendidos los rasgos lingüísticos correspondientes.
 
 Del proceso de vectorización se obtiene un vector con dimensión $n \times t$, donde $t$ es la dimensión final de la representación
@@ -1386,12 +1392,6 @@ obteniendo así un formato BIOES válido.
 
 \section{Predicción y clasificación de enlaces}
 
-% TODO Hablar de: 
-	% [ ] Como se modela el problema en cuestion
-	% [ ] Como se repersentan las palabras y porque
-	% [ ] Poner solamente el modelo que se escoge y usa al final
-	% [ ] Poner detalles de implementacion como el doble for por los pares posibles de UDAs en el documento
-
 % Las tareas de segmentación y clasificación de UDAs se resuelven conjuntamente. Para esto se modela 
 % como un problema secuencia a secuencia cuyo objetivo es asignar, a los \textit{tokens} extraídos del documento 
 % entrada, una etiqueta BIOES para segmentar las UDAs. Para la clasificación del tipo 
@@ -1437,7 +1437,7 @@ exponencial y tasa de aprendizaje $lr=0.003$.
 
 Dado que se realiza un aprendizaje de varias tareas, se tienen varias funciones de pérdida individuales que conforman 
 la función de pérdida final $e$. Sea $e_r$ la función de pérdida de la clasificación de la relación, $e_s$ la del tipo de UDA origen  
-y $e_t$ del tipo de UDA objetivo, entonces $e = 10 \cdot e_r + e_s + e_t$.
+y $e_t$ del tipo de UDA objetivo, entonces $e = 10 \cdot e_r + e_s + e_t$ \cite{galassi2021deep}.
 
 \subsection{Preprocesamiento de predicción y clasificación de enlaces}
 
@@ -1494,7 +1494,7 @@ fue llevada a cabo por el algoritmo propuesto en \cite{eger2018cross}.
 % A todos los conjuntos se les proyectó al lenguaje 
 % español y se les realizó un aumento de datos. Para la proyección se utilizó 
 % Como conjunto para la validación fueron usadas 
-% una parte de las Cartas a la Dirección del periódico Granma.
+% una parte de las Cartas a la Dirección del periódico \textit{Granma}.
 
 \subsection{Corpus Ensayos Argumentativos}\label{corpus:persuasive_essays}
 
@@ -1588,8 +1588,6 @@ Se observa una composición heterogénea entre estos, principalmente el CDCP dif
 
 % \subsubsection{Proyección de corpus}
 
-% TODO Posible resumen: Solamente decir que se utilizo AwesomeAlign
-
 % Todos los conjuntos de datos están originalmente en inglés, por lo tanto, se les aplicó el algoritmo de proyección
 % de corpus para obtener uno en español para ser usado en el entrenamiento de los modelos. 
 % Para la traducción automática se utilizó el servicio de Google Translate\footnote{\url{https://translate.google.com/}}. 
@@ -1602,7 +1600,7 @@ Se observa una composición heterogénea entre estos, principalmente el CDCP dif
 
 \subsection{Cartas a la Dirección}
 
-La sección ``Cartas a la Dirección'' \cite{gallego2013cartas} es un segmento del periódico Granma donde se publican
+La sección ``Cartas a la Dirección'' \cite{gallego2013cartas} es un segmento del periódico \textit{Granma} donde se publican
 cartas enviadas por la población o empresas a dicha entidad. En general, las cartas 
 presentan dudas o problemas de la población con el objetivo de obtener respuestas del organismo
 asociado. 
@@ -1658,7 +1656,7 @@ esta selección está conformada por 1702 cartas, lo que representa un 59\% del 
 % de mayor tiempo de procesamiento y gasto de recursos computacionales, y también presenta una cantidad mayor de lenguajes 
 % disponibles. Para la visualización y manejo de los datos, y cálculo de métricas se utilizaron 
 % matplotlib \cite{matplotlib}, pandas \cite{pandas} y sklearn \cite{sklearn}. 
-% Para la recolección de las Cartas a la Dirección del periódico Granma se utilizó scrapy \cite{scrapy}.
+% Para la recolección de las Cartas a la Dirección del periódico \textit{Granma} se utilizó scrapy \cite{scrapy}.
 % Como interfaz visual para el usuario se utilizó la herramienta Brat \cite{brat}
 % (Figura \ref{fig:brat_persuasive_granma_letters}). Esta herramienta permite
 % la visualización y edición de las estructuras argumentativas. Dado que Brat es una página web, esta se puede
@@ -1674,12 +1672,12 @@ esta selección está conformada por 1702 cartas, lo que representa un 59\% del 
 
 % \subsection{Formato Estándar}
 
-% El formato estándar creado es basado en el esquema de anotación CoNLL, donde se anotan a nivel de token todos los aspectos 
+% El formato estándar creado es basado en el esquema de anotación CoNLL, donde se anotan a nivel de \textit{token} todos los aspectos 
 % relevantes para las tareas a realizar. La segmentación de las UDAs son representadas por las anotaciones 
 % BIO o BIOES en cada palabra, en adición, las clasificaciones de estas son anotadas al adicionar el nombre 
 % de esta separada por un guión. Las relaciones son anotadas auxiliándose de la distancia argumentativa, estas 
 % son agregadas al anotar el tipo de relación con su respectiva distancia ambas separadas por un guión. A 
-% continuación se muestran ejemplos de este formato, conformado por el token, su clasificación BIOES, su clasificación
+% continuación se muestran ejemplos de este formato, conformado por el \textit{token}, su clasificación BIOES, su clasificación
 % UDA, y las relaciones representadas por su clasificación y su distancia argumentativa:
 
 % \begin{itemize}
@@ -1693,7 +1691,7 @@ esta selección está conformada por 1702 cartas, lo que representa un 59\% del 
 Para realizar la selección del modelo se utilizó el corpus de Ensayos Argumentativos. Con este se ajustaron
 las arquitecturas e hiperparámetros de los modelos propuestos. La mejor combinación de estos fue utilizada 
 para el entrenamiento de los corpus restantes. Finalmente, los modelos fueron utilizados para anotar los 
-textos de la sección ``Cartas a la Dirección'' fe Granma. 
+textos de la sección ``Cartas a la Dirección'' de \textit{Granma}. 
 
 % \subsection{Hardware}
 
@@ -1702,8 +1700,6 @@ textos de la sección ``Cartas a la Dirección'' fe Granma.
 % el entrenamiento de algunos modelos por falta de recursos locales.
 
 \subsection{Segmentador de UDA}
-
-% TODO Resumir esto de seleccion de modelo, Darle introduccion
 
 % En el entrenamiento del segmentador de UDA se hicieron variaciones en la arquitectura propuesta con respecto a la
 % presencia o no de las siguientes componentes, presentando cuatro candidatos (Tabla \ref{table:segmenter_architecture_table}):
@@ -1809,9 +1805,14 @@ la secuencia anotada para ser considerado una coincidencia.
 	\caption{\label{table:test_bioes_metrics_segmenter}Métricas BIOES de las pruebas del segmentador de UDA.}
 \end{table}
 
-\subsection{Predictor de Enlaces}
+En las tablas se observa una diferencia entre los valores de F1 Ponderado y 
+de Macro F1, dadas por el pobre balance de las clases que hace que las menos
+representadas sean más difíciles de ser correctamente anotadas. Los valores
+mayores de 50\%F1 en comparación con 100\%F1 indican que el modelo logra 
+inferir las posiciones de las UDA de manera general, pero sus límites se hacen 
+más complejos de discernir. 
 
-% TODO Resumir esto de seleccion de modelo
+\subsection{Predictor de Enlaces}
 
 Para el modelo se realizó un voto conjunto del ensamblado de tres modelos, dado que el entrenamiento 
 está basado en la aleatoriedad, se entrenan los modelos con los mismos datos obteniendo inferencias no
@@ -1911,6 +1912,13 @@ En el entrenamiento del modelo en los demás conjuntos de datos se obtuvieron lo
 	\caption{\label{table:test_relation_metrics_link_predictor_link_prediction}Métricas de predicción de relaciones de las pruebas del predictor de enlace.}
 \end{table}
 
+En la Tabla \ref{table:test_relation_metrics_link_predictor_relation_classification} se observan
+valores más discretos que en la Tabla \ref{table:test_relation_metrics_link_predictor_link_prediction}
+en ambas métricas. Esta diferencia en la métrica Macro F1 se interpreta como el fallo del modelo 
+en predecir correctamente la clase de la relación. En la tarea de predicción de 
+enlace el modelo se desempeña mejor, aunque con diferencias entre los conjuntos de datos, 
+dando a entender que la estructura de las relaciones de estos pueden influir en el resultado.
+
 % \begin{table}[h]
 % 	\begin{center}
 % 		\begin{tabular}{|l|c|c|c|} 
@@ -1953,9 +1961,184 @@ En el entrenamiento del modelo en los demás conjuntos de datos se obtuvieron lo
 % esto es seleccionada la clasificación del segmentador como etiqueta final para las UDAs y el predictor es usado para 
 % la tarea de extracción y clasificación de relaciones.
 
-\subsection{Comparación con el estado del arte}
+\section{Evaluación cualitativa de la EA}
 
-Las comparaciones se realizan por cada conjunto de datos y se muestran las 
+Dado que las estructuras argumentativas varían en su forma en cada corpus es complejo realizar un método que evalúe de forma 
+justa los resultados obtenidos por los diferentes modelos de manera conjunta. Una variante sería anotar las cartas 
+con los esquemas argumentativos presentes en los conjuntos de datos, esto constituye una labor en la que se requiere
+personal experto, previo estudio y preparación, además de tiempo. 
+
+Por ello, el proceso que se llevó a cabo en esta investigación para realizar la 
+validación consistió en un análisis cualitativo realizado a criterio del autor. Para esto se seleccionaron 15 pares 
+de cartas, la carta original y la respuesta enviada a esta. Cada una de estas 30 cartas fueron anotadas por los modelos entrenados en cada 
+conjunto de datos y se realizó una evaluación que consideró si la UDA se extrajo y clasificó correctamente, 
+así como si la relación también fue extraída y clasificada por el modelo de manera adecuada:
+
+% \begin{itemize}
+% 	\item Muchos falsos positivos en la predicción de enlaces, debido a la manera en la manera componente a componente que 
+% 	se hacen
+% 	\item En los textos en donde la segmentación es por oraciones, los puntos relacionados a otra acción que 
+% 	no sea separar oraciones son seleccionados como separadores.
+% 	\item La segmentación, se queda corta o larga?
+% \end{itemize}
+
+\subsection{Análisis del corpus Ensayos Argumentativos}
+
+% \begin{figure}[h!]
+% 	\begin{center}
+% 		\includegraphics[scale=.4]{Graphics/persuasive_2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.png}
+% 		\includegraphics[scale=.4]{Graphics/persuasive_2019-03-22_inconformidad-con-la-chequera.png}
+% 	    \caption{A}\label{fig:persuasive_granma_letters}
+% 	\end{center}
+% \end{figure}
+
+Los ensayos argumentativos presentan una anotación de UDAs a un nivel de unidades de texto que pueden ser 
+más pequeñas que oraciones y clasifican estas en las clases \textit{MajorClaim} (MC), \textit{Claim} (C) y \textit{Premise}
+(P). Las relaciones se clasifican en de \textit{supports} y \textit{attacks}. 
+
+En general, se observan problemas en la segmentación de UDAs debido al formato y dominio del texto.
+Las cartas presentan una estrutura donde al final se realiza una firma poniendo información acerca del remitente.
+Esta estructura no contribuye a la argumentación, pero el modelo en varias ocasiones detecta componentes en estas. 
+Otro problema se observa en la extracción de supuestas UDAs sin componente argumentativo,
+generalmente, estos elementos, si se expanden, pueden lograr establecer una mejor UDA.
+
+Ejemplos donde el modelo propuesto no fue exitoso:
+\begin{itemize}
+	% \item \text{} [años de explotación y]$_{MC}$
+	%       : muy corto y no informativo. % 2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
+	\item \text{} [en cada uno de los establecimientos de nuestra Cadena de Tiendas]$_{MC}$
+	      : incompleto, mejora incorporando elementos de la izquierda (No a todos los productos con próxima fecha de vencimiento se le aplica rebaja de precios). % 2018-12-07_responde-trd-caribe-al-consumidor_a-proposito-de-la-proteccion-al-consumidor.txt.conll.link.conll.ann
+	% \item \text{} [Director División Grandes Centros]$_{MC}$ [TRD Caribe]$_{C}$
+	%       : mala clasificación y segmentación. %  2018-12-07_responde-trd-caribe-al-consumidor_a-proposito-de-la-proteccion-al-consumidor.txt.conll.link.conll.ann
+	\item \text{} [Esperamos lo antes posible una solución]$_{P}$
+	      : en contexto, no contiene información que lo haga premisa. % 2018-10-05_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
+	% \item \text{} [no podemos permitir]$_{C}$
+	%       : no establece una \textit{claim}. % 2017-06-30_inass-reconoce-razon-de-ramiro-castellanos-por-inconformidad-con-trato-de-especialista-de-las-tunas_pregunta-quien-le-paga-su-jubilacion.txt.conll.link.conll.ann
+\end{itemize}
+
+Ejemplos donde el modelo fue exitoso:
+\begin{itemize}
+	% \item \text{} [no se le puede volver a despachar, tiene que ver a la administración (si está ahí en ese momento),
+	% 	      si no, regresar al día siguiente para que se le acredite lo sucedido]$_{MC}$ % 2021-02-26_inconvenientes-con-tarjetas-de-combustible-en-moneda-nacional.txt.conll.link.conll.ann
+	% \item \text{} [administración de la EMI Yuri Gagarin desde inicios de la confección del expediente para
+	% 	      mi jubilación, no contempló el salario obtenido por pluriempleo]$_{MC}$ % 2019-03-22_inconformidad-con-la-chequera.txt.conll.link.conll.ann
+	\item pudiese [contribuir al ahorro de agua y la prestación de un mejor servicio]$_C$ % 2018-10-05_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
+	\item \text{} [es que estamos limitados de este servicio, y no desde hace un tiempo, es que nunca lo hemos tenido]$_P$ % 2018-05-18_sin-cobertura-en-guara-mayabeque.txt.conll.link.conll.ann
+	% \item \text{} [el número de carné de identidad que se encontraba en dicha base de datos correspondía a otra persona que
+	% 	      fue reportada como fallecida]$_P$ % 2017-06-30_inass-reconoce-razon-de-ramiro-castellanos-por-inconformidad-con-trato-de-especialista-de-las-tunas_pregunta-quien-le-paga-su-jubilacion.txt.conll.link.conll.ann
+\end{itemize}
+
+Las relaciones anotadas por el modelo tienden a contener falsos positivos, además
+dado que este conjunto de datos posee un gran desbalance en las etiquetas de las relaciones favoreciendo 
+estas a las de \textit{supports}, el modelo no fue capaz de realizar anotaciones de \textit{attacks}, tanto en 
+el conjunto de pruebas como en las ``Cartas a la Dirección'' del \textit{Granma}.
+
+\subsection{Análisis de CDCP}
+
+% \begin{figure}[h!]
+% 	\begin{center}
+% 		\includegraphics[scale=.4]{Graphics/cdcp_2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.png}
+% 		\includegraphics[scale=.4]{Graphics/cdcp_2019-03-22_inconformidad-con-la-chequera.png}
+% 	    \caption{A}\label{fig:cdcp_granma_letters}
+% 	\end{center}
+% \end{figure}
+
+El corpus CDCP las UDAs son segmentadas, en la mayoría de los casos, en oraciones 
+(solamente el 1\% de los \textit{tokens} se encuentran fuera de una UDA),
+estas son clasificadas en \textit{testimony} (T), \textit{fact} (F), \textit{policy} (P), \textit{reference} (R)
+y \textit{value} (V). Las relaciones presentan dos tipos de relaciones \textit{evidences} y \textit{reasons}.
+
+Los errores más comunes cometidos por el modelo propuesto en la segmentación, provienen del uso 
+de signos de puntuación que no representan un cambio de oración, en estos casos se separan las UDAs. También
+existen errores de clasificación incorrecta, de, por ejemplo, \textit{testimony} que podrían ser \textit{fact}.
+
+Ejemplos deonde el modelo propuesto no fue exitoso:
+\begin{itemize}
+	% \item \text{} [\dots Bayamo, km 1 No.]$_T$ [30 A (interior), \dots]$_T$
+	%       : uso del \textbf{.} para abreviar número se toma como separador de UDA. % 2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
+	% \item \text{} [\dots ,desde el 1ro.]$_T$ [de marzo \dots]$_T$
+	%       : Uso del \textbf{.} para abreviar primero se toma como separador de UDA. % 2019-05-24_le-retribuyen-la-diferencia-reclamada-de-su-pension_inconformidad-con-la-chequera.txt.conll.link.conll.ann
+	\item \text{} [Junto a la misiva se le entregó al Inass certificados de salarios devengados y las tarjetas sn2-25.]$_T$
+	      : se clasifica mejor como \textit{fact}. % 2019-03-22_inconformidad-con-la-chequera.txt.conll.link.conll.ann
+	\item \text{} [Caridad Real Gutiérrez, Jefe de Trámites y Pensiones, Inass.]$_T$
+	      : firma de la carta como elemento argumentaivo. % 2019-05-24_le-retribuyen-la-diferencia-reclamada-de-su-pension_inconformidad-con-la-chequera.txt.conll.link.conll.ann
+\end{itemize}
+
+Ejemplos donde el modelo propuesto fue exitoso:
+\begin{itemize}
+	% \item \text{} [En el 2017 se colocaron tuberías de 200, 160 y 110 mm, quedando no concluido y de
+	% 	      continuidad para el 2018 se situó un financiamiento para construcción de registros y colocación de 
+	% 	      válvulas y ventosas.]$_F$ % 2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
+	\item \text{} [Mi jubilación comenzó el 29 de febrero de 2016, no el 29 de febrero de 2017.]$_T$ % 2019-03-22_inconformidad-con-la-chequera.txt.conll.link.conll.ann
+	\item \text{} [No se sabe cuánto queda, lo que obliga al cliente a estar haciendo cuentas constantemente.]$_F$ % 2021-05-07_servicentros-operan-diversos-medios-de-pago-electronicos_inconvenientes-con-tarjetas-de-combustible-en-moneda-nacional.txt.conll.link.conll.ann
+\end{itemize}
+
+La cantidad de relaciones anotadas por el modelo entrenado en este corpus
+disminuye en comparación a las anotadas por el modelo entrenado con el corpus Ensayos
+Argumentativos. Las relaciones \textit{reasons} son las más encontradas. % TODO Poner numeros de esto
+
+% Las relaciones presentes disminuyen en cantidad en comparación con lo visto en los textos anotados con el modelo 
+% entrenado con Ensayos Argumentativos. Prevaleciendo las relaciones de \textit{reasons}. A consideración del autor,
+% la cantidad de los falsos positivos son menores que cuando se utilizó el modelo entrenado con el corpus Ensayos Argumentativos.
+
+\subsection{Análisis del corpus AbsTRCT}
+
+% \begin{figure}[h!]
+% 	\begin{center}
+% 		\includegraphics[scale=.4]{Graphics/abstrct_2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.png}
+% 		\includegraphics[scale=.4]{Graphics/abstrct_2019-03-22_inconformidad-con-la-chequera.png}
+% 		\caption{A}\label{fig:abstrct_granma_letters}
+% 	\end{center}
+% \end{figure}
+
+El conjunto de datos presenta un estilo de segmentación de UDAs en donde se anotan 
+secciones de textos más grandes que en el corpus Ensayos Argumentativos, aunque no necesariamente 
+todas las oraciones o la oración completa es considerada argumentativa. 
+Estas se clasifican igual que el corpus Ensayos Argumentativos, aunque 
+en este conjunto de datos se presenta un desbalance de etiquetas grande, favoreciendo 
+a las \textit{Premise} y las \textit{Claim}, % TODO Poner porcientos
+dejando sin representación casi a \textit{MajorClaim}
+(menor del 1\% de las etiquetas BIOES), lo que trajo como consecuencia que el modelo no fuera 
+capaz de diferenciar este tipo de UDA. Las relaciones se presentaron como \textit{partial-attack},
+\textit{attack} y \textit{support}, influenciadas también por la poca cantidad de relaciones de \textit{attack}.
+
+En la clasificación de UDAs se evidencia una gran cantidad de \textit{Premise}.
+
+Ejemplos deonde el modelo propuesto no fue exitoso:
+\begin{itemize}
+	% \item \text{} [\dots Calle 14, apto.]$_P$ [4 entre Zapata y 23, \dots]$_T$
+	%       : uso del \textbf{.} para abreviar la palabra apartamento, que se toma como separador de UDA. % 2017-07-07_parque-en-pleno-deterioro-en-plaza.txt.conll.link.conll.ann
+	\item \text{} [, Director División Grandes Centros TRD Caribe.]$_C$
+	      : mala clasificación con mala segmentación y detección de \textit{claim} en pie de firma de la carta. 
+\end{itemize}
+
+Ejemplos donde el modelo propuesto fue exitoso:
+\begin{itemize}
+	% \item \text{} [Esta situación pudo haberse evitado y no podemos permitir que hechos como este ocurran pues,
+	% 	      empañan la imagen de la institución que está destinada a brindar un servicio con calidad a la población en 
+	% 	      general y en especial a los jubilados y pensionados.]$_P$ % 2017-06-30_inass-reconoce-razon-de-ramiro-castellanos-por-inconformidad-con-trato-de-especialista-de-las-tunas_pregunta-quien-le-paga-su-jubilacion.txt.conll.link.conll.ann
+	\item \text{} [Esta respuesta considera sin razón la preocupación de un lector,
+		      ¿así debe terminar la inquietud de un ciudadano, que confía en las instituciones con que cuenta la 
+		      sociedad para enfrentar sus problemas?]$_C$ % 2017-05-12_cimex-se-dirige-a-limitado-fisico-motor_llamado-a-evaluar-situacion-de-piezas-y-baterias-para-equipos-motorizados-de-discapacitados.txt.conll.link.conll.ann
+\end{itemize}
+
+La cantidad de relaciones anotadas por el modelo entrenado en este corpus es la menor
+de los demás conjuntos de datos. Se observa una gran cantidad de relaciones \textit{support}. % TODO Poner numeros de esto
+Las relaciones clasificadas como \textit{partial-attack}, a consideración del autor, presentaron 
+una baja precisión.
+
+% Las relaciones tienen la menor cantidad de elementos de los otros conjuntos de datos, proliferando
+% las relaciones de \textit{support}. En las clasificadas como \textit{partial-attack} se evidenció, a 
+% consideración del autor, una baja precisión. 
+% Por ejemplo 
+% 	[\textit{cierto que la responsabilidad es de todos, pero la institucional es de la Dirección de Comunales.}]
+% ataca a [\textit{Antonio Blanco, Director de Servicios Comunales Plaza,}].
+
+\section{Discusión}
+
+% \subsection{Comparación con el estado del arte}
+
+Las comparaciones con el estado del arte se realizan por cada conjunto de datos y se muestran las 
 métricas indicadas por los autores de cada propuesta. Cada corpus y propuesta 
 presenta características únicas que hacen que difícil la comparación. 
 
@@ -2045,172 +2228,9 @@ se computó en las investigaciones donde se propusieron los modelos.
 	\end{center}
 \end{table}
 
-\section{Evaluación cualitativa de la EA}
+% \subsection{Análisis de los conjuntos de datos}
 
-Dado que las estructuras argumentativas varían en su forma en cada corpus es complejo realizar un método que evalúe de forma 
-justa los resultados obtenidos por los diferentes modelos de manera conjunta. Una variante sería anotar las cartas 
-con los esquemas argumentativos presentes en los conjuntos de datos, esto constituye una labor en la que se requiere
-personal experto, previo estudio y preparación, además de tiempo. 
-
-Por ello, el proceso que se llevó a cabo en esta investigación para realizar la 
-validación consistió en un análisis cualitativo realizado a criterio del autor. Para esto se seleccionaron 15 pares 
-de cartas, la carta original y la respuesta enviada a esta. Cada una de estas 30 cartas fueron anotadas por los modelos entrenados en cada 
-conjunto de datos y se realizó una evaluación que consideró si la UDA se extrajo y clasificó correctamente, 
-así como si la relación también fue extraída y clasificada por el modelo de manera adecuada:
-
-% \begin{itemize}
-% 	\item Muchos falsos positivos en la predicción de enlaces, debido a la manera en la manera componente a componente que 
-% 	se hacen
-% 	\item En los textos en donde la segmentación es por oraciones, los puntos relacionados a otra acción que 
-% 	no sea separar oraciones son seleccionados como separadores.
-% 	\item La segmentación, se queda corta o larga?
-% \end{itemize}
-
-\subsection{Análisis del corpus Ensayos Argumentativos}
-
-% \begin{figure}[h!]
-% 	\begin{center}
-% 		\includegraphics[scale=.4]{Graphics/persuasive_2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.png}
-% 		\includegraphics[scale=.4]{Graphics/persuasive_2019-03-22_inconformidad-con-la-chequera.png}
-% 	    \caption{A}\label{fig:persuasive_granma_letters}
-% 	\end{center}
-% \end{figure}
-
-Los ensayos argumentativos presentan una anotación de UDAs a un nivel de unidades de texto que pueden ser 
-más pequeñas que oraciones y clasifican estas en las clases \textit{MajorClaim} (MC), \textit{Claim} (C) y \textit{Premise}
-(P). Las relaciones se clasifican en de \textit{supports} y \textit{attacks}. 
-
-En general, se observan problemas en la segmentación de UDAs debido al formato y dominio del texto.
-Las cartas presentan una estrutura donde al final se realiza una firma poniendo información acerca del remitente.
-Esta estructura no contribuye a la argumentación, pero el modelo en varias ocasiones detecta componentes en estas. 
-Otro problema se observa en la extracción de supuestas UDAs sin componente argumentativo,
-generalmente, estos elementos, si se expanden, pueden lograr establecer una mejor UDA.
-
-Ejemplos donde el modelo propuesto no fue exitoso:
-\begin{itemize}
-	\item \text{} [años de explotación y]$_{MC}$
-	      : muy corto y no informativo. % 2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
-	\item \text{} [en cada uno de los establecimientos de nuestra Cadena de Tiendas]$_{MC}$
-	      : incompleto, mejora incorporando elementos de la izquierda (No a todos los productos con próxima fecha de vencimiento se le aplica rebaja de precios). % 2018-12-07_responde-trd-caribe-al-consumidor_a-proposito-de-la-proteccion-al-consumidor.txt.conll.link.conll.ann
-	\item \text{} [Director División Grandes Centros]$_{MC}$ [TRD Caribe]$_{C}$
-	      : mala clasificación y segmentación. %  2018-12-07_responde-trd-caribe-al-consumidor_a-proposito-de-la-proteccion-al-consumidor.txt.conll.link.conll.ann
-	\item \text{} [Esperamos lo antes posible una solución]$_{P}$
-	      : en contexto, no contiene información que lo haga premisa. % 2018-10-05_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
-	\item \text{} [no podemos permitir]$_{C}$
-	      : no establece una \textit{claim}. % 2017-06-30_inass-reconoce-razon-de-ramiro-castellanos-por-inconformidad-con-trato-de-especialista-de-las-tunas_pregunta-quien-le-paga-su-jubilacion.txt.conll.link.conll.ann
-\end{itemize}
-
-Ejemplos donde el modelo fue exitoso:
-\begin{itemize}
-	% \item \text{} [no se le puede volver a despachar, tiene que ver a la administración (si está ahí en ese momento),
-	% 	      si no, regresar al día siguiente para que se le acredite lo sucedido]$_{MC}$ % 2021-02-26_inconvenientes-con-tarjetas-de-combustible-en-moneda-nacional.txt.conll.link.conll.ann
-	\item \text{} [administración de la EMI Yuri Gagarin desde inicios de la confección del expediente para
-		      mi jubilación, no contempló el salario obtenido por pluriempleo]$_{MC}$ % 2019-03-22_inconformidad-con-la-chequera.txt.conll.link.conll.ann
-	\item pudiese [contribuir al ahorro de agua y la prestación de un mejor servicio]$_C$ % 2018-10-05_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
-	\item \text{} [es que estamos limitados de este servicio, y no desde hace un tiempo, es que nunca lo hemos tenido]$_P$ % 2018-05-18_sin-cobertura-en-guara-mayabeque.txt.conll.link.conll.ann
-	% \item \text{} [el número de carné de identidad que se encontraba en dicha base de datos correspondía a otra persona que
-	% 	      fue reportada como fallecida]$_P$ % 2017-06-30_inass-reconoce-razon-de-ramiro-castellanos-por-inconformidad-con-trato-de-especialista-de-las-tunas_pregunta-quien-le-paga-su-jubilacion.txt.conll.link.conll.ann
-\end{itemize}
-
-Las relaciones anotadas por el modelo tienden a contener falsos positivos, además
-dado que este conjunto de datos posee un gran desbalance en las etiquetas de las relaciones favoreciendo 
-estas a las de \textit{supports}, el modelo no fue capaz de realizar anotaciones de \textit{attacks}, tanto en 
-el conjunto de pruebas como en las ``Cartas a la Dirección'' del Granma.
-
-\subsection{Análisis de CDCP}
-
-% \begin{figure}[h!]
-% 	\begin{center}
-% 		\includegraphics[scale=.4]{Graphics/cdcp_2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.png}
-% 		\includegraphics[scale=.4]{Graphics/cdcp_2019-03-22_inconformidad-con-la-chequera.png}
-% 	    \caption{A}\label{fig:cdcp_granma_letters}
-% 	\end{center}
-% \end{figure}
-
-El corpus CDCP las UDAs son segmentadas, en la mayoría de los casos, en oraciones 
-(solamente el 1\% de los \textit{tokens} se encuentran fuera de una UDA),
-estas son clasificadas en \textit{testimony} (T), \textit{fact} (F), \textit{policy} (P), \textit{reference} (R)
-y \textit{value} (V). Las relaciones presentan dos tipos de relaciones \textit{evidences} y \textit{reasons}.
-
-Los errores más comunes cometidos por el modelo propuesto en la segmentación, provienen del uso 
-de signos de puntuación que no representan un cambio de oración, en estos casos se separan las UDAs. También
-existen errores de clasificación incorrecta, de, por ejemplo, \textit{testimony} que podrían ser \textit{fact}.
-
-Ejemplos deonde el modelo propuesto no fue exitoso:
-\begin{itemize}
-	\item \text{} [\dots Bayamo, km 1 No.]$_T$ [30 A (interior), \dots]$_T$
-	      : uso del \textbf{.} para abreviar número se toma como separador de UDA. % 2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
-	% \item \text{} [\dots ,desde el 1ro.]$_T$ [de marzo \dots]$_T$
-	%       : Uso del \textbf{.} para abreviar primero se toma como separador de UDA. % 2019-05-24_le-retribuyen-la-diferencia-reclamada-de-su-pension_inconformidad-con-la-chequera.txt.conll.link.conll.ann
-	\item \text{} [Junto a la misiva se le entregó al Inass certificados de salarios devengados y las tarjetas sn2-25.]$_T$
-	      : se clasifica mejor como \textit{fact}. % 2019-03-22_inconformidad-con-la-chequera.txt.conll.link.conll.ann
-	\item \text{} [Caridad Real Gutiérrez, Jefe de Trámites y Pensiones, Inass.]$_T$
-	      : firma de la carta como elemento argumentaivo. % 2019-05-24_le-retribuyen-la-diferencia-reclamada-de-su-pension_inconformidad-con-la-chequera.txt.conll.link.conll.ann
-\end{itemize}
-
-Ejemplos donde el modelo propuesto fue exitoso:
-\begin{itemize}
-	\item \text{} [En el 2017 se colocaron tuberías de 200, 160 y 110 mm, quedando no concluido y de
-		      continuidad para el 2018 se situó un financiamiento para construcción de registros y colocación de 
-		      válvulas y ventosas.]$_F$ % 2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.txt.conll.link.conll.ann
-	\item \text{} [Mi jubilación comenzó el 29 de febrero de 2016, no el 29 de febrero de 2017.]$_T$ % 2019-03-22_inconformidad-con-la-chequera.txt.conll.link.conll.ann
-	\item \text{} [No se sabe cuánto queda, lo que obliga al cliente a estar haciendo cuentas constantemente.]$_F$ % 2021-05-07_servicentros-operan-diversos-medios-de-pago-electronicos_inconvenientes-con-tarjetas-de-combustible-en-moneda-nacional.txt.conll.link.conll.ann
-\end{itemize}
-
-Las relaciones presentes disminuyen en cantidad en comparación con lo visto en los textos anotados con el modelo 
-entrenado con Ensayos Argumentativos. Prevaleciendo las relaciones de \textit{reasons}. A consideración del autor,
-la cantidad de los falsos positivos son menores que cuando se utilizó el modelo entrenado con el corpus Ensayos Argumentativos.
-
-\subsection{Análisis del corpus AbsTRCT}
-
-% \begin{figure}[h!]
-% 	\begin{center}
-% 		\includegraphics[scale=.4]{Graphics/abstrct_2019-01-25_informa-recursos-hidraulicos-sobre-abasto-de-agua-en-manzanillo_abasto-de-agua-en-manzanillo.png}
-% 		\includegraphics[scale=.4]{Graphics/abstrct_2019-03-22_inconformidad-con-la-chequera.png}
-% 		\caption{A}\label{fig:abstrct_granma_letters}
-% 	\end{center}
-% \end{figure}
-
-El conjunto de datos presenta un estilo de segmentación de UDAs en donde se anotan 
-secciones de textos más grandes que en el corpus Ensayos Argumentativos, aunque no necesariamente 
-todas las oraciones o la oración completa es considerada argumentativa. 
-Estas se clasifican igual que el corpus Ensayos Argumentativos, aunque 
-en este conjunto de datos se presenta un desbalance de etiquetas grande, favoreciendo 
-a las \textit{Premise} y las \textit{Claim}, dejando sin representación casi a \textit{MajorClaim}
-(menor del 1\% de las etiquetas BIOES), lo que trajo como consecuencia que el modelo no fuera 
-capaz de diferenciar este tipo de UDA. Las relaciones se presentaron como \textit{partial-attack},
-\textit{attack} y \textit{support}, influenciadas también por la poca cantidad de relaciones de \textit{attack}.
-
-En la clasificación de UDAs se evidencia una gran cantidad de \textit{Premise}.
-
-Ejemplos deonde el modelo propuesto no fue exitoso:
-\begin{itemize}
-	\item \text{} [\dots Calle 14, apto.]$_P$ [4 entre Zapata y 23, \dots]$_T$
-	      : uso del \textbf{.} para abreviar la palabra apartamento, que se toma como separador de UDA. % 2017-07-07_parque-en-pleno-deterioro-en-plaza.txt.conll.link.conll.ann
-	\item \text{} [, Director División Grandes Centros TRD Caribe.]$_C$
-	      : mala clasificación con mala segmentación y detección de \textit{claim} en pie de firma de la carta. 
-\end{itemize}
-
-Ejemplos donde el modelo propuesto fue exitoso:
-\begin{itemize}
-	\item \text{} [Esta situación pudo haberse evitado y no podemos permitir que hechos como este ocurran pues,
-		      empañan la imagen de la institución que está destinada a brindar un servicio con calidad a la población en 
-		      general y en especial a los jubilados y pensionados.]$_P$ % 2017-06-30_inass-reconoce-razon-de-ramiro-castellanos-por-inconformidad-con-trato-de-especialista-de-las-tunas_pregunta-quien-le-paga-su-jubilacion.txt.conll.link.conll.ann
-	\item \text{} [Esta respuesta considera sin razón la preocupación de un lector,
-		      ¿así debe terminar la inquietud de un ciudadano, que confía en las instituciones con que cuenta la 
-		      sociedad para enfrentar sus problemas?]$_C$ % 2017-05-12_cimex-se-dirige-a-limitado-fisico-motor_llamado-a-evaluar-situacion-de-piezas-y-baterias-para-equipos-motorizados-de-discapacitados.txt.conll.link.conll.ann
-\end{itemize}
-
-Las relaciones tienen la menor cantidad de elementos de los otros conjuntos de datos, proliferando
-las relaciones de \textit{support}. En las clasificadas como \textit{partial-attack} se evidenció, a 
-consideración del autor, una baja precisión. 
-% Por ejemplo 
-% 	[\textit{cierto que la responsabilidad es de todos, pero la institucional es de la Dirección de Comunales.}]
-% ataca a [\textit{Antonio Blanco, Director de Servicios Comunales Plaza,}].
-
-\section{Discusión}
-
-Se considera que el corpus CDCP se ajusta mejor a las características de las ``Cartas 
+por otra parte, se considera que el corpus CDCP se ajusta mejor a las características de las ``Cartas 
 a la Dirección''. Este presenta orígenes similares y un conjunto de etiquetas de UDAs que se ajustan más a lo observado 
 en las Cartas. También las Cartas presentan un alto contenido argumentativo, por lo que marcar 
 todas las oraciones como argumentativas no constituye una fuente grande de errores.
@@ -2229,34 +2249,58 @@ oraciones a segmentos de palabras, aunque estos puedan estar sujetos a errores.
 
 La versión del modelo propuesto entrenado sobre el corpus AbsTRCT constituye el modelo 
 con menor rendimiento. La clasificación
-de UDAs presentó una gran desproporción hacia \textit{Premise} dejando muchas \textit{Claim}
+de UDAs presentó una gran desproporción hacia \textit{Premise} dejando muchas \textit{Claim} % TODO Poner numeros
 sin ser correctamente clasificadas. Sobre las relaciones, reportó un nivel muy bajo de 
 relaciones por documento, respecto a las que se podrían formar.
 
 \section{Conclusiones}
 
-En el trabajo se logró la extracción de estructuras argumentativas en los textos de las 
-``Cartas a la Dirección'' del periódico Granma. Para esto se 
-extrajeron los textos de las Cartas creando un conjunto de datos
+En la investigación se logró la extracción de estructuras argumentativas en los textos de las 
+``Cartas a la Dirección'' del periódico \textit{Granma}. Para esto se hizo un análisis de los
+modelos entrenado con los distintos conjuntos de datos y se seleccionó el modelo que más se ajustaba
+al dominio de las cartas. Esta
+selección se realizó sin tener un conjunto anotado por lingüistas de las Cartas,
+por lo que los autores fueron los que establecieron los criterios cualitativos 
+para la selección del modelo final.
+
+En los resultados obtenidos en las tareas de segmentación y clasificación de UDAs se observan
+valores 50\%F1 entre 0,82 y 0,94 y 0,68 y 0,83, respectivamente, indicando una segmentación aceptable 
+pero que en ocasiones falla a la hora de clasificar correctamente. Al predecir los enlaces y clasificarlos 
+los modelos obtienen resultados de Macro F1 entre 0,68 y 0,83 y 0,33 y 0,39, respectivamente. Estos evidencian
+una mayor dificultad a la hora de trabajar con las relaciones, sobre todo al clasificarlas. 
+Las comparaciones con las investigaciones previas con los resultados de los modelos entrenados 
+se vieron dificultadas por los diferentes enfoques presentados en estas a la hora de seleccionar 
+cómo modelar el problema y cómo procesar los datos para entrenar los modelos.
+
+Este trabajo aportó nuevos conjuntos de datos, estos son las ``Cartas a la Dirección'' extraídas del \textit{Granma},
+los corpus proyectados al español de Ensayos Argumentativos, AbsTRCT y CDCP y las Cartas 
+anotadas con las estructuras argumentativas del modelo entrenado con el conjunto de datos CDCP. También
+presentó unos modelos capaces de adaptarse a los diferentes esquemas que se puedan presentar en la argumentación,
+haciéndolos viables para un estudio directo y sin el agrego de conocimiento específico de los datos.
+% , evidenciado en el análisis hecho con tres conjuntos de datos independientes.
+
+% En el trabajo se logró la extracción de estructuras argumentativas en los textos de las 
+% ``Cartas a la Dirección'' del periódico \textit{Granma}. Para esto se 
+% extrajeron los textos de las Cartas creando un conjunto de datos con estos y también
+% se obtuvo las versiones proyectadas al español de Ensayos Argumentativos, AbsTRCT y CDCP.
 % conteniendo, no solo el texto de las cartas, si no, los comentarios 
 % escritos por los usuarios e información sobre la carta a la que responde, si es una respuesta.
 % Se creó un software\footnote{\url{https://github.com/luisoibarra/argument-mining}} que puede 
 % ser utilizado no solo para el trabajo con las Cartas a la Dirección, si no
 % que este permite un uso general para las tareas de proyección de corpus y trabajo relacionados a la EA.
 % Este permite incorporar nuevas componentes haciendo posible una extensión simple y desacoplada. 
-Para la anotación de las estructuras se crearon conjuntos de datos en español a partir de conjuntos 
-anotados en inglés para poder 
-tener datos con los cuales entrenar los modelos propuestos. Estos modelos, uno encargado 
-de la segmentación y clasificación de las UDAs, y otro de la extracción y clasificación de las 
-relaciones entre estas, fueron utilizados para la anotación de los textos extraídos.
-Los resultados obtenidos en la tarea de segmentación se encuentran al nivel del estado del arte,
-en las demás tareas no se encontraron comparaciones directas al enfoque tomado en la propuesta,
-aunque no teniendo en cuenta esto, se obtienen comparativas inferiores en la clasificación
-de UDAs y en la clasificación de relaciones, aunque se supera la métrica de predicción de enlace. 
-Los resultados obtenidos del procesamiento de las ``Cartas a la Dirección'' son considerados 
-aceptables por autor.
+% Los modelos creados, uno encargado 
+% de la segmentación y clasificación de las UDAs, y otro de la extracción y clasificación de las 
+% relaciones entre estas, fueron utilizados para la anotación de los textos extraídos. Estos modelos
+% permiten el análisis de diferentes esquemas de anotación en los conjuntos de datos debido a su 
+% Los resultados obtenidos en la tarea de segmentación se encuentran al nivel del estado del arte,
+% en las demás tareas no se encontraron comparaciones directas al enfoque tomado en la propuesta,
+% aunque no teniendo en cuenta esto, se obtienen comparativas inferiores en la clasificación
+% de UDAs y en la clasificación de relaciones, aunque se supera la métrica de predicción de enlace. 
+% Los resultados obtenidos del procesamiento de las ``Cartas a la Dirección'' son considerados 
+% aceptables por autor.
 
-El software implementado y los datos pueden ser encontrados en \url{https://github.com/luisoibarra/argument-mining}.
+El software implementado y los datos pueden encontrarse en \url{https://github.com/luisoibarra/argument-mining}.
 
 \section{Recomendaciones}
 
@@ -2271,7 +2315,7 @@ del arte, por lo tanto, se propone investigar el uso de estos \textit{embeddings
 el modelo. El problema principal obtenido en el modelo fue relacionado con la 
 predicción de enlaces, un problema que tiene el modelo es la falta de contexto global
 del texto para hacer la predicción, por lo que se insta a la búsqueda y experimentación
-de métodos que tomen esto en cuenta, una variante podrían ser las \textit{Graph Neural Networks}.
+de métodos que tomen esto en cuenta, una variante podrían ser las \textit{Graph Neural Networks} \cite{wu2021comprehensive}.
 
 \section*{Agradecimientos}
 
