@@ -40,14 +40,10 @@ utilizados para la representaciones de los textos son aprendidos en el proceso d
 para ajustarse al criterio argumentativo de los datos.
 De los conjuntos de datos disponibles, se realizó un análisis de las ventajas y 
 deficiencias de cada uno para la anotación de las ``Cartas a la Dirección'' del periódico cubano \textit{Granma}. 
-Este análisis fue hecho por los autores y en un subconjunto de 30 de las Cartas, dada la no existencia de un conjunto anotado
-de estas.
 Los resultados obtenidos en la extracción de UDAs alcanzaron valores de
 F1 = 0,82 comparados con 0,85 del estado del arte.
 En las demás tareas, los resultados no son directamente comparables con los del estado del arte, 
-debido a las diferentes aproximaciones tomadas en las investigaciones para
-la extracción de argumentos.
-Los mejores valores F1 obtenidos fueron 0,56 en la clasificación de UDAs, 0,74 en la predicción
+los mejores valores F1 obtenidos fueron 0,56 en la clasificación de UDAs, 0,74 en la predicción
 de enlaces y 0,39 en la clasificación de enlaces.
 }
 
@@ -62,10 +58,12 @@ knowledge. To this end, 1) datasets are created by annotation projection from ot
 and 3) automatic annotation of Argumentative Discourse Units (ADUs) is performed. The features used for text representations
 are learned in the training process to match the argumentative criteria of the data. From the available data sets, an analysis 
 of the advantages and deficiencies of each one was made for the annotation of the ``Letters to the Editor'' of the Cuban newspaper
-\textit{Granma}. This analysis was done by the authors and on a subset of 30 of the Letters given the non-existence of an annotated set of 
-it. The results obtained in the extraction of ADUs reached values of F1 = 0.82 compared to 0.85 of the state of the art. In 
-the other tasks, the results are not directly comparable with those of the state of the art, due to the different approaches 
-taken by the researchers when performing the arguments extraction. The best F1 values obtained 
+\textit{Granma}. 
+% This analysis was done by the authors and on a subset of 30 of the Letters given the non-existence of an annotated set of it. 
+The results obtained in the extraction of ADUs reached values of F1 = 0.82 compared to 0.85 of the state of the art. In 
+the other tasks, the results are not directly comparable with those of the state of the art, 
+% due to the different approaches taken by the researchers when performing the arguments extraction. 
+the best F1 values obtained 
 were 0.56 in ADU classification, 0.74 in link prediction and 0.39 in link classification.
 }
 
@@ -77,7 +75,7 @@ were 0.56 in ADU classification, 0.74 in link prediction and 0.39 in link classi
 % la siguiente instrucción sólo se debe usar si el abstract sobrescribe el texto
 % la longitud variará según se necesite
 
-\setlength\titlebox{25cm} % se aumenta el tamaño del espacio reservado para datos de título
+\setlength\titlebox{22cm} % se aumenta el tamaño del espacio reservado para datos de título
 
 
 \label{firstpage} \maketitle
@@ -152,11 +150,11 @@ cuatro subtareas fundamentales: i) la extracción y ii) clasificación de las co
 argumentativas del texto, y iii) la extracción y 
 iv) clasificación de las relaciones entre estas. 
 
-Esta es un área de investigación muy activa donde estas tareas han sido abordadas de diferentes maneras:
-desde modelos secuenciales \cite{palau2009argumentation,goudas2015argument} hasta 
-\textit{end-to-end} \cite{eger2017neural}, desde el uso de clasificadores clásicos 
-como \textit{Naive Bayes} o máquinas de soporte vectorial (SVM, en inglés) \cite{niculae2017argument}, \cite{stab2017parsing} hasta el uso de 
-aprendizaje profundo \cite{galassi2021deep}, \cite{mayer2020transformer}.
+% Esta es un área de investigación muy activa donde estas tareas han sido abordadas de diferentes maneras:
+% desde modelos secuenciales \cite{palau2009argumentation,goudas2015argument} hasta 
+% \textit{end-to-end} \cite{eger2017neural}, desde el uso de clasificadores clásicos 
+% como \textit{Naive Bayes} o máquinas de soporte vectorial (SVM, en inglés) \cite{niculae2017argument}, \cite{stab2017parsing} hasta el uso de 
+% aprendizaje profundo \cite{galassi2021deep}, \cite{mayer2020transformer}.
 
 La EA se caracteriza por la poca disponibilidad de datos anotados y 
 por la heterogeneidad de las 
@@ -194,7 +192,7 @@ Para la extracción
 de argumentos se presentan dos modelos, el primero se encarga de la segmentación y clasificación
 de las componentes argumentativas mediante la clasificación de los \textit{tokens} en etiquetas BIOES, que % TODO citar las etiquetas BIOES
 delimitan y clasifican las unidades de discurso argumentativas (UDA). En el segundo, se analizan 
-las posibles relaciones entre UDAs de manera independiente para saber si están relacionadas o no y saber
+las posibles relaciones entre UDAs de manera independiente para saber si están relacionadas o no y
 el tipo de relación existente. Los modelos utilizan 
 redes neuronales convolucionales (CNN, en inglés), \textit{Long Short Term Memory} (LSTM, en inglés) \cite{hochreiter1997long} y \textit{Conditional Random Field} (CRF, en inglés) \cite{lafferty2001conditional}
 como elementos principales en sus arquitecturas, además se emplean vectores GloVe \cite{pennington2014glove} para la representación
@@ -386,699 +384,167 @@ se conciben las siguientes tareas principales:
 % 	\label{fig:arg_struct}
 % \end{figure}
 
-% MARCO TEORICO
-
-% \subsection{Representación de datos} 
-
-% La representación de los datos constituye una parte importante al modelar un problema. Esta 
-% es la encargada de presentar datos abstractos, como imágenes, párrafos o sonidos, en formas tratables
-% por los algoritmos. Generalmente, se buscan configuraciones que recojan la mayor cantidad de información 
-% de la entrada relevante al problema.
-
-% En el PLN los datos suele estar representados con distintos niveles de granularidad.
-% De menor granularidad a mayor se pueden ir mencionando los documentos, párrafos, oraciones, palabras y
-% caracteres. Estos elementos es posible representarlos mediante vectores que codifiquen propiedades
-% objetivas del problema a tratar como características morfológicas o semánticas de estos. Por ejemplo, 
-% los textos tienen una popular manera de representarse mediante vectores de TF-IDF \cite{manning2008introduction},
-% una desventaja de esta representación es que no toma en cuenta el orden de las palabras, por lo que 
-% la representación de \textit{no me gusta,} y \textit{no, me gusta} serían iguales aunque semánticamente 
-% sean opuestas. Para agregarle la información de orden a la representación se introducen los llamados 
-% $n-$gramas, los cuales toman en cuenta una ventana de tamaño $n$ para conformar conjuntamente una representación.
-% Este enfoque conlleva a la limitante de que solo un contexto finito está disponible para hacer las inferencias,
-% para esto finalmente se crean representaciones individuales para cada palabra, las cuales codifican 
-% información y la secuencia completa es introducida al modelo para realizar la inferencia.
-% La manera más simple de representar una palabra es mediante la representación \textit{one-hot}, 
-% en esta, a cada palabra se le asigna un índice y el vector resultante posee la dimensión del 
-% vocabulario y es rellenado con ceros en todos sus elementos excepto en el índice de la palabra, donde se le asigna 1.
-% Esta representación asume que las palabras son independientes entre sí y 
-% computacionalmente ocupan un espacio considerable. Existen otras representaciones 
-% que brindan información al algoritmo sobre la morfología y la semántica de la palabra que representa.
-
-% Las características morfológicas son aquellas que describen cómo está formado el elemento a analizar.
-% Estas pueden ser extraídas con relativa facilidad, entre tales características se encuentran: tamaño, 
-% cantidad, posición de palabras o párrafos, presencia de sufijos, prefijos, acentos u otros marcadores
-% en el texto. Las características semánticas presentan una mayor dificultad a la hora de ser extraídas.
-% Para esto se utilizan diferentes modelos que codifican esta información en vectores continuos conocidos como 
-% \textit{embeddings}, entre los modelos existentes se encuentran
-% word2vec \cite{mikolov2013efficient}, 
-% \textit{Global Vectors} (GloVe) \cite{pennington2014glove}, 
-% \textit{Bidirectional Encoder Representations from Transformers} (BERT) \cite{devlin2018bert},
-% entre otros.
-
-% \subsection{Modelación de problemas}
-
-% Los problemas en la vida real se presentan en un principio como una descripción a un nivel de abstracción 
-% más alto que el requerido por los algoritmos existentes, se hablan de entidades abstractas como imágenes,
-% sonidos, textos o usuarios, además de la información que se desea extraer o las operaciones que se
-% desean aplicar sobre estas entidades. A lo largo del desarrollo del AA han aparecido diferentes tipos de problemas 
-% que aparecen frecuentemente en la práctica y sus respectivas maneras de solucionarlos. Uno de estos tipos de problemas
-% es el de secuencia a secuencia (\textit{seq2seq}), cuyo objetivo es la conversión de una secuencia en un dominio de entrada a otra 
-% secuencia en un dominio de salida. Con este tipo de problemas se modelan tareas como traducción automática, en 
-% donde el dominio de entrada es texto en un lenguaje de partida y el dominio de salida es texto en un lenguaje de llegada.
-% Otro problema que se resuelve con \textit{seq2seq} es la segmentación de texto, cuya entrada es una lista de \textit{tokens}
-% y la salida son etiquetas que indican cuándo empieza y termina un segmento de texto. Las etiquetas utilizadas para 
-% la segmentación, generalmente, son:
-
-% \begin{itemize}
-% 	\item B (\textit{begin}): representa el inicio del segmento.
-% 	\item I (\textit{inside}): representa la continuación del segmento previamente iniciado.
-% 	\item O (\textit{outside}): representa la no pertenencia a un segmento.
-% \end{itemize}
-
-% Este esquema presenta una versión más elaborada en la que se agregan dos clases que representan el final 
-% de un segmento E (\textit{end}) y un segmento de un solo elemento S (\textit{single}). La tarea anterior es 
-% utilizada como base para otra un poco más compleja, en la que, además de segmentar el texto, se desea 
-% clasificar sus segmentos. Para este problema se añaden meta etiquetas correspondientes a los tipos a identificar $C$
-% obteniendo un conjunto final $R = \{ B, I, E, S \} \times C \cup \{ O \}$. En tareas como la extracción de entidades
-% nombradas este método es empleado, donde el conjunto $C$ contiene las posibles categorías de entidades a identificar.
-
-% \subsection{Arquitecturas}
-
-% En aprendizaje profundo existen una gran cantidad de arquitecturas que se pueden utilizar para formar el modelo 
-% final. Estas deben de ser seleccionadas en dependencia de los datos y el problema a tratar, ya que sus diseños 
-% emulan diferentes operaciones sobre datos que pueden ser más beneficiosas en situaciones específicas.
-
-% \subsubsection{Capas densas}
-
-% El perceptrón consiste es una transformación lineal del vector de datos $\textbf{x}$ con un sesgo $b$ y 
-% luego aplicar una transformación no lineal $g$, conocida como función de activación, 
-% para la obtención del resultado final:
-
-% \begin{equation}
-% 	f(\textbf{x}) = g(\textbf{w}\textbf{x} + b).
-% \end{equation}
-
-% El perceptrón constituye la unidad básica de las capas densas, ya que estas consisten en la aplicación
-% de este modelo varias veces sobre la misma entrada $\textbf{x}$ produciendo vectores de la dimensión $k$
-% deseada como salida final. Los parámetros se codifican en la matriz $\textbf{W}$ y sus sesgo en el 
-% vector $\textbf{b}$:
-
-% \begin{equation}
-% 	f(\textbf{x}) = g(\textbf{Wx} + \textbf{b}).
-% \end{equation}
-
-% Para las funciones de activación existen varias elecciones. Una de estas es la función sigmoidal. 
-% Esta devuelve un valor entre 0 y 1, es usada en tareas de regresión logística. 
-% Se puede interpretar como el nivel de activación de la neurona:
-
-% \begin{equation}
-% 	sigm(x) = \frac{1}{1-e^{-x}}.
-% \end{equation}
-
-% \textit{Rectified Linear Unit} (ReLU) se define como la parte positiva del argumento. Una ventaja que trae esta 
-% función de activación es su rápido cálculo de su derivada y que previene en parte de los problemas 
-% de desaparición de gradiente de la sigmoidal:
-
-% \begin{equation}
-% 	relu(x) = \max(0, x).
-% \end{equation}
-
-% La función de activación \textit{softmax} es diferente a las anteriores en el sentido que necesita
-% el vector salida de la capa anterior para ser computada. Esta función convierte las $q$ salidas
-% en una distribución de probabilidad, algo necesario en tareas de clasificación:
-
-% \begin{equation}
-% 	softmax_k(\textbf{x}) = \frac{e^{x_k}}{\sum\limits_{i=1}^{q} e^{x_i}}.
-% \end{equation}
-
-% \subsubsection{Redes Neuronales Convolucionales}
-
-% Las redes neuronales convolucionales (CNN, en inglés) 
-% son un tipo de redes usadas
-% principalmente para tratar datos donde su estructura espacial es relevante, por ejemplo,
-% en datos bidimensionales como imágenes y en unidimensionales como sonido y texto.
-% Estas redes aplican de una función de kernel sobre los datos, $f * g$ donde $f$ son los
-% datos, $g$ es el kernel o filtro y $*$ es el operador de convolución \cite{d2l}. La función $g$ se puede 
-% aprender en el proceso o también puede ser una función de agrupación predefinida. 
-% Un ejemplo bidimensional de una función de kernel se muestra en la Figura \ref{fig:conv_kernel}.
-
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[width=7cm,clip]{Graphics/kernel_convolution.png}
-% 	\caption{Convolución con kernel (Tomado de \cite{d2l} pág. 241).}
-% 	\label{fig:conv_kernel}
-% \end{figure}
-
-% En este se observa cómo una nueva representación es computada al operar el kernel por la matriz de datos. Este
-% corrimiento se puede realizar de diferentes formas, por ejemplo, se puede mover de dos en dos en vez de uno en uno, este
-% parámetro se le conoce como tamaño de paso (\textit{stride}). Es posible además preservar las dimensiones
-% iniciales de los datos al aplicarle un aumento de los datos en los bordes de tal forma que el resultado sea de la misma
-% dimensión, este aumento se realiza, generalmente, rellenando convenientemente los espacios con ceros, 
-% a esto se le llama \textit{padding} (Figura \ref{fig:conv_kernel_padding}).
-
-% \begin{figure}[h]
-%     \centering
-% 	\includegraphics[width=7cm,clip]{Graphics/kernel_convolution_padding.png}
-% 	\caption{Convolución con kernel con \textit{padding} (Tomado de \cite{d2l} pág. 241).}
-% 	\label{fig:conv_kernel_padding}
-% \end{figure}
-
-% Existen varias funciones de agrupación usadas. Entre estas se encuentran las de agrupación máxima y de 
-% agrupación media. Como sus nombres indican, la de agrupación máxima devuelve el valor máximo de los encontrados
-% en la ventana del kernel, la de media calcula el promedio de estos valores. Estas capas tienen la capacidad de obtener
-% información resumida sobre los datos.
-
-% \subsubsection{Redes Residuales}
-
-% Al crear modelos de aprendizaje profundo se tienen un conjunto de parámetros $\theta$. Las posibles combinaciones 
-% de estos forman un espacio de funciones $F$ al cual pertenecen todas las posibles instancias del modelo.
-% Agregar nuevas capas aumenta la complejidad de este, pero no hay garantía de que el viejo espacio 
-% de funciones $F$ sea subconjunto del nuevo espacio $F'$, lo que implica que el nuevo modelo no es necesariamente
-% estrictamente superior al antiguo. Este problema es la razón para la aparición de las Redes Residuales. 
-% Una red residual está formada por 
-% uno o varios bloques residuales, en los que a la salida de cada bloque residual le es sumada la entrada de 
-% este mediante una conexión residual.
-% El objetivo de realizar tal operación es que es posible hacer la contribución del bloque 0 obteniendo así
-% un modelo equivalente a uno sin el bloque, garantizando la condición de subconjunto $F \subset F'$, además,
-% dicho bloque no pierde poder expresivo, dado que en caso de que su aporte al resultado final sea considerable, 
-% se tendría que aprender solamente la función $f(x) - x$ donde $x$ es la entrada del bloque y $f$ es la función 
-% aprendida por el bloque sin la conexión residual, para mitigar el efecto de la conexión residual como se muestra
-% en la Figura \ref{fig:res_block}.
-
-% \begin{figure}[h]
-%     \centering
-% 	\includegraphics[width=7cm,clip]{Graphics/resnet.png}
-% 	\caption{Bloque residual (Tomado de \cite{d2l} pág. 289).}
-% 	\label{fig:res_block}
-% \end{figure}
-
-% \subsubsection{Redes Neuronales Recurrentes}
-
-% Las redes neuronales recurrentes (RNN, en inglés) son
-% un tipo especial de arquitectura especializada en el trabajo con datos secuenciales. Este tipo de arquitectura
-% presenta variables en las que se almacenan información pasada, que es usada para el computo de la salida. El 
-% problema se puede modelar probabilísticamente mediante la estimación de $P(x_t | x_{t-1}, \dots, x_{1})$,
-% donde existen dos variantes principales. En una variante se fija un tamaño de ventana $\alpha$ en el tiempo, 
-% dando como resultado $P(x_t | x_{t-1}, \dots, x_{t-\alpha})$, a este tipo de modelos se les conoce como autorregresivos. 
-% Otra estrategia consiste en guardar un contexto de observaciones pasadas $h_t$ y con este realizar la estimación 
-% $P(x_t | h_t)$, el contexto se actualiza en cada paso mediante una función $h_t = g(h_{t-1}, x_{t-1})$, a estos 
-% se les nombra modelos autorregresivos latentes, debido a la existencia de variables ocultas $h_t$. 
-
-% En la práctica estos modelos presentan problemas de gradientes, ya que estas pueden volverse extremadamente grandes o 
-% desaparecer.
-% Para esto se han creado arquitecturas que disminuyen estos problemas. Una de estas arquitecturas es las de memorias
-% de corto largo plazo (LSTM, en inglés) \cite{hochreiter1997long}.
-% Este modelo guarda un contexto del procesamiento y está constituido por varias compuertas que regulan las 
-% actualizaciones de los estados internos. LSTM (Figura \ref{fig:rnn_lstm}) posee dos variables de estado, la memoria 
-% $C$ y el estado oculto $H$. Entre sus compuertas se encuentran la compuerta de olvido, esta regula cuánto de la 
-% memoria permanece en el próximo paso, la compuerta de entrada ajusta la cantidad de información nueva que entrará, 
-% la compuerta de salida maneja el cálculo del próximo estado oculto.
-
-% \begin{figure}[h]
-%     \centering
-% 	\includegraphics[width=7cm,clip]{Graphics/rnn_lstm.png}
-% 	\caption{LSTM (Tomado de \cite{d2l} pág. 357).}
-% 	\label{fig:rnn_lstm}
-% \end{figure}
-
-% El método de aprendizaje de las RNN solamente observa los elementos anteriores de la secuencia, aunque existen
-% tareas en las que, observando los elementos posteriores, se brinda más contexto e información a la tarea, sin que interfiera
-% en el proceso de inferencia. El modelo bidireccional presenta una alternativa para tratar con este tipo de problemas, 
-% este modelo consiste en, además de hacer el recorrido de inicio a final de la secuencia, realizar otro recorrido en orden 
-% inverso (Figura \ref{fig:rnn_bidirectional}), estos recorridos van generando dos estados ocultos $\overrightarrow{H}_{i}$ y $\overleftarrow{H}_{i}$
-% que luego son mezclados para obtener el contexto final $H_i$, los tipos de mezclas comunes son la concatenación de los 
-% estados o la multiplicación elemento a elemento de estos.
-
-% \begin{figure}[h]
-%     \centering
-% 	\includegraphics[width=7cm,clip]{Graphics/rnn_bidirectional.png}
-% 	\caption{Red neuronal bidireccional (Tomado de \cite{d2l} pág. 367).}
-% 	\label{fig:rnn_bidirectional}
-% \end{figure}
-
-
-% \subsubsection{Atención}
-
-% % Definicion, qué hace, uso en secuencias
-% La atención es una técnica en la cual se hace una selección ponderada de atributos en un contexto específico. 
-% Este mecanismo presenta dos partes, una consulta $q$ y una colección de pares llave-valor, $(k_i, v_i)$. La 
-% consulta representa el contexto en donde se quiere aplicar la atención y las llaves $k_i$ son elementos que 
-% relacionan la consulta a los valores $v_i$. El proceso de calcular el resultado consiste en, primero, calcular 
-% el vector compatibilidad $e$ entre las llaves y la consulta mediante la función $f$, este vector es luego 
-% modificado por una función $g$ que distribuye los valores obteniendo el vector atención $a$. Finalmente 
-% este vector es utilizado para calcular el resultado final al aplicarle la función $o = z(a, V)$:
-
-% \begin{equation}
-% 	e = f(q, K),
-% \end{equation}
-% \begin{equation}
-% 	a = g(e),
-% \end{equation}
-% \begin{equation}
-% 	o = z(a, V).
-% \end{equation}
-
-% En dependencia de cómo se seleccionen las funciones $f$, $g$ y $z$ se pueden obtener distintos tipos de atención.
-% Una configuración simple consiste en definir $f$ como el producto punto de la consulta con la llave,
-% $g$ como \textit{softmax} y $z$ la suma ponderada de $v_i$ con los valores de atención.
-
-% \subsubsection{Campo Aleatorio Condicional}
-
-% % Definicion de CRF, qué modela, Ventajas de CRF en secuencias, mirar relacion con Hidden Markov Models
-
-% El campo aleatorio condicional (CRF, en inglés) es un 
-% tipo de modelo gráfico probabilístico que trabaja eficientemente con secuencias,
-% modelando conjuntamente la probabilidad de las etiquetas de sus elementos dadas sus observaciones \cite{lafferty2001conditional}.
-% En trabajos de secuencias, la forma más simple que toma el grafo consiste en una cadena de las variables representando
-% las etiquetas de las secuencias $Y$, conectadas de la forma $(Y_i, Y_{i+1})$ y las variables observadas $X$, conectadas
-% a las variables $Y$ \cite{wallach2004conditional}.
-
-% El objetivo de CRF es calcular la secuencia $Y^*$ tal que:
-
-% \begin{equation}
-% 	Y^* = \arg \max_Y P(Y | X).
-% 	\label{eq:crf}
-% \end{equation}
-
-% En esta expresión se observa que devuelve la secuencia más probable, dadas las variables observadas o atributos $X$,
-% por lo que esta capa es usada al final del proceso para problemas de clasificación de secuencias.
-
-% \subsection{Evaluación del modelo y métricas}
-
-% Los modelos de AA necesitan maneras de expresar qué tan buenos son 
-% en las tareas encomendadas. Para esto se crean funciones que evalúan los resultados obtenidos
-% por dichos modelos, estas funciones se les da el nombre de métricas. Existen diferentes tipos de
-% métricas para tratar con diferentes tipos de problemas. En aprendizaje supervisado una métrica se
-% define como una función $m_s(Y, \hat{Y})$, donde $Y$ son las predicciones verdaderas y $\hat{Y}$ son las predicciones
-% hechas por el modelo. En algoritmos de aprendizaje no supervisado como K-Means y K-NN son usadas funciones $m_{ns}(\hat{Y})$
-% donde $\hat{Y}$ son las predicciones finales. En comparación con su versión supervisada estas funciones no tiene acceso
-% a las predicciones verdaderas del problema.
-
-% \subsubsection{Clasificación}
-
-% En problemas de clasificación (problemas en donde las etiquetas a predecir son discretas) 
-% son empleadas medidas que toman en cuenta la naturaleza discreta de su conjunto imagen.
-% Medidas como precisión, recobrado, \textit{accuracy} y F1 son utilizadas en la 
-% evaluación de los resultados, mientras que como función de error se usa entropía cruzada 
-% (\textit{cross entropy} en inglés) \cite{grandini2020metrics}.
-
-% La matriz de confusión es una vía de representar los resultados de dos clasificadores. Esta matriz en $M_{ij}$
-% indica la cantidad de elementos que clasificó como clase $i$ el primer clasificador y
-% como clase $j$ el segundo clasificador. En su uso práctico,
-% un clasificador son las etiquetas verdaderas mientras que el otro es el clasificador que se está evaluando. 
-% En problemas de la clasificación binaria, donde se busca saber si existe pertenencia o no de un elemento a una clase,
-% se pueden observar los siguientes casos:
-
-% \begin{itemize}
-% 	\item Verdaderos Positivos (VP): elementos clasificados correctamente que pertenecen a la clase.
-% 	\item Verdaderos Negativos (VN): elementos clasificados correctamente que no pertenecen a la clase.
-% 	\item Falsos Positivos (FP): elementos que no pertenecen a la clase clasificados incorrectamente en que pertenecen.
-% 	\item Falsos Negativos (FN): elementos que pertenecen a la clase clasificados incorrectamente en que no pertenecen.
-% \end{itemize}
-
-% \begin{table}[h]
-% 	\begin{center}
-% 		\begin{tabular}{|l|c|c|} 
-% 			\hline\rule{-2pt}{15pt}
-% 			{\bf Clases}   & {\bf Positivo} & {\bf Negativo} \\ 
-% 			\hline\rule{-4pt}{10pt}
-% 			Positivo & VP       & FN       \\ 
-% 			Negativo & FP       & VN       \\ 
-% 			\hline
-% 		\end{tabular}
-% 	\end{center}
-% 	\caption{\label{fig:confusion_matrix}Matriz de confusión binaria.}
-% \end{table}
-
-% La precisión es la medida que indica la probabilidad de que la clasificación de una clase sea correcta. Esto 
-% se puede observar como la proporción de los elementos correctamente clasificados sobre el total de 
-% elementos clasificados:
-
-% \begin{equation}
-% 	prec_i = \frac{VP}{VP + FP}.
-% \end{equation}
-
-% En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todas
-% las precisiones de las clases existentes:
-
-% \begin{equation}
-% 	prec_{macro} = \sum^K_{i=1} \frac{prec_i}{K}.
-% \end{equation}
-
-% El recobrado es la medida que indica la probabilidad de que se clasifique correctamente un elemento de la clase
-% del total existente. Esto se puede observar como la proporción de los elementos correctamente clasificados sobre el 
-% total de elementos que pertenecen a la clase:
-
-% \begin{equation}
-% 	rec_i = \frac{VP}{VP + FN}.
-% \end{equation}
-
-% En problemas de clasificación múltiple surge la versión macro de esta medida calculada como la media de todos
-% los recobrados de las clases existentes:
-
-% \begin{equation}
-% 	rec_{macro} = \sum^K_{i=1} \frac{rec_i}{K}.
-% \end{equation}
-
-% La medida F1 es la media armónica de la precisión y el recobrado. En esta la contribución de la precisión y el
-% recobrado al resultado final es el mismo, aunque es posible buscar variaciones de acuerdo a al problema a tratar:
-
-% \begin{equation}
-% 	F1_i = 2 \frac{prec_i \cdot rec_i}{prec_i + rec_i}.
-% \end{equation}
-
-% En problemas de clasificación múltiple surge la versión macro de esta medida calculada la propia medida F1, pero
-% utilizando la precisión y recobrado macro del problema:
-
-% \begin{equation}
-% 	F1_{macro} = 2 \frac{prec_{macro} \cdot rec_{macro}}{prec_{macro} + rec_{macro}}.
-% \end{equation}
-
-% La métrica $\alpha$\%F1 \cite{persing2016end} es una métrica basada en la idea de F1 orientada para el 
-% trabajo con secuencias donde $\alpha$ denota el porcentaje de secuencia inferida que debe coincidir con 
-% la secuencia anotada para ser considerado una coincidencia. Esta versión permite
-% establecer el rango de flexibilidad si $\alpha=100$ (100\%F1), significa que deben coincidir completamente, 
-% mientras si $\alpha = 50$ (50\%F1) significa que, si coinciden en una proporción mayor o igual a la mitad, 
-% se considera como un verdadero positivo. La definición de los valores de verdaderos positivos, negativos 
-% y falsos negativos es:
-
-% \begin{equation}
-% 	VP = |\{ j | \exists i | gl(j) = pl(i) \land i = j \}|,
-% \end{equation}
-% \begin{equation}
-% 	FP = |\{ i | pl(i) \neq n \land \not\exists j | gl(j) = pl(i) \land i = j \}|,
-% \end{equation}
-% \begin{equation}
-% 	FN = |\{ j | \not\exists i | gl(j) = pl(i) \land i = j \}|,
-% \end{equation}
-
-% donde $i$ y $j$ son las UDAs extraídas, $gl(j)$ es la etiqueta correcta para $j$, $pl(i)$ es 
-% la etiqueta inferida para $i$, $n$ es la clase no argumentativa, $i = j$ significa que $i$ es 
-% una coincidencia para $j$.
-
-% Las métricas anteriores están acotadas por los valores 0 y 1, donde 1 representa la mejor evaluación y 0 la 
-% peor.
-
-% La entropía cruzada se encarga de evaluar qué tan diferentes son dos funciones de distribución $p$ y $q$, su 
-% resultado es un número no negativo que, a medida que sean más pequeños los valores, indican mayor similitud. 
-% En su versión discreta se formula:
-
-% \begin{equation}
-% 	H(p, q) = - \sum_{x \in D} p(x) \log q(x).
-% \end{equation}
-
-% \subsubsection{Cadenas}
-
-% Para textos o cadenas existen diferentes métricas que constituyen formas de saber la similitud 
-% entre dos elementos. Una de esas métricas es la similitud de Jaccard, esa se puede ver como 
-% la proporción de elementos comunes que presentan dos conjuntos, los elementos sería palabras:
-
-% \begin{equation}
-% 	jac(X, Y) = \frac{|X \cap Y|}{|X \cup Y|}.
-% \end{equation}
-% Otra medida de similitud es la distancia de Levenshtein, la cual se define como la mínima cantidad 
-% de cambios de eliminar, cambiar y agregar que se tienen que hacer a dos secuencias para que sean 
-% iguales. Esta medida se puede usar tanto en palabras, en donde se mediría la cantidad de cambios 
-% a los caracteres, como en listas de palabras, donde se mediría la cantidad de palabras que 
-% se tienen que cambiar. 
-
-% \subsubsection{Curvas de aprendizaje}
-
-% Es necesario además de evaluar el resultado final del modelo, evaluar el proceso de entrenamiento. En esta etapa 
-% se pueden diagnosticar varias deficiencias en este proceso. Para un correcto entrenamiento se divide el conjunto de 
-% datos en tres partes:
-
-% \begin{itemize}
-% 	\item \textbf{entrenamiento}: utilizada para el entrenamiento del modelo.
-% 	\item \textbf{validación}: utilizada para evaluar el desempeño del modelo durante el entrenamiento.
-% 	\item \textbf{prueba}: utilizada para evaluar el resultado final.
-% \end{itemize}
-
-% Las curvas de aprendizaje constituyen la principal herramienta para evaluar el proceso de aprendizaje.
-% Estas están formadas por las mediciones de métricas a lo largo del entrenamiento calculadas a partir de 
-% los conjuntos de validación y entrenamiento. En estas, el eje horizontal representa el número de época del entrenamiento,
-% iteración sobre el conjunto de entrenamiento, y el eje vertical representa el valor de la métrica a analizar. 
-% La línea correspondiente al conjunto de entrenamiento cuantifica 
-% el aprendizaje del modelo o también el error de entrenamiento, y la correspondiente a la de validación cuantifica 
-% la generalización o el error de generalización. Existen tres comportamientos esenciales a analizar:
-
-% \begin{itemize}
-% 	\item Bajo ajuste (\textit{underfitting}).
-% 	\item Sobreajuste (\textit{overfitting}).
-% 	\item Buen ajuste.
-% \end{itemize}
-
-% El bajo ajuste ocurre cuando el modelo no es capaz de aprender del conjunto de datos o cuando este aún puede aprender 
-% más. Las curvas de aprendizaje en estos casos se caracterizan por ser una línea plana o valores ruidosos con alta pérdida
-% (Figura \ref{fig:underfit}).
-
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[width=7cm,clip]{Graphics/underfit_missing_training.png}
-% 	\includegraphics[width=7cm,clip]{Graphics/underfit_not_learning.png}
-% 	\caption{Curvas de entrenamiento con bajo ajuste por falta de entrenamiento (arriba)
-% 		y por modelo que no aprende de los datos (abajo) (Tomado de \cite{brownlee2018better} pág. XXVII).}
-% 	\label{fig:underfit}
-% \end{figure}
-
-% Entre las formas más sencillas de combatir el bajo ajuste de los modelos consiste en complejizarlo, al añadir
-% capas o aumentar las dimensiones de este aumenta su expresividad y, por lo tanto, su ajuste. Si este método 
-% no funciona es posible considerar un cambio de arquitectura hacia una que pueda extraer más información de la 
-% estructura de los datos. 
-
-% El sobreajuste es el fenómeno en el que el modelo aprende los datos de entrenamiento extremadamente bien, incluso
-% el ruido en estos, esto trae consigo que falla en generalizar el problema para nuevas entradas. Las curvas 
-% características de este fenómeno presentan una divergencia en los errores de entrenamiento y validación a medida
-% que se entrena el modelo, mientras que la de entrenamiento mejora la de validación tiende a empeorar (Figura \ref{fig:overfit}). 
-
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[width=7cm,clip]{Graphics/overfit_raising_val_error.png}
-% 	\caption{Curvas de entrenamiento con sobreajuste (Tomado de \cite{brownlee2018better} pág. XXIX).}
-% 	\label{fig:overfit}
-% \end{figure}
-
-% Existen varios métodos para combatir el sobreajuste, uno sencillo es simplificar el modelo quitándole capas 
-% o disminuyendo sus dimensiones. Además de esto, existen regularizaciones que se pueden aplicar para evitar que 
-% las capas dependan exclusivamente de pocos atributos, entre esta familia los más usados son la regularización
-% L1 y L2 las cuales se definen como la suma del valor absoluto de los atributos y la suma del cuadrado de sus 
-% atributos respectivamente. Otra medida para prevenir el sobreajuste es el agrego de capas de abandono 
-% (\textit{dropout}). Estas capas desactivan neuronas de la arquitectura, obligando a 
-% estas a ser robustas y depender del comportamiento de la población, en lugar de la actividad de otras unidades 
-% específicas \cite{baldi2013dropout}. La terminación temprana (\textit{early stopping}) del entrenamiento
-% se utiliza para parar este en el momento en que el error de generalización comienza a subir, impidiendo así que 
-% se sobreentrene el modelo.
-
-% Finalmente, un buen ajuste es el resultado que se alcanza cuando tanto la curva de validación como de entrenamiento
-% presentan valores pequeños y similares, consecuentes con una correcto aprendizaje y generalización (Figura \ref{fig:good_fit}).
-
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[width=7cm,clip]{Graphics/good_fit.png}
-% 	\caption{Curvas de entrenamiento con buen ajuste (Tomado de \cite{brownlee2018better} pág. XXX).}
-% 	\label{fig:good_fit}
-% \end{figure}
-
-% Otro problema observable a partir del análisis de las curvas de aprendizaje constituye la detección de conjuntos
-% de datos no representativos. Un conjunto de datos no representativo es uno que puede no 
-% capturar las características estadísticas relativas a otro conjunto de datos extraído del mismo dominio.
-% Esto puede pasar que los conjuntos de entrenamiento o de validación. En caso del conjunto de entrenamiento
-% se puede identificar si la pérdida en el conjunto de entrenamiento conlleva a una ganancia en el conjunto de 
-% validación y viceversa quedando al final con una separación entre ambos valores. En el caso del conjunto de 
-% validación se presenta como una curva ruidosa, también se puede dar el caso de que el conjunto  de validación
-% sea más fácil de predecir que el de entrenamiento, en este caso se observa como la curva de validación permanece
-% siempre por debajo de la de entrenamiento (Figura \ref{fig:unrepresentative_data}).
-
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[width=7cm,clip]{Graphics/unrepresentative_dev_set.png}
-% 	\includegraphics[width=7cm,clip]{Graphics/unrepresentative_train_set.png}
-% 	\caption{Curvas de entrenamiento con datos poco representativos en el conjunto de validación (arriba)
-% 		y en el conjunto de entrenamiento (abajo) (Tomado de \cite{brownlee2018better} pág. XXXII).}
-% 	\label{fig:unrepresentative_data}
-% \end{figure}
-
-% Para combatir estos problemas se puede aumentar la cantidad de elementos en los conjuntos de entrenamiento o 
-% validación en dependencia de donde ocurra.
-
-% \subsection{Aumento de datos}
-
-% El aumento de datos consiste en acciones para aumentar la diversidad de un conjunto de datos sin recolectar
-% nuevos datos explícitamente \cite{feng2021data}. En datos continuos, como imágenes o valores numéricos el 
-% aumento de datos puede ser realizado al añadirle perturbaciones a entradas existentes, en caso de las imágenes 
-% técnicas como el volteado (\textit{flipping}) o recortado (\textit{cropping}) son usadas. Los textos son un tipo 
-% de datos discreto y, por lo tanto, las técnicas anteriores no pueden ser aplicadas directamente. Para el PLN
-% se han estudiado diversas técnicas de aumento de datos, una de estas consiste en el cambio del árbol de 
-% dependencia de la oración mediante operaciones de intercambio y borrado de nodos \cite{csahin2019data}, también se han utilizado 
-% el intercambio de palabras por sinónimos \cite{dai2020analysis} y la traducción de textos hacia un lenguaje y luego 
-% de vuelta al lenguaje origen (\textit{backtranslation}) \cite{sennrich2015improving}. 
-
-% \subsection{Aprendizaje Conjunto}
-
-% El aprendizaje conjunto (\textit{ensemble learning}) son técnicas encaminadas al aprovechamiento
-% de soluciones encontradas por diferentes modelos, combinándolas y mejorándolas para encontrar una mejor solución 
-% al problema. Estos métodos son efectivos en la reducción de la varianza y el sesgo de los modelos, obteniendo así
-% mejores resultados \cite{dietterich2002ensemble}. Una forma de este tipo de aprendizaje en problemas de 
-% clasificación constituye el voto conjunto, en donde los diferentes clasificadores votan sobre la clase a la que 
-% pertenece el elemento y, al final, se asigna la etiqueta que más votos obtuvo.
-
-% \subsection{Métodos de optimización}
-
-% El objetivo del AA es encontrar los extremos de una función de costo, este proceso es una tarea 
-% desafiante ya que la gran mayoría de estas funciones no son convexas y, por lo tanto, no existe un algoritmo
-% que asegure la convergencia hacia un extremo global. Para resolver este problema existen múltiples heurísticas,
-% la más usada es el descenso por gradiente. La idea básica consiste 
-% en el cálculo del vector gradiente de la función de error $f$ con respecto a los parámetros del modelo $x$ y, una vez se 
-% tiene dicho vector, se evalúa en la asignación actual de los parámetros $x_i$ y se realiza un corrimiento de este punto 
-% en contra del gradiente para disminuir el error (Eq. \ref{eq:gradien_descent}).
-
-% \begin{equation}
-% 	x_{i+1} = x_i - \alpha \nabla f(x_i)\label{eq:gradien_descent}
-% \end{equation}
-
-% En la ecuación \ref{eq:gradien_descent} anterior, $\alpha$ es la tasa de aprendizaje (\textit{learning rate}),
-% que cuantifica cuánto se toma del vector de gradiente para actualizar los parámetros, esto 
-% se puede ver como el aprendizaje del modelo.
-
-% Variantes eficientes de este algoritmo para el entrenamiento de modelos de AA han sido 
-% creadas, las variaciones se encuentran principalmente en la selección de $\alpha$ en cada paso y la 
-% selección de los conjuntos de datos con que se estimará el gradiente. Entre las técnicas utilizadas se 
-% encuentran Descenso por Gradiente Estocástico, variaciones de tasa de aprendizaje dinámica con 
-% sus diferentes variantes (exponencial, polinómica), RMSProp \cite{tieleman2012rmsp}
-% y Adam \cite{kingma2014adam}.
-
 % INVESTIGACIONES PREVIAS
 
 \subsection{Variantes para la Extracción de Argumentos}
 
 Varias investigaciones han dado respuesta a los problemas asociados a EA, mostrando
-una variedad en enfoques y métodos.\\
+una variedad en enfoques y métodos. Para la segmentación de las UDAs se ha separado
+en oraciones y luego clasificado cada una en si es UDA o no mediante algoritmos como 
+\textit{Naive Bayes} (NB) y máquinas de soporte vectorial (SVM, en inglés) \cite{palau2009argumentation,goudas2015argument}.
+Otras aproximaciones para esta tarea consiste en la clasificación en etiquetas BIO
+de los \textit{tokens} del texto \cite{goudas2015argument,stab2017parsing,eger2017neural} y en el uso de
+reglas basadas en anotaciones lingüísticas \cite{dykes2020reconstructing}.
 
-En \cite{palau2009argumentation} se analizan las UDAs a nivel de oraciones.
-Este propone \textit{Naive Bayes} (NB) y máquinas de soporte vectorial (SVM, en inglés) para la clasificación
-de oraciones de oraciones en argumentativas o no. Las oraciones son representadas
-on un vector conformado de atributos a partir de conocimiento experto de la argumentación. En
-la predicción de relaciones utilizan una gramática libre de contexto.
+En las tareas de predicción y clasificación de enlaces se han empleado gramáticas libre de contexto 
+basadas en anotaciones de los \textit{tokens} \cite{palau2009argumentation}. SVM y aprendizaje profundo han sido utilizados para clasificar 
+las posibles relaciones dos a dos \cite{goudas2015argument,galassi2021deep}, en \namecite{goudas2015argument}
+se optimiza la estructura final con un problema de optimización lineal en enteros.
 
-% \begin{itemize}
-% 	\item Se analizan las UDAs a nivel de oraciones.
-% 	\item Propone \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM) para la clasificación
-% 	de oraciones de oraciones en argumentativas o no.
-% 	\item Las oraciones se representan con un vector conformado de atributos a partir de conocimiento experto
-% 	de la argumentación.
-% 	\item Para la predicción de relaciones utilizan una gramática libre de contexto. 
-% \end{itemize}
+Las UDAs y las relaciones han sido representadas de diferentes maneras, ya sea por 
+atributos escogidos a mano mediante conocimiento experto \cite{palau2009argumentation,goudas2015argument}, como
+por atributos aprendidos por los algoritmos en la fase de entrenamiento \cite{eger2017neural,galassi2021deep}.
 
-% En \cite{palau2009argumentation} se propone
-% el uso de modelos como \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM)
-% para la clasificación de 
-% oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa. En este
-% se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
-% se usa un enfoque basado en reglas con la creación de una Gramática Libre de Contexto. Las representaciones
-% de las oraciones consisten en atributos creados a mano, dado el conocimiento experto sobre la argumentación
-% en el tema tratado, elementos como adverbios, verbos, signos de puntuación, palabras clave, estadísticas del texto
-% (tamaño de oración, distancia media de palabras) son usados para la extracción y clasificación de las UDAs, además,
-% se usan también como base en la creación de las reglas de la gramática para la extracción de relaciones.
+% \subsection{Variantes para la Extracción de Argumentos}
 
-En \cite{goudas2015argument} las UDAs son analizadas a nivel de oración.
-Se propone usar NB, \textit{random forest}, regresión logística y SVM 
-para la clasificación en argumentativas o no. De las oraciones argumentativas,
-se extraen las secciones con carga argumentativa mediante anotación de etiquetas 
-BIO con un campo condicional aleatorio (CRF, en inglés). Se predicen las relaciones como un 
-problema de clasificación de pares de UDAs en donde emplean SVM. También
-utilizan atributos escogidos a mano mediante conocimiento experto para la representación de 
-las oraciones y palabras.
+% Varias investigaciones han dado respuesta a los problemas asociados a EA, mostrando
+% una variedad en enfoques y métodos.\\
 
-% \begin{itemize}
-% 	\item Se analizan las UDAs a nivel de oraciones.
-% 	\item Propone usar NB, \textit{random forest}, regresión logística y SVM 
-% 	para la clasificación en argumentativas o no.
-% 	\item En las oraciones argumentativas, se extraen las secciones con carga argumentativa 
-% 	mediante anotación de etiquetas BIO con un campo condicional aleatorio (CRF, en inglés).
-% 	\item Se predicen las relaciones como un problema de clasificación de pares de UDAs en donde emplean
-% 	SVM. 
-% 	\item Utilizan atributos escogidos a mano mediante conocimiento experto para la representación de 
-% 	las oraciones y palabras.
-% \end{itemize}
+% En \cite{palau2009argumentation} se analizan las UDAs a nivel de oraciones.
+% Este propone \textit{Naive Bayes} (NB) y máquinas de soporte vectorial (SVM, en inglés) para la clasificación
+% de oraciones de oraciones en argumentativas o no. Las oraciones son representadas
+% on un vector conformado de atributos a partir de conocimiento experto de la argumentación. En
+% la predicción de relaciones utilizan una gramática libre de contexto.
 
-% \cite{goudas2015argument} al igual que \cite{palau2009argumentation} clasifica a las oraciones como
-% argumentativas o no, mediante diferentes clasificadores como NB, \textit{Random Forest}, Regresión
-% Logística y SVM. Sin embargo, \cite{goudas2015argument} aumenta la grandularidad de la segmentación al permitir
-% la extracción de los segmentos que contienen la carga argumentativa de dentro de las oraciones previamente clasificadas
-% como tal, esto se realiza mediante la extracción de etiquetas BIO de las oraciones con el uso de un 
-% CRF. La predicción de las relaciones es modelado como un problema de clasificación
-% usando SVM para clasificar pares de UDAs en relacionados o no. Atributos creados a mano 
-% son usados en la extracción de UDAs; entre estos están posición de la oración en el texto, cantidad de verbos, comas, adverbios,
-% palabras, entidades en la oración, también se emplean listas que guardan entidades relacionadas con el dominio 
-% específico y palabras clave indicadoras de frases argumentativas. 
+% % \begin{itemize}
+% % 	\item Se analizan las UDAs a nivel de oraciones.
+% % 	\item Propone \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM) para la clasificación
+% % 	de oraciones de oraciones en argumentativas o no.
+% % 	\item Las oraciones se representan con un vector conformado de atributos a partir de conocimiento experto
+% % 	de la argumentación.
+% % 	\item Para la predicción de relaciones utilizan una gramática libre de contexto. 
+% % \end{itemize}
 
-En \cite{stab2017parsing} las UDAs son extraídas mediante un modelo CRF con clasificación en etiquetas BIO.
-La predicción y clasificación de relaciones se modela conjuntamente mediante dos SVMs,
-optimizando la estructura final con un problema de optimización lineal en enteros. Los \textit{tokens}
-y las UDAs están representados por vectores con atributos seleccionados por expertos.
+% % En \cite{palau2009argumentation} se propone
+% % el uso de modelos como \textit{Naive Bayes} (NB) y \textit{Support Vector Machine} (SVM)
+% % para la clasificación de 
+% % oraciones en argumentativas o no y en su rol argumentativo en caso de que sea argumentativa. En este
+% % se asume que las componentes argumentativas son oraciones completas. Para la predicción de relaciones
+% % se usa un enfoque basado en reglas con la creación de una Gramática Libre de Contexto. Las representaciones
+% % de las oraciones consisten en atributos creados a mano, dado el conocimiento experto sobre la argumentación
+% % en el tema tratado, elementos como adverbios, verbos, signos de puntuación, palabras clave, estadísticas del texto
+% % (tamaño de oración, distancia media de palabras) son usados para la extracción y clasificación de las UDAs, además,
+% % se usan también como base en la creación de las reglas de la gramática para la extracción de relaciones.
 
-% \begin{itemize}
-% 	\item Se extraen las UDAs mediante un modelo CRF con clasificación en etiquetas BIO.
-% 	\item La predicción y clasificación de relaciones se modela conjuntamente mediante dos SVMs,
-% 	optimizando la estructura final con un problema de Optimización Lineal Entero.
-% 	\item Las representaciones vectoriales de los \textit{tokens} y las UDAs se constituyen por atributos 
-% 	seleccionados a mano por conocimiento experto.
-% \end{itemize}
+% En \cite{goudas2015argument} las UDAs son analizadas a nivel de oración.
+% Se propone usar NB, \textit{random forest}, regresión logística y SVM 
+% para la clasificación en argumentativas o no. De las oraciones argumentativas,
+% se extraen las secciones con carga argumentativa mediante anotación de etiquetas 
+% BIO con un campo condicional aleatorio (CRF, en inglés). Se predicen las relaciones como un 
+% problema de clasificación de pares de UDAs en donde emplean SVM. También
+% utilizan atributos escogidos a mano mediante conocimiento experto para la representación de 
+% las oraciones y palabras.
 
-% \cite{stab2017parsing} proponen un mecanismo de segmentación basado en CRF. La clasificación
-% y predicción de relaciones se modela conjuntamente con dos clasificadores SVM y un problema
-% de Optimización Lineal Entero que encuentra la mejor estructura y asegura una disposición arbórea. En la segmentación
-% de las UDAs, se extraen por cada \textit{token} su posición en el texto, si precede o sucede a un signo de puntuación, su parte de
-% la oración, la probabilidad de que sea el comienzo de una UDA dado sus \textit{tokens} anteriores, entre otros. Para la extracción
-% y clasificación de relaciones se proponen otros conjuntos de atributos como la cantidad de sustantivos comunes entre
-% las componentes fuente y el objetivo, la presencia de indicadores argumentativos, representaciones vectoriales de \textit{tokens} 
-% entre otros.
+% % \begin{itemize}
+% % 	\item Se analizan las UDAs a nivel de oraciones.
+% % 	\item Propone usar NB, \textit{random forest}, regresión logística y SVM 
+% % 	para la clasificación en argumentativas o no.
+% % 	\item En las oraciones argumentativas, se extraen las secciones con carga argumentativa 
+% % 	mediante anotación de etiquetas BIO con un campo condicional aleatorio (CRF, en inglés).
+% % 	\item Se predicen las relaciones como un problema de clasificación de pares de UDAs en donde emplean
+% % 	SVM. 
+% % 	\item Utilizan atributos escogidos a mano mediante conocimiento experto para la representación de 
+% % 	las oraciones y palabras.
+% % \end{itemize}
 
-En \cite{eger2017neural} se presentan enfoques \textit{end-to-end}, modelando el problema como
-uno de anotación secuencia a secuencia (capa de clasificación CRF al final), también
-como uno de análisis sintáctico de dependencia (\textit{dependency parsing}) \cite{kiperwasser2016simple}
-y además mediante el reconocimiento de entidades nombradas, en donde las entidades son las UDAs.
-Las representaciones de los \textit{tokens} son aprendidas por el algoritmo mediante la 
-aplicación de capas de CNN sobre los caracteres.
+% % \cite{goudas2015argument} al igual que \cite{palau2009argumentation} clasifica a las oraciones como
+% % argumentativas o no, mediante diferentes clasificadores como NB, \textit{Random Forest}, Regresión
+% % Logística y SVM. Sin embargo, \cite{goudas2015argument} aumenta la grandularidad de la segmentación al permitir
+% % la extracción de los segmentos que contienen la carga argumentativa de dentro de las oraciones previamente clasificadas
+% % como tal, esto se realiza mediante la extracción de etiquetas BIO de las oraciones con el uso de un 
+% % CRF. La predicción de las relaciones es modelado como un problema de clasificación
+% % usando SVM para clasificar pares de UDAs en relacionados o no. Atributos creados a mano 
+% % son usados en la extracción de UDAs; entre estos están posición de la oración en el texto, cantidad de verbos, comas, adverbios,
+% % palabras, entidades en la oración, también se emplean listas que guardan entidades relacionadas con el dominio 
+% % específico y palabras clave indicadoras de frases argumentativas. 
 
-% \begin{itemize}
-% 	\item Presenta un enfoques \textit{end-to-end}, modelando el problema como:
-% 	\begin{itemize}
-% 		\item Anotación secuencia a secuencia (capa de clasificación CRF al final).
-% 		\item Análisis sintáctico de dependencia (\textit{dependency parsing}) \cite{kiperwasser2016simple}.
-% 		\item Reconocimiento de entidades nombradas, en donde las entidades son las UDAs.
-% 	\end{itemize}
-% 	\item Las representaciones de los \textit{tokens} son aprendidas por el algoritmo mediante la 
-% 	aplicación de capas de CNN sobre los caracteres.
-% \end{itemize}
+% En \cite{stab2017parsing} las UDAs son extraídas mediante un modelo CRF con clasificación en etiquetas BIO.
+% La predicción y clasificación de relaciones se modela conjuntamente mediante dos SVMs,
+% optimizando la estructura final con un problema de optimización lineal en enteros. Los \textit{tokens}
+% y las UDAs están representados por vectores con atributos seleccionados por expertos.
 
-% En \cite{eger2017neural} trabajan el problema de EA como uno \textit{end-to-end}. 
-% Para esto presentaron varias propuestas, entre ellas se encontraba
-% modelar el problema como uno de secuencia a secuencia, usando RNN como 
-% LSTM en versiones bidireccionales capturando información desde ambos lados de la secuencia.
-% Para la representación de las palabras se extrajo información morfológica de las palabras mediante 
-% la aplicación de una CNN a los caracteres de estas,
-% al final, realizan la clasificación de la secuencia con un CRF. 
-% Realizaron experimentos al modelar el problema como uno de \textit{Dependency Parsing} \cite{kiperwasser2016simple}. Este problema
-% consiste en construir un árbol de dependencia que codifique las estructuras argumentativas. En este 
-% se tiene que decidir entre varias opciones (\textit{shift}, \textit{reduce}) en dependencia del contenido de la pila y del \textit{buffer}
-% para la confección del árbol.
-% El problema fue modelado también como un problema de reconocimiento de entidades nombradas, en donde las entidades son las UDAs.
+% % \begin{itemize}
+% % 	\item Se extraen las UDAs mediante un modelo CRF con clasificación en etiquetas BIO.
+% % 	\item La predicción y clasificación de relaciones se modela conjuntamente mediante dos SVMs,
+% % 	optimizando la estructura final con un problema de Optimización Lineal Entero.
+% % 	\item Las representaciones vectoriales de los \textit{tokens} y las UDAs se constituyen por atributos 
+% % 	seleccionados a mano por conocimiento experto.
+% % \end{itemize}
 
-En \cite{dykes2020reconstructing} proponen métodos sobre reglas basadas en anotaciones lingüísticas (partes de la oración, lemas de palabras, etc.) 
-para la extracción de argumentos. Dada las reglas creadas y el tipo
-de datos con que se trabaja (cadenas de texto pequeñas); estos algoritmos tienden a tener una alta precisión aunque 
-bajo recobrado, esto no es un gran problema en conjuntos de datos grandes, pero en conjuntos de menor tamaño o estructura 
-más compleja pierden efectividad.
+% % \cite{stab2017parsing} proponen un mecanismo de segmentación basado en CRF. La clasificación
+% % y predicción de relaciones se modela conjuntamente con dos clasificadores SVM y un problema
+% % de Optimización Lineal Entero que encuentra la mejor estructura y asegura una disposición arbórea. En la segmentación
+% % de las UDAs, se extraen por cada \textit{token} su posición en el texto, si precede o sucede a un signo de puntuación, su parte de
+% % la oración, la probabilidad de que sea el comienzo de una UDA dado sus \textit{tokens} anteriores, entre otros. Para la extracción
+% % y clasificación de relaciones se proponen otros conjuntos de atributos como la cantidad de sustantivos comunes entre
+% % las componentes fuente y el objetivo, la presencia de indicadores argumentativos, representaciones vectoriales de \textit{tokens} 
+% % entre otros.
 
-% \begin{itemize}
-% 	\item Se proponen métodos sobre reglas basadas en anotaciones lingüísticas (partes de la oración, lemas de palabras, etc.) 
-% 	para la extracción de argumentos. 
-% \end{itemize}
+% En \cite{eger2017neural} se presentan enfoques \textit{end-to-end}, modelando el problema como
+% uno de anotación secuencia a secuencia (capa de clasificación CRF al final), también
+% como uno de análisis sintáctico de dependencia (\textit{dependency parsing}) \cite{kiperwasser2016simple}
+% y además mediante el reconocimiento de entidades nombradas, en donde las entidades son las UDAs.
+% Las representaciones de los \textit{tokens} son aprendidas por el algoritmo mediante la 
+% aplicación de capas de CNN sobre los caracteres.
 
-% En \cite{dykes2020reconstructing} se proponen métodos basados en reglas para la extracción de argumentos sobre
-% textos en Twitter. Estos métodos se centran en la confección de reglas basadas en anotaciones lingüísticas como
-% partes de la oración y lemas de palabras. La recuperación está basada en los esquemas argumentativos comunes presentes
-% en los textos. Dada las reglas creadas y el tipo
-% de datos con que se trabaja, o sea, cadenas de texto pequeñas; estos algoritmos tienden a tener una alta precisión aunque 
+% % \begin{itemize}
+% % 	\item Presenta un enfoques \textit{end-to-end}, modelando el problema como:
+% % 	\begin{itemize}
+% % 		\item Anotación secuencia a secuencia (capa de clasificación CRF al final).
+% % 		\item Análisis sintáctico de dependencia (\textit{dependency parsing}) \cite{kiperwasser2016simple}.
+% % 		\item Reconocimiento de entidades nombradas, en donde las entidades son las UDAs.
+% % 	\end{itemize}
+% % 	\item Las representaciones de los \textit{tokens} son aprendidas por el algoritmo mediante la 
+% % 	aplicación de capas de CNN sobre los caracteres.
+% % \end{itemize}
+
+% % En \cite{eger2017neural} trabajan el problema de EA como uno \textit{end-to-end}. 
+% % Para esto presentaron varias propuestas, entre ellas se encontraba
+% % modelar el problema como uno de secuencia a secuencia, usando RNN como 
+% % LSTM en versiones bidireccionales capturando información desde ambos lados de la secuencia.
+% % Para la representación de las palabras se extrajo información morfológica de las palabras mediante 
+% % la aplicación de una CNN a los caracteres de estas,
+% % al final, realizan la clasificación de la secuencia con un CRF. 
+% % Realizaron experimentos al modelar el problema como uno de \textit{Dependency Parsing} \cite{kiperwasser2016simple}. Este problema
+% % consiste en construir un árbol de dependencia que codifique las estructuras argumentativas. En este 
+% % se tiene que decidir entre varias opciones (\textit{shift}, \textit{reduce}) en dependencia del contenido de la pila y del \textit{buffer}
+% % para la confección del árbol.
+% % El problema fue modelado también como un problema de reconocimiento de entidades nombradas, en donde las entidades son las UDAs.
+
+% En \cite{dykes2020reconstructing} proponen métodos sobre reglas basadas en anotaciones lingüísticas (partes de la oración, lemas de palabras, etc.) 
+% para la extracción de argumentos. Dada las reglas creadas y el tipo
+% de datos con que se trabaja (cadenas de texto pequeñas); estos algoritmos tienden a tener una alta precisión aunque 
 % bajo recobrado, esto no es un gran problema en conjuntos de datos grandes, pero en conjuntos de menor tamaño o estructura 
 % más compleja pierden efectividad.
 
-En \cite{galassi2021deep} se propone el uso de redes residuales y mecanismos de atención
-para la clasificación de UDAs y la predicción y clasificación de los enlaces. En este
-se clasifica conjuntamente el tipo de UDA y la relación entre estas. Los textos son 
-representados como una secuencia de vectores GloVe para los \textit{tokens}, por lo que 
-no interviene conocimiento experto en la representación.
+% % \begin{itemize}
+% % 	\item Se proponen métodos sobre reglas basadas en anotaciones lingüísticas (partes de la oración, lemas de palabras, etc.) 
+% % 	para la extracción de argumentos. 
+% % \end{itemize}
+
+% % En \cite{dykes2020reconstructing} se proponen métodos basados en reglas para la extracción de argumentos sobre
+% % textos en Twitter. Estos métodos se centran en la confección de reglas basadas en anotaciones lingüísticas como
+% % partes de la oración y lemas de palabras. La recuperación está basada en los esquemas argumentativos comunes presentes
+% % en los textos. Dada las reglas creadas y el tipo
+% % de datos con que se trabaja, o sea, cadenas de texto pequeñas; estos algoritmos tienden a tener una alta precisión aunque 
+% % bajo recobrado, esto no es un gran problema en conjuntos de datos grandes, pero en conjuntos de menor tamaño o estructura 
+% % más compleja pierden efectividad.
+
+% En \cite{galassi2021deep} se propone el uso de redes residuales y mecanismos de atención
+% para la clasificación de UDAs y la predicción y clasificación de los enlaces. En este
+% se clasifica conjuntamente el tipo de UDA y la relación entre estas. Los textos son 
+% representados como una secuencia de vectores GloVe para los \textit{tokens}, por lo que 
+% no interviene conocimiento experto en la representación.
 
 % \begin{itemize}
 % 	\item Propone el uso de redes residuales y mecanismos de atención.
@@ -1092,19 +558,21 @@ no interviene conocimiento experto en la representación.
 % extraídas. En este caso, además de la distancia argumentativa, las secuencias son representadas 
 % vectorialmente con GloVe.
 
-Cada enfoque tiene su ventaja y desvantaja, el modelado secuencial de los problemas, introduce
-una propagación de error en las etapas posteriores e impide que el modelo obtenga toda la información de
-la fuente original. Para la obtención de reglas y atributos creados por expertos 
-se necesita una cantidad 
-de tiempo y recursos, y puede ser más difícil de escalar y mantener que representaciones aprendidas
-automáticamente en el proceso de entrenamiento, estas se pueden moldear a los distintos
-tipos de situaciones y esquemas presentes en los datos.
+% Cada enfoque tiene su ventaja y desvantaja, el modelado secuencial de los problemas, introduce
+% una propagación de error en las etapas posteriores e impide que el modelo obtenga toda la información de
+% la fuente original. Para la obtención de reglas y atributos creados por expertos 
+% se necesita una cantidad 
+% de tiempo y recursos, y puede ser más difícil de escalar y mantener que representaciones aprendidas
+% automáticamente en el proceso de entrenamiento, estas se pueden moldear a los distintos
+% tipos de situaciones y esquemas presentes en los datos.
 
 En los modelos propuestos (ver secciones \ref{ssec:segm_clsf_uda} y \ref{ssec:pred_clsf_enlaces}), gran parte de las representaciones son aprendidas en el proceso de 
 entrenamiento y las que se agregan de forma manual casi no influyen en la escalabilidad del sistema.
-Dado que se tienen dos modelos independientes se tiene una propagación del error al unir los resultados 
-del primero con el segundo, aunque se hace uso del modelado conjunto de problemas para evitar esta 
-situación en las tareas de extracción y clasificación de UDAs y extracción y clasificación de relaciones.
+Cuando se trata de unir los resultados de los dos modelos, hay una propagación de errores, 
+aunque se utiliza el modelado de problemas conjuntos para minimizarlo.
+% Dado que se tienen dos modelos independientes se tiene una propagación del error al unir los resultados 
+% del primero con el segundo, aunque se hace uso del modelado conjunto de problemas para evitar esta 
+% situación en las tareas de extracción y clasificación de UDAs y extracción y clasificación de relaciones.
 
 % En resumen, se contemplan disímiles enfoques al problema de EA desde una perspectiva enmarcada en modelos 
 % simbólicos, estadísticos y neuronales en versiones tanto secuenciales como \textit{end-to-end}. 
@@ -1133,10 +601,10 @@ situación en las tareas de extracción y clasificación de UDAs y extracción y
 
 \subsection{Proyección de etiquetas} %% RESUMED
 
-La EA no presenta una gran cantidad de datos anotados en español con los cuales se pueda realizar 
-un entrenamiento, además de esto la gran mayoría de corpus existentes se encuentran en lenguajes como inglés o alemán.
-Para desarrollar la EA en otros lenguajes, como el español, se han investigado diferentes variantes
-para la construcción de conjuntos de datos, a partir de los conjuntos de datos ya existentes.
+% La EA no presenta una gran cantidad de datos anotados en español con los cuales se pueda realizar 
+% un entrenamiento, además de esto la gran mayoría de corpus existentes se encuentran en lenguajes como inglés o alemán.
+% Para desarrollar la EA en otros lenguajes, como el español, se han investigado diferentes variantes
+% para la construcción de conjuntos de datos, a partir de los conjuntos de datos ya existentes.
 
 La proyección de etiquetas es un algoritmo donde se 
 transfieren las etiquetas de un corpus anotado a nivel de \textit{tokens} en un lenguaje origen hacia su traducción en un
@@ -1441,28 +909,39 @@ y $e_t$ del tipo de UDA objetivo, entonces $e = 10 \cdot e_r + e_s + e_t$ \cite{
 
 \subsection{Preprocesamiento de predicción y clasificación de enlaces}
 
-El uso de este modelo se concreta a nivel de documento, en donde ya se tienen las UDAs extraídas. Para alimentar
-al modelo con los pares de UDAs y sus distancias argumentativas se seleccionan todos los pares de estos que cumplan
-que no se enlacen con ellos mismos, por ejemplo, $a \rightarrow a$; y que su distancia argumentativa absoluta ($da$) sea menor 
-que $10$. Estas restricciones disminuyen el número de pares extraídos por documentos a una cantidad lineal 
-con respecto a la cantidad de UDAs presentes, ya que por cada UDA solamente se tomarían $2 \cdot da$ elementos como máximo
-(los que la preceden y los que la suceden). 
-
-Además de las etiquetas originales del conjunto de entrenamiento, se añaden elementos extras a este
-conjunto. Estos elementos son las representaciones inversas de las relaciones, por ejemplo, si $a \xrightarrow{c} b$ entonces 
-se agregará el par $b \xrightarrow{c^{-1}} a$, donde $c^{-1}$ es una nueva clasificación de relación que representa
+Las UDAs extraídas son agrupadas de dos en dos y anotadas con su distancia argumentativa, solo seleccionando
+los pares que no se enlacen con ellos mismos y que su distancia sea menor que $10$ (Para disminuir el número 
+de pares a analizar). Al conjunto de entrenamiento se añade las representaciones inversas de las relaciones, por ejemplo, si $a \xrightarrow{c} b$ entonces 
+se agregara el par $b \xrightarrow{c^{-1}} a$, donde $c^{-1}$ es una nueva clasificación de relación que representa
 el inverso de la clasificación $c$. Este proceso se realiza para aumentar la cantidad de relaciones positivas en el
-conjunto entrenante, ya que, aun con las reducciones hechas, existe un desbalance de clases positivas y negativas en
-las relaciones.
+conjunto entrenante.
+
+% El uso de este modelo se concreta a nivel de documento, en donde ya se tienen las UDAs extraídas. Para alimentar
+% al modelo con los pares de UDAs y sus distancias argumentativas se seleccionan todos los pares de estos que cumplan
+% que no se enlacen con ellos mismos, por ejemplo, $a \rightarrow a$; y que su distancia argumentativa absoluta ($da$) sea menor 
+% que $10$. Estas restricciones disminuyen el número de pares extraídos por documentos a una cantidad lineal 
+% con respecto a la cantidad de UDAs presentes, ya que por cada UDA solamente se tomarían $2 \cdot da$ elementos como máximo
+% (los que la preceden y los que la suceden). 
+
+% Además de las etiquetas originales del conjunto de entrenamiento, se añaden elementos extras a este
+% conjunto. Estos elementos son las representaciones inversas de las relaciones, por ejemplo, si $a \xrightarrow{c} b$ entonces 
+% se agregará el par $b \xrightarrow{c^{-1}} a$, donde $c^{-1}$ es una nueva clasificación de relación que representa
+% el inverso de la clasificación $c$. Este proceso se realiza para aumentar la cantidad de relaciones positivas en el
+% conjunto entrenante, ya que, aun con las reducciones hechas, existe un desbalance de clases positivas y negativas en
+% las relaciones.
 
 \subsection{Posprocesamiento de predicción y clasificación de enlaces}
 
-Se calcula una salida extra a partir de las distribuciones de probabilidad de las relaciones 
-devueltas por el modelo, esta salida representa si el par está enlazado o no directamente. Para este cálculo se 
-suman las categorías vinculadas a las clases originales del conjunto de datos, esta se toma como la probabilidad de estar 
-enlazados, que en caso de ser mayor del 50\%, se devuelve verdadero. Para dar el resultado final se eliminan del 
-conjunto de respuesta las relaciones anotadas con las etiquetas inversas añadidas en el paso de preprocesamiento 
-y son devueltas aquellas que se clasifiquen como enlazadas según el criterio anterior.
+A partir de la distribución de probabilidades de las relaciones devueltas por el modelo,
+se calcula si el par está enlazado o no. Para esto, las categrías vinculadas a las clases de relaciones 
+originales se suman, y si superan el 50\%, se considera enlazado el par.
+
+% Se calcula una salida extra a partir de las distribuciones de probabilidad de las relaciones 
+% devueltas por el modelo, esta salida representa si el par está enlazado o no directamente. Para este cálculo se 
+% suman las categorías vinculadas a las clases originales del conjunto de datos, esta se toma como la probabilidad de estar 
+% enlazados, que en caso de ser mayor del 50\%, se devuelve verdadero. Para dar el resultado final se eliminan del 
+% conjunto de respuesta las relaciones anotadas con las etiquetas inversas añadidas en el paso de preprocesamiento 
+% y son devueltas aquellas que se clasifiquen como enlazadas según el criterio anterior.
 
 \begin{figure}[h]
 	\centering
@@ -1486,10 +965,13 @@ las clasificaciones dadas a estas y a las relaciones.
 Todos los conjuntos de datos están originalmente en inglés, por lo tanto, se les aplicó el algoritmo de proyección
 de corpus para obtener uno en español para ser usado en el entrenamiento de los modelos.
 
-Para la traducción automática se utilizó el servicio de Google Translate, 
-para obtener las alineaciones de palabras se probaron dos algoritmos: FastAlign \cite{dyer2013fastalign} y AwesomeAlign 
-\cite{dou2021word}, siendo este último el seleccionado, finalmente la proyección de etiquetas
-fue llevada a cabo por el algoritmo propuesto en \cite{eger2018cross}.
+Para la traducción automática se utilizó el servicio de Google Translate,
+obteniendo las alineaciones de palabras con AwesomeAlign \cite{dou2021word}.
+Con estos datos se realizó la proyección de etiquetas con el algoritmo propuesto 
+por \namecite{eger2018cross}.
+% para obtener las alineaciones de palabras se probaron dos algoritmos: FastAlign \cite{dyer2013fastalign} y AwesomeAlign 
+% \cite{dou2021word}, siendo este último el seleccionado, finalmente la proyección de etiquetas
+% fue llevada a cabo por el algoritmo propuesto en \cite{eger2018cross}.
 
 % A todos los conjuntos se les proyectó al lenguaje 
 % español y se les realizó un aumento de datos. Para la proyección se utilizó 
@@ -1504,13 +986,20 @@ se argumentan sobre temas como cooperar o competir y sobre las contribuciones de
 Las anotaciones de las UDAs se conforman por segmentos de textos argumentativos,
 clasificados en \textit{MajorClaim} con 751 (12\%), \textit{Claim} con 1506 (25\%) y \textit{Premise} con 3832 (63\%).
 
-La estructura de las relaciones entre las UDAs conforman árboles en los que se tienen como raíz las 
-\textit{MajorClaim} del texto. Las relaciones solo están permitidas entre \textit{Premise-Premise} y \textit{Premise-Claim}, clasificadas
-en \textit{attack} con 219 (6\%) y \textit{support} con 3613 (93\%). Las relaciones entre \textit{Claim} y \textit{MajorClaim} son anotadas 
-de manera diferente, para 
-darle a las \textit{Claim} una clasificación de si está a favor (1228) o en contra (278) de las \textit{MajorClaim} del documento,
-estas anotaciones fueron convertidas a relaciones de \textit{attack} y \textit{support} respectivamente. El número final con la inclusión de estas aumenta a 715 (10\%) de ataque y 
-5958 (90\%) de apoyo.
+La estructura de las relaciones entre los UDAs conforman árboles en los que las \textit{Major Claim} 
+del texto son las raices. Solo se permiten relaciones entre \textit{Premise-Premise} y \textit{Premise-Claim}, 
+clasificados en ataque con 219 (6\%) y apoyo con 3613 (93\%). Las relaciones entre \textit{Claim} y \textit{MajorClaim} 
+se indican de manera diferente, con una calificación de la \textit{Claim} de si está a favor (1228) o en contra (278) de las \textit{MajorClaim} 
+del documento. Estas anotaciones se convirtieron en relaciones de \textit{attack} y \textit{support} respectivamente, 
+lo que resultó en un número final de 715 (10 \%) de ataque y 5958 (90 \%) de soporte.
+
+% La estructura de las relaciones entre las UDAs conforman árboles en los que se tienen como raíz las 
+% \textit{MajorClaim} del texto. Las relaciones solo están permitidas entre \textit{Premise-Premise} y \textit{Premise-Claim}, clasificadas
+% en \textit{attack} con 219 (6\%) y \textit{support} con 3613 (93\%). Las relaciones entre \textit{Claim} y \textit{MajorClaim} son anotadas 
+% de manera diferente, para 
+% darle a las \textit{Claim} una clasificación de si está a favor (1228) o en contra (278) de las \textit{MajorClaim} del documento,
+% estas anotaciones fueron convertidas a relaciones de \textit{attack} y \textit{support} respectivamente. El número final con la inclusión de estas aumenta a 715 (10\%) de ataque y 
+% 5958 (90\%) de apoyo.
 
 \subsection{CDCP}\label{corpus:cdcp}
 
@@ -1530,32 +1019,35 @@ argumentativas. Estas se clasifican en \textit{MajorClaim} con 93 (3\%), \textit
 Las relaciones están representadas por tres categorías: \textit{support} con 1763 (85\%), \textit{partial-attack} con 238 (12\%) y
 \textit{attack} con 60 (3\%).
 
-En resumen, estos datos no son numerosos como para realizar el entrenamiento de un modelo de aprendizaje automático
-y presentan un gran desbalance en sus clases.
-En la Tabla \ref{table:corpus_info} se muestran los datos promedio de la composición de los diferentes corpus. 
-Se observa una composición heterogénea entre estos, principalmente el CDCP difiere mucho de los demás.
+Estos conjuntos de datos son pequeños para los modelos a entrenar, además, presentan desbalance en las clases 
+existentes.
+% % Estos datos se consideran insuficientes para realizar el entrenamiento de un modelo de aprendizaje automático
+% % y presentan un gran desbalance en sus clases.
+% En la Tabla \ref{table:corpus_info} se muestran los datos promedio de la composición de los diferentes corpus. 
+% Se observa una composición heterogénea entre estos, principalmente el CDCP.
+% %  difiere mucho de los demás.
 
-\begin{table}[h]
-	\begin{center}
-		\scalebox{0.8}{
-		\begin{tabular}{|p{20mm}|c|c|c|c|} 
-			\hline\rule{-2pt}{15pt}
-			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP } 	   & {\bf AbsTRCT}  \\
-										 & {\bf Argumen-} 		& 				   & 			    \\
-										 & {\bf tativos} 		& 				   & 			    \\
-			\hline\rule{-4pt}{10pt}
-			\textit{Tokens}  	   		   	     & 381 	   			    & 127              & 371            \\
-			\textit{Tokens} Argu- 	   		   	 &     	   			    & 	               & 	            \\
-			mentativos	 		   	     & 68\%			    	& 99\%             & 50\%           \\
-			UDAs                   	     & 35\%    			    & 97\%             & 47\%           \\
-			Relaciones		     	     & 	    			    & 	               &	            \\ 
-			por UDA     	     		 & 1,08    			    & 0,30             & 0,63           \\ 
-			\hline
-		\end{tabular}
-		}
-	\end{center}
-	\caption{\label{table:corpus_info}Información de promedios de los conjuntos de datos.}
-\end{table}
+% \begin{table}[h]
+% 	\begin{center}
+% 		\scalebox{0.8}{
+% 		\begin{tabular}{|p{20mm}|c|c|c|c|} 
+% 			\hline\rule{-2pt}{15pt}
+% 			{\bf Corpus}                 & {\bf Ensayos} 		& {\bf CDCP } 	   & {\bf AbsTRCT}  \\
+% 										 & {\bf Argumen-} 		& 				   & 			    \\
+% 										 & {\bf tativos} 		& 				   & 			    \\
+% 			\hline\rule{-4pt}{10pt}
+% 			\textit{Tokens}  	   		   	     & 381 	   			    & 127              & 371            \\
+% 			\textit{Tokens} Argu- 	   		   	 &     	   			    & 	               & 	            \\
+% 			mentativos	 		   	     & 68\%			    	& 99\%             & 50\%           \\
+% 			UDAs                   	     & 35\%    			    & 97\%             & 47\%           \\
+% 			Relaciones		     	     & 	    			    & 	               &	            \\ 
+% 			por UDA     	     		 & 1,08    			    & 0,30             & 0,63           \\ 
+% 			\hline
+% 		\end{tabular}
+% 		}
+% 	\end{center}
+% 	\caption{\label{table:corpus_info}Información de promedios de los conjuntos de datos.}
+% \end{table}
 
 % \subsection{Creación de corpus en español}
 
@@ -1608,15 +1100,16 @@ asociado.
 Mediante \textit{crawling}, se extrajeron 2891 cartas desde el 30 de agosto del 2013 hasta el 28 de octubre del 2022. Estas 
 contienen aproximadamente 975000 palabras en los datos y, en promedio, la cantidad de palabras por carta es 330.
 Se encontraron 874 cartas en respuesta a cartas enviadas, lo que representa un 30\% del total. 
+De las cartas, se seleccionaron las que fueran en respuesta a otra y también las 
+cartas que fueron respondidas para tener una mayor concentración de cartas que fueran argumentativas, 
+esta selección está conformada por 1702 cartas, lo que representa un 59\% del total de cartas.
 
 % Se extrajeron
 % los comentarios asociados a las cartas, en este sentido 987 cartas no presentan comentarios y, en promedio, 
 % se realizan 2 comentarios por carta. 
-Los textos presentan un título y un formato relativamente libre, 
-aunque en las cartas de respuesta se puede observar una firma de la persona que respondió y la entidad que 
-representa. Del total de cartas, se seleccionaron las que fueran en respuesta a otra y también las 
-cartas que fueron respondidas para tener una mayor concentración de cartas que fueran argumentativas, 
-esta selección está conformada por 1702 cartas, lo que representa un 59\% del total de cartas.
+% Los textos presentan un título y un formato relativamente libre, 
+% aunque en las cartas de respuesta se puede observar una firma de la persona que respondió y la entidad que 
+% representa. 
 
 % \section{Implementación}
 
@@ -1762,8 +1255,8 @@ textos de la sección ``Cartas a la Dirección'' de \textit{Granma}.
 El modelo seleccionado fue usado en el entrenamiento de los demás conjuntos de datos obteniendo los resultados mostrados
 en Tabla \ref{table:test_metrics_segmenter} y Tabla \ref{table:test_bioes_metrics_segmenter}.
 
-Las métricas 50\%F1 y 100\%F1 se encuentran definidas en \cite{persing2016end}.
-Métrica basada en la idea de F1 orientada para el trabajo con secuencias donde el número denota el porcentaje de secuencia inferida que debe coincidir con 
+Las métricas 50\%F1 y 100\%F1 \cite{persing2016end} están
+basadas en la idea de la métrica F1, pero orientada a secuencias, donde el número denota el porcentaje de secuencia inferida que debe coincidir con 
 la secuencia anotada para ser considerado una coincidencia.
 
 \begin{table}[h]
@@ -1972,7 +1465,7 @@ Por ello, el proceso que se llevó a cabo en esta investigación para realizar l
 validación consistió en un análisis cualitativo realizado a criterio del autor. Para esto se seleccionaron 15 pares 
 de cartas, la carta original y la respuesta enviada a esta. Cada una de estas 30 cartas fueron anotadas por los modelos entrenados en cada 
 conjunto de datos y se realizó una evaluación que consideró si la UDA se extrajo y clasificó correctamente, 
-así como si la relación también fue extraída y clasificada por el modelo de manera adecuada:
+así como si la relación también fue extraída y clasificada por el modelo de manera adecuada.
 
 % \begin{itemize}
 % 	\item Muchos falsos positivos en la predicción de enlaces, debido a la manera en la manera componente a componente que 
@@ -2230,7 +1723,7 @@ se computó en las investigaciones donde se propusieron los modelos.
 
 % \subsection{Análisis de los conjuntos de datos}
 
-por otra parte, se considera que el corpus CDCP se ajusta mejor a las características de las ``Cartas 
+Se considera que el corpus CDCP se ajusta mejor a las características de las ``Cartas 
 a la Dirección''. Este presenta orígenes similares y un conjunto de etiquetas de UDAs que se ajustan más a lo observado 
 en las Cartas. También las Cartas presentan un alto contenido argumentativo, por lo que marcar 
 todas las oraciones como argumentativas no constituye una fuente grande de errores.
@@ -2238,8 +1731,8 @@ todas las oraciones como argumentativas no constituye una fuente grande de error
 
 Una desventaja de este esquema sobre otros es la carencia de una 
 clasificación de las relaciones que implique un ataque, aunque esto se cubre con el hecho de 
-que en los conjuntos en donde existen estas, los resultados son bastante pobres en ese aspecto. La cantidad 
-y calidad de relaciones, aunque tiene bastante espacio para mejorar, es aceptable dada la dificultad 
+que en los conjuntos en donde existen estas, los resultados son pobres en ese aspecto. La cantidad 
+y calidad de relaciones, aunque tiene espacio para mejorar, es aceptable dada la dificultad 
 del problema en EA.
 
 La ventaja del modelo entrenado con el corpus de Ensayos Argumentativos en la extracción 
@@ -2310,8 +1803,8 @@ Por lo que se propone la creación de un corpus anotado por lingüistas para pod
 validación y entrenamiento del modelo propuesto. También se considera la creación de un servicio 
 online basado en Brat\footnote{\url{https://brat.nlplab.org/}} para la socialización y mejora de 
 los resultados obtenidos.
-El uso de representaciones BERT ha llevado a muchas tareas de PLN a nuevos estados 
-del arte, por lo tanto, se propone investigar el uso de estos \textit{embeddings} en 
+El uso de representaciones BERT \cite{devlin2019bert} ha llevado a mejorar los resultados de tareas del PLN \cite{mayer2020transformer}, 
+por lo tanto, se propone investigar el uso de estos \textit{embeddings} en 
 el modelo. El problema principal obtenido en el modelo fue relacionado con la 
 predicción de enlaces, un problema que tiene el modelo es la falta de contexto global
 del texto para hacer la predicción, por lo que se insta a la búsqueda y experimentación
