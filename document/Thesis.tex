@@ -14,6 +14,7 @@
 \usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{graphicx}
+\usepackage{newclude}
 \floatstyle{plaintop}
 \restylefloat{table}
 \addbibresource{Bibliography.bib}
@@ -89,9 +90,12 @@
 \mainmatter
 
 \include{MainMatter/Introduction}
-\include{MainMatter/Background}
-\include{MainMatter/Proposal}
-\include{MainMatter/Implementation}
+
+% Business Intelligence section
+\include{MainMatter/BusinessIntelligence/BusinessIntelligence}
+\include{MainMatter/AutomaticETL/AutomaticETL}
+\include{MainMatter/Proposal/Proposal}
+\include{MainMatter/Implementation/Implementation}
 
 \backmatter
 
