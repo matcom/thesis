@@ -1,14 +1,51 @@
 \section{Online Transaction Processing (OLTP)} \label{section:oltp}
 
-\textbf{TODO}: La introducci\'on de esta secci\'on es presentar el concepto de OLTP
+En el ámbito de los sistemas de administración de bases de datos, el Procesamiento de Transacciones en Línea (OLTP) es un 
+tipo de procesamiento de datos que consiste en ejecutar una serie de transacciones que ocurren simultáneamente y en 
+tiempo real. Los sistemas OLTP están diseñados para garantizar la integridad y coherencia de los datos en un entorno de 
+múltiples usuarios.
 
-Claro, la tecnología de procesamiento de transacciones en línea (OLTP) es un sistema crítico en 
-la infraestructura tecnológica de muchas organizaciones, ya que permite el procesamiento de 
-transacciones en tiempo real. Esto significa que los datos se actualizan al instante y están 
-disponibles para su uso inmediato. Los sistemas OLTP se utilizan en una amplia variedad de 
-aplicaciones, desde la banca y las finanzas hasta el comercio electrónico y la atención médica.
+Los datos transaccionales son información que rastrea las interacciones relacionadas con las actividades de una 
+organización. Estas interacciones pueden ser transacciones comerciales, como pagos de clientes, pagos realizados 
+a proveedores, movimientos en el inventario de una organización, pedidos recibidos o servicios entregados. Los eventos 
+transaccionales, usualmente contienen una dimensión de tiempo, algunos valores 
+numéricos y referencias a otros datos\cite{oltpAzure}. Aunque, con el paso de los años, especialmente desde la llegada de 
+Internet, la definición de transacción 
+se ha expandido para poder abarcar todas las posibles formas de interacción digital entre un usuario y un negocio a través 
+de cualquier sensor conectado a la web. Además, incluye cualquier tipo de acción, como descargar pdfs en una 
+página web, ver un video específico, entre otros\cite{oltpOracle}.
+
+Los sistemas OLTP se centran principalmente en respaldar las operaciones comerciales diarias. Las transacciones que procesan 
+son brebes y sencillas, que normalmente implican la inserción, modificación o recuperación de cantidades pequeñas de datos.
 
 \subsection{Objetivos de los sistemas OLTP}
+
+El objetivo fundamental de los sistemas OLTP es brindar rapidez en las consultas de los usuarios y 
+garantizar que los datos permanezcan consistentes y actualizados. De forma m\'as espec\'ifica, los objetivos de 
+los sistemas OLTP son: 
+
+\begin{itemize}
+    \item Posibilitar el procesamiento de transacciones en tiempo real. La rapidez que brinda OLTP en el procesamiento de 
+        las transacciones, permite a las organizaciones mantener datos actualizados y 
+        confiables.
+
+    \item Mantener la integridad y la coherencia de los datos durante todo el proceso transaccional. Los sistemas OLTP 
+        cumplen las propiedades ACID (Atomicidad, Consistencia, Aislamiento, Durabilidad), por tanto garantizan un 
+        procesamiento de datos confiable y sin errores.
+
+    \item Recuperar y manipular datos de forma eficiente para respaldar las operaciones transaccionales. Los sistemas OLTP
+        est\'an optimizados para responder consultas e implementan mecanismos de indexación que proporcionan rapidez y presici\'on 
+        a la hora de recuperar datos. Adem\'as, ofrecen capacidades s\'olidas de manipulaci\'on de datos, lo que permite 
+        insertar, eliminar o actualizar registros de forma segura.
+
+    \item Proporcionar alta disponibilidad y escalabilidad. Es necesario que los sistemas OLTP sean capaces de manejar una 
+        gran cantidad de usuarios y transacciones concurrentes sin verse afectado su rendimiento.
+
+    \item Mantener la seguridad y la privacidad de los datos es un objetivo fundamental de los sistemas OLTP. Con este fin, 
+        estos sistemas implementan medidas de seguridad, como controles de acceso, encriptación y mecanismos de autenticación, 
+        para proteger los datos de manipulaciones o accesos no autorizadas.
+\end{itemize}
+
 \subsection{Arquitectura de los sistemas OLTP}
 
 los sistemas OLTP se basan en una arquitectura cliente-servidor, donde los clientes envían 
