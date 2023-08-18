@@ -117,7 +117,9 @@ y columnas, lo cual permite el almacenamiento estructurado de los datos.
 
 Por otra parte est\'an los Atributos. Estos definen las características o propiedades de una entidad. Cada columna de una 
 Tabla corresponde a un Atributo de la entidad que representa dicha Tabla. Cada Atributo posee su propio tipo de datos y 
-ayudan a definir la naturaleza y la estructura de los datos.
+ayudan a definir la naturaleza y la estructura de los datos. Además, hay atributos llamados llaves primarias cuyos 
+valores son \'unicos para cada registro y sirven para identificarlos univocamente. También, las llaves for\'aneas son 
+otro tipo de atributo que referencian a registros de otras tablas.
 
 Por \'ultimo, encotramos las Relaciones. Estas representan asociaciones entre tablas y definen como las Tablas interactúan
 entre si. Además, juegan un papel fundamental en el mantenimiento de la integridad de los datos y en su recuperación de forma 
@@ -126,14 +128,37 @@ eficiente.
 Pero organizar los datos en Tablas, sin seguir alguna regla puede contribuir a la aparici\'on de datos redundantes en la 
 base de datos. La redundancia en las bases de datos se manifiesta cuando se tienen varias copias de los mismos datos en la 
 base de datos, por ejemplo, si se tiene una tabla que representa a la entidad Estudiante que est\'a relacionada con otra 
-tabla Departamento, almacenar los detalles completos del departamento como id_departamento, nombre_departamento y 
-jefe_departamento repetidamente por cada registro de estudiante es redundante. La soluci\'on a este problema yace en el 
-proceso de Normalización.
+tabla Departamento, almacenar los detalles completos del departamento como id\_departamento, nombre\_departamento y 
+jefe\_departamento repetidamente por cada registro de estudiante es redundante y mal aprovecha los recursos de 
+almacenamiento. La soluci\'on a este problema yace en el proceso de Normalización.
 
 
+\subsubsection{Normalización en el Modelo Relacional}
 
-La normalización **es** un proceso esencial **en** el modelo relacional **que** ayuda a eliminar la redundancia **y** 
-garantiza la integridad de los datos. A través de una serie **de** pasos, los diseñadores de bases de datos pueden 
-desglosar tablas más grandes, lo que da como resultado **una** mejor consistencia e integridad de los datos y requisitos 
-reducidos de espacio de almacenamiento. Cada formulario normal representa una etapa diferente **en** el proceso de 
-normalización **y** ayuda a abordar anomalías de datos específicas.
+La Normalización es el proceso de dividir tablas m\'as grandes en otras m\'as pequeñas y manejables, siguiendo 
+un conjunto de reglas llamadas formas normales. Su objetivo es organizar los datos para evitar la redundancia y 
+eliminar anomalías en los datos.
+
+
+\subsubsection{Formas Normales}
+
+El proceso de normalizaci\'on consta de una serie de pasos, donde en cada uno se le realizan modificaciones a las tablas de 
+la base de datos con el objetivo de que cumplan con las restricciones de una Forma Normal específica:
+
+\begin{itemize}
+    \item \textbf{Primera Forma Normal:} Una tabla se encuentra en Primera Forma Normal si todos los valores de los atributos
+        son at\'omicos. 
+
+    \item \textbf{Segunda Forma Normal:} Una tabla se encuentra en Segunda Forma Normal si est\'a en Primera Forma Normal
+        y todos los atributos no llaves dependen completamente de la llave.
+
+    \item \textbf{Tercera Forma Normal:} Una tabla se encuetra en Tercera Forma Normal si est\'a en Segunda Forma Normal 
+        y los atributos no llaves son mutuamente independientes.
+\end{itemize}
+
+Las Formas Normales continuan con la Forma Normal de Boyce-Codd, cuarta y quinta Forma Normal. Llevar el proceso 
+de normalizaci\'on hasta Formas Normales superiores a la tercera es cuesti\'on de diseño de los desarrolladores, cada forma 
+normal superior aporta un grado m\'as de especializac\'on bajo una p\'erdida de expresividad en el diseño.
+
+Con el proceso de Normalización se logra mejorar la consistencia y la integridad de los datos. Se eliminan las anomal\'ias 
+en la inserción, eliminaci\'on y modificación de los registros. Se eliminan datos redundantes y se optimiza el almacenamiento.
