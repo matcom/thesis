@@ -1,0 +1,164 @@
+\section{Online Transaction Processing (OLTP)} \label{section:oltp}
+
+En el ámbito de los sistemas de administración de bases de datos, el Procesamiento de Transacciones en Línea (OLTP) es un 
+tipo de procesamiento de datos que consiste en ejecutar una serie de transacciones que ocurren simultáneamente y en 
+tiempo real. Los sistemas OLTP están diseñados para garantizar la integridad y coherencia de los datos en un entorno de 
+múltiples usuarios.
+
+Los datos transaccionales son información que rastrea las interacciones relacionadas con las actividades de una 
+organización. Estas interacciones pueden ser transacciones comerciales, como pagos de clientes, pagos realizados 
+a proveedores, movimientos en el inventario de una organización, pedidos recibidos o servicios entregados. Los eventos 
+transaccionales, usualmente contienen una dimensión de tiempo, algunos valores 
+numéricos y referencias a otros datos\cite{oltpAzure}. Aunque, con el paso de los años, especialmente desde la llegada de 
+Internet, la definición de transacción 
+se ha expandido para poder abarcar todas las posibles formas de interacción digital entre un usuario y un negocio a través 
+de cualquier sensor conectado a la web. Además, incluye cualquier tipo de acción, como descargar pdfs en una 
+página web, ver un video específico, entre otros\cite{oltpOracle}.
+
+Los sistemas OLTP se centran principalmente en respaldar las operaciones comerciales diarias. Las transacciones que procesan 
+son brebes y sencillas, que normalmente implican la inserción, modificación o recuperación de cantidades pequeñas de datos.
+
+\subsection{Objetivos de los sistemas OLTP}
+
+El objetivo fundamental de los sistemas OLTP es brindar rapidez en las consultas de los usuarios y 
+garantizar que los datos permanezcan consistentes y actualizados. De forma m\'as espec\'ifica, los objetivos de 
+los sistemas OLTP son: 
+
+\begin{itemize}
+    \item Posibilitar el procesamiento de transacciones en tiempo real. La rapidez que brinda OLTP en el procesamiento de 
+        las transacciones, permite a las organizaciones mantener datos actualizados y 
+        confiables.
+
+    \item Mantener la integridad y la coherencia de los datos durante todo el proceso transaccional. Los sistemas OLTP 
+        cumplen las propiedades ACID (Atomicidad, Consistencia, Aislamiento, Durabilidad), por tanto garantizan un 
+        procesamiento de datos confiable y sin errores.
+
+    \item Recuperar y manipular datos de forma eficiente para respaldar las operaciones transaccionales. Los sistemas OLTP
+        est\'an optimizados para responder consultas e implementan mecanismos de indexación que proporcionan rapidez y presici\'on 
+        a la hora de recuperar datos. Adem\'as, ofrecen capacidades s\'olidas de manipulaci\'on de datos, lo que permite 
+        insertar, eliminar o actualizar registros de forma segura.
+
+    \item Proporcionar alta disponibilidad y escalabilidad. Es necesario que los sistemas OLTP sean capaces de manejar una 
+        gran cantidad de usuarios y transacciones concurrentes sin verse afectado su rendimiento.
+
+    \item Mantener la seguridad y la privacidad de los datos es un objetivo fundamental de los sistemas OLTP. Con este fin, 
+        estos sistemas implementan medidas de seguridad, como controles de acceso, encriptación y mecanismos de autenticación, 
+        para proteger los datos de manipulaciones o accesos no autorizadas.
+\end{itemize}
+
+\subsection{Arquitectura de los sistemas OLTP}
+
+Los sistemas OLTP se basan en una arquitectura cliente-servidor, donde los clientes envían solicitudes al servidor para 
+realizar transacciones en la base de datos. El servidor procesa estas solicitudes y actualiza la base de datos en tiempo 
+real. Los sistemas OLTP también utilizan técnicas de concurrencia y control de transacciones para garantizar la integridad 
+de los datos y prevenir problemas como la corrupción de datos o la pérdida de información. Por tanto la arquitectura de los 
+sistemas OLTP puede ser separada, generalmente, en los siguientes componentes:
+
+\begin{itemize}
+    \item \textbf{Interfaz de usuario:} Este componente permite la interacci\'on entre los usuarios y sistema OLTP. Seg\'un 
+        los requisitos del sistema, la interfaz puede ser basada en la web, una aplicaci\'on m\'ovil o de escritorio.
+
+    \item \textbf{Lógica del Negocio:} Este componente alberga las reglas comerciales y la lógica 
+        que rige el procesamiento de las transacciones. Es la encargada de validar los datos entrados por los usuarios, 
+        garantizar el cumplimiento de las restricciones de integridad y organizar la distribuci\'on de los datos entre los 
+        distintos componentes del sistema.
+
+    \item \textbf{Administrador de transacciones:} El administrador de transacciones es el encargado de asegurar la 
+        la coherencia y atomicidad de las transacciones. Implementa mecanismos para el manejo de múltiples transacciones 
+        simultáneas, garantizando as\'i su ejecuci\'on de forma aislada y que los cambios que generen sean confirmados o 
+        revertidos. Implementa mecanismos de control de concurrencia y tolerancia a fallos.
+
+    \item \textbf{Almacenamiento de datos:} Por norma general, los sistemas OLTP suelen hacer uso de sistemas de gestión
+        de bases de datos relacionales (RDBMS) para almacenar datos transaccionales, aprovechando as\'i las bondades del 
+        Modelo Relacional.
+\end{itemize}
+
+\subsection{Modelo Relacional}
+
+En los primeros años de las bases de datos, cada aplicaci\'on defin\'ia su propia estructura para almacenar sus datos. 
+Si otros desarrolladores querían crear aplicaciones que usen esos datos, primero deb\'ian familiarizarse a fondo con 
+la estructura de datos particular que les servir\'ia de fuente. Estas estructuras particulares, eran ineficientes, difíciles
+de mantener y optimizar. El Modelo Relacional fue concebido para dar soluci\'on al problema de las m\'ultiples estructuras 
+de datos arbitrarias.
+
+El Modelo Relacional impuso un estándar para representar datos y consultarlos que cualquier aplicación pod\'ia usar. 
+Desde sus inicios, fue reconocido por la comunidad de desarrolladores que la principal fortaleza del Modelo Relacional 
+estaba en el uso de tablas, que eran una forma intuitiva, eficiente y flexible de almacenar y acceder a 
+información estructurada.
+
+Con el paso del tiempo, surgió otro de los pilares del Modelo Relacional, el Lenguaje de Consulta Estructurado, SQL por 
+sus siglas en ingl\'es. Durante años, SQL ha sido ampliamente utilizado como lenguaje para escribir y consultar las bases 
+de datos. El basamento de SQL es el \'algebra relacional, por lo cual es un lenguaje matemático coherente que mejora el 
+rendimiento de todas las consultas.
+
+
+\subsubsection{Ventajas del Modelo Relacional}
+
+Existen varias ventajas al usar el modelo relacional para administrar datos:
+
+\begin{itemize}
+    \item \textbf{Flexibilidad:} Las operaciones de inserción, modificación y eliminaci\'on son realizadas sin interrumpir
+        todo el sistema. 
+    
+    \item \textbf{Escalabilidad:} Las bases de datos relacionales pueden escalar tanto vertical como horizontalmente, 
+        asegurando el manejo de grandes volúmenes de datos de forma eficiente. Esta característica es primordial en el 
+        mundo actual basado en datos.
+
+    \item \textbf{Integridad de los datos:} El diseño de las relaciones y restricciones del Modelo Relacional garantiza 
+        el cumplimiento de la integridad de los datos. 
+\end{itemize}
+
+
+\subsubsection{Componentes del Modelo Relacional}
+
+El Modelo Relacional consta de varios componentes claves. En primer lugar tenemos las Tablas. En el Modelo Relacional 
+los datos son almacenados en tablas. Cada tabla representa una entidad o concepto. Las tablas est\'an formadas por filas 
+y columnas, lo cual permite el almacenamiento estructurado de los datos.
+
+Por otra parte est\'an los Atributos. Estos definen las características o propiedades de una entidad. Cada columna de una 
+Tabla corresponde a un Atributo de la entidad que representa dicha Tabla. Cada Atributo posee su propio tipo de datos y 
+ayudan a definir la naturaleza y la estructura de los datos. Además, hay atributos llamados llaves primarias cuyos 
+valores son \'unicos para cada registro y sirven para identificarlos univocamente. También, las llaves for\'aneas son 
+otro tipo de atributo que referencian a registros de otras tablas.
+
+Por \'ultimo, encotramos las Relaciones. Estas representan asociaciones entre tablas y definen como las Tablas interactúan
+entre si. Además, juegan un papel fundamental en el mantenimiento de la integridad de los datos y en su recuperación de forma 
+eficiente. 
+
+Pero organizar los datos en Tablas, sin seguir alguna regla puede contribuir a la aparici\'on de datos redundantes en la 
+base de datos. La redundancia en las bases de datos se manifiesta cuando se tienen varias copias de los mismos datos en la 
+base de datos, por ejemplo, si se tiene una tabla que representa a la entidad Estudiante que est\'a relacionada con otra 
+tabla Departamento, almacenar los detalles completos del departamento como id\_departamento, nombre\_departamento y 
+jefe\_departamento repetidamente por cada registro de estudiante es redundante y mal aprovecha los recursos de 
+almacenamiento. La soluci\'on a este problema yace en el proceso de Normalización.
+
+
+\subsubsection{Normalización en el Modelo Relacional}
+
+La Normalización es el proceso de dividir tablas m\'as grandes en otras m\'as pequeñas y manejables, siguiendo 
+un conjunto de reglas llamadas formas normales. Su objetivo es organizar los datos para evitar la redundancia y 
+eliminar anomalías en los datos.
+
+
+\subsubsection{Formas Normales}
+
+El proceso de normalizaci\'on consta de una serie de pasos, donde en cada uno se le realizan modificaciones a las tablas de 
+la base de datos con el objetivo de que cumplan con las restricciones de una Forma Normal específica:
+
+\begin{itemize}
+    \item \textbf{Primera Forma Normal:} Una tabla se encuentra en Primera Forma Normal si todos los valores de los atributos
+        son at\'omicos. 
+
+    \item \textbf{Segunda Forma Normal:} Una tabla se encuentra en Segunda Forma Normal si est\'a en Primera Forma Normal
+        y todos los atributos no llaves dependen completamente de la llave.
+
+    \item \textbf{Tercera Forma Normal:} Una tabla se encuetra en Tercera Forma Normal si est\'a en Segunda Forma Normal 
+        y los atributos no llaves son mutuamente independientes.
+\end{itemize}
+
+Las Formas Normales continuan con la Forma Normal de Boyce-Codd, cuarta y quinta Forma Normal. Llevar el proceso 
+de normalizaci\'on hasta Formas Normales superiores a la tercera es cuesti\'on de diseño de los desarrolladores, cada forma 
+normal superior aporta un grado m\'as de especializac\'on bajo una p\'erdida de expresividad en el diseño.
+
+Con el proceso de Normalización se logra mejorar la consistencia y la integridad de los datos. Se eliminan las anomal\'ias 
+en la inserción, eliminaci\'on y modificación de los registros. Se eliminan datos redundantes y se optimiza el almacenamiento.
