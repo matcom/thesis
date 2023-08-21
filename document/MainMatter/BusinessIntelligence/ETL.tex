@@ -4,7 +4,8 @@ ETL son las siglas de  Extract, Transform, Load, en español Extraer, Transforma
 integración y gestión de datos. Implica extraer datos desde varios or\'igenes, generalmente con formatos distintos, 
 conciliarlos, mediante tecnicas de transformación y validaci\'on, en un formato compatible con un almacenamiento destino 
 predefinido y luego cargarlos en dicho sistema destino. Lo que permite aumentar la cantidad y la calidad de los datos 
-disponibles para los an\'alisis adem\'as de permitir la integración con sistemas heredados.
+disponibles para los an\'alisis adem\'as de permitir la integración con sistemas heredados. ETL est\'a presente en la 
+industria desde la década de 1970 y empez\'o a ganar popularidad con el auge de los almacenes de datos\cite{etl_vs_elt_amazon}.
 
 \subsection{Objetivos de los procesos ETL}
 
@@ -18,5 +19,50 @@ Por \'ultimo, ETL permite la integración con datos en tiempo real e históricos
 completa de sus datos a lo largo del tiempo, mejorando la obtenci\'on de conocimiento y la toma de decisiones.
 
 \subsection{ETL vs ELT}
+
+Extraer, Cargar y Transformar, ELT por sus siglas en ingl\'es es un proceso derivado de ETL solo que invierte las operaciones 
+de carga y transformación. En ELT se cargan los datos en el sistema destino justo despu\'es de ser extra\'idos de la fuente 
+o\'igen. La transformaciónde los datos extr\'idos es responsabilidad del sistema destino. La mayor parte de las 
+transformaciones se realizan en la etapa de análisis y se cargan los datos en bruto mínimamente procesados en el 
+almacenamiento de datos.
+
+El uso m\'as tipico de ELT yace en el \'ambito del Big Data\cite{raunakjhawar_ETL_microsoft}. La adopción de la 
+infraestructura en la nube, que proporciona a las bases de datos de destino la potencia de procesamiento necesaria 
+para realizar las transformaciones, hacen que la variante ELT sea elegida cada vez con m\'as frecuencia.
+
+Comparando ambos enfoques, con ELT se simplifica la arquitectura pues se elimina el motor de transformación del proceso. 
+Tambi\'en, al escalar el almacenamientode datos de destino también se escala el rendimiento del proceso ELT pues es all\'i
+donde se realizan las transformaciones. ELT omite el paso de copia presente en ETL que puede ser una operaci\'on muy costosa 
+si el conjunto de datos es grande. Pero solo es efectivo usar este enfoque si el sistema destino es lo suficientemente
+potente como para transformar los datos de manera eficiente.
+
+Por otro lado, ETL es la mejor opci\'on para el tratamiento de datos estructurados\cite{etl_vs_elt_amazon}. Con 
+ETL se transforma el formato de los datos, pero se mantiene su naturaleza estructurada. ETL es una tecnología madura 
+con m\'as de 20 años de explotaci\'on, sus protocolos y buenas pr\'acticas son conocidos y bien documentados. Como principal 
+desventaja le acompaña el hecho de que requiere m\'as definici\'on al principio, pues deben definirse los tipos de datos 
+del destino, estructuras y relaciones.
+
 \subsection{Operaciones de los Procesos ETL}
+
+Como su nombre lo indica, las operaciones que conforman los Procesos ETL son:
+
+\subsubsection{Extracci\'on}
+
+Es el primer paso de ETL. En este paso se extraen datos desde m\'ultiples fuentes y se colocan en un \'area de preparaci\'on 
+en donde ser\'an transformados. Cada fuente de datos puede usar una organizaci\'on diferente de los datos o formatos distintos. 
+El proceso de extracci\'on debe generar un impacto m\'inimo en el sistema or\'igen, si se extraen muchos datos se podr\'ia 
+exceder la capacidad de carga del r\'igen, provocando que colapse y no est\'e disponible para su uso. Por esta los grandes 
+sistemas consumidores de datos programan sus actividades de extracci\'on para d\'ias u horarios donde su impacto sea 
+m\'inimo. 
+
+La frecuencia con la que se realiza la extracci\'on desde el or\'igen depende del mecanismo implementado de captura de datos 
+modificados. Algunos sistemas or\'igen notifican cuando se ha cambiado un registro de datos. A continuaci\'on se ejecuta el 
+proceso de extracci\'on para ese cambio. Algunos sistemas no son capaces de identificar cambios en los datos, por lo que 
+la estrategia se simplifica a volver a extraer todos los datos del or\'igen.
+
+\subsubsection{Transformaci\'on}
+
+El paso de Tranformaci\'on es el encargado de consolidar los datos para prepararlos para el almacenamiento de datos destino. 
+
+
 \subsection{Herramientas para Procesos ETL}
