@@ -63,6 +63,48 @@ la estrategia se simplifica a volver a extraer todos los datos del or\'igen.
 \subsubsection{Transformaci\'on}
 
 El paso de Tranformaci\'on es el encargado de consolidar los datos para prepararlos para el almacenamiento de datos destino. 
+Esta fase puede implicar los siguientes tipos de cambios de datos:
 
+\begin{itemize}
+    \item Seleccionar solo algunas columnas para ser cargadas.
+    \item Traducir c\'odigos (por ejemplo, si la fuente almacena una "M" para Masculino y "F" para Femenino pero el destino 
+        tiene que guardar "1" para Masculino y "2" para Femenino)
+    \item Codificar valores, ejemplo de esto es convertir "Principal" en "P" o "Secundario" en "S"
+    \item Eliminar datos duplicados.
+    \item Revisi\'on de los formatos de los datos. Un caso com\'un de esto es la conversi\'on de unidades de medida 
+        o la conversi\'on de los formatos de fecha/hora.
+\end{itemize}
+
+También se pueden realizar transformaciones m\'as avanzadas, que siguen las reglas del negocio para optimizar los datos y 
+facilitar los análisis:
+
+\begin{itemize}
+    \item Aplicar directamente reglas comerciales a los datos, por ejemplo convertir los ingresos en ganancias restando los 
+        gastos.
+    \item Vincular datos de diferentes or\'igenes. Por ejemplo, calcular el costo total de compra de un producto 
+        sumando el valor de compra de los diferentes proveedores y almacenando solo el total final en el sistema de destino.
+    \item Cifrar datos confidenciales para cumplir con las leyes de datos o de privacidad antes de cargar la informaci\'on 
+        en el sistema destino.
+\end{itemize}
+
+
+\subsubsection{Carga}
+
+La fase de Carga es el momento en que los datos resultantes de la fase de Transformaci\'on son cargados en sistema destino. 
+En dependencia de los requisitos de cada organización, el proceso de carga abarca una variedad de acciones diferentes. 
+En ocasiones se sobrescribe la información antigua de la bases de datos con nuevos datos. En cambio, los Almacenes de Datos 
+conservan todos los datos con el objetivo de mantener un historial. La mayoría de las organizaciones que utilizan ETL, 
+tienen este proceso automatizado, correctamente definido, continuo y por lotes\cite{ETL_amazon}. La carga de datos puede
+ser de forma completa donde todos los datos de la fuente se transforman y se mueven al almacenamiento de datos, o bien 
+puede ser de forma progresiva donde se carga la diferencia entre los sistemas de origen y destino a intervalos regulares.
 
 \subsection{Herramientas para Procesos ETL}
+
+Actualmente existen varias herramientas ETL en el mercado, cada una posee características propias y capacidades \'unicas. 
+Entre las m\'as populares encontramos a Talend Data Fabric, Informatica PowerCenter, Fivetran, Stitch y Xplenty. Estas 
+herramientas ofrecen gestión de datos basada en la nube, la integración basada en metadatos y soporte para varias bases 
+de datos relacionales y no relacionales
+
+Además de las opciones anteriores, existen varias opciones populares de c\'odigo abierto, como son Apache NiFi, AWS Glue 
+e Informatica. Estas herramientas ofrecen casi todas las funcionalidades de sus contrapartes comerciales y a menudo 
+son m\'as personalizables y flexibles.
