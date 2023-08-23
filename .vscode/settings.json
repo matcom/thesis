@@ -8,7 +8,6 @@
         "**/*.log": true,
         "**/*.lot": true,
         "**/*.out": true,
-        "**/*.pdf": true,
         "**/!Graphics/uhlogo.pdf": true,
         "**/*.backup": true,
         "**/*.toc": true,
@@ -22,6 +21,6 @@
         "**/*.py": true,
         "**/*.bcf": true,
         "**/*.xml": true,
-        "**/*.pdf_tex": true
+        "**/*.lol": true
     }
 }

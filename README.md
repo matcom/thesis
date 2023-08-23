@@ -1,3 +1,46 @@
+## Compiling the document
+
+To install the necessary dependencies to build the document run the following commands
+
+```
+apt-get update && apt-get install -y texlive-latex-extra \
+texlive-science \
+texlive-lang-spanish \
+biber \
+latexmk \
+inkscape \
+```
+
+For compiling the document you need to change the working directory to the `document` folder and execute the `make.sh` script.
+
+```
+cd document
+
+chmod +x make_logo.sh
+chmod +x make.sh
+
+./make.sh
+```
+
+The `chmod` command is to grant execution permissions to the script so you need to run those commands a single time.
+
+In order to run it with docker just build the image
+
+```
+docker build -t texlive/thesis:ubuntu .
+```
+
+Then you can use the docker-compose file to compile the document
+
+```
+docker compose up
+```
+
+Or use a VS Code Dev Container to work on the document. To do this install the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) and then run the visual studio command "Open Folder in Container".
+
+
+
+
 ## Writting a Chapter
 ### Chapter Structure
 Each chapter will be structured as follows:
