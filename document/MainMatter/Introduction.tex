@@ -1,2 +1,62 @@
 \chapter*{Introducción}\label{chapter:introduction}
 \addcontentsline{toc}{chapter}{Introducción}
+
+    El vertiginoso flujo de producción de artículos científicos en la actualidad plantea un desafío sustancial: la imposibilidad práctica de revisar exhaustivamente todos los documentos relacionados con una investigación. Solo en ArXiv, se registran alrededor de 180,000 submissions por año \cite{arxiv}. Esta abrumadora cantidad de información subraya la necesidad imperante de encontrar enfoques eficientes para obtener resúmenes de documentos científicos, una problemática que ha sido abordada a lo largo de los años mediante diversos intentos de automatización.
+
+    La historia de los resúmenes automáticos se remonta a las décadas de 1950 y 1960, cuando la inteligencia artificial (IA) comenzó a surgir como un campo de investigación. En este período temprano, los científicos se centraron en el procesamiento del lenguaje natural (NLP) como un componente clave para desarrollar sistemas de resumen.
+
+    Uno de los hitos tempranos fue el trabajo de Hans Peter Luhn en 1958\cite{luhunetall1958}, quien propuso un método para extraer automáticamente oraciones clave de un documento basado en la frecuencia de las palabras clave. Este enfoque inicial estableció las bases para futuras investigaciones en resúmenes automáticos.
+
+    A medida que avanzaban las décadas, surgieron enfoques más sofisticados. Algoritmos basados en grafos, como TextRank \cite{mihalcea2004textrank}, se convirtieron en una herramienta valiosa para la extracción de información clave. Simultáneamente, el desarrollo de métodos de abstracción, capaces de generar lenguaje nuevo, marcó otro hito significativo. La investigación ha explorado enfoques supervisados \cite{lukasik2014}, donde se utilizan técnicas de clasificación de oraciones para la generación de resúmenes, y se han abordado desafíos en la generación de lenguaje, como la compresión de oraciones \cite{knight2005}
+
+    La historia de los resúmenes automáticos ha experimentado un significativo avance con el desarrollo de los previamente mencionados algoritmos de extracción y abstracción de información. Estos enfoques fundamentales definen cómo los sistemas automáticos condensan la información de un texto, ya sea seleccionando oraciones directamente del original o generando resúmenes utilizando lenguaje nuevo.
+
+    Los algoritmos de extracción, al seleccionar oraciones directamente del texto original, presentan ventajas notables. Primordialmente, conservan la información original, siendo especialmente útiles en contextos donde la fidelidad a los hechos es esencial, como en informes científicos o noticias. Además, al evitar la generación de lenguaje nuevo, estos enfoques minimizan el riesgo de errores gramaticales y son computacionalmente eficientes. Sin embargo, su limitación radica en la falta de creatividad y generalización, dependiendo exclusivamente de la información presente en el texto original, también puede conducir a resúmenes redundantes.
+
+    Contrastando con la extracción, los algoritmos de abstracción buscan generar lenguaje nuevo, ofreciendo creatividad y capacidad de generalización. Esta capacidad de expresar la esencia del contenido de manera única es una ventaja clave. Además, la abstracción puede manejar información no presente de manera literal en el texto original, permitiendo una expresión más amplia de ideas. Sin embargo, enfrentan desafíos significativos en la generación de lenguaje, como la posibilidad de errores gramaticales o falta de coherencia. También existe el riesgo de introducir sesgos, dependiendo de la calidad del modelo y los datos de entrenamiento. La abstracción suele ser más compleja computacionalmente en comparación con la extracción.
+
+    A pesar de estos avances, los desafíos persisten. La generación de lenguaje nuevo en resúmenes abstractos sigue siendo compleja y puede dar lugar a errores gramaticales o falta de coherencia. Además, la explosión de información en la era digital ha intensificado la necesidad de métodos eficaces que aborden la sobrecarga informativa. Las conferencias académicas, como ACL y NAACL, han sido foros fundamentales para la presentación de investigaciones recientes en el campo de procesamiento del lenguaje natural, resúmenes automáticos y aprendizaje automático \cite{acl,naacl}
+
+    Históricamente, la mayoría de los enfoques en el campo de resumen automático se han orientado hacia la generación de resúmenes para un solo documento, buscando condensar la información esencial de manera concisa. Sin embargo, a medida que la era digital ha transformado la forma en que accedemos a la información, la investigación más reciente ha dirigido su atención hacia la generación de resúmenes de múltiples documentos. Este cambio estratégico se ha vuelto esencial en entornos donde la información relevante se distribuye en diversas fuentes, como es el caso de la generación de resúmenes de noticias \cite{fabbri2019multi-news}, la síntesis de artículos de Wikipedia \cite{liu2018generating}, y la producción de resúmenes \emph{Estado del arte} para documentos científicos \cite{lu2020multixscience}.
+
+    Este enfoque más amplio no solo aborda la creciente complejidad asociada con la información dispersa, sino que también presenta oportunidades significativas para mejorar la coherencia temática y la comprensión integral de un tema al considerar múltiples perspectivas y contextos. La generación de resúmenes de múltiples documentos no se limita simplemente a la agregación de información; más bien, implica la síntesis de conocimientos interconectados para ofrecer una visión holística. Estos avances reflejan la adaptación dinámica de los métodos de resumen automático para satisfacer las demandas cambiantes de la era digital y para abordar la abundancia de información interrelacionada que caracteriza el entorno actual de la investigación y la comunicación científica.
+
+    No obstante, existen también enfoques híbridos, que combinan elementos de múltiples metodologías, ya sea integrando técnicas de extracción y abstracción o combinando diferentes enfoques dentro de un marco unificado. Estos enfoques buscan aprovechar las fortalezas de cada método para mejorar la calidad y la diversidad de los resúmenes generados.
+    
+    Estos enfoques reflejan el reconocimiento de que no hay un método único que se ajuste a todas las situaciones, y la combinación estratégica de enfoques puede ofrecer soluciones más efectivas en la generación de resúmenes automáticos.
+
+
+
+\section{Motivacion y Justificacion}
+
+    Con lo antes planteado se puede observar que la necesidad de crear una herramienta que permita a los investigadores procesar grandes cantidades de texto de manera eficiente y así acelerar enormemente el proceso de investigación. Siendo, muchas veces el tiempo de lectura de un artículo científico, un factor limitante para la investigación. Provocando Muchas veces que el estudio del Estado del Arte de un tema llegue incluso a ser deficiente, debido a la incapacidad de los investigadores de leer todos los artículos relacionados con su investigación.
+
+% TODO Citar los sistemas
+    Si bien existen algunos sitemas que permiten la extracción de información de multiples documentos, por lo general requieren de un conocimiento previo de los temas de los que tratan, y la inteacción se basa principalmente en una interacción de preguntas-respuestas, Qu si bien puede ser deseable en algunos casos, puede hacer más tedioso el proceso de llegar obtener claramente la información que se desea. Dependiendo además de la correcta compresión por parte del modelo de las preguntas que se le realizan.
+
+\section{Formulación del Problema}
+    Al hacer un estudio del estado del arte en torno a los sistemas de generación de resumenes, enfocados a la construcción de Estados del Arte, no se encontraron modelos ni metodologías públicas que sean capaces de generar un texto semántica y sintácticamente correcto con un sistema de citación robusto que cumpla con los requisitos de un Estado del Arte. Siendo todos los candidatos encontrados deficientes en al menos una de las categorias.
+
+\section{Hipótesis}
+    Es posible desarrollar un sistema (herramienta) de generación de un borrador de Estados del Arte que tengan como base de conocimientos un grupo de documentos previamente seleccionados y generen un texto resumen que abarque un grupo de temas (autodetectados) que serán los más relevantes en los documentos. Además, el sistema deberá ser capaz de generar citas bibliográficas de manera automática, y que estas sean correctas y estén en el formato adecuado.
+
+\section{Objetivos}
+    \subsection{Objetivo General}
+
+        Generar un texto que, luego de una breve revision, pueda satisfactoriamente ser considerado un Estado del Arte de un tema en particular.
+
+    \subsection{Objetivos Específicos}
+
+        \begin{itemize}
+            \item Procesar los documentos, vectorizarlos y guardarlos en una base de datos para fácil interacción con ellos.
+            \item Detectar la cantidad ideal de temas de los que se deberá generar el resumen.
+            \item Detectar y nombrar cada una de las temáticas detectadas.
+            \item Extraer para cada tematica la información más relevante.
+            \item Construir un resumen abstractivo utilizando la información extraida.
+            \item Generar las referencias a los documentos de los que proviene la información de manera correcta.
+
+        \end{itemize}
+
+
+% Jenine Turner and Eugene Charniak. 2005. Supervised and Unsupervised Learning for Sentence Compression. In Proceedings of the 43rd Annual Meeting of the Association for Computational Linguistics (ACL’05), pages 290–297, Ann Arbor, Michigan. Association for Computational Linguistics.
+
