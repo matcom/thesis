@@ -3,19 +3,17 @@
 
     El vertiginoso flujo de producción de artículos científicos en la actualidad plantea un desafío sustancial: la imposibilidad práctica de revisar exhaustivamente todos los documentos relacionados con una investigación. Solo en ArXiv\footnote{ArXiv es un repositorio en línea donde los investigadores comparten artículos académicos antes de la revisión por pares y la publicación formal.}, se registran alrededor de 180,000 nuevas (pre) publicaciones por año \cite{arxivstats}. Esta abrumadora cantidad de información subraya la necesidad imperante de encontrar enfoques eficientes para obtener resúmenes de documentos científicos, una problemática que ha sido abordada a lo largo de los años mediante diversos intentos de automatización.
 
-    La historia de los resúmenes automáticos se remonta a las décadas de 1950 y 1960, cuando la inteligencia artificial (IA) comenzó a surgir como un campo de investigación. Desde este período, los científicos se centraron en el procesamiento del lenguaje natural (NLP) como un componente clave para desarrollar sistemas de resumen.
-
-    Uno de los hitos tempranos fue el trabajo de Hans Peter Luhn en 1958\cite{luhun1958}, quien propuso un método para extraer automáticamente oraciones clave de un documento basado en la frecuencia de las palabras clave. Este enfoque inicial estableció las bases para futuras investigaciones en resúmenes automáticos.
+    La historia de los resúmenes automáticos se remonta a las décadas de 1950 y 1960, cuando la inteligencia artificial (IA) comenzó a surgir como un campo de investigación. Desde este período, los científicos se centraron en el procesamiento del lenguaje natural (NLP) como un componente clave para desarrollar sistemas de resumen. Uno de los hitos tempranos fue el trabajo de Hans Peter Luhn en 1958\cite{luhun1958}, quien propuso un método para extraer automáticamente oraciones clave de un documento basado en la frecuencia de las palabras clave. Este enfoque inicial estableció las bases para futuras investigaciones en resúmenes automáticos.
 
     Con el avance de las investigaciones surgieron enfoques más sofisticados: algoritmos basados en grafos, como TextRank \cite{mihalcea2004textrank}, se convirtieron en una herramienta valiosa para la extracción de información. Las investigaciones han explorado enfoques supervisados \cite{collins-etal-2017-supervised}, donde se utilizan técnicas de clasificación de oraciones, y se han abordado desafíos en la generación de lenguaje, como la comprensión de las mismas \cite{knight2000statistics}
 
-    La historia de los resúmenes automáticos ha experimentado un significativo avance con el desarrollo de los algoritmos de extracción y abstracción de información. Estos enfoques fundamentales definen cómo los sistemas automáticos condensan la información de un texto, ya sea seleccionando oraciones directamente del texto original o generando un texto totalmente nuevo que contenga la informacion del original de manera más concisa.
+    La historia de los resúmenes automáticos ha experimentado un significativo avance con el desarrollo de los algoritmos de extracción y abstracción de información. Estos enfoques fundamentales definen cómo los sistemas automáticos condensan la información de un texto, ya sea seleccionando oraciones directamente del texto original o generando un texto totalmente nuevo que contenga la información del original de manera más concisa. Investigaciones adicionales han explorado enfoques supervisados en los que se utilizan técnicas de clasificación de oraciones \cite{collins-etal-2017-supervised}, así como desafíos en la generación de lenguaje, como la comprensión del mismo \cite{knight2000statistics}.
 
-    Los algoritmos de extracción, al seleccionar oraciones directamente de la fuente de información, presentan ventajas notables. Primordialmente, conservan la información original, siendo especialmente útiles en contextos donde la fidelidad a los hechos es esencial, como en informes científicos o noticias. Además, al evitar la generación de lenguaje nuevo, estos enfoques minimizan el riesgo de errores gramaticales y son computacionalmente eficientes. Sin embargo, su limitación radica en la falta de creatividad y generalización, dependiendo exclusivamente de la información presente en el texto original, también puede conducir a resúmenes redundantes.
+    Los algoritmos de extracción, al seleccionar oraciones directamente de la fuente de información, presentan ventajas notables. Primordialmente, conservan la información original, siendo especialmente útiles en contextos donde la fidelidad a los hechos es esencial, como en informes científicos o noticias. Además, al evitar la generación de lenguaje nuevo, estos enfoques minimizan el riesgo de errores gramaticales y son computacionalmente eficientes. Sin embargo, su limitación radica en la falta de creatividad y generalización, dependiendo exclusivamente de la información presente en el texto original, también puede conducir a resúmenes redundantes \cite{LexRank}
 
-    En oposición a la extracción, los algoritmos de abstracción buscan generar una redacción nueva, ofreciendo creatividad y capacidad de generalización. Esta capacidad de expresar la esencia del contenido de manera única es una ventaja clave. Además, la abstracción puede manejar información no presente de manera literal en el texto original, permitiendo una expresión más amplia de ideas. Sin embargo, los modelos con este enfoque enfrentan desafíos significativos en la generación de lenguaje como la posibilidad de errores gramaticales o falta de coherencia. También existe el riesgo de introducir sesgos, dependiendo de la calidad del modelo y los datos de entrenamiento. La abstracción suele ser más compleja computacionalmente en comparación con la extracción.
+    En oposición a la extracción, los algoritmos de abstracción buscan generar una redacción nueva, ofreciendo creatividad y capacidad de generalización. Esta capacidad de expresar la esencia del contenido de manera única es una ventaja clave. \cite{rush2015neural}. Además, la abstracción puede manejar información no presente de manera literal en el texto original, permitiendo una expresión más amplia de ideas\cite{PaulusXS17}. Sin embargo, los modelos con este enfoque enfrentan desafíos significativos en la generación de lenguaje como la posibilidad de errores gramaticales o falta de coherencia. También existe el riesgo de introducir sesgos, dependiendo de la calidad del modelo y los datos de entrenamiento. La abstracción suele ser más compleja computacionalmente en comparación con la extracción.
 
-    No obstante, existen también enfoques híbridos, que combinan elementos de múltiples metodologías, ya sea integrando técnicas de extracción y abstracción o combinando diferentes enfoques dentro de un marco unificado. Estos enfoques buscan aprovechar las fortalezas de cada método para mejorar la calidad y la diversidad de los resúmenes generados.
+    No obstante, existen también enfoques híbridos\cite{SeeLM17}, que combinan elementos de múltiples metodologías, ya sea integrando técnicas de extracción y abstracción o combinando diferentes enfoques dentro de un marco unificado. Estos enfoques buscan aprovechar las fortalezas de cada método para mejorar la calidad y la diversidad de los resúmenes generados.
 
     Este enfoque más amplio no solo aborda la creciente complejidad asociada con la información dispersa, sino que también presenta potencialidades para mejorar la coherencia temática y la comprensión integral de un tema al considerar múltiples perspectivas y contextos.
 
@@ -24,14 +22,12 @@
     La generación de resúmenes de múltiples documentos no se limita simplemente a la agregación de información; más bien, implica la síntesis de conocimientos interconectados para ofrecer una visión holística. 
     Estos avances reflejan la adaptación dinámica de los métodos de resumen automático para satisfacer las demandas cambiantes de la era digital y para abordar la abundancia de información interrelacionada que caracteriza el entorno actual de la investigación y la comunicación científica.
 
-    Estos enfoques reflejan que no hay un método único que se ajuste a todas las situaciones, y la combinación estratégica de enfoques puede ofrecer soluciones más efectivas en la generación de resúmenes automáticos en dependencia del problema específico.
+    Los Modelos de Lenguaje con Aprendizaje Profundo (LLM) han emergido como elementos cruciales para la generación de resúmenes automáticos. Los LLM, han demostrado una capacidad excepcional para entender la semántica y la estructura del lenguaje\cite{fewshot}. Su entrenamiento masivo en grandes corpus\footnote{Conjunto de datos, textos u otros materiales sobre determinada materia que pueden servir de base para una investigación o trabajo.} de texto les permite capturar patrones complejos y generar resúmenes coherentes y contextualmente relevantes.
 
-
+    Las ventajas de los LLM en este contexto son notables. En primer lugar, su capacidad para comprender el significado contextual permite generar resúmenes que no solo seleccionan información clave, sino que también la expresan de manera más fluida y comprensible\cite{Radford2018ImprovingLU}. Además, los LLM pueden abordar la generación de lenguaje nuevo de manera más efectiva, superando algunos desafíos asociados con la abstracción, como errores gramaticales y falta de coherencia\cite{RoBERTa}.
 
 \section{Motivación}
-
     Es evidente la necesidad de crear una herramienta que permita a los investigadores procesar grandes cantidades de texto de manera eficiente y rebasar las limitaciones que actualmente suponen el tiempo de lectura de artículos científicos y el volumen de información sobre cada tema para la creación de estados del arte en investigaciones científicas
-
 
     Si bien existen algunos sistemas\cite{elicit, scite} que permiten la extracción de información de múltiples documentos, por lo general requieren de un conocimiento previo de los temas que tratan y la interacción principalmente presenta un formato de preguntas-respuestas que, si bien puede ser deseable en algunos casos, puede hacer más tedioso el proceso de obtener claramente la información que se desee. Además, estos sistemas dependen de la correcta comprensión por parte del modelo de las preguntas que se le realizan.
 
@@ -52,10 +48,21 @@
             \item Definir una estructura que deberán cumplir todos los documentos generados.
             \item Proponer una metodología para la extracción de los temas principales de los documentos.
             \item Ideintificar o entrenar un modelo que se desempeñe satisfactoriamente en la generación de un texto que cumpla la estructura predefinida.
-            \item Definir un mecanismo de adaptación del texto generado para tunnear el output
-            % TODO fix this
         \end{itemize}
+\section{Esbozo de solución}
+    En este documento se hace una propuesta de modelo híbrido, que utiliza la representación mediante embeddings \footnote{Un embedding de texto es una técnica que representa palabras como vectores de números, permitiendo que palabras con significados similares tengan representaciones similares}
+    de los documentos para obtener una representación vectorial del corpus, sobre la cual se trabajará para agrupar los documentos por temas, una vez hecho esto, se obtendrán las ideas més relevantes y, utilizando un modelo le lenguaje, se modelará la información extraída para cumplir copn el formato especificado.
+\section{Estructura de la tésis}
+        El resto del documento se encuentra organizado de la siguiente manera:
 
+        \begin{enumerate}
+            \item \emph{Capítulo 1} Se hace una revisión del estado del arte en el ámbito de la genración de resúmenes. Principalmente buscando enfóques híbridos, y modelos o metodologías que reduzcan los inconvenientes de los modelos más clásicos.
+            \item \emph{Capítulo 2} Se describe la propuesta de solución, detallando la metodología utilizada en la generación de los resúmenes.
+            \item \emph{Capítulo 3} Se presentan los detalles de implementación y retos computacio-
+            nales afrontados, así como la discusión y comparación de los resultados ob-
+            tenidos.
+            \item \emph{Capítulo 4} Se presentan conclusiones y recomendaciónes para futuros trabajos.
+            \item \emph{Capítulo 5} Se presentan bibliografías y anexos relacionados con todo el documento.
+        \end{enumerate}
 
-% Jenine Turner and Eugene Charniak. 2005. Supervised and Unsupervised Learning for Sentence Compression. In Proceedings of the 43rd Annual Meeting of the Association for Computational Linguistics (ACL’05), pages 290–297, Ann Arbor, Michigan. Association for Computational Linguistics.
 
