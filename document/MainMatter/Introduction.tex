@@ -11,7 +11,7 @@
 
     La historia de los resúmenes automáticos ha experimentado un significativo avance con el desarrollo de los algoritmos de extracción y abstracción de información. Estos enfoques fundamentales definen cómo los sistemas automáticos condensan la información de un texto, ya sea seleccionando oraciones directamente del texto original o generando un texto totalmente nuevo que contenga la informacion del original de manera más concisa.
 
-    Los algoritmos de extracción, al seleccionar oraciones directamente de la funete de información, presentan ventajas notables. Primordialmente, conservan la información original, siendo especialmente útiles en contextos donde la fidelidad a los hechos es esencial, como en informes científicos o noticias. Además, al evitar la generación de lenguaje nuevo, estos enfoques minimizan el riesgo de errores gramaticales y son computacionalmente eficientes. Sin embargo, su limitación radica en la falta de creatividad y generalización, dependiendo exclusivamente de la información presente en el texto original, también puede conducir a resúmenes redundantes.
+    Los algoritmos de extracción, al seleccionar oraciones directamente de la fuente de información, presentan ventajas notables. Primordialmente, conservan la información original, siendo especialmente útiles en contextos donde la fidelidad a los hechos es esencial, como en informes científicos o noticias. Además, al evitar la generación de lenguaje nuevo, estos enfoques minimizan el riesgo de errores gramaticales y son computacionalmente eficientes. Sin embargo, su limitación radica en la falta de creatividad y generalización, dependiendo exclusivamente de la información presente en el texto original, también puede conducir a resúmenes redundantes.
 
     En oposición a la extracción, los algoritmos de abstracción buscan generar una redacción nueva, ofreciendo creatividad y capacidad de generalización. Esta capacidad de expresar la esencia del contenido de manera única es una ventaja clave. Además, la abstracción puede manejar información no presente de manera literal en el texto original, permitiendo una expresión más amplia de ideas. Sin embargo, los modelos con este enfoque enfrentan desafíos significativos en la generación de lenguaje como la posibilidad de errores gramaticales o falta de coherencia. También existe el riesgo de introducir sesgos, dependiendo de la calidad del modelo y los datos de entrenamiento. La abstracción suele ser más compleja computacionalmente en comparación con la extracción.
 
@@ -19,7 +19,7 @@
 
     Este enfoque más amplio no solo aborda la creciente complejidad asociada con la información dispersa, sino que también presenta potencialidades para mejorar la coherencia temática y la comprensión integral de un tema al considerar múltiples perspectivas y contextos.
 
-    Históricamente, la mayoría de los enfoques en el campo del resumen automático se han orientado hacia la generación de resúmenes para un solo documento, buscando condensar la información esencial de manera concisa. Sin embargo, a medida que la era digital ha transformado la forma en que accedemos a la información, la investigación más reciente ha dirigido su atención hacia la generación de resúmenes de múltiples documentos. Este cambio estratégico se ha vuelto esencial en entornos donde la información relevante se distribuye en diversas fuentes, como es el caso de la generación de resúmenes de noticias \cite{fabbri2019multi-news}, la síntesis de artículos de Wikipedia \cite{liu2018}, y la producción de resúmenes tipo \emph{Estado del arte} para documentos científicos \cite{lu2020multixscience}.
+    Históricamente, la mayoría de los enfoques en el campo del resumen automático se han orientado hacia la generación de resúmenes para un solo documento, buscando condensar la información esencial de manera concisa. Sin embargo, a medida que la era digital ha transformado la forma en que accedemos a la información, la investigación más reciente ha dirigido su atención hacia la generación de resúmenes de múltiples documentos. Este cambio estratégico se ha vuelto esencial en entornos donde la información relevante se distribuye en diversas fuentes, como es el caso de la generación de resúmenes de noticias \cite{fabbri2019multi-news}, la síntesis de artículos de Wikipedia \cite{liu2018}, y la producción de resúmenes tipo \emph{Estado del arte}\footnote{Un estado del arte es una revisión exhaustiva y actualizada de los avances, investigaciones y desarrollos existentes en un campo específico de estudio o disciplina, que proporciona una visión panorámica de la situación actual del conocimiento en ese ámbito. } para documentos científicos \cite{lu2020multixscience}.
 
     La generación de resúmenes de múltiples documentos no se limita simplemente a la agregación de información; más bien, implica la síntesis de conocimientos interconectados para ofrecer una visión holística. 
     Estos avances reflejan la adaptación dinámica de los métodos de resumen automático para satisfacer las demandas cambiantes de la era digital y para abordar la abundancia de información interrelacionada que caracteriza el entorno actual de la investigación y la comunicación científica.
@@ -28,33 +28,32 @@
 
 
 
-\section{Motivacion y Justificacion}
+\section{Motivación}
 
-    Con lo antes planteado se puede observar la necesidad de crear una herramienta que permita a los investigadores procesar grandes cantidades de texto de manera eficiente y rebasar las limitaciones que actualmente suponen el tiempo de lectura de artículos científicos y el volumen de información sobre cada tema para la creación de estados del arte en investigaciones científicas
+    Es evidente la necesidad de crear una herramienta que permita a los investigadores procesar grandes cantidades de texto de manera eficiente y rebasar las limitaciones que actualmente suponen el tiempo de lectura de artículos científicos y el volumen de información sobre cada tema para la creación de estados del arte en investigaciones científicas
 
 
     Si bien existen algunos sistemas\cite{elicit, scite} que permiten la extracción de información de múltiples documentos, por lo general requieren de un conocimiento previo de los temas que tratan y la interacción principalmente presenta un formato de preguntas-respuestas que, si bien puede ser deseable en algunos casos, puede hacer más tedioso el proceso de obtener claramente la información que se desee. Además, estos sistemas dependen de la correcta comprensión por parte del modelo de las preguntas que se le realizan.
 
-\section{Formulación del Problema}
+\section{Problemática}
     Al hacer un estudio del estado del arte en torno a los sistemas de generación de resúmenes enfocados a la construcción de estados del arte, no se encontró modelos ni metodologías públicas que sean capaces de generar un texto semántica y sintácticamente correcto con un sistema de citación robusto que cumpla con los requisitos de un estado del arte. Todos los candidatos encontrados resultaron deficientes en al menos una categoría.
 
 \section{Hipótesis}
-    Es posible desarrollar un sistema (herramienta) de generación de un borrador de estados del arte que tenga como base de conocimientos un grupo de documentos previamente seleccionados y genere un texto resumen que abarque un grupo de los temas (autodetectados) más relevantes en los documentos. Además, el sistema deberá ser capaz de generar citas bibliográficas de manera automática, correcta y en el formato adecuado.
+    Es posible desarrollar un sistema (herramienta) de generación de un borrador de estado del arte que tenga como base de conocimientos un grupo de documentos previamente seleccionados y genere un texto resumen que abarque un grupo de los temas (autodetectados) más relevantes en los documentos. Además, el sistema deberá ser capaz de generar citas bibliográficas de manera automática, correcta y en el formato adecuado, cumpliendo con una estructura determinada.
 
 \section{Objetivos}
     \subsection{Objetivo General}
 
-        Generar un texto que pueda ser considerado un borrador del estado del arte de un tema en particular.
+        Proponer un modelo que permita generar un texto estructurado que cumpla con las características enunciadas.
 
     \subsection{Objetivos Específicos}
 
         \begin{itemize}
-            \item Procesar los documentos, vectorizarlos y guardarlos en una base de datos para fácil interacción con ellos.
-            \item Detectar la cantidad ideal de temas de los que se deberá generar el resumen.
-            \item Detectar y nombrar cada una de las temáticas detectadas.
-            \item Extraer para cada temática la información más relevante.
-            \item Construir un resumen abstractivo utilizando la información extraída.
-            \item Generar correctamente las referencias a los documentos de los que proviene la información.
+            \item Definir una estructura que deberán cumplir todos los documentos generados.
+            \item Proponer una metodología para la extracción de los temas principales de los documentos.
+            \item Ideintificar o entrenar un modelo que se desempeñe satisfactoriamente en la generación de un texto que cumpla la estructura predefinida.
+            \item Definir un mecanismo de adaptación del texto generado para tunnear el output
+            % TODO fix this
         \end{itemize}
 
 
