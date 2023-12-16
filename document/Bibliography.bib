@@ -154,6 +154,15 @@
   bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
+@misc{BERT,
+      title={BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding}, 
+      author={Jacob Devlin and Ming-Wei Chang and Kenton Lee and Kristina Toutanova},
+      year={2019},
+      eprint={1810.04805},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+
 @article{RoBERTa,
   author       = {Yinhan Liu and
                   Myle Ott and
@@ -245,4 +254,122 @@
   timestamp    = {Mon, 13 Aug 2018 16:48:58 +0200},
   biburl       = {https://dblp.org/rec/journals/corr/PaulusXS17.bib},
   bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{Wang,
+  title={Integrating Extractive and Abstractive Models for Long Text Summarization},
+  author={Shuai Wang and Xiang Zhao and Bo Li and Bin Ge and Daquan Tang},
+  journal={2017 IEEE International Congress on Big Data (BigData Congress)},
+  year={2017},
+  pages={305-312},
+  url={https://api.semanticscholar.org/CorpusID:21197619}
+}
+
+@article{cosum,
+author = {Alguliyev, Rasim M. and Aliguliyev, Ramiz M. and Isazade, Nijat R. and Abdi, Asad and Idris, Norisma},
+title = {COSUM: Text summarization based on clustering and optimization},
+journal = {Expert Systems},
+volume = {36},
+number = {1},
+pages = {e12340},
+keywords = {adaptive differential evolution algorithm, content coverage, harmonic mean, information diversity, k-means, optimization model, sentence clustering, text summarization},
+doi = {https://doi.org/10.1111/exsy.12340},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/exsy.12340},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/exsy.12340},
+year = {2019}
+}
+
+@article{hybrid-llm,
+title = {Hybrid multi-document summarization using pre-trained language models},
+journal = {Expert Systems with Applications},
+volume = {192},
+pages = {116292},
+year = {2022},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2021.116292},
+url = {https://www.sciencedirect.com/science/article/pii/S0957417421015979},
+author = {Alireza Ghadimi and Hamid Beigy},
+keywords = {Pre-trained language models, Extractive summarization, Abstractive summarization, Determinantal point process, Deep submodular network}
+}
+
+@misc{openai,
+  author = {OpenAI},
+  title = {{ChatGPT: OpenAI’s GPT-3-Based Language Model}},
+  howpublished = {\url{https://www.openai.com/blog/chatgpt}},
+  year = {2021},
+  note = {Accessed: 12/16/2023}
+}
+
+
+@misc{basyal2023text,
+      title={Text Summarization Using Large Language Models: A Comparative Study of MPT-7b-instruct, Falcon-7b-instruct, and OpenAI Chat-GPT Models}, 
+      author={Lochan Basyal and Mihir Sanghvi},
+      year={2023},
+      eprint={2310.10449},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+} 
+@misc{sia2020tired,
+      title={Tired of Topic Models? Clusters of Pretrained Word Embeddings Make for Fast and Good Topics too!}, 
+      author={Suzanna Sia and Ayush Dalmia and Sabrina J. Mielke},
+      year={2020},
+      eprint={2004.14914},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+
+@article{lda2003,
+author = {Blei, David M. and Ng, Andrew Y. and Jordan, Michael I.},
+title = {Latent Dirichlet Allocation},
+year = {2003},
+issue_date = {3/1/2003},
+publisher = {JMLR.org},
+volume = {3},
+number = {null},
+issn = {1532-4435},
+abstract = {We describe latent Dirichlet allocation (LDA), a generative probabilistic model for collections of discrete data such as text corpora. LDA is a three-level hierarchical Bayesian model, in which each item of a collection is modeled as a finite mixture over an underlying set of topics. Each topic is, in turn, modeled as an infinite mixture over an underlying set of topic probabilities. In the context of text modeling, the topic probabilities provide an explicit representation of a document. We present efficient approximate inference techniques based on variational methods and an EM algorithm for empirical Bayes parameter estimation. We report results in document modeling, text classification, and collaborative filtering, comparing to a mixture of unigrams model and the probabilistic LSI model.},
+journal = {J. Mach. Learn. Res.},
+month = {mar},
+pages = {993–1022},
+numpages = {30}
+}
+
+@article{neuraltm,
+title = {A neural topic model with word vectors and entity vectors for short texts},
+journal = {Information Processing & Management},
+volume = {58},
+number = {2},
+pages = {102455},
+year = {2021},
+issn = {0306-4573},
+doi = {https://doi.org/10.1016/j.ipm.2020.102455},
+url = {https://www.sciencedirect.com/science/article/pii/S030645732030947X},
+author = {Xiaowei Zhao and Deqing Wang and Zhengyang Zhao and Wei Liu and Chenwei Lu and Fuzhen Zhuang},
+keywords = {Topic model, Short text, Variational auto-encoder, Word embedding, Entity embedding},
+abstract = {Traditional topic models are widely used for semantic discovery from long texts. However, they usually fail to mine high-quality topics from short texts (e.g. tweets) due to the sparsity of features and the lack of word co-occurrence patterns. In this paper, we propose a Variational Auto-Encoder Topic Model (VAETM for short) by combining word vector representation and entity vector representation to address the above limitations. Specifically, we first learn embedding representations of each word and each entity by employing a large-scale external corpora and a large and manually edited knowledge graph, respectively. Then we integrated the embedding representations into the variational auto-encoder framework and propose an unsupervised model named VAETM to infer the latent representation of topic distributions. To further boost VAETM, we propose an improved supervised VAETM (SVAETM for short) by considering label information in training set to supervise the inference of latent representation of topic distributions and the generation of topics. Last, we propose KL-divergence-based inference algorithms to infer approximate posterior distribution for our two models. Extensive experiments on three common short text datasets demonstrate our proposed VAETM and SVAETM outperform various kinds of state-of-the-art models in terms of perplexity, NPMI, and accuracy.}
+}
+
+@misc{bertopic,
+      title={BERTopic: Neural topic modeling with a class-based TF-IDF procedure}, 
+      author={Maarten Grootendorst},
+      year={2022},
+      eprint={2203.05794},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+
+
+@article{tm-in-emb,
+    author = {Dieng, Adji B. and Ruiz, Francisco J. R. and Blei, David M.},
+    title = "{Topic Modeling in Embedding Spaces}",
+    journal = {Transactions of the Association for Computational Linguistics},
+    volume = {8},
+    pages = {439-453},
+    year = {2020},
+    month = {07},
+    abstract = "{Topic modeling analyzes documents to learn meaningful patterns of words. However, existing topic models fail to learn interpretable topics when working with large and heavy-tailed vocabularies. To this end, we develop the embedded topic model (etm), a generative model of documents that marries traditional topic models with word embeddings. More specifically, the etm models each word with a categorical distribution whose natural parameter is the inner product between the word’s embedding and an embedding of its assigned topic. To fit the etm, we develop an efficient amortized variational inference algorithm. The etm discovers interpretable topics even with large vocabularies that include rare words and stop words. It outperforms existing document models, such as latent Dirichlet allocation, in terms of both topic quality and predictive performance.}",
+    issn = {2307-387X},
+    doi = {10.1162/tacl_a_00325},
+    url = {https://doi.org/10.1162/tacl\_a\_00325},
+    eprint = {https://direct.mit.edu/tacl/article-pdf/doi/10.1162/tacl\_a\_00325/1923074/tacl\_a\_00325.pdf},
 }

@@ -1,1 +1,31 @@
 \chapter{Estado del Arte}\label{chapter:state-of-the-art}
+    Este Cap\'itulo se centrar\'a en dar una panor\'amica del estado de las investigaciones relacionadads con los res\'umenes autom\'aticos, y las herramientas necesarias para resolver problemas espec\'ificos de los enfoques con los que generan dichos res\'umenes.
+
+\section{Sistemas de Generaci\'on autom\'atica de res\'umenes utilizando enfoques h\'ibridos}
+
+Un enfoque híbrido combina tanto las aproximaciones extractivas como abstractivas en el proceso de resumen de texto. La arquitectura típica de un summarizador de texto híbrido se muestra en la y consta comúnmente de las siguientes fases:
+\begin{enumerate}
+    \item Pre procesamiento.
+    \item Extracción de oraciones (fase extractiva): Extraer las oraciones clave del texto de entrada \cite[(Wang et al., 2017)]{Wang}
+    \item Generaci\'on del resumen (fase abstractiva): Generar el resumen final a partir de la aplicaci\'on de m\'etodos abstractivos a las oraciones extra\'idas en la fase extractiva.
+    \item Post Procesado: Verificar que las oraciones generadas sean v\'alidas y se ajusten al formato deseado.
+\end{enumerate}
+
+
+En la propuesta de (Rasim et al., 2019)\cite{cosum} se utiliza un modelo de dos etapas que combina técnicas de clustering y optimización. En la primera etapa, se aplica el método de k-means para clusterizar las oraciones y descubrir múltiples temas en el texto. En la segunda etapa, se implementa un modelo de optimización para la selección de oraciones destacadas de los clusters. Otro enfoque ser\'ia el de (Ghadimi \& Beigy, 2022)\cite{hybrid-llm} que inicialmente, construye un resumen extractivo a partir de varios documentos de entrada y luego lo utiliza para generar el resumen abstractivo. La gestión de la información redundante, un problema global en la summarización de múltiples documentos, se aborda en la primera etapa, donde se utilizan similitudes basadas en BERT\cite{BERT} para calcular la redundancia de los documentos.
+
+La incorporación de Grandes  Modelos de Lenguaje (LLM) ha revolucionado el campo de procesamiento de lenguaje natural (NLP), abriendo nuevas posibilidades y elevando el rendimiento en diversas tareas, entre ellas, la sumarización de textos. En investigaciones como la realizada por (Basyal et al, 2023) \cite{basyal2023text} se observa el excepcional desempeño de los modelos de lenguaje, principalmente el modelo text-davinci-003 de OpenAI \cite{openai}. No obstante se hace la aclaraci\'on que los modelos con los que fue comparado son significativamente mas peque\~nos y se sugiere hacer uso de las versiones m\'as complejas de los mismos.
+
+\section{Topic Modelling}
+
+    El análisis de texto ha experimentado avances significativos en las últimas décadas, y entre las técnicas más destacadas se encuentra el Modelado de Temas (Topic Modeling). Esta metodología, anclada en la minería de texto y el procesamiento de lenguaje natural, ha emergido como una herramienta esencial para descubrir patrones subyacentes y estructuras temáticas en grandes conjuntos de documentos. El Modelado de Temas se adentra en la complejidad de los datos textuales, permitiendo la identificación automática y la organización de temas latentes presentes en un corpus\cite{lda2003}.
+
+    El uso de modelos basados en la arquitectura encoder-decoder se ha usado tanto para la generaci\'on de algoritmos de Topic Modelling tanto para textos cortos \cite{neuraltm} como para textos m\'as extensos \cite{tm-in-emb}. En todos los casos mejorando los resultados de modelos m\'as tradicionales y ampliamente usados como Latent Dirichlet Analysis (LDA)\cite{lda2003}
+
+    \subsection{Clustering}
+    Utilizando una representacion en vectores de la informaci\'on a trav\'es de embeddings de texto,  (Sia et al. 2020) \cite{sia2020tired} presenta evaluaciones comparativas para la combinación de diferentes embeddings de palabras y algoritmos de agrupamiento, analizando su rendimiento bajo reducción de dimensionalidad con PCA\footnote{TODO}. Mostrando en algunos casos resultados tan sólidos como los modelos de temas clásicos, pero con menor tiempo de ejecución y complejidad computacional. 
+    Por esta l\'inea se encuentra tambien \emph{BERTopic}\cite{bertopic} que hace una primera representaci\'on de los documentos como text embeddings, realizaclustering en el espacio de los vectores genrados y contruye los titulos de los temas utilizando un sistema de representaci\'on categorica de los temas a trav\'es de una tabla TF-IDF\footnote{TODO}
+
+\section{Embeddings}
+
+\section{LLM}
